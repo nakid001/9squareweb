@@ -61,8 +61,6 @@ class App extends React.Component {
                           document.cookie = 'picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
                           document.cookie = 'mechanic=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
                           document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-                          document.cookie = 'picklat=-1; expires=Thu, 01 Jan 2970 00:00:00 UTC;'
-                          document.cookie = 'picklng=-1; expires=Thu, 01 Jan 2970 00:00:00 UTC;'
                         }}
                        >Logout</NavLink>
     user = this.getCookie('username')

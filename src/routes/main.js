@@ -8,6 +8,8 @@ import {
 import App from '../App'
 
 import { HomeContainer } from '../containers/Home.js'
+import LoginContainer from '../containers/Login.js'
+import RegisterContainer from '../containers/Register.js'
 
 class main extends React.Component {
   render () {
@@ -16,6 +18,8 @@ class main extends React.Component {
         <App>
           <Switch>
             <Route exact path='/' component={HomeContainer}/>
+            <Route path = '/login' component={LoginContainer}/>
+            <Route path = '/register' component={RegisterContainer}/>
           </Switch>
         </App>
       </Router>

@@ -8,7 +8,7 @@ import { combineReducers } from 'redux'
 // import car from './car'
 // import deleted from './delete'
 // import service from './service'
-// import userReducer from './myuser'
+import userReducer from './user'
 // import settings from './settings'
 // import payment from './payment'
 // import map from './map'
@@ -17,7 +17,7 @@ const rootReducer = combineReducers({
 //   mechanic: mechanic,
 //   part: part,
 //   garage: garage,
-//   // user: user,
+     user: userReducer,
 //   post: post,
 //   auth: auth,
 //   car: car,
