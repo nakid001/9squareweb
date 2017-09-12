@@ -1,9 +1,11 @@
 import React from 'react'
+import './App.css'
 import {NavLink} from 'react-router-dom'
 import Sidebar from 'react-sidebar'
 import SidebarContent from './components/UI/Sidebar/sidebar_content'
 import TitlePanel from './components/UI/Title_Panel/title-panel'
 // import menuIcon from './components/Map/img/menuIcon.png'
+import menuIcon from './components/UI/Title_Panel/img/menuIcon.webp'
 import brandLogo from './components/UI/Title_Panel/img/demo_brand.png'
 import downArrow from './components/UI/Title_Panel/img/downArrow.png'
 // import userIcon from './components/UI/Sidebar/img/userIcon.png'
@@ -87,6 +89,10 @@ class App extends React.Component {
       picture = this.getCookie('picture')
       headerContent = (
         <span>
+          { !this.state.docked &&
+            <img src={menuIcon} onClick={this.menuButtonClick}
+            className='menuIcon' alt=''/>
+          }
           <NavLink key='5' id='brandLink2' to='/'>
             <img className='brandLogo' src={brandLogo} alt=''/>
           </NavLink>

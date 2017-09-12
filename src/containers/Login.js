@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import  { Login } from '../components/Login.js'
+import  { Login } from '../components/Login/Login.js'
 import { inputlog } from '../actions/input'
 import { loginfire } from '../actions/user'
 // import {
