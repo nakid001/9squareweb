@@ -130,15 +130,10 @@
    /* background-color: orange;  */
 }
 .downArrow {
-  user-select: none;
-  /* margin-left: auto; */
-  /* margin-right: 160px; */
-  width: 16px;
-  height: 16px;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  transform: translateY(-50%);
+  text-decoration: 'none';
+  display: inline;
+  max-width: 15px;
+  white-space: nowrap;
 }
 
 .dropdown-content {
