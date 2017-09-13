@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import  { Home } from '../components/Home.js'
+import  { Home } from '../components/Home/Home.js'
 // import {
 //   LoginForm
 // } from '../components'

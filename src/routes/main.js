@@ -7,7 +7,7 @@ import {
 // import { IndexRoute } from 'react-router'
 import App from '../App'
 
-import { HomeContainer } from '../containers/Home.js'
+import { HomeContainer } from '../containers/Home'
 import LoginContainer from '../containers/Login.js'
 import RegisterContainer from '../containers/Register.js'
 

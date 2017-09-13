@@ -66,7 +66,7 @@ const SidebarContent = (props) => {
     <NavLink key='sb3' exact activeClassName='sbLinkActive' to='/test' className='sidebarLink'>Test</NavLink>,
     <NavLink key='sb4' activeClassName='sbLinkActive' to='/history' className='sidebarLink'>History</NavLink>,
     <NavLink key='sb5' activeClassName='sbLinkActive' to='/ranking' className='sidebarLink'>Ranking</NavLink>,
-    <NavLink key='sb5' activeClassName='sbLinkActive' to='/aboutus' className='sidebarLink'>About us</NavLink>    
+    <NavLink key='sb6' activeClassName='sbLinkActive' to='/aboutus' className='sidebarLink'>About us</NavLink>    
     // <NavLink key='sb6' activeClassName='active' to='/notification' className='sidebarLink' >Notification</NavLink>,
     // <div key='sb7' className='sidebarDivider' />,
     // <NavLink key='sb8' activeClassName='sbLinkActive' to='/settings' className='sidebarLink' >Settings</NavLink>,
