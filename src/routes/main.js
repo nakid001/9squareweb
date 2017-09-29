@@ -10,6 +10,7 @@ import App from '../App'
 import { HomeContainer } from '../containers/Home'
 import LoginContainer from '../containers/Login.js'
 import RegisterContainer from '../containers/Register.js'
+import TestContainer from '../containers/Test.js'
 
 class main extends React.Component {
   render () {
@@ -20,6 +21,7 @@ class main extends React.Component {
             <Route exact path='/' component={HomeContainer}/>
             <Route path = '/login' component={LoginContainer}/>
             <Route path = '/register' component={RegisterContainer}/>
+            <Route path = '/test' component={TestContainer}/>
           </Switch>
         </App>
       </Router>

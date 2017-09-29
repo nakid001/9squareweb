@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import  { Login } from '../components/Login/Login.js'
 import { inputlog } from '../actions/input'
-import { loginfire } from '../actions/user'
+import { loginfire, logingmail } from '../actions/user'
 // import {
 //   LoginForm
 // } from '../components'
@@ -26,7 +26,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      loginfire, inputlog
+      loginfire, inputlog, logingmail
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)

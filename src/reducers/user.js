@@ -18,6 +18,18 @@ const userReducer = (state = {
           text: action.payload
         }
         break
+        case 'LOGFIRE':
+        state = {
+          ...state,
+          text: action.payload
+        }
+        break
+        case 'LOGMAIL':
+        state = {
+          ...state,
+          text: action.payload
+        }
+        break
         case 'REGFIRE':
         state = {
           ...state,

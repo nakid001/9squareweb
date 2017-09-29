@@ -29,3 +29,16 @@ export function loginfire (username, password) {
     payload: 'LOGIN FIRE'
   }
 }
+
+export function logingmail () {
+  firebase.auth().signInWithPopup(provider).then(function(result) {
+    Success(result.user.displayName)
+    // ...
+  }).catch(function(error) {
+    alert(error)
+  })
+  return {
+    type: 'LOGMAIL',
+    payload: 'LOGIN GMAIL'
+  }
+}
