@@ -2,10 +2,10 @@ import React from 'react'
 import * as firebase from 'firebase'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import  { Test } from '../components/Test/Test.js'
-import { inputreg } from '../actions/input.js'
-import { regisfire } from '../actions/user.js'
-import { showroom } from '../actions/test.js'
+import  { Test } from '../../components/users/Test/Test.js'
+import { inputreg } from '../../actions/input.js'
+import { regisfire } from '../../actions/user.js'
+import { showroom } from '../../actions/test.js'
 class TestContainer extends React.Component {
 
     componentWillMount() {
@@ -23,11 +23,21 @@ class TestContainer extends React.Component {
         })
     }
   render () {
-    return (
-      <div>
-        <Test {...this.props} />
-      </div>
-    )
+    if (firebase.auth().currentUser) {
+      return (
+        <div>
+          <Test {...this.props} />
+        </div>
+      )    } else {
+      alert('PLEASE LOGIN')
+      window.location = '/login'
+      return (
+        <div>
+          Loading...
+        </div>
+      )      
+    }
+
   }
 }
 const mapStateToProps = (state) => {

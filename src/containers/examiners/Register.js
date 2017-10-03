@@ -1,10 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import  { Register } from '../components/Register/Register.js'
-import { inputreg } from '../actions/input.js'
-import { regisfire } from '../actions/user.js'
-class RegisterContainer extends React.Component {
+import  { Register } from '../../components/examiners/Register/Register.js'
+import { inputreg } from '../../actions/input.js'
+import { regisfire } from '../../actions/examiner.js'
+class ExRegisterContainer extends React.Component {
 
   render () {
     return (
@@ -26,4 +26,4 @@ const mapDispatchToProps = (dispatch) => {
       inputreg, regisfire
     }, dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(RegisterContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ExRegisterContainer)

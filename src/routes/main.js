@@ -7,10 +7,14 @@ import {
 // import { IndexRoute } from 'react-router'
 import App from '../App'
 
-import { HomeContainer } from '../containers/Home'
-import LoginContainer from '../containers/Login.js'
-import RegisterContainer from '../containers/Register.js'
-import TestContainer from '../containers/Test.js'
+import { HomeContainer } from '../containers/users/Home'
+import LoginContainer from '../containers/users/Login.js'
+import RegisterContainer from '../containers/users/Register.js'
+import TestContainer from '../containers/users/Test.js'
+import ExLoginContainer from '../containers/examiners/Login.js'
+import ExRegisterContainer from '../containers/examiners/Register.js'
+import ExHomeContainer from '../containers/examiners/Home.js'
+import ExTestContainer from '../containers/examiners/Test.js'
 
 class main extends React.Component {
   render () {
@@ -22,6 +26,10 @@ class main extends React.Component {
             <Route path = '/login' component={LoginContainer}/>
             <Route path = '/register' component={RegisterContainer}/>
             <Route path = '/test' component={TestContainer}/>
+            <Route exact path='/examiner' component={ExHomeContainer}/>
+            <Route path ='/examiner/login' component={ExLoginContainer}/>
+            <Route path ='/examiner/register' component={ExRegisterContainer}/>
+            <Route path ='/examiner/test' component={ExTestContainer}/>
           </Switch>
         </App>
       </Router>

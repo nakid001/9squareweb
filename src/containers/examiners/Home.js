@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import  { Home } from '../components/Home/Home.js'
+import  { Home } from '../../components/examiners/Home/Home.js'
 // import {
 //   LoginForm
 // } from '../components'
-export class HomeContainer extends React.Component {
+export class ExHomeContainer extends React.Component {
 
   render () {
     return (
@@ -27,3 +27,5 @@ const mapDispatchToProps = (dispatch) => {
 //       thelogin, googlelogin, facelogin, twitterlogin, firebaselogin
 //     }, dispatch)
 }
+export default connect(mapStateToProps, mapDispatchToProps)(ExHomeContainer)
+

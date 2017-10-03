@@ -1,13 +1,13 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import  { Login } from '../components/Login/Login.js'
-import { inputlog } from '../actions/input'
-import { loginfire, logingmail } from '../actions/user'
+import  { Login } from '../../components/examiners/Login/Login.js'
+import { inputlog } from '../../actions/input'
+import { loginfire, logingmail } from '../../actions/examiner'
 // import {
 //   LoginForm
 // } from '../components'
-class LoginContainer extends React.Component {
+class ExLoginContainer extends React.Component {
 
   render () {
     return (
@@ -29,4 +29,4 @@ const mapDispatchToProps = (dispatch) => {
       loginfire, inputlog, logingmail
     }, dispatch)
 }
-export default connect(mapStateToProps, mapDispatchToProps)(LoginContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ExLoginContainer)

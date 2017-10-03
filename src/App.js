@@ -51,7 +51,7 @@ class App extends React.Component {
     } else return ''
   }
   checklogin () {
-    let mech = this.getCookie('mechanic')
+    let examiner = this.getCookie('examiner')
     const logOutBtn = <NavLink key='6' to='/login'
                         onClick={ () => {
                           firebase.auth().signOut().then(function () {
@@ -61,7 +61,7 @@ class App extends React.Component {
                           })
                           document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
                           document.cookie = 'picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-                          document.cookie = 'mechanic=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+                          document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
                           document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
                         }}
                        >Logout</NavLink>
@@ -84,7 +84,7 @@ class App extends React.Component {
           </span>
         </div>
       )
-    } else if (mech !== true) {
+    } else if (!examiner) {
       let picture = ''
       picture = this.getCookie('picture')
       headerContent = (
@@ -105,6 +105,29 @@ class App extends React.Component {
             </div>
           </div>
           <NavLink key='7' id='titleUserName' activeClassName='active' to='/user'>{user}</NavLink>
+        </span>
+      )
+    } else if (examiner) {
+      let picture = ''
+      picture = this.getCookie('picture')
+      headerContent = (
+        <span>
+          { !this.state.docked &&
+            <img src={menuIcon} onClick={this.menuButtonClick}
+            className='menuIcon' alt=''/>
+          }
+          <NavLink key='5' id='brandLink2' to='/examiner'>
+            <img className='brandLogo' src={brandLogo} alt=''/>
+          </NavLink>
+          <div className='dropdown'>
+            <img src={picture} className='titleUserIcon' alt=''/>
+            <img src={downArrow} className='downArrow' alt=''/>
+            <div className='dropdown-content'>
+              <NavLink key='4' activeClassName='dropdownActive' to='/examiner/settings'>Setting</NavLink>
+              {logOutBtn}
+            </div>
+          </div>
+          <NavLink key='7' id='titleUserName' activeClassName='active' to='/examiner/user'>{user}</NavLink>
         </span>
       )
     }

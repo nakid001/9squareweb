@@ -219,7 +219,7 @@
   line-height: 12px;
   position: absolute;
   top: 50%;
-  right: 92px;
+  right: 110px;
   transform: translateY(-50%);
   user-select: none;
   -webkit-user-select: none;
@@ -230,16 +230,19 @@
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: normal;
-  color: #B2B4B9;
+  color: #FFFFFF;
   padding: 8px;
   text-decoration: none;
 }
 /* #loginButton:focus {
-  border: 1px solid #B2B4B9;
+  border: 1px solid #B7E707;
 }
 .loginBtnText:focus {
-  color: #B2B4B9;
+  color: #B2B9B2;
 } */
+#loginButton:hover {
+  background-color: #18B225;
+}
 #signupButton {
   display: block;
   margin-left: 12px;
@@ -250,7 +253,7 @@
   line-height: 12px;
   position: absolute;
   top: 50%;
-  right: 0px;
+  right: 30px;
   transform: translateY(-50%);
   user-select: none;
   -webkit-user-select: none;
@@ -261,13 +264,13 @@
   font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: normal;
-  color: #B2B4B9;
+  color: #FFFFFF;
   padding: 8px;
   text-decoration: none;
 }
 /* .signupBtnText:focus {
   color: #B2B4B9;
 } */
-/*#signupButton:hover {
+#signupButton:hover {
   background-color: #18B225;
-}*/
+}

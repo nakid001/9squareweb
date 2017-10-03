@@ -53,34 +53,56 @@ function getCookie (cname) {
   }
   return ''
 }
+function getCookie (name) {
+  let value = '; ' + document.cookie
+  let parts = value.split('; ' + name + '=')
+  if (parts.length === 2) {
+    return parts.pop().split(';').shift()
+  } else return ''
+}
 const SidebarContent = (props) => {
   // const style = props.style ? {...styles.sidebar, ...props.style} : styles.sidebar
   let user = ''
   let picture = ''
-  var navLinks = [
-    <span key='sb1' className='userSidebar'>
-      <NavLink activeClassName='sbLinkActive' style={ {visibility: 'hidden'} } to='/user' className='sidebarLink2'>{user}</NavLink>
-      <img src={picture} className='userIcon' alt=''></img>
-    </span>,
-    <div key='sb7' className='sidebarDivider' />,
-    <NavLink key='sb3' exact activeClassName='sbLinkActive' to='/test' className='sidebarLink'>Test</NavLink>,
-    <NavLink key='sb4' activeClassName='sbLinkActive' to='/history' className='sidebarLink'>History</NavLink>,
-    <NavLink key='sb5' activeClassName='sbLinkActive' to='/ranking' className='sidebarLink'>Ranking</NavLink>,
-    <NavLink key='sb6' activeClassName='sbLinkActive' to='/aboutus' className='sidebarLink'>About us</NavLink>    
-    // <NavLink key='sb6' activeClassName='active' to='/notification' className='sidebarLink' >Notification</NavLink>,
-    // <div key='sb7' className='sidebarDivider' />,
-    // <NavLink key='sb8' activeClassName='sbLinkActive' to='/settings' className='sidebarLink' >Settings</NavLink>,
-    // <NavLink key='sb62' className='sidebarLink' activeClassName='sbLinkActive2' to='/'
-    //     onClick={ () => {
-    //       firebase.auth().signOut().then(function () {
-    //         alert('You have signed out.')
-    //       }).catch(function () {
-    //         alert('Sign out failed.')
-    //       })
-    //       document.cookie = 'username=; picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-    //     }}
-    //   >Logout</NavLink>
-  ]
+  let examiner = getCookie('examiner')
+  if (!examiner) {
+    var navLinks = [
+      <span key='sb1' className='userSidebar'>
+        <NavLink activeClassName='sbLinkActive' style={ {visibility: 'hidden'} } to='/user' className='sidebarLink2'>{user}</NavLink>
+        <img src={picture} className='userIcon' alt=''></img>
+      </span>,
+      <div key='sb7' className='sidebarDivider' />,
+      <NavLink key='sb3' exact activeClassName='sbLinkActive' to='/test' className='sidebarLink'>Test</NavLink>,
+      <NavLink key='sb4' activeClassName='sbLinkActive' to='/history' className='sidebarLink'>History</NavLink>,
+      <NavLink key='sb5' activeClassName='sbLinkActive' to='/ranking' className='sidebarLink'>Ranking</NavLink>,
+      <NavLink key='sb6' activeClassName='sbLinkActive' to='/aboutus' className='sidebarLink'>About us</NavLink>    
+      // <NavLink key='sb6' activeClassName='active' to='/notification' className='sidebarLink' >Notification</NavLink>,
+      // <div key='sb7' className='sidebarDivider' />,
+      // <NavLink key='sb8' activeClassName='sbLinkActive' to='/settings' className='sidebarLink' >Settings</NavLink>,
+      // <NavLink key='sb62' className='sidebarLink' activeClassName='sbLinkActive2' to='/'
+      //     onClick={ () => {
+      //       firebase.auth().signOut().then(function () {
+      //         alert('You have signed out.')
+      //       }).catch(function () {
+      //         alert('Sign out failed.')
+      //       })
+      //       document.cookie = 'username=; picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+      //     }}
+      //   >Logout</NavLink>
+    ]
+  } else {
+    var navLinks = [
+      <span key='sb1' className='userSidebar'>
+        <NavLink activeClassName='sbLinkActive' style={ {visibility: 'hidden'} } to='/examiner/user' className='sidebarLink2'>{user}</NavLink>
+        <img src={picture} className='userIcon' alt=''></img>
+      </span>,
+      <div key='sb7' className='sidebarDivider' />,
+      <NavLink key='sb3' exact activeClassName='sbLinkActive' to='/examiner/test' className='sidebarLink'>Test</NavLink>,
+      <NavLink key='sb4' activeClassName='sbLinkActive' to='/examiner/history' className='sidebarLink'>History</NavLink>,
+      <NavLink key='sb5' activeClassName='sbLinkActive' to='/examiner/ranking' className='sidebarLink'>Ranking</NavLink>,
+      <NavLink key='sb6' activeClassName='sbLinkActive' to='/examiner/aboutus' className='sidebarLink'>About us</NavLink>  
+    ] 
+  }
   if (user === '') {
     picture = userIcon
   } else {

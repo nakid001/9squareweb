@@ -10,6 +10,13 @@ const testReducer = (state = {
           text: action.payload
         }
       }
+      break
+      case 'ADDROOM': {
+        state = {
+          ...state,
+          text: action.payload
+        }
+      }
         break
       default :
         break
