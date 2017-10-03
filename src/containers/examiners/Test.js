@@ -9,29 +9,41 @@ import { showroom, addroom } from '../../actions/test.js'
 class ExTestContainer extends React.Component {
 
   render () {
+    let content = ''
+    if (firebase.auth().currentUser)
+    {
+      content = (
+        <div>
+          <Test {...this.props} />
+        </div>
+        )
+      firebase.database().ref('/Room/').once('value', function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+          room[i] = (
+              <div className='col-8 payment_itemDiv' key={i}>
+                <div className='payment_itemDiv--mid'>
+                  <span><span className=''>Room:{i+1}: {childSnapshot.val()+''}</span></span>
+                </div>
+                {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
+              </div>
+            )
+          i++
+        })
+      }).then(() => {
+        this.props.showroom(room)
+      })
+    } else
+    {
+      content = (
+        <div>
+          Loading . . .
+        </div>
+      )
+    }
     let i = 0
     let that = this
     let room = []
-    firebase.database().ref('/Room/').once('value', function (snapshot) {
-      snapshot.forEach(function (childSnapshot) {
-        room[i] = (
-            <div className='col-8 payment_itemDiv' key={i}>
-              <div className='payment_itemDiv--mid'>
-                <span><span className=''>Room:{i+1}: {childSnapshot.val()+''}</span></span>
-              </div>
-              {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
-            </div>
-          )
-        i++
-      })
-    }).then(() => {
-      this.props.showroom(room)
-    })
-    return (
-      <div>
-        <Test {...this.props} />
-      </div>
-    )
+    return content
   }
 }
 const mapStateToProps = (state) => {

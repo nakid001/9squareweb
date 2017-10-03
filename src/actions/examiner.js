@@ -12,7 +12,7 @@ export function regisfire(username, password) {
       email: username,
       // profile_picture : imageUrl
     }).then(()=> {
-      Success(username, password)      
+      Success(username)      
     })
   }).catch((error) => {
       let errorCode = error.code
