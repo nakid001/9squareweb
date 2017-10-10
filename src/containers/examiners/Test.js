@@ -7,6 +7,7 @@ import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
 import { showroom, addroom, setActive, delRoom } from '../../actions/test.js'
 import {NavLink} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 class ExTestContainer extends React.Component {
   componentWillMount() {
@@ -36,8 +37,8 @@ class ExTestContainer extends React.Component {
           room[i] = (
             <div className='col-8 payment_itemDiv' key={i}>
               <div className='payment_itemDiv--mid'>
-                <span><a className='' href ={'/room'+childSnapshot.val().num}>Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</a>
-                <button onClick={()=> {
+                <span><Link to ={'/room'+childSnapshot.val().num}>Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</Link>
+                  <button onClick={()=> {
                     that.props.setActive(childSnapshot.val().num)
                     }}> Active/Inactive</button>
                   <button onClick={()=> {

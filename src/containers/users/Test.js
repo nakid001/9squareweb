@@ -33,7 +33,7 @@ class TestContainer extends React.Component {
             room[i] = (
               <div className='col-8 payment_itemDiv' key={i}>
                 <div className='payment_itemDiv--mid'>
-                  <span><a className='' href ={'/room'+childSnapshot.val().num}>Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</a>
+                  <span><Link to ={'/room'+childSnapshot.val().num}>Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</Link>
                   </span>
                 </div>
                 {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
