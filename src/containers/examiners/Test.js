@@ -9,7 +9,16 @@ import { showroom, addroom, setActive, delRoom } from '../../actions/test.js'
 import {NavLink} from 'react-router-dom'
 
 class ExTestContainer extends React.Component {
-
+  componentWillMount() {
+    let that = this
+    let arr = []
+    let i = 0 
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        that.props.showroom(arr)          
+      }
+    })
+  }
   render () {
     let i = 0
     let that = this
@@ -17,7 +26,6 @@ class ExTestContainer extends React.Component {
     let content = ''
     if (firebase.auth().currentUser)
     {
-      i = 0
       content = (
         <div>
           <Test {...this.props} />
@@ -26,38 +34,16 @@ class ExTestContainer extends React.Component {
       firebase.database().ref('/rooms/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           room[i] = (
-              <div className='col-8 payment_itemDiv' key={i}>
-                <div className='payment_itemDiv--mid'>
-                  <span><span className='' href ='/room'>Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</span>
-                  <button onClick={()=> {
+            <div className='col-8 payment_itemDiv' key={i}>
+              <div className='payment_itemDiv--mid'>
+                <span><a className='' href ={'/room'+childSnapshot.val().num}>Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</a>
+                <button onClick={()=> {
                     that.props.setActive(childSnapshot.val().num)
                     }}> Active/Inactive</button>
                   <button onClick={()=> {
                     that.props.delRoom(childSnapshot.val().num)
                     }}> Delete room </button>
                   </span>
-                </div>
-                {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
-              </div>
-            )
-          i++
-        })
-      }).then(() => {
-        this.props.showroom(room)
-      })
-    } else if (firebase.auth().onAuthStateChanged) {
-      i = 0
-      content = (
-        <div>
-          <Test {...this.props} />
-        </div>
-        )
-      firebase.database().ref('/rooms/').once('value', function (snapshot) {
-        snapshot.forEach(function (childSnapshot) {
-          room[i] = (
-              <div className='col-8 payment_itemDiv' key={i}>
-                <div className='payment_itemDiv--mid'>
-                  <span><span className='' href ='/room'>Room:{i+1}: {childSnapshot.val().ava+''}</span></span>
                 </div>
                 {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
               </div>
@@ -79,7 +65,7 @@ class ExTestContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    user: state.user,
+    exam: state.exam,
     test: state.test
   }
 }

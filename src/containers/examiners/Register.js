@@ -16,7 +16,7 @@ class ExRegisterContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    exam: state.exam
   }
 }
 

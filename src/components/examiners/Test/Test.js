@@ -8,16 +8,16 @@ export class Test extends React.Component {
     this.state = {
       room: []
     }
-    this.handleChange = this.handleChange.bind(this)
+    // this.handleChange = this.handleChange.bind(this)
   }
 
-  handleChange (event) {
-    if (event.target.name === 'User') {
-      this.props.inputlog(event.target.value, this.props.user.password)
-    } else if (event.target.name === 'Pass') {
-      this.props.inputlog(this.props.user.username, event.target.value)
-    }
-  }
+  // handleChange (event) {
+  //   if (event.target.name === 'User') {
+  //     this.props.inputlog(event.target.value, this.props.user.password)
+  //   } else if (event.target.name === 'Pass') {
+  //     this.props.inputlog(this.props.user.username, event.target.value)
+  //   }
+  // }
 
   render () {
     return (

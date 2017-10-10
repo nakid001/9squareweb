@@ -31,13 +31,14 @@ class TestContainer extends React.Component {
         firebase.database().ref('/rooms/').once('value', function (snapshot) {
           snapshot.forEach(function (childSnapshot) {
             room[i] = (
-                <div className='col-8 payment_itemDiv' key={i}>
-                  <div className='payment_itemDiv--mid'>
-                    <span><Link to ={'/room' + i+i} className=''>Room {i+1}: {childSnapshot.val()+''}</Link></span>
-                  </div>
-                  {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
+              <div className='col-8 payment_itemDiv' key={i}>
+                <div className='payment_itemDiv--mid'>
+                  <span><a className='' href ={'/room'+childSnapshot.val().num}>Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</a>
+                  </span>
                 </div>
-              )
+                {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
+              </div>
+            )
             i++
           })
         }).then(() => {

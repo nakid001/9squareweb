@@ -19,7 +19,6 @@ export function showroom(arr) {
       console.log(num)
       for (j= 1; j <= 10; j++) {
         if (!num.includes(j)) {
-          alert(j)
           break 
         } else {
          console.log(num.length) 
