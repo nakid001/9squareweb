@@ -30,10 +30,10 @@ class ExTestContainer extends React.Component {
                 <div className='payment_itemDiv--mid'>
                   <span><span className='' href ='/room'>Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</span>
                   <button onClick={()=> {
-                    that.props.setActive(i)
+                    that.props.setActive(childSnapshot.val().num)
                     }}> Active/Inactive</button>
                   <button onClick={()=> {
-                    that.props.delRoom(i)
+                    that.props.delRoom(childSnapshot.val().num)
                     }}> Delete room </button>
                   </span>
                 </div>
@@ -46,6 +46,7 @@ class ExTestContainer extends React.Component {
         this.props.showroom(room)
       })
     } else if (firebase.auth().onAuthStateChanged) {
+      i = 0
       content = (
         <div>
           <Test {...this.props} />

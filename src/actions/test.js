@@ -36,7 +36,6 @@ export function showroom(arr) {
   }
   
   export function setActive(num) {
-    alert(num)
     firebase.database().ref('/rooms/room' + num).once('value', function (snapshot) {
       if (snapshot.val().ava) {
         firebase.database().ref('/rooms/room' + num).update({ava : false})
