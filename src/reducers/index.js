@@ -10,6 +10,7 @@ import { combineReducers } from 'redux'
 // import service from './service'
 import userReducer from './user'
 import testReducer from './test'
+import ExReducer from './examiner'
 // import settings from './settings'
 // import payment from './payment'
 // import map from './map'
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
 //   part: part,
 //   garage: garage,
      user: userReducer,
-     test: testReducer
+     test: testReducer,
+     exam: ExReducer
 //   post: post,
 //   auth: auth,
 //   car: car,

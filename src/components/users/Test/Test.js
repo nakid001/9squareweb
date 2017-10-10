@@ -9,7 +9,6 @@ export class Test extends React.Component {
       room: []
     }
     this.handleChange = this.handleChange.bind(this)
-    this.handlePress = this.handlePress.bind(this)
   }
 
   handleChange (event) {
@@ -17,13 +16,6 @@ export class Test extends React.Component {
       this.props.inputlog(event.target.value, this.props.user.password)
     } else if (event.target.name === 'Pass') {
       this.props.inputlog(this.props.user.username, event.target.value)
-    }
-  }
-
-  handlePress (event) {
-    event.which = event.which || event.keyCode
-    if (event.which === 13) {
-      this.props.loginfire(this.props.user.username, this.props.user.password)
     }
   }
 
@@ -35,7 +27,7 @@ export class Test extends React.Component {
             <div id="sidebar" className="header_content">
             </div>
             <div id="content-wrap">
-
+            {this.props.test.room}
             </div>
         </div>
         <div id="footer">Footer</div>

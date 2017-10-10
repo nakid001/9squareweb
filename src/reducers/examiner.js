@@ -1,4 +1,4 @@
-const userReducer = (state = {
+const ExReducer = (state = {
     username: '',
     password: '',
     repassword: '',
@@ -58,5 +58,5 @@ const userReducer = (state = {
     }
     return state
   }
-  export default userReducer
+  export default ExReducer
   
