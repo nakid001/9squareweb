@@ -11,6 +11,8 @@ import { HomeContainer } from '../containers/users/Home'
 import LoginContainer from '../containers/users/Login.js'
 import RegisterContainer from '../containers/users/Register.js'
 import TestContainer from '../containers/users/Test.js'
+import RoomContainer from '../containers/users/Room.js'
+
 import ExLoginContainer from '../containers/examiners/Login.js'
 import ExRegisterContainer from '../containers/examiners/Register.js'
 import ExHomeContainer from '../containers/examiners/Home.js'
@@ -26,7 +28,8 @@ class main extends React.Component {
             <Route exact path='/' component={HomeContainer}/>
             <Route path = '/login' component={LoginContainer}/>
             <Route path = '/register' component={RegisterContainer}/>
-            <Route path = '/test' component={TestContainer}/>
+            <Route exact path = '/test' component={TestContainer}/>
+            <Route path = {'/test/room'+':number'} component={RoomContainer}/>'}
             <Route exact path='/examiner' component={ExHomeContainer}/>
             <Route path ='/examiner/login' component={ExLoginContainer}/>
             <Route path ='/examiner/register' component={ExRegisterContainer}/>

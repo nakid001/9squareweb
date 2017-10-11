@@ -1,12 +1,14 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 import './style.css'
 
 export class Test extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      room: []
+      room: 'empty'
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -29,6 +31,7 @@ export class Test extends React.Component {
             <div id="content-wrap">
             {this.props.test.room}
             </div>
+            <button> <Link to ='/'>GO BACK</Link> </button>
         </div>
         <div id="footer">Footer</div>
       </div>   

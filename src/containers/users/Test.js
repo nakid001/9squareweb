@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import  { Test } from '../../components/users/Test/Test.js'
 import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
-import { showroom } from '../../actions/test.js'
+import { showroom, getRoomNum } from '../../actions/test.js'
 import { Link } from 'react-router-dom'
 class TestContainer extends React.Component {
 
@@ -33,15 +33,18 @@ class TestContainer extends React.Component {
           )
         firebase.database().ref('/rooms/').once('value', function (snapshot) {
           snapshot.forEach(function (childSnapshot) {
+            if (childSnapshot.val().ava) {
             room[i] = (
               <div className='col-8 payment_itemDiv' key={i}>
                 <div className='payment_itemDiv--mid'>
-                  <span><Link to ={'/test/room'+childSnapshot.val().num}>Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</Link>
-                  </span>
+                <span><Link to ={'/test/room'+childSnapshot.val().num} onClick={()=> {
+                    that.props.getRoomNum(childSnapshot.val().num)
+                  }} >Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</Link>
+                </span>
                 </div>
                 {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
               </div>
-            )
+            )}
             i++
           })
         }).then(() => {
@@ -68,7 +71,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      inputreg, regisfire, showroom
+      inputreg, regisfire, showroom, getRoomNum
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(TestContainer)

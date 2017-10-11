@@ -42,10 +42,18 @@ const testReducer = (state = {
       }
         break
       case 'SHOWDEVICE': {
-        state = {
-          ...state,
-          device: action.device,          
-          text: action.payload
+        if (action.device.length === 0) {
+          state = {
+            ...state,
+            device:' EMPTY ',
+            text:action.payload
+          }
+        } else {
+          state = {
+            ...state,
+            device: action.device,          
+            text: action.payload
+          }
         }
       }
         break
