@@ -58,7 +58,7 @@ export function showroom(arr) {
   export function showDevice(arr) {
     return {
       type:'SHOWDEVICE',
-      room: arr,
+      device: arr,
       payload: 'SHOW DEVICE'
     }
   }
@@ -89,9 +89,21 @@ export function showroom(arr) {
       payload: 'ADD DEVICE'
     }
   }
-
+  export function setDeviceActive(num) {
+    firebase.database().ref('/rooms/room1/devices/device' + num).once('value', function (snapshot) {
+      if (snapshot.val().ava) {
+        firebase.database().ref('/rooms/room1/devices/device' + num).update({ava : false})
+      } else {
+        firebase.database().ref('/rooms/room1/devices/device' + num).update({ava : true})
+      }
+    })
+    return{
+      type:'SETDEVICE',
+      payload: 'SET ACTIVE DEVICE'
+    }
+  }
   export function delDevice(num) {
-    firebase.database().ref('/' + num).remove()
+    firebase.database().ref('/rooms/room1/devices/device' + num).remove()
     return{
       type:'DELDEVICE',
       payload: 'DELETE DEVICE'

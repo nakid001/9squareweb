@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import  { Room } from '../../components/examiners/Room/Room.js'
 import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
-import { showDevice, addDevice, setActive, delDevice } from '../../actions/test.js'
+import { showDevice, addDevice, setActive, delDevice, setDeviceActive } from '../../actions/test.js'
 import {NavLink} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
@@ -32,14 +32,14 @@ class ExRoomContainer extends React.Component {
           <Room {...this.props} />
         </div>
         )
-      firebase.database().ref('/rooms/room1/').once('value', function (snapshot) {
+      firebase.database().ref('/rooms/room1/devices/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           device[i] = (
             <div className='col-8 payment_itemDiv' key={i}>
               <div className='payment_itemDiv--mid'>
                 <span><Link to ={'/test/room1/device'+childSnapshot.val().num}>Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</Link>
                   <button onClick={()=> {
-                    that.props.setActive(childSnapshot.val().num)
+                    that.props.setDeviceActive(childSnapshot.val().num)
                     }}> Active/Inactive</button>
                   <button onClick={()=> {
                     that.props.delDevice(childSnapshot.val().num)
@@ -74,7 +74,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      inputreg, regisfire, showDevice, addDevice, setActive, delDevice
+      inputreg, regisfire, showDevice, addDevice, setActive, delDevice, setDeviceActive
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ExRoomContainer)
