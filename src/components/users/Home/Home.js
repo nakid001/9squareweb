@@ -11,7 +11,7 @@ export class Home extends Component {
     super();
  
     this.state = {
-      modalIsOpen: true
+      modalIsOpen: this.getCookie('username')
     }
  
     this.openModal = this.openModal.bind(this);
@@ -20,7 +20,7 @@ export class Home extends Component {
   }
  
   openModal() {
-    this.setState({modalIsOpen: true});
+    this.setState({modalIsOpen: true})    
   }
  
   afterOpenModal() {
@@ -29,6 +29,13 @@ export class Home extends Component {
  
   closeModal() {
     this.setState({modalIsOpen: false});
+  }
+  getCookie (name) {
+    let value = '; ' + document.cookie
+    let parts = value.split('; ' + name + '=')
+    if (parts.length === 2) {
+      return parts.pop().split(';').shift()
+    } else return ''
   }
   render() {
     return (
