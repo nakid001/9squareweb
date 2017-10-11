@@ -55,3 +55,45 @@ export function showroom(arr) {
       payload: 'DELETE ROOM'
     }
   }
+  export function showDevice(arr) {
+    return {
+      type:'SHOWDEVICE',
+      room: arr,
+      payload: 'SHOW DEVICE'
+    }
+  }
+  export function addDevice() {
+    let i = 0
+    let num = []
+    let j = 0
+    firebase.database().ref('/rooms/room1/devices/').once('value', function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+          num[i]=childSnapshot.val().num
+          i++
+      })
+    }).then(() => {
+      console.log(num)
+      for (j= 1; j <= 10; j++) {
+        if (!num.includes(j)) {
+          break 
+        } else {
+         console.log(num.length) 
+        }
+      }
+      let updates = {}
+      updates['/rooms/room1/devices/device'+j] = {num : j , ava : false}
+      firebase.database().ref().update(updates);  
+    })  
+    return{
+      type:'ADDDEVICE',
+      payload: 'ADD DEVICE'
+    }
+  }
+
+  export function delDevice(num) {
+    firebase.database().ref('/' + num).remove()
+    return{
+      type:'DELDEVICE',
+      payload: 'DELETE DEVICE'
+    }
+  }

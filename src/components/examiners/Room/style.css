@@ -1,0 +1,28 @@
+/* sizes */
+#main-wrap > div { min-height: 450px; }
+
+
+#header,
+#footer {
+    min-height: 40px;
+}
+
+/* layout */
+#main-wrap {
+    /* overflow to handle inner floating block */
+    overflow: hidden;
+}
+
+#sidebar {
+    float: left;
+    width: 30%;
+}
+
+#content-wrap {
+    float: right;
+    width: 70%;
+}   
+.header_content {
+  background-image: url("/21106581_2464600900347295_6194317915723515929_n.jpg");  
+  border: 3px  #123412;
+}
