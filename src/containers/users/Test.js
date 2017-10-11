@@ -7,6 +7,7 @@ import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
 import { showroom, getRoomNum } from '../../actions/test.js'
 import { Link } from 'react-router-dom'
+import './style.css'
 class TestContainer extends React.Component {
 
     componentWillMount() {
@@ -35,11 +36,14 @@ class TestContainer extends React.Component {
           snapshot.forEach(function (childSnapshot) {
             if (childSnapshot.val().ava) {
             room[i] = (
-              <div className='col-8 payment_itemDiv' key={i}>
-                <div className='payment_itemDiv--mid'>
+              <div key={i}>
+                <div className='col-8'>
                 <span><Link to ={'/test/room'+childSnapshot.val().num} onClick={()=> {
                     that.props.getRoomNum(childSnapshot.val().num)
-                  }} >Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</Link>
+                  }}>
+                  <p className='col-12'/>
+                  <div className='col-12 roomBtn'> Room:{childSnapshot.val().num}</div> 
+                  </Link>
                 </span>
                 </div>
                 {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}

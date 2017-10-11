@@ -1,0 +1,13 @@
+.col-12 {width: 100%;}
+
+.roomBtn {
+    border-radius: 25px;    
+    color: black;
+    background: #69BADA;
+    border: 2px solid ;
+    height: 45px;    
+    position: relative;
+    font-size: 24px;    
+    text-align: center;
+    
+  }
