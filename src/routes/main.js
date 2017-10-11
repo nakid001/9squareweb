@@ -19,12 +19,6 @@ import ExRoomContainer from '../containers/examiners/Room.js'
 
 class main extends React.Component {
   render () {
-    const test = () => (
-      <Switch>
-        <Route exact path='/examiner/test/' component={ExTestContainer}/>
-        <Route path={'/examiner/test/room'+':number'} component={ExRoomContainer}/>
-      </Switch>
-    )
     return (
       <Router>
         <App>
@@ -36,8 +30,9 @@ class main extends React.Component {
             <Route exact path='/examiner' component={ExHomeContainer}/>
             <Route path ='/examiner/login' component={ExLoginContainer}/>
             <Route path ='/examiner/register' component={ExRegisterContainer}/>
-            <Route path ='/examiner/test' component={test}/>
-          </Switch>
+            <Route exact path='/examiner/test/' component={ExTestContainer}/>
+            <Route path={'/examiner/test/room'+':number'} component={ExRoomContainer}/>
+         </Switch>
         </App>
       </Router>
     )
