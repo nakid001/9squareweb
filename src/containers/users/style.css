@@ -9,5 +9,24 @@
     position: relative;
     font-size: 24px;    
     text-align: center;
-    
+  }
+  .DeviceAvaBtn {
+    border-radius: 25px;    
+    color: black;
+    background: #0CE61E;
+    border: 2px solid ;
+    height: 45px;    
+    position: relative;
+    font-size: 24px;    
+    text-align: center;
+  }
+  .DeviceNotAvaBtn {
+    border-radius: 25px;    
+    color: black;
+    background: #E60C0C;
+    border: 2px solid ;
+    height: 45px;    
+    position: relative;
+    font-size: 24px;    
+    text-align: center;
   }

@@ -33,10 +33,14 @@ class RoomContainer extends React.Component {
         )
       firebase.database().ref('/rooms/room'+this.props.test.num+'/devices/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
+          const DeviceBtn = childSnapshot.val().ava ? 'DeviceAvaBtn' : 'DeviceNotAvaBtn'          
           device[i] = (
-            <div className='col-8 payment_itemDiv' key={i}>
+            <div className='col-8' key={i}>
               <div className='payment_itemDiv--mid'>
-                <span><Link to ={'/test/room'+that.props.test.num+'/device'+childSnapshot.val().num}>Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</Link>
+                <span><Link to ={'/test/room'+that.props.test.num+'/device'+childSnapshot.val().num}>
+                <p className='col-12'/>
+                  <div className={DeviceBtn}> Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</div> 
+                </Link>
 
                   </span>
                 </div>
