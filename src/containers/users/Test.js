@@ -20,6 +20,9 @@ class TestContainer extends React.Component {
       })
     }
     render () {
+      let i = 0
+      let that = this
+      let room = []
       let content = ''
       if (firebase.auth().currentUser)
       {
@@ -52,9 +55,6 @@ class TestContainer extends React.Component {
           </div>
         )
       }
-      let i = 0
-      let that = this
-      let room = []
       return content
     }
 }
