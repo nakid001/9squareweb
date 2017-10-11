@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import  { Test } from '../../components/examiners/Test/Test.js'
 import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
-import { showroom, addroom, setActive, delRoom } from '../../actions/test.js'
+import { showroom, addroom, setActive, delRoom, getRoomNum } from '../../actions/test.js'
 import {NavLink} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
@@ -37,7 +37,11 @@ class ExTestContainer extends React.Component {
           room[i] = (
             <div className='col-8 payment_itemDiv' key={i}>
               <div className='payment_itemDiv--mid'>
-                <span><Link to ={'/examiner/test/room'+childSnapshot.val().num}>Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</Link>
+                <span><Link to ={'/examiner/test/room'+childSnapshot.val().num}
+                onClick={()=> {
+                  that.props.getRoomNum(childSnapshot.val().num)
+                }}
+                >Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</Link>
                   <button onClick={()=> {
                     that.props.setActive(childSnapshot.val().num)
                     }}> Active/Inactive</button>
@@ -74,7 +78,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      inputreg, regisfire, showroom, addroom, setActive, delRoom
+      inputreg, regisfire, showroom, addroom, setActive, delRoom, getRoomNum
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ExTestContainer)

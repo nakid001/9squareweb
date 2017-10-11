@@ -1,23 +1,16 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './style.css'
 
 export class Test extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      room: []
+      room: [],
+      num: 0
     }
-    // this.handleChange = this.handleChange.bind(this)
   }
-
-  // handleChange (event) {
-  //   if (event.target.name === 'User') {
-  //     this.props.inputlog(event.target.value, this.props.user.password)
-  //   } else if (event.target.name === 'Pass') {
-  //     this.props.inputlog(this.props.user.username, event.target.value)
-  //   }
-  // }
 
   render () {
     return (
@@ -32,6 +25,7 @@ export class Test extends React.Component {
             </div>
             <button onClick={()=> {
               this.props.addroom()}}>ADD ROOM </button>
+            <button> <Link to ='/'>GO BACK</Link> </button>
         </div>
         <div id="footer">Footer</div>
       </div>   

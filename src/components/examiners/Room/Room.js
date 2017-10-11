@@ -1,12 +1,15 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
+import {NavLink, HashRouter} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 import './style.css'
 
 export class Room extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      device: []
+      device: [],
+      num: 0
     }
     // this.handleChange = this.handleChange.bind(this)
   }
@@ -22,7 +25,7 @@ export class Room extends React.Component {
   render () {
     return (
       <div id='home_wrapper'>
-        <div id="header">Room num</div>
+        <div id="header">{'ROOM '+this.props.test.num}</div>
         <div id="main-wrap">
             <div className="header_content">
             Device List
@@ -30,8 +33,8 @@ export class Room extends React.Component {
             </div>
             <div id="content-wrap">
             </div>
-            <button onClick={()=> {
-              this.props.addDevice()}}>ADD DEVICE </button>
+            <button onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD DEVICE </button>
+            <button> <Link to ='/examiner/test'>GO BACK</Link> </button>
         </div>
         <div id="footer">Footer</div>
       </div>   

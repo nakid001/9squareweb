@@ -1,5 +1,6 @@
 const testReducer = (state = {
     room: [],
+    num: 0,
     device: [],
     text: ''
   }, action) => {
@@ -55,6 +56,13 @@ const testReducer = (state = {
         }
       }
         break
+      case 'GETROOMNUM': {
+        state = {
+          ...state,
+          num: action.num,
+          text: action.payload
+        }
+      }
       default :
         break
     }

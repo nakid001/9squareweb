@@ -1,4 +1,11 @@
 import * as firebase from 'firebase'  
+export function getRoomNum (n) {
+  return {
+    type: 'GETROOMNUM',
+    num: n,
+    payload: 'GET ROOM NUMBER'
+  }
+}
 export function showroom(arr) {
     return {
       type:'SHOWROOM',
@@ -62,11 +69,11 @@ export function showroom(arr) {
       payload: 'SHOW DEVICE'
     }
   }
-  export function addDevice() {
+  export function addDevice(c) {
     let i = 0
     let num = []
     let j = 0
-    firebase.database().ref('/rooms/room1/devices/').once('value', function (snapshot) {
+    firebase.database().ref('/rooms/room' + c + '/devices/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           num[i]=childSnapshot.val().num
           i++
@@ -81,7 +88,7 @@ export function showroom(arr) {
         }
       }
       let updates = {}
-      updates['/rooms/room1/devices/device'+j] = {num : j , ava : false}
+      updates['/rooms/room' + c + '/devices/device'+j] = {num : j , ava : false}
       firebase.database().ref().update(updates);  
     })  
     return{
@@ -89,12 +96,12 @@ export function showroom(arr) {
       payload: 'ADD DEVICE'
     }
   }
-  export function setDeviceActive(num) {
-    firebase.database().ref('/rooms/room1/devices/device' + num).once('value', function (snapshot) {
+  export function setDeviceActive(num, c) {
+    firebase.database().ref('/rooms/room' + c + '/devices/device' + num).once('value', function (snapshot) {
       if (snapshot.val().ava) {
-        firebase.database().ref('/rooms/room1/devices/device' + num).update({ava : false})
+        firebase.database().ref('/rooms/room' + c + '/devices/device' + num).update({ava : false})
       } else {
-        firebase.database().ref('/rooms/room1/devices/device' + num).update({ava : true})
+        firebase.database().ref('/rooms/room' + c + '/devices/device' + num).update({ava : true})
       }
     })
     return{
@@ -102,8 +109,8 @@ export function showroom(arr) {
       payload: 'SET ACTIVE DEVICE'
     }
   }
-  export function delDevice(num) {
-    firebase.database().ref('/rooms/room1/devices/device' + num).remove()
+  export function delDevice(num, c) {
+    firebase.database().ref('/rooms/room' + c + '/devices/device' + num).remove()
     return{
       type:'DELDEVICE',
       payload: 'DELETE DEVICE'
