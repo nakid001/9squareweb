@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './style.css'
 import temp from './img/template.png'
 import Modal from 'react-modal';
-import TestIcon from './img/template.png'
+import TestIcon from './img/start.png'
 import { Link } from 'react-router-dom'
 
 // import { Link } from 'react-router'
@@ -58,9 +58,6 @@ export class Home extends Component {
                 <div className='Modal--matching--body'>
                    <div>
                     <Link to= '/test'><img src={TestIcon} className='TestIcon' alt=''/></Link>
-                    <div className='Modal--matching--body--text'>
-                      LET's TEST!
-                    </div>
                   </div> 
                 </div>
                 <div className='Modal--matching--footer'>
