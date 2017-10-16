@@ -1,64 +1,126 @@
 #include <Arduino.h>
-#include "password.h"
 #include <WiFi.h>
+#include <PubSubClient.h>
+#include "password.h"
 
+// #include "DHT.h"
+
+/* change it with your ssid-password */
 const char* ssid = "songpon";
-const char* password =  mypassword;
-#define LED_BUILTIN 13
+const char* password = mypassword;
+/* this is the IP of PC/raspberry where you installed MQTT Server 
+on Wins use "ipconfig" 
+on Linux use "ifconfig" to get its IP address */
+const char* mqtt_server = "192.168.1.39";
 
-void printWifiData() {
-  // print your WiFi shield's IP address:
-  IPAddress ip = WiFi.localIP();
-  Serial.print("IP Address: ");
-  Serial.println(ip);
-  Serial.println(ip);
+/* define DHT pins */
+// #define DHTPIN 14
+// #define DHTTYPE DHT22
+// DHT dht(DHTPIN, DHTTYPE);
+float temperature = 0;
 
-  // print your MAC address:
-  byte mac[6];
-  WiFi.macAddress(mac);
-  Serial.print("MAC address: ");
-  Serial.print(mac[5], HEX);
-  Serial.print(":");
-  Serial.print(mac[4], HEX);
-  Serial.print(":");
-  Serial.print(mac[3], HEX);
-  Serial.print(":");
-  Serial.print(mac[2], HEX);
-  Serial.print(":");
-  Serial.print(mac[1], HEX);
-  Serial.print(":");
-  Serial.println(mac[0], HEX);
+/* create an instance of PubSubClient client */
+WiFiClient espClient;
+PubSubClient client(espClient);
 
-  // print your subnet mask:
-  IPAddress subnet = WiFi.subnetMask();
-  Serial.print("NetMask: ");
-  Serial.println(subnet);
+/*LED GPIO pin*/
+const char led = 12;
 
-  // print your gateway address:
-  IPAddress gateway = WiFi.gatewayIP();
-  Serial.print("Gateway: ");
-  Serial.println(gateway);
-  Serial.println("Parut can CONNECTED :D");
-  
+/* topics */
+#define TEMP_TOPIC    "smarthome/room1/temp"
+#define LED_TOPIC     "smarthome/room1/led" /* 1=on, 0=off */
+
+long lastMsg = 0;
+char msg[20];
+
+void receivedCallback(char* topic, byte* payload, unsigned int length) {
+  Serial.print("Message received: ");
+  Serial.println(topic);
+
+  Serial.print("payload: ");
+  for (int i = 0; i < length; i++) {
+    Serial.print((char)payload[i]);
+  }
+  Serial.println();
+  /* we got '1' -> on */
+  if ((char)payload[0] == '1') {
+    digitalWrite(led, HIGH); 
+  } else {
+    /* we got '0' -> on */
+    digitalWrite(led, LOW);
+  }
+
 }
+
+void mqttconnect() {
+  /* Loop until reconnected */
+  while (!client.connected()) {
+    Serial.print("MQTT connecting ...");
+    /* client ID */
+    String clientId = "ESP32Client";
+    /* connect now */
+    if (client.connect(clientId.c_str())) {
+      Serial.println("connected");
+      /* subscribe topic with default QoS 0*/
+      client.subscribe(LED_TOPIC);
+    } else {
+      Serial.print("failed, status code =");
+      Serial.print(client.state());
+      Serial.println("try again in 5 seconds");
+      /* Wait 5 seconds before retrying */
+      delay(5000);
+    }
+  }
+}
+
 void setup() {
   Serial.begin(9600);
+  // We start by connecting to a WiFi network
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
   WiFi.begin(ssid, password);
- 
+
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    Serial.println("nooooooooooooooooooooooooooooo");
+    Serial.print(".");
   }
-  printWifiData();
-  pinMode(LED_BUILTIN, OUTPUT);
-}
+  /* set led as output to control led on-off */
+  pinMode(led, OUTPUT);
 
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+
+  /* configure the MQTT server with IPaddress and port */
+  client.setServer(mqtt_server, 1883);
+  /* this receivedCallback function will be invoked 
+  when client received subscribed topic */
+  client.setCallback(receivedCallback);
+  /*start DHT sensor */
+
+}
 void loop() {
- // turn the LED on (HIGH is the voltage level)
- digitalWrite(LED_BUILTIN, HIGH);
- // wait for a second
- delay(1000);
- // turn the LED off by making the voltage LOW
- digitalWrite(LED_BUILTIN, LOW);  // wait for a second
- delay(100);
+  /* if client was disconnected then try to reconnect again */
+  if (!client.connected()) {
+    mqttconnect();
+  }
+  /* this function will listen for incomming 
+  subscribed topic-process-invoke receivedCallback */
+  client.loop();
+  /* we measure temperature every 3 secs
+  we count until 3 secs reached to avoid blocking program if using delay()*/
+  long now = millis();
+  if (now - lastMsg > 3000) {
+    lastMsg = now;
+    /* read DHT11/DHT22 sensor and convert to string */
+    // temperature = dht.readTemperature();
+    if (!isnan(temperature)) {
+      snprintf (msg, 20, "%lf", temperature);
+      /* publish the message */
+      client.publish(TEMP_TOPIC, msg);
+    }
+  }
 }
