@@ -6,18 +6,18 @@
 // #include "DHT.h"
 
 /* change it with your ssid-password */
-const char* ssid = "songpon";
-const char* password = mypassword;
+const char* ssid = "KUWIN";
+const char* password = "";
 /* this is the IP of PC/raspberry where you installed MQTT Server 
 on Wins use "ipconfig" 
 on Linux use "ifconfig" to get its IP address */
-const char* mqtt_server = "192.168.1.39";
+const char* mqtt_server = "10.2.42.212";
 
 /* define DHT pins */
 // #define DHTPIN 14
 // #define DHTTYPE DHT22
 // DHT dht(DHTPIN, DHTTYPE);
-float temperature = 0;
+float Force = 0;
 
 /* create an instance of PubSubClient client */
 WiFiClient espClient;
@@ -27,8 +27,8 @@ PubSubClient client(espClient);
 const char led = 12;
 
 /* topics */
-#define TEMP_TOPIC    "smarthome/room1/temp"
-#define LED_TOPIC     "smarthome/room1/led" /* 1=on, 0=off */
+#define TEMP_TOPIC    "/room1/device"
+#define LED_TOPIC     "/room1/" /* 1=on, 0=off */
 
 long lastMsg = 0;
 char msg[20];
@@ -110,17 +110,18 @@ void loop() {
   /* this function will listen for incomming 
   subscribed topic-process-invoke receivedCallback */
   client.loop();
-  /* we measure temperature every 3 secs
+  /* we measure Force every 3 secs
   we count until 3 secs reached to avoid blocking program if using delay()*/
   long now = millis();
   if (now - lastMsg > 3000) {
     lastMsg = now;
     /* read DHT11/DHT22 sensor and convert to string */
-    // temperature = dht.readTemperature();
-    if (!isnan(temperature)) {
-      snprintf (msg, 20, "%lf", temperature);
+    // Force = dht.readForce();
+    if (!isnan(Force)) {
+      snprintf (msg, 20, "%lf", Force);
       /* publish the message */
       client.publish(TEMP_TOPIC, msg);
     }
   }
+  client.publish(TEMP_TOPIC,"KID IS CONNECTED");
 }
