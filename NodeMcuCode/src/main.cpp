@@ -6,12 +6,13 @@
 // #include "DHT.h"
 
 /* change it with your ssid-password */
-const char* ssid = "KUWIN";
-const char* password = "";
+#define LED_BUILTIN 13
+const char* ssid = "songpon";
+const char* password = mypassword;
 /* this is the IP of PC/raspberry where you installed MQTT Server 
 on Wins use "ipconfig" 
 on Linux use "ifconfig" to get its IP address */
-const char* mqtt_server = "10.2.42.212";
+const char* mqtt_server = "158.108.39.201";
 
 /* define DHT pins */
 // #define DHTPIN 14
@@ -27,7 +28,7 @@ PubSubClient client(espClient);
 const char led = 12;
 
 /* topics */
-#define TEMP_TOPIC    "/room1/device"
+#define TOPIC1    "/room1/device"
 #define LED_TOPIC     "/room1/" /* 1=on, 0=off */
 
 long lastMsg = 0;
@@ -69,6 +70,8 @@ void mqttconnect() {
       Serial.println("try again in 5 seconds");
       /* Wait 5 seconds before retrying */
       delay(5000);
+      digitalWrite(led, LOW); 
+      
     }
   }
 }
@@ -79,7 +82,8 @@ void setup() {
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
-
+  pinMode(LED_BUILTIN, OUTPUT);
+  
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
@@ -117,11 +121,15 @@ void loop() {
     lastMsg = now;
     /* read DHT11/DHT22 sensor and convert to string */
     // Force = dht.readForce();
+    digitalWrite(LED_BUILTIN, HIGH);
+    delay(2000);
+    digitalWrite(LED_BUILTIN, LOW);
+    delay(2000);
     if (!isnan(Force)) {
       snprintf (msg, 20, "%lf", Force);
       /* publish the message */
-      client.publish(TEMP_TOPIC, msg);
+      // client.publish(TOPIC1, msg);
     }
+    client.publish(TOPIC1,"PARUT IS CONNECTED");    
   }
-  client.publish(TEMP_TOPIC,"KID IS CONNECTED");
 }
