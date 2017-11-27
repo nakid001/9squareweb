@@ -6,7 +6,7 @@ const userReducer = (state = {
     email: '',
     canlog: false,
     text: '',
-    payment: false,
+    history: [],
     loading: true
   }, action) => {
     switch (action.type) {
@@ -53,6 +53,28 @@ const userReducer = (state = {
           payload: action.payload
         }
         break
+        case 'GETHIS' :
+        state = {
+          ...state,
+          history: action.Hpayload,
+          username: action.Upayload,
+          payload: action.payload
+        }
+        case 'CANLOG': {
+          state = {
+            ...state,
+            username: action.Upayload,
+            loading: action.Lpayload
+          }
+        }
+          break
+        case 'CANNOTLOG':
+          state = {
+            ...state,
+            username: action.Upayload,
+            loading: action.Lpayload
+          }
+          break
       default :
         break
     }

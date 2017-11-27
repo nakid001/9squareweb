@@ -1,0 +1,82 @@
+import React from 'react'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { History } from '../../components/users/History/History.js'
+import { gethistory, canlogin, cannotlogin } from  '../../actions/user'
+
+import * as firebase from 'firebase'
+class HistoryContainer extends React.Component {
+  componentWillMount () {
+
+    }
+  componentDidMount() {
+    let that = this
+    firebase.auth().onAuthStateChanged(function (userF) {
+      if (userF) {
+        let history = []
+        if (firebase.auth().currentUser) {
+            console.log("DONE")
+            let i = 0
+            firebase.database().ref('/users/' + firebase.auth().currentUser.uid + '/history/').once('value', function (snapshot) {
+              snapshot.forEach(function (childSnapshot) {
+                console.log(childSnapshot.val())
+                history[i] = (
+                    <tr key={i}>
+                      <td>{childSnapshot.val()}</td>
+                      <td>{childSnapshot.val()}</td>
+                      <td>wtf?</td>
+                    </tr>
+                  )
+                i++
+              })
+            }).then(() => {
+              that.props.gethistory(history, userF)
+            })
+        } else {
+            console.log('please wait')
+        }
+      } else {
+        that.props.cannotlogin()
+      }
+    })
+  }
+  redirect () {
+    window.location = '/login'
+  }
+  render () {
+    if (this.props.user.loading) {
+        return <div> Loading...
+        </div>
+      } else if (this.props.user.username) {
+        return (
+            <History {...this.props}/>
+        )
+      } else {
+        alert('Please login first!')
+        return (this.redirect())
+      }if (this.props.user.loading) {
+        return <div> Loading...
+        </div>
+      } else if (this.props.user.username) {
+        return (
+            <History {...this.props}/>
+        )
+      } else {
+        alert('Please login first!')
+        return (this.redirect())
+      }
+    }
+  }
+  const mapStateToProps = (state) => {
+    return {
+      user: state.user
+    }
+  }
+  
+  const mapDispatchToProps = (dispatch) => {
+    return bindActionCreators(
+      {
+        gethistory, canlogin, cannotlogin
+      }, dispatch)
+  }
+export default connect(mapStateToProps, mapDispatchToProps)(HistoryContainer)

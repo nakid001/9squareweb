@@ -6,7 +6,7 @@
             "request": "launch",
             "cwd": "${workspaceRoot}",
             "name": "PlatformIO Debugger",
-            "target": "w:/9squareweb/NodeMcuCode/.pioenvs/esp32dev/firmware.elf",
+            "target": "w:/Git/9squareweb/NodeMcuCode/.pioenvs/esp32dev/firmware.elf",
             "gdbpath": "C:/Users/Parut/.platformio/penv/Scripts/piodebuggdb",
             "autorun": [ "source .pioinit" ]
         }

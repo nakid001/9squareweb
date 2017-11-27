@@ -47,3 +47,25 @@ export function logingmail () {
     payload: 'LOGIN GMAIL'
   }
 }
+export function gethistory (arr, username) {
+
+  return {
+    type: 'GETHIS',
+    Hpayload: arr,
+    Upayload: username,
+    payload: 'GET HISTORY'
+  }
+}
+export function canlogin (username) {
+  return {
+    type: 'CANLOG',
+    Upayload: username,
+    Lpayload: false
+  }
+}
+export function cannotlogin () {
+  return {
+    type: 'CANNOTLOG',
+    Lpayload: false
+  }
+}
