@@ -25,7 +25,7 @@ export class Room extends React.Component {
   render () {
     return (
       <div id='home_wrapper'>
-        <div id="header">{'ROOM '+this.props.test.num}</div>
+        <div id="header" className="title_content">{'ROOM '+this.props.test.num}</div>
         <div id="main-wrap">
             <div id="sidebar" className="header_content">
             </div>

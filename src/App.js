@@ -53,18 +53,18 @@ class App extends React.Component {
   checklogin () {
     let examiner = this.getCookie('examiner')
     const logOutBtn = <NavLink key='6' to='/login'
-                        onClick={ () => {
-                          firebase.auth().signOut().then(function () {
-                            alert('You have signed out.')
-                          }).catch(function () {
-                            alert('Sign out failed.')
-                          })
-                          document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-                          document.cookie = 'picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-                          document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-                          document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-                        }}
-                       >Logout</NavLink>
+      onClick={ () => {
+        firebase.auth().signOut().then(function () {
+          alert('You have signed out.')
+        }).catch(function () {
+          alert('Sign out failed.')
+        })
+        document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+        document.cookie = 'picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+        document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+      }}
+    >Logout</NavLink>
     user = this.getCookie('username')
     let headerContent
     if (user === '') {    //  no user logged in

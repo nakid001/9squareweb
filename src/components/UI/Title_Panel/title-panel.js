@@ -39,6 +39,7 @@ const TitlePanel = (props) => {
     //   {props.children}
     // </div>
     <div className='rootStyles'>
+      <div className='empty_pannel'></div>
       <div className='headerStyle'>{props.title}</div>
       {props.children}
     </div>

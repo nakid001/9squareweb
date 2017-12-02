@@ -24,7 +24,7 @@ export class Test extends React.Component {
   render () {
     return (
       <div id='home_wrapper'>
-        <div id="header">การทดสอบ</div>
+        <div id="header" className="title_content">เลือกสถานที่ทดสอบ</div>
         <div id="main-wrap">
             <div id="sidebar" className="header_content">
             </div>

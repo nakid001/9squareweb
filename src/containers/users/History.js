@@ -6,9 +6,7 @@ import { gethistory, canlogin, cannotlogin } from  '../../actions/user'
 
 import * as firebase from 'firebase'
 class HistoryContainer extends React.Component {
-  componentWillMount () {
 
-    }
   componentDidMount() {
     let that = this
     firebase.auth().onAuthStateChanged(function (userF) {
@@ -40,9 +38,11 @@ class HistoryContainer extends React.Component {
       }
     })
   }
+  
   redirect () {
     window.location = '/login'
   }
+
   render () {
     if (this.props.user.loading) {
         return <div> Loading...

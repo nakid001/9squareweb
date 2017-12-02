@@ -13,7 +13,7 @@ const char* password = "";
 /* this is the IP of PC/raspberry where you installed MQTT Server 
 on Wins use "ipconfig" 
 on Linux use "ifconfig" to get its IP address */
-const char* mqtt_server = "158.108.42.134";
+const char* mqtt_server = "158.108.36.181";
 
 /* define DHT pins */
 // #define DHTPIN 14
