@@ -4,7 +4,7 @@ function Success (username) {
   alert(username)
   document.cookie = 'username=' + username + '; expires=Thu, 18 Dec 2018 12:00:00 UTC'
   document.cookie = 'examiner=' + username + '; expires=Thu, 18 Dec 2018 12:00:00 UTC'
-  window.location = '/'
+  window.location = '/examiner'
 }
 export function regisfire(username, password) {
   firebase.auth().createUserWithEmailAndPassword(username, password).then(() => {

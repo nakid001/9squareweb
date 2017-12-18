@@ -65,6 +65,20 @@ class App extends React.Component {
         document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
       }}
     >Logout</NavLink>
+    const examlogOutBtn = <NavLink key='6' to='/examiner/login'
+    onClick={ () => {
+      firebase.auth().signOut().then(function () {
+        alert('You have signed out.')
+      }).catch(function () {
+        alert('Sign out failed.')
+      })
+      document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+      document.cookie = 'picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+      document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+      document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+    }}
+  >Logout</NavLink>
+
     user = this.getCookie('username')
     let headerContent
     if (user === '') {    //  no user logged in
@@ -124,7 +138,7 @@ class App extends React.Component {
             <img src={downArrow} className='downArrow' alt=''/>
             <div className='dropdown-content'>
               <NavLink key='4' activeClassName='dropdownActive' to='/examiner/settings'>Setting</NavLink>
-              {logOutBtn}
+              {examlogOutBtn}
             </div>
           </div>
           <NavLink key='7' id='titleUserName' activeClassName='active' to='/examiner/user'>{user}</NavLink>
