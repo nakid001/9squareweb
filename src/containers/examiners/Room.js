@@ -19,7 +19,9 @@ class ExRoomContainer extends React.Component {
       if (user) {
         that.props.showDevice(arr)
         firebase.database().ref('/rooms/room'+that.props.test.num).once('value', function (snapshot) {
-          order = snapshot.val().order
+          if (snapshot.val().order) {
+            order = snapshot.val().order
+          }
         }).then(() => {
           that.props.getOrder(order)                
         })
