@@ -55,8 +55,10 @@ export class Room extends React.Component {
             Device List
             {this.props.test.device}
           </div>
-          <div id="content-wrap">  
-          <button onClick={this.openModal}>ADD TEST METHOD</button>   
+          <div>  
+            <div> Current order : {this.props.test.order} </div>
+
+          <button onClick={this.openModal}>Edit order</button>   
           <Modal
             isOpen={this.state.modalIsOpen}
             className='col-6 Modal--matching'
@@ -78,11 +80,11 @@ export class Room extends React.Component {
                       1
                       <div>
                         <div id="left" onClick={()=> {
-                      this.props.pushOrder('1L').then(() => {
+                      this.props.pushOrder('1L ').then(() => {
                       })              
                     }}>left</div>
                         <div id="right" onClick={()=> {
-                      this.props.pushOrder('1R').then(() => {
+                      this.props.pushOrder('1R ').then(() => {
                       })              
                     }}>right</div>
                       </div>
@@ -91,11 +93,11 @@ export class Room extends React.Component {
                       2
                       <div>
                         <div id="left" onClick={()=> {
-                      this.props.pushOrder('2L').then(() => {
+                      this.props.pushOrder('2L ').then(() => {
                       })              
                     }}>left</div>
                         <div id="right" onClick={()=> {
-                      this.props.pushOrder('2R').then(() => {
+                      this.props.pushOrder('2R ').then(() => {
                       })              
                     }}>right</div>
                       </div>
@@ -104,11 +106,11 @@ export class Room extends React.Component {
                       3
                       <div>
                         <div id="left" onClick={()=> {
-                      this.props.pushOrder('3L').then(() => {
+                      this.props.pushOrder('3L ').then(() => {
                       })              
                     }}>left</div>
                         <div id="right" onClick={()=> {
-                      this.props.pushOrder('3R').then(() => {
+                      this.props.pushOrder('3R ').then(() => {
                       })              
                     }}>right</div>
                       </div>
@@ -120,11 +122,11 @@ export class Room extends React.Component {
                       4
                       <div>
                         <div id="left" onClick={()=> {
-                      this.props.pushOrder('4L').then(() => {
+                      this.props.pushOrder('4L ').then(() => {
                       })              
                     }}>left</div>
                         <div id="right" onClick={()=> {
-                      this.props.pushOrder('4R').then(() => {
+                      this.props.pushOrder('4R ').then(() => {
                       })              
                     }}>right</div>
                       </div>
@@ -133,11 +135,11 @@ export class Room extends React.Component {
                       5
                       <div>
                         <div id="left" onClick={()=> {
-                      this.props.pushOrder('5L').then(() => {
+                      this.props.pushOrder('5L ').then(() => {
                       })              
                     }}>left</div>
                         <div id="right" onClick={()=> {
-                      this.props.pushOrder('5R').then(() => {
+                      this.props.pushOrder('5R ').then(() => {
                       })              
                     }}>right</div>
                       </div>
@@ -146,11 +148,11 @@ export class Room extends React.Component {
                       6
                       <div>
                         <div id="left" onClick={()=> {
-                      this.props.pushOrder('6L').then(() => {
+                      this.props.pushOrder('6L ').then(() => {
                       })              
                     }}>left</div>
                         <div id="right" onClick={()=> {
-                      this.props.pushOrder('6R').then(() => {
+                      this.props.pushOrder('6R ').then(() => {
                       })              
                     }}>right</div>
                       </div>
@@ -162,11 +164,11 @@ export class Room extends React.Component {
                       7
                       <div>
                         <div id="left" onClick={()=> {
-                      this.props.pushOrder('7L').then(() => {
+                      this.props.pushOrder('7L ').then(() => {
                       })              
                     }}>left</div>
                         <div id="right" onClick={()=> {
-                      this.props.pushOrder('7R').then(() => {
+                      this.props.pushOrder('7R ').then(() => {
                       })              
                     }}>right</div>
                       </div>
@@ -175,11 +177,11 @@ export class Room extends React.Component {
                       8
                       <div>
                         <div id="left" onClick={()=> {
-                      this.props.pushOrder('8L').then(() => {
+                      this.props.pushOrder('8L ').then(() => {
                       })              
                     }}>left</div>
                         <div id="right" onClick={()=> {
-                      this.props.pushOrder('8R').then(() => {
+                      this.props.pushOrder('8R ').then(() => {
                       })              
                     }}>right</div>
                       </div>
@@ -188,11 +190,11 @@ export class Room extends React.Component {
                       9
                       <div>
                         <div id="left" onClick={()=> {
-                      this.props.pushOrder('9L').then(() => {
+                      this.props.pushOrder('9L ').then(() => {
                       })              
                     }}>left</div>
                         <div id="right" onClick={()=> {
-                      this.props.pushOrder('9R').then(() => {
+                      this.props.pushOrder('9R ').then(() => {
                       })              
                     }}>right</div>
                       </div>

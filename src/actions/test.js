@@ -123,14 +123,8 @@ export function showroom(arr) {
       payload: 'PUSHING ORDER '
     }
   }
-  export function clearOrder () {
-    return {
-      type:'CLEARORDER',
-      payload: 'CLEARING ORDER '
-    }
-  }
+
   export function submitOrder (c, order) {
-    
     firebase.database().ref('/rooms/room' + c ).update({
       order: order
     }).then(()=>{
@@ -141,4 +135,16 @@ export function showroom(arr) {
       payload: 'SUBMITING ORDER'
     }
   }
-  
+  export function getOrder (order) {
+    return {
+      type:'GETORDER',
+      Opayload: order,
+      payload: 'GETTING ORDER '
+    }
+  }
+  export function clearOrder () {
+    return {
+      type:'CLEARORDER',
+      payload: 'CLEARING ORDER '
+    }
+  }

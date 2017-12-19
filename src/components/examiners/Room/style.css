@@ -1,10 +1,9 @@
 /* sizes */
-#main-wrap > div { min-height: 450px; }
+#main-wrap > div { min-height: 100px; }
 
 
 #header,
 #footer {
-    min-height: 40px;
 }
 
 /* layout */
@@ -14,17 +13,12 @@
 }
 
 #sidebar {
-    float: left;
-    width: 30%;
+
 }
 
 #content-wrap {
-    float: right;
-    width: 70%;
 }   
 .header_content {
-  background-image: url("/21106581_2464600900347295_6194317915723515929_n.jpg");  
-  border: 3px  #123412;
 }
 .mytable {
     border-style: solid;

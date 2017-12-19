@@ -73,17 +73,25 @@ const testReducer = (state = {
         }
       }
         break
-      case 'CLEARORDER': {
+      case 'SUBMITORDER': {
         state = {
           ...state,
-          order : '',
           text: action.payload
         }
       }
         break
-      case 'SUBMITORDER': {
+      case 'GETORDER': {
         state = {
           ...state,
+          order : action.Opayload,
+          text: action.payload
+        }
+      }
+        break
+      case 'CLEARORDER': {
+        state = {
+          ...state,
+          order : '',
           text: action.payload
         }
       }

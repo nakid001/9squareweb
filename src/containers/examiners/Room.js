@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import  { Room } from '../../components/examiners/Room/Room.js'
 import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
-import { showDevice, addDevice, setActive, delDevice, setDeviceActive, getRoomNum, pushOrder, clearOrder, submitOrder } from '../../actions/test.js'
+import { showDevice, addDevice, setActive, delDevice, setDeviceActive, getRoomNum, pushOrder, clearOrder, submitOrder, getOrder } from '../../actions/test.js'
 import {NavLink} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
@@ -14,9 +14,15 @@ class ExRoomContainer extends React.Component {
     let that = this
     let arr = []
     let i = 0 
+    let order = []
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
-        that.props.showDevice(arr)          
+        that.props.showDevice(arr)
+        firebase.database().ref('/rooms/room'+that.props.test.num).once('value', function (snapshot) {
+          order = snapshot.val().order
+        }).then(() => {
+          that.props.getOrder(order)                
+        })
       }
     })
   }
@@ -32,6 +38,9 @@ class ExRoomContainer extends React.Component {
           <Room {...this.props} />
         </div>
         )
+      if (!this.props.test.num) {
+        window.location = '/examiner/test'
+      }
       firebase.database().ref('/rooms/room'+this.props.test.num+'/devices/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           device[i] = (
@@ -74,7 +83,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      inputreg, regisfire, showDevice, addDevice, setActive, delDevice, setDeviceActive, pushOrder, clearOrder, submitOrder
+      inputreg, regisfire, showDevice, addDevice, setActive, delDevice, setDeviceActive, pushOrder, clearOrder, submitOrder, getOrder
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ExRoomContainer)
