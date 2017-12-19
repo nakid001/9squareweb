@@ -116,17 +116,29 @@ export function showroom(arr) {
       payload: 'DELETE DEVICE'
     }
   }
-  export function pushorder (num) {
+  export function pushOrder (num) {
     return {
       type:'PUSHORDER',
       Npayload : num,
       payload: 'PUSHING ORDER '
     }
   }
-  export function clearorder () {
+  export function clearOrder () {
     return {
       type:'CLEARORDER',
       payload: 'CLEARING ORDER '
+    }
+  }
+  export function submitOrder (c, order) {
+    
+    firebase.database().ref('/rooms/room' + c ).update({
+      order: order
+    }).then(()=>{
+      alert('Submitted order')
+    })
+    return {
+      type:'SUBMITORDER',
+      payload: 'SUBMITING ORDER'
     }
   }
   

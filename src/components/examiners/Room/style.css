@@ -125,12 +125,19 @@
   }
 
   #left, #right { 
-    width: 20px;
-    height: 100%;
     background: white; 
     font-size: 10px;
+    height: 20px;    
     border : solid
   } 
   
-  #left  { float:left; }
-  #right { margin: auto}
+  #left {
+    float: left;
+    width: 40%;
+  }
+  
+  #right {
+      float: right;
+      width: 40%;
+      font-family: SanamDeklen_chaya;      
+  }  

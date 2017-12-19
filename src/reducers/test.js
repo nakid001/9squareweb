@@ -81,6 +81,13 @@ const testReducer = (state = {
         }
       }
         break
+      case 'SUBMITORDER': {
+        state = {
+          ...state,
+          text: action.payload
+        }
+      }
+        break
       case 'GETROOMNUM': {
         state = {
           ...state,

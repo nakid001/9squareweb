@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import  { Room } from '../../components/examiners/Room/Room.js'
 import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
-import { showDevice, addDevice, setActive, delDevice, setDeviceActive, getRoomNum, pushorder, clearorder } from '../../actions/test.js'
+import { showDevice, addDevice, setActive, delDevice, setDeviceActive, getRoomNum, pushOrder, clearOrder, submitOrder } from '../../actions/test.js'
 import {NavLink} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
@@ -74,7 +74,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      inputreg, regisfire, showDevice, addDevice, setActive, delDevice, setDeviceActive, pushorder, clearorder
+      inputreg, regisfire, showDevice, addDevice, setActive, delDevice, setDeviceActive, pushOrder, clearOrder, submitOrder
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ExRoomContainer)

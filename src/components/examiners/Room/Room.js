@@ -55,84 +55,165 @@ export class Room extends React.Component {
             Device List
             {this.props.test.device}
           </div>
-            <div id="content-wrap">  
-            <button onClick={this.openModal}>ADD TEST METHOD</button>   
-            <Modal
-              isOpen={this.state.modalIsOpen}
-              className='col-6 Modal--matching'
-              overlayClassName='Modal--matching--overlay'
-              contentLabel='Example Modal'
-              shouldCloseOnOverlayClick={true}
-              role='dialog'
-            >
-              <div className='Modal_content'>
-                <div className='Modal_header'>
-                  <div className='Modal_close' onClick={this.closeModal}>&times;</div>
-                  Setup Order
-                </div>
-                <div className='Modal_body'>
-                  <p> Order : {this.props.test.order} </p>
-                  <table className='Modal_table'>
+          <div id="content-wrap">  
+          <button onClick={this.openModal}>ADD TEST METHOD</button>   
+          <Modal
+            isOpen={this.state.modalIsOpen}
+            className='col-6 Modal--matching'
+            overlayClassName='Modal--matching--overlay'
+            contentLabel='Example Modal'
+            shouldCloseOnOverlayClick={true}
+            role='dialog'
+          >
+            <div className='Modal_content'>
+              <div className='Modal_header'>
+                <div className='Modal_close' onClick={this.closeModal}>&times;</div>
+                Setup Order
+              </div>
+              <div className='Modal_body'>
+                <p> Order : {this.props.test.order} </p>
+                <table className='Modal_table'>
                     <tr>
-                    <td onClick={()=> {
-                      this.props.pushorder(1).then(() => {
+                    <td > 
+                      1
+                      <div>
+                        <div id="left" onClick={()=> {
+                      this.props.pushOrder('1L').then(() => {
                       })              
-                    }}> 1 </td>
-                    <td onClick={()=> {
-                      this.props.pushorder(2).then(() => {
+                    }}>left</div>
+                        <div id="right" onClick={()=> {
+                      this.props.pushOrder('1R').then(() => {
                       })              
-                    }}> 2 </td>
-                    <td onClick={()=> {
-                      this.props.pushorder(3).then(() => {
+                    }}>right</div>
+                      </div>
+                    </td>
+                    <td > 
+                      2
+                      <div>
+                        <div id="left" onClick={()=> {
+                      this.props.pushOrder('2L').then(() => {
                       })              
-                    }}> 3 </td>
+                    }}>left</div>
+                        <div id="right" onClick={()=> {
+                      this.props.pushOrder('2R').then(() => {
+                      })              
+                    }}>right</div>
+                      </div>
+                    </td>
+                    <td > 
+                      3
+                      <div>
+                        <div id="left" onClick={()=> {
+                      this.props.pushOrder('3L').then(() => {
+                      })              
+                    }}>left</div>
+                        <div id="right" onClick={()=> {
+                      this.props.pushOrder('3R').then(() => {
+                      })              
+                    }}>right</div>
+                      </div>
+                    </td>
                     </tr> 
                     
                     <tr>
-                    <td onClick={()=> {
-                      this.props.pushorder(4).then(() => {
+                    <td > 
+                      4
+                      <div>
+                        <div id="left" onClick={()=> {
+                      this.props.pushOrder('4L').then(() => {
                       })              
-                    }}> 4 </td> 
-                    <td onClick={()=> {
-                      this.props.pushorder(5).then(() => {
+                    }}>left</div>
+                        <div id="right" onClick={()=> {
+                      this.props.pushOrder('4R').then(() => {
                       })              
-                    }}> 5 </td>
-                    <td onClick={()=> {
-                      this.props.pushorder(6).then(() => {
+                    }}>right</div>
+                      </div>
+                    </td>
+                    <td > 
+                      5
+                      <div>
+                        <div id="left" onClick={()=> {
+                      this.props.pushOrder('5L').then(() => {
                       })              
-                    }}> 6 </td>
+                    }}>left</div>
+                        <div id="right" onClick={()=> {
+                      this.props.pushOrder('5R').then(() => {
+                      })              
+                    }}>right</div>
+                      </div>
+                    </td>
+                    <td > 
+                      6
+                      <div>
+                        <div id="left" onClick={()=> {
+                      this.props.pushOrder('6L').then(() => {
+                      })              
+                    }}>left</div>
+                        <div id="right" onClick={()=> {
+                      this.props.pushOrder('6R').then(() => {
+                      })              
+                    }}>right</div>
+                      </div>
+                    </td>
                     </tr>
                     
                     <tr>
-                    <td onClick={()=> {
-                      this.props.pushorder(7).then(() => {
+                    <td > 
+                      7
+                      <div>
+                        <div id="left" onClick={()=> {
+                      this.props.pushOrder('7L').then(() => {
                       })              
-                    }}> 7 </td>
-                    <td onClick={()=> {
-                      this.props.pushorder(8).then(() => {
+                    }}>left</div>
+                        <div id="right" onClick={()=> {
+                      this.props.pushOrder('7R').then(() => {
                       })              
-                    }}> 8 </td>
-                    <td onClick={()=> {
-                      this.props.pushorder(9).then(() => {
+                    }}>right</div>
+                      </div>
+                    </td>
+                    <td > 
+                      8
+                      <div>
+                        <div id="left" onClick={()=> {
+                      this.props.pushOrder('8L').then(() => {
                       })              
-                    }}> 9 </td>
+                    }}>left</div>
+                        <div id="right" onClick={()=> {
+                      this.props.pushOrder('8R').then(() => {
+                      })              
+                    }}>right</div>
+                      </div>
+                    </td>
+                    <td > 
+                      9
+                      <div>
+                        <div id="left" onClick={()=> {
+                      this.props.pushOrder('9L').then(() => {
+                      })              
+                    }}>left</div>
+                        <div id="right" onClick={()=> {
+                      this.props.pushOrder('9R').then(() => {
+                      })              
+                    }}>right</div>
+                      </div>
+                    </td>
                     </tr>
-                </table> 
+              </table> 
+              </div>
+              <div className='Modal_footer'>
+                <div>
+                  <button className='Modal_btn' onClick={() => {this.props.submitOrder(this.props.test.num, this.props.test.order)}}> Submit </button>
+                  <button className='Modal_btn'  onClick={ () => { this.props.clearOrder() } }> Clear order</button>
                 </div>
-                <div className='Modal_footer'>
-                  <div>
-                    <button className='Modal_btn' > Submit </button>
-                    <button className='Modal_btn'  onClick={ () => { this.props.clearorder() } }> Clear order</button>
-                  </div>
-                  <div>
-                    <button className='Modal_btn' onClick={this.closeModal}>Cancel</button>
-                  </div>
+                <div>
+                  <button className='Modal_btn' onClick={this.closeModal}>Cancel</button>
                 </div>
               </div>
-              </Modal>
             </div>
-            <button onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD DEVICE </button>
-            <button> <Link to ='/examiner/test'>GO BACK</Link> </button>
+            </Modal>
+          </div>
+          <button onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD DEVICE </button>
+          <button> <Link to ='/examiner/test'>GO BACK</Link> </button>
         </div>
         <div id="footer">Footer</div>
       </div>   
