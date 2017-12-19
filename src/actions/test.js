@@ -116,3 +116,17 @@ export function showroom(arr) {
       payload: 'DELETE DEVICE'
     }
   }
+  export function pushorder (num) {
+    return {
+      type:'PUSHORDER',
+      Npayload : num,
+      payload: 'PUSHING ORDER '
+    }
+  }
+  export function clearorder () {
+    return {
+      type:'CLEARORDER',
+      payload: 'CLEARING ORDER '
+    }
+  }
+  

@@ -12,7 +12,8 @@ export class Room extends React.Component {
     this.state = {
       roomtest: '',
       device: [],
-      num: 0
+      num: 0,
+      order: []
     }
       this.state = {
         
@@ -45,6 +46,7 @@ export class Room extends React.Component {
   // }
 
   render () {
+    let arr = []
     return (
       <div id='home_wrapper'>
         <div id="header">{'ROOM '+this.props.test.num}</div>
@@ -63,34 +65,67 @@ export class Room extends React.Component {
               shouldCloseOnOverlayClick={true}
               role='dialog'
             >
-              <div className='Modal--matching--content'>
-                <div className='Modal--matching--header'>
-                  <div className='Modal--matching--close' onClick={this.closeModal}>&times;</div>
+              <div className='Modal_content'>
+                <div className='Modal_header'>
+                  <div className='Modal_close' onClick={this.closeModal}>&times;</div>
+                  Setup Order
                 </div>
-                <div className='Modal--matching--body'>
-                  <table>
+                <div className='Modal_body'>
+                  <p> Order : {this.props.test.order} </p>
+                  <table className='Modal_table'>
                     <tr>
-                    <td> 1 </td>
-                    <td> 2 </td>
-                    <td> 3 </td>
+                    <td onClick={()=> {
+                      this.props.pushorder(1).then(() => {
+                      })              
+                    }}> 1 </td>
+                    <td onClick={()=> {
+                      this.props.pushorder(2).then(() => {
+                      })              
+                    }}> 2 </td>
+                    <td onClick={()=> {
+                      this.props.pushorder(3).then(() => {
+                      })              
+                    }}> 3 </td>
                     </tr> 
                     
                     <tr>
-                    <td> 4 </td> 
-                    <td> 5 </td>
-                    <td> 6 </td>
+                    <td onClick={()=> {
+                      this.props.pushorder(4).then(() => {
+                      })              
+                    }}> 4 </td> 
+                    <td onClick={()=> {
+                      this.props.pushorder(5).then(() => {
+                      })              
+                    }}> 5 </td>
+                    <td onClick={()=> {
+                      this.props.pushorder(6).then(() => {
+                      })              
+                    }}> 6 </td>
                     </tr>
                     
                     <tr>
-                    <td> 7 </td>
-                    <td> 8 </td>
-                    <td> 9 </td>
+                    <td onClick={()=> {
+                      this.props.pushorder(7).then(() => {
+                      })              
+                    }}> 7 </td>
+                    <td onClick={()=> {
+                      this.props.pushorder(8).then(() => {
+                      })              
+                    }}> 8 </td>
+                    <td onClick={()=> {
+                      this.props.pushorder(9).then(() => {
+                      })              
+                    }}> 9 </td>
                     </tr>
                 </table> 
                 </div>
-                <div className='Modal--matching--footer'>
+                <div className='Modal_footer'>
                   <div>
-                    <button className='Modal--matching--btn' onClick={this.closeModal}>Cancel</button>
+                    <button className='Modal_btn' > Submit </button>
+                    <button className='Modal_btn'  onClick={ () => { this.props.clearorder() } }> Clear order</button>
+                  </div>
+                  <div>
+                    <button className='Modal_btn' onClick={this.closeModal}>Cancel</button>
                   </div>
                 </div>
               </div>
