@@ -51,13 +51,17 @@ class RoomContainer extends React.Component {
                 <span>
                 <p className='col-12'/>
                   <button className={DeviceBtn} onClick={ () => {
-                     var answer = window.confirm("Match to device " + childSnapshot.val().num + " ?")
-                     if (answer) {
-                         that.props.matchUserDevice(firebase.auth().currentUser.uid, that.props.test.num, childSnapshot.val().num)
-                     }
-                     else {
-                         //some code
-                     }
+                    if (DeviceBtn === 'DeviceAvaBtn') {
+                      let answer = window.confirm("Match to device " + childSnapshot.val().num + " ?")
+                      if (answer) {
+                          that.props.matchUserDevice(firebase.auth().currentUser.uid, that.props.test.num, childSnapshot.val().num)
+                      }
+                      else {
+                          //some code
+                      }
+                    } else {
+                      alert('DEVICE IS NOT READY!!')
+                    }
                   } 
                 }> Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</button> 
                 </span>
