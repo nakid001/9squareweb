@@ -32,12 +32,12 @@ class main extends React.Component {
             <Route path = '/history' component={HistoryContainer}/>
 
             <Route exact path = '/test' component={TestContainer}/>
-            <Route path = {'/test/room'+':number'} component={RoomContainer}/>'}
+            <Route path = {'/test/room'} component={RoomContainer}/>'}
             <Route exact path='/examiner' component={ExHomeContainer}/>
             <Route path ='/examiner/login' component={ExLoginContainer}/>
             <Route path ='/examiner/register' component={ExRegisterContainer}/>
             <Route exact path='/examiner/test/' component={ExTestContainer}/>
-            <Route path={'/examiner/test/room'+':number'} component={ExRoomContainer}/>
+            <Route path={'/examiner/test/room'} component={ExRoomContainer}/>
          </Switch>
         </App>
       </Router>

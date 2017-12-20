@@ -148,3 +148,15 @@ export function showroom(arr) {
       payload: 'CLEARING ORDER '
     }
   }
+  export function matchUserDevice (uid, room, num) {
+    firebase.database().ref('/users/' + uid + '/test').update({
+      last_device : 'room' + room +'/device'+num
+    })
+    firebase.database().ref('/rooms/room' + room + '/devices/device' + num).update({
+      user : uid
+    })
+    return {
+      type:'MATCHUSERDEVICE',
+      payload: 'MATCHING USER AND DEVICE  '
+    }
+  }

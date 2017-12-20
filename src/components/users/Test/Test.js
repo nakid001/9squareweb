@@ -31,9 +31,10 @@ export class Test extends React.Component {
             <div id="content-wrap">
             {this.props.test.room}
             </div>
-            <button> <Link to ='/'>GO BACK</Link> </button>
         </div>
-        <div id="footer">Footer</div>
+        <div id="footer">
+          <button> <Link to ='/'>GO BACK</Link> </button>
+        </div>
       </div>   
     )
   }
