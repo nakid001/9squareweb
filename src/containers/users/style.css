@@ -19,6 +19,7 @@
     position: relative;
     font-size: 24px;    
     text-align: center;
+    width: 100%;
   }
   .DeviceNotAvaBtn {
     border-radius: 25px;    
@@ -29,4 +30,5 @@
     position: relative;
     font-size: 24px;    
     text-align: center;
+    width: 100%;
   }
