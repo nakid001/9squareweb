@@ -44,7 +44,7 @@ export class Start extends React.Component {
       <div id='home_wrapper'>
         <div id="header">การทดสอบ</div>
         <div id="main-wrap">
-          <div className="header_content">
+          <div className="content-wrap">
             <button onClick={() => {this.countdown()}}>START!</button>
             <div> TimeLeft : 
                 <div id='TimeCounter'> 
@@ -52,13 +52,9 @@ export class Start extends React.Component {
                 </div>
             </div>
           </div>
-          <div id="content-wrap">
-            <div>
-
-            </div>
-          </div>
         </div>
         <div id="footer">Footer</div>
+        <button> <Link to ='/test'>GO BACK</Link> </button>
       </div>   
     )
   }

@@ -60,6 +60,7 @@ export class Room extends React.Component {
           
           <button> <Link to ='/examiner/start'>START!!</Link> </button>
           <button onClick={this.openModal}>Edit order</button>   
+          <button onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD DEVICE </button>
           <Modal
             isOpen={this.state.modalIsOpen}
             className='col-6 Modal--matching'
@@ -215,11 +216,10 @@ export class Room extends React.Component {
             </div>
             </Modal>
           </div>
-          <button onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD DEVICE </button>
-          <button> <Link to ='/examiner/test'>GO BACK</Link> </button>
         </div>
         <div id="footer">Footer</div>
-      </div>   
+          <button> <Link to ='/examiner/test'>GO BACK</Link> </button>
+        </div>   
     )
   }
 }

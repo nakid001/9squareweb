@@ -48,7 +48,7 @@ class ExRoomContainer extends React.Component {
           device[i] = (
             <div className='col-8 payment_itemDiv' key={i}>
               <div className='payment_itemDiv--mid'>
-                <span><Link to ={'/examiner/test/room'+that.props.test.num+'/device'+childSnapshot.val().num}>Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</Link>
+                <span>Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}
                   <button onClick={()=> {
                     that.props.setDeviceActive(childSnapshot.val().num, that.props.test.num)
                     }}> Active/Inactive</button>
