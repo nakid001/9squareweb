@@ -1,4 +1,6 @@
 import * as firebase from 'firebase'  
+import { key } from "firebase-key";
+
 export function getRoomNum (n) {
   return {
     type: 'GETROOMNUM',
@@ -148,15 +150,46 @@ export function showroom(arr) {
       payload: 'CLEARING ORDER '
     }
   }
-  export function matchUserDevice (uid, room, num) {
+  export function matchUserDevice (email, uid, room, num) {
     firebase.database().ref('/users/' + uid + '/test').update({
       last_device : 'room' + room +'/device'+num
     })
     firebase.database().ref('/rooms/room' + room + '/devices/device' + num).update({
-      user : uid
+      user : email,
+      uid : uid,
+      ava : false
     })
     return {
       type:'MATCHUSERDEVICE',
       payload: 'MATCHING USER AND DEVICE  '
     }
   }
+  export function sendresult (num) {
+    console.log('num = ' + num)
+    let usr = []
+    let result = [] //ไว้มาเพิ่มresult ทีหลัง
+    let i = 0
+    firebase.database().ref('/rooms/room' + num + '/devices').once('value', function (snapshot) {
+      snapshot.forEach(function (childSnapshot) {
+        if (childSnapshot.val().uid) {
+          usr[i] = childSnapshot.val().uid
+          result[i] = 'TEMP_RESULT'
+          i++
+          console.log('usr = ' + childSnapshot.val().uid)
+        }
+      })
+      console.log('result = ' + result)
+    }).then(() => {
+      for (let j = 0; j < usr.length; j++) {
+        firebase.database().ref('/users/' + usr[j] + '/history/'+ key()).set  ({
+          result : result[j]
+        })
+      }
+    })
+
+    return {
+      type:'SENDRESULT',
+      payload: 'SENDING RESULT'
+    }
+  }
+  

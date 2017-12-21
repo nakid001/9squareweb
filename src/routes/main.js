@@ -19,6 +19,7 @@ import ExRegisterContainer from '../containers/examiners/Register.js'
 import ExHomeContainer from '../containers/examiners/Home.js'
 import ExTestContainer from '../containers/examiners/Test.js'
 import ExRoomContainer from '../containers/examiners/Room.js'
+import ExStartContainer from '../containers/examiners/Start.js'
 
 class main extends React.Component {
   render () {
@@ -38,6 +39,7 @@ class main extends React.Component {
             <Route path ='/examiner/register' component={ExRegisterContainer}/>
             <Route exact path='/examiner/test/' component={ExTestContainer}/>
             <Route path={'/examiner/test/room'} component={ExRoomContainer}/>
+            <Route path = '/examiner/start' component={ExStartContainer}/>
          </Switch>
         </App>
       </Router>

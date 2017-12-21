@@ -37,7 +37,7 @@ class ExTestContainer extends React.Component {
           room[i] = (
             <div className='col-8 payment_itemDiv' key={i}>
               <div className='payment_itemDiv--mid'>
-                <span><Link to ={'/examiner/test/room'+childSnapshot.val().num}
+                <span><Link to ={'/examiner/test/room'}
                 onClick={()=> {
                   that.props.getRoomNum(childSnapshot.val().num)
                 }}

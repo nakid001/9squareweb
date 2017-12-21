@@ -57,7 +57,8 @@ export class Room extends React.Component {
           </div>
           <div>  
             <div> Current order : {this.props.test.order} </div>
-
+          
+          <button> <Link to ='/examiner/start'>START!!</Link> </button>
           <button onClick={this.openModal}>Edit order</button>   
           <Modal
             isOpen={this.state.modalIsOpen}

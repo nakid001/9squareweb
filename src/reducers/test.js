@@ -111,6 +111,13 @@ const testReducer = (state = {
         }
       }
         break
+      case 'SENDRESULT': {
+        state = {
+          ...state,
+          text: action.payload
+        }
+      }
+        break
       default :
         break
     }

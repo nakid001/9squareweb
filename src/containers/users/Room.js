@@ -41,10 +41,11 @@ class RoomContainer extends React.Component {
         )
       if (!this.props.test.num) {
         window.location = '/test'
-      }
+      } 
       firebase.database().ref('/rooms/room'+this.props.test.num+'/devices/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
-          const DeviceBtn = childSnapshot.val().ava ? 'DeviceAvaBtn' : 'DeviceNotAvaBtn'          
+          const DeviceBtn = childSnapshot.val().ava ? 'DeviceAvaBtn' : 'DeviceNotAvaBtn'   
+          const userID = childSnapshot.val().user       
           device[i] = (
             <div className='col-8' key={i}>
               <div className='payment_itemDiv--mid'>
@@ -54,16 +55,16 @@ class RoomContainer extends React.Component {
                     if (DeviceBtn === 'DeviceAvaBtn') {
                       let answer = window.confirm("Match to device " + childSnapshot.val().num + " ?")
                       if (answer) {
-                          that.props.matchUserDevice(firebase.auth().currentUser.uid, that.props.test.num, childSnapshot.val().num)
+                          that.props.matchUserDevice(firebase.auth().currentUser.email, firebase.auth().currentUser.uid, that.props.test.num, childSnapshot.val().num)
                       }
                       else {
                           //some code
                       }
-                    } else {
+                    } else {  
                       alert('DEVICE IS NOT READY!!')
                     }
                   } 
-                }> Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</button> 
+                }> Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '} {userID}</button> 
                 </span>
               </div>
             </div>

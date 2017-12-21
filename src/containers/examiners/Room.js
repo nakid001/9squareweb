@@ -55,10 +55,10 @@ class ExRoomContainer extends React.Component {
                   <button onClick={()=> {
                     that.props.delDevice(childSnapshot.val().num, that.props.test.num)
                     }}> Delete device </button>
-                  </span>
-                </div>
-                {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
+                </span>
               </div>
+                {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
+            </div>
             )
           i++
         })
