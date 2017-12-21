@@ -103,7 +103,7 @@ export function showroom(arr) {
       if (snapshot.val().ava) {
         firebase.database().ref('/rooms/room' + c + '/devices/device' + num).update({ava : false})
       } else {
-        firebase.database().ref('/rooms/room' + c + '/devices/device' + num).update({ava : true})
+        firebase.database().ref('/rooms/room' + c + '/devices/device' + num).update({ava : true, user: '', uid: ''})
       }
     })
     return{
