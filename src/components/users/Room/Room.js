@@ -30,8 +30,6 @@ export class Room extends React.Component {
             <div id="sidebar" className="header_content"></div>
             <div id="content-wrap">
               {this.props.test.device}
-            </div>
-            <div id= "content-wrap">
               Current order : {this.props.test.order}
             </div>
         </div>

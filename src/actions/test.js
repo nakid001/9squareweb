@@ -173,7 +173,10 @@ export function showroom(arr) {
       snapshot.forEach(function (childSnapshot) {
         if (childSnapshot.val().uid) {
           usr[i] = childSnapshot.val().uid
-          result[i] = 'TEMP_RESULT'
+          result[i] = {
+            step: 152,
+            set : 15
+          }
           i++
           console.log('usr = ' + childSnapshot.val().uid)
         }
@@ -182,7 +185,8 @@ export function showroom(arr) {
     }).then(() => {
       for (let j = 0; j < usr.length; j++) {
         firebase.database().ref('/users/' + usr[j] + '/history/'+ key()).set  ({
-          result : result[j]
+          step : result[j].step,
+          set : result[j].set
         })
       }
     })
