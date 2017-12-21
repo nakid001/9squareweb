@@ -46,8 +46,8 @@ class ExRoomContainer extends React.Component {
       firebase.database().ref('/rooms/room'+this.props.test.num+'/devices/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           device[i] = (
-            <div className='col-8 payment_itemDiv' key={i}>
-              <div className='payment_itemDiv--mid'>
+            <div className='' key={i}>
+              <div className=''>
                 <span>Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}
                   <button onClick={()=> {
                     that.props.setDeviceActive(childSnapshot.val().num, that.props.test.num)

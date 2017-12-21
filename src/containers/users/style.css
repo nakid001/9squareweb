@@ -6,7 +6,6 @@
     background: #69BADA;
     border: 2px solid ;
     height: 45px;    
-    position: relative;
     font-size: 24px;    
     text-align: center;
   }
@@ -16,7 +15,6 @@
     background: #0CE61E;
     border: 2px solid ;
     height: 45px;    
-    position: relative;
     font-size: 24px;    
     text-align: center;
     width: 100%;
@@ -27,7 +25,6 @@
     background: #E60C0C;
     border: 2px solid ;
     height: 45px;    
-    position: relative;
     font-size: 24px;    
     text-align: center;
     width: 100%;
