@@ -16,6 +16,7 @@ import * as firebase from 'firebase'
 const sidebar = <SidebarContent />
 
 let user = ''
+let examiner = ''
 class App extends React.Component {
   constructor (props) {
     super(props)
@@ -51,7 +52,6 @@ class App extends React.Component {
     } else return ''
   }
   checklogin () {
-    let examiner = this.getCookie('examiner')
     const logOutBtn = <NavLink key='6' to='/login'
       onClick={ () => {
         firebase.auth().signOut().then(function () {
@@ -72,13 +72,14 @@ class App extends React.Component {
       }).catch(function () {
         alert('Sign out failed.')
       })
-      document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-      document.cookie = 'picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-      document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-      document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+      document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
+      document.cookie = 'picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
+      document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
+      document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
     }}
   >Logout</NavLink>
-
+    examiner = this.getCookie('examiner')
+    
     user = this.getCookie('username')
     let headerContent
     if (user === '') {    //  no user logged in

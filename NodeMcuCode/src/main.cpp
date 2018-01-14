@@ -111,9 +111,9 @@ void setup () {
 
 void loop () {
   /* if client was disconnected then try to reconnect again */
-  if (!client.connected()) {
-    mqttconnect();
-  }
+  // if (!client.connected()) {
+  //   mqttconnect();
+  // }
   /* this function will listen for incomming 
   subscribed topic-process-invoke receivedCallback */
   client.loop();
