@@ -47,7 +47,7 @@ export class Home extends Component {
   }
   render() {
     return (
-      <div id='home_wrapper'>
+      <div id='wrapper'>
         <div id="header" className="title_content">ระบบจัดการทักษะกลไกการเคลื่อนไหว</div>
         <div id="main-wrap">
             <div id="sidebar">
@@ -94,7 +94,12 @@ export class Home extends Component {
              ด้วยกระบวนการรับผลตรวจสอบและแสดงผลที่เห็นได้ชัดทำให้เกิดการพัฒนาที่รวดเร็วต่อผู้ทดสอบ
             </div>
         </div>
-        <div id="footer">Footer</div>
+        <div id="footer">
+          <div className='footer'>
+            <div className='head-footer-content'> About us </div>
+            <div className='footer-content'> Create and develop by Parut Singhapun </div> 
+          </div>
+        </div>
       </div>    
     )
   }
