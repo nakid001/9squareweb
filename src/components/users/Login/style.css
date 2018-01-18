@@ -181,31 +181,7 @@
   transform: translateY(-45%);
   /* background-color: #DD4B39; */
 }
-/*.loginBtn--google:hover,
-.loginBtn--google:focus {
-  background: #E74B37;
-}*/
 
-.loginBtn--facebook {
-  font-family: 'Roboto', Arial, sans-serif;
-  color: #EDEDED;
-  border: 2px solid #4C69BA;
-  background-color: #4C69BA;
-  position: relative;
-}
-.loginBtn--facebook:before {
-  /*border-right: #364e92 1px solid;*/
-  /*background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/14082/icon_facebook.png') 6px 6px no-repeat;*/
-  background: url('img/facebook_icon_white.png') 6px 6px no-repeat;
-  /* background-color: #4C69BA; */
-  position: absolute;
-  top: 50%;
-  transform: translateY(-45%);
-}
-/*.loginBtn--facebook:hover,
-.loginBtn--facebook:focus {
-  background: #5B7BD5;
-}*/
 
 .loginBtn--twitter {
   font-family: 'Roboto', Arial, sans-serif;
@@ -222,6 +198,18 @@
   background: url('img/twitter_icon_white.png') 6px 6px no-repeat;
   /* background-color: #008CBF; */
 }
+.loginIcon {
+  width : 100px;
+  max-width: 100px;
+  max-height: 100px;
+}
+.form-input {
+  font-family: 'Roboto', sans-serif;   
+}
+.space {
+  height: 10px;
+}
+
 /* .loginBtn--twitter:hover,
 .loginBtn--twitter:focus {
   background: #0fA4DB;

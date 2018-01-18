@@ -59,7 +59,9 @@ export class Register extends React.Component {
           </form> */}
           <div style={ {marginTop: '24px'} }>
             <input type="text" className="form-input" placeholder="Email" style={{'width': '100%'}} name='User' onChange={this.handleChange}/>
+            <div className='space'></div>
             <input type="password" className="form-input" placeholder="Password" style={{'width': '100%'}} name='Pass' onChange={this.handleChange}/>
+            <div className='space'></div>
             <input type="password" className="form-input" placeholder="Re enter password" style={{'width': '100%'}} name='REPass' onChange={this.handleChange}/>
           </div>
           <button className='col-12 signupBtn' onClick={ () => { this.props.regisfire(this.props.user.username, this.props.user.password, this.props.user.repassword, this.props.user.mobile) } }><span className='signup--text'>Sign Up</span></button>

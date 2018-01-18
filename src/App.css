@@ -238,6 +238,8 @@
   color: #B2B9B2;
 } */
 #loginButton:hover {
+  cursor: pointer;
+  outline: none;
   background-color: #18B225;
 }
 #signupButton {
@@ -270,4 +272,6 @@
 } */
 #signupButton:hover {
   background-color: #18B225;
+  cursor: pointer;
+  outline: none;
 }
