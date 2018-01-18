@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './style.css'
-import temp from './img/template.png'
+import img from './img/template2.jpg'
+import img2 from './img/template2.jpg'
 import Modal from 'react-modal';
 import TestIcon from './img/start.png'
 import { Link } from 'react-router-dom'
@@ -14,11 +15,18 @@ export class Home extends Component {
       modalIsOpen: this.getCookie('username')
     }
  
-    this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this)
+    this.afterOpenModal = this.afterOpenModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
+    this.handlePress = this.handlePress.bind(this)    
   }
- 
+  handlePress (event) {
+    alert('yaya')
+    event.which = event.which || event.keyCode
+    if (event.which === 27) {
+      this.closeModal()
+    }
+  }
   openModal() {
     this.setState({modalIsOpen: true})    
   }
@@ -43,7 +51,7 @@ export class Home extends Component {
         <div id="header" className="title_content">ระบบจัดการทักษะกลไกการเคลื่อนไหว</div>
         <div id="main-wrap">
             <div id="sidebar">
-              <div><img src={temp} width="100%" height="400" alt=""/><h4></h4></div>
+              <div><img src={img} width="100%" height="400" alt=""/><h4></h4></div>
             </div>
             <div id="content-wrap" className="box_content_background">
               <div className="box_content">
@@ -60,9 +68,9 @@ export class Home extends Component {
               shouldCloseOnOverlayClick={true}
               role='dialog'
             >
-              <div className='Modal--matching--content'>
+              <div className='Modal--matching--content' >
                 <div className='Modal--matching--header'>
-                  <div className='Modal--matching--close' onClick={this.closeModal}>&times;</div>
+                  <div className='Modal--matching--close' onClick={this.closeModal}  onKeyPress={this.handlePress}>&times;</div>
                 </div>
                 <div className='Modal--matching--body'>
                    <div>
@@ -80,10 +88,10 @@ export class Home extends Component {
         </div>
         <div id="main-wrap">
             <div id="sidebar">
-              <div><img src={temp} width="100%" height="400" alt=""/><h4></h4></div>
+              <div><img src={img2} width="100%" height="400" alt=""/><h4></h4></div>
             </div>
             <div id="content-wrap">
-              ความพยายามอยู่ที่ไหนความสำเร็จอยู่ที่นั่น
+             ด้วยกระบวนการรับผลตรวจสอบและแสดงผลที่เห็นได้ชัดทำให้เกิดการพัฒนาที่รวดเร็วต่อผู้ทดสอบ
             </div>
         </div>
         <div id="footer">Footer</div>

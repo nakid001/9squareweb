@@ -8,6 +8,7 @@
 
 /* change it with your ssid-password */
 #define LED_BUILTIN 13
+
 const char* ssid = "KUWIN";
 const char* password = "";
 /* this is the IP of PC/raspberry where you installed MQTT Server 
@@ -84,14 +85,14 @@ void setup () {
   Serial.print("Connecting to ");
   Serial.println(ssid);
   pinMode(LED_BUILTIN, OUTPUT);
-  
+  pinMode(33, INPUT);
   WiFi.begin(ssid, password);
 
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
   }
-  /* set led as output to control led on-off */
+   
   pinMode(led, OUTPUT);
 
   Serial.println("");
@@ -104,9 +105,14 @@ void setup () {
   /* this receivedCallback function will be invoked 
   when client received subscribed topic */
   client.setCallback(receivedCallback);
+  String clientMac = "";
+
+   Serial.println(WiFi.macAddress());
+
+
   /*start DHT sensor */
-  adc1_config_width(ADC_WIDTH_12Bit);
-  adc1_config_channel_atten(ADC1_CHANNEL_5, ADC_ATTEN_0db);
+  // adc1_config_width(ADC_WIDTH_12Bit);
+  // adc1_config_channel_atten(33, ADC_ATTEN_0db);
 }
 
 void loop () {
@@ -120,12 +126,23 @@ void loop () {
   /* we measure Force every 3 secs
   we count until 3 secs reached to avoid blocking program if using delay()*/
   long now = millis();
-  int value = adc1_get_voltage(ADC1_CHANNEL_5);
-  Serial.print("Force = ");
-  Serial.println(value);
-  String(value).toCharArray(msg, String(value).length()+1);  
-  client.publish(TOPIC1, msg);
-  
+  // int value = adc1_get_voltage(33);
+  // Serial.print("Force = ");
+  // Serial.println(value);
+  // String(value).toCharArray(msg, String(value).length()+1);  
+  // client.publish(TOPIC1, msg);
+  int buttonState = digitalRead(33);
+
+  // check if the pushbutton is pressed.
+  // if it is, the buttonState is HIGH:
+  if (buttonState == HIGH) {
+    // turn LED on:
+    Serial.print("HIGH");
+  } else {
+    // turn LED off:
+    Serial.print("LOW");
+  }
+
   // if (now - lastMsg > 3000) {
   //   lastMsg = now;
   //   /* read DHT11/DHT22 sensor and convert to string */

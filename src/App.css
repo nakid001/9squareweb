@@ -34,6 +34,7 @@
     top: 50%;
     transform: translateY(-50%);
     max-width: 120px;
+    height: 50px;
   }
 }
 
@@ -196,10 +197,6 @@
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-}
-.brandLogo {
-  width: 180px;
-  max-width: 75px;
 }
 .Sidebar {
   background: #000000;
