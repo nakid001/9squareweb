@@ -85,6 +85,7 @@ void setup () {
   Serial.print("Connecting to ");
   Serial.println(ssid);
   pinMode(LED_BUILTIN, OUTPUT);
+  pinMode(26, INPUT);
   pinMode(33, INPUT);
   WiFi.begin(ssid, password);
 
@@ -131,16 +132,24 @@ void loop () {
   // Serial.println(value);
   // String(value).toCharArray(msg, String(value).length()+1);  
   // client.publish(TOPIC1, msg);
-  int buttonState = digitalRead(33);
+  int buttonState1 = digitalRead(33);
+  int buttonState2 = digitalRead(26);
 
   // check if the pushbutton is pressed.
   // if it is, the buttonState is HIGH:
-  if (buttonState == HIGH) {
+  if (buttonState1 == HIGH) {
     // turn LED on:
-    Serial.print("HIGH");
+    Serial.println("1HIGH");
   } else {
     // turn LED off:
-    Serial.print("LOW");
+    Serial.println("1LOW");
+  }
+  if (buttonState2 == HIGH) {
+    // turn LED on:
+    Serial.println("2HIGH");
+  } else {
+    // turn LED off:
+    Serial.println("2LOW");
   }
 
   // if (now - lastMsg > 3000) {
