@@ -27,7 +27,7 @@
 
 #content-wrap {
     float: right;
-    width: 70%;
+    width: 65%;
     font-family: SanamDeklen_chaya;      
 }
 .box_content {
@@ -145,6 +145,7 @@
   }
   .head_footer_content {
     padding: 15px;
+    font-size: 26px;
     text-align: center;
   }
   .footer_content{
