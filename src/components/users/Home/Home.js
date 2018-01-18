@@ -90,14 +90,16 @@ export class Home extends Component {
             <div id="sidebar">
               <div><img src={img2} width="100%" height="400" alt=""/><h4></h4></div>
             </div>
-            <div id="content-wrap">
-             ด้วยกระบวนการรับผลตรวจสอบและแสดงผลที่เห็นได้ชัดทำให้เกิดการพัฒนาที่รวดเร็วต่อผู้ทดสอบ
+            <div id="content-wrap" >
+              <div className='box_content'>
+                ด้วยกระบวนการรับผลตรวจสอบและแสดงผลที่เห็นได้ชัดทำให้เกิดการพัฒนาที่รวดเร็วต่อผู้ทดสอบ
+              </div>
             </div>
         </div>
         <div id="footer">
           <div className='footer'>
-            <div className='head-footer-content'> About us </div>
-            <div className='footer-content'> Create and develop by Parut Singhapun </div> 
+            <div className='head_footer_content'> About us </div>
+            <div className='footer_content'> Create and develop by Parut Singhapun </div> 
           </div>
         </div>
       </div>    
