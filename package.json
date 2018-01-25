@@ -5,6 +5,9 @@
   "dependencies": {
     "firebase": "^4.3.0",
     "firebase-key": "^1.0.6",
+    "mongodb": "^3.0.1",
+    "mongoose": "^5.0.1",
+    "mqtt": "^2.15.1",
     "react": "^15.6.1",
     "react-cookie": "^2.1.0",
     "react-dom": "^15.6.1",
