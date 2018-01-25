@@ -27,5 +27,7 @@ function insertEvent(topic,payload) {
     //       if(err) { console.log("Insert fail"); } // Improve error handling
     //     }
     // )
-    collection.insert({admin:'eiei'})
+    collection.insert({admin:'eiei'}).then(() => {
+        console.log('Insert Complete')
+    })
 }
