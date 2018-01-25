@@ -1,11 +1,21 @@
-var mqtt = require('mqtt'); //includes mqtt server 
-var mongodb = require('mongodb'); // includes mongoDB 
-var mongodbClient = mongodb.MongoClient; //initialises the mongoDB client
-var mongodbURI = 'mongodb://127.0.0.1:27017/db'; //activating the MongoDB port 27017, here TempMontor is the name of the database
-var deviceRoot = "room1/temp"; //deviceroot is topic name given in arduino code 
-var collection,client; //initialise collection and client
-var mongoose = require('mongoose');
+let firebase = require('firebase')
 
+let mqtt = require('mqtt'); //includes mqtt server 
+let mongodb = require('mongodb'); // includes mongoDB 
+let mongodbClient = mongodb.MongoClient; //initialises the mongoDB client
+let mongodbURI = 'mongodb://127.0.0.1:27017/db'; //activating the MongoDB port 27017, here TempMontor is the name of the database
+let deviceRoot = "room1/temp"; //deviceroot is topic name given in arduino code 
+let collection,client; //initialise collection and client
+let mongoose = require('mongoose');
+let config = {
+    apiKey: "AIzaSyBN4-YyLBgRJe-_ZuBe1OtpOYYXsw29P6c",
+    authDomain: "nafire-18969.firebaseapp.com",
+    databaseURL: "https://nafire-18969.firebaseio.com",
+    projectId: "nafire-18969",
+    storageBucket: "nafire-18969.appspot.com",
+    messagingSenderId: "463051690711"
+}
+let a = firebase.initializeApp(config)
 
 mongodbClient.connect(mongodbURI, function(err, database) {
     if(err) throw err;
@@ -27,6 +37,8 @@ function insertEvent(topic,payload) {
     //       if(err) { console.log("Insert fail"); } // Improve error handling
     //     }
     // )
+
+    firebase.database().ref('/mqtt').set({ava : false})    
     collection.insert({admin:'eiei'}).then(() => {
         console.log('Insert Complete')
     })
