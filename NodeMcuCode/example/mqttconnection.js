@@ -17,7 +17,8 @@ let config = {
   messagingSenderId: "463051690711"
 }
 let a = firebase.initializeApp(config)
-getDataFirebase()
+
+getRoomnumber()
 mongodbClient.connect(mongodbURI, function(err, database) {
   if(err) throw err;
   db=database.db("mydb")
@@ -27,6 +28,20 @@ mongodbClient.connect(mongodbURI, function(err, database) {
   client.on('message', insertEvent);
 }) 
 
+function getRoomnumber() {
+  const readline = require('readline');
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  
+  rl.question('Enter Room number ', (answer) => {
+    rl.close();
+    roomnum = answer
+    getDataFirebase(answer)
+    
+  })
+}
 function insertEvent(topic,payload) {  
   let key=topic.replace(deviceRoot,'');
   firebase.database().ref('/mqtt').set({  // FOR FIREBASE
@@ -39,14 +54,15 @@ function insertEvent(topic,payload) {
   })
 }
 
-function getDataFirebase () {
-  firebase.database().ref('/rooms/room1/order/').on("value", function(snapshot) {
+function getDataFirebase (roomnum) {
+  firebase.database().ref('/rooms/room' + roomnum +'/order/').on("value", function(snapshot) {
     console.log("READING DATA")
     console.log(snapshot.val())
+    order = snapshot.val()
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code)
   });
-  firebase.database().ref('/rooms/room1/start/').on("value", (snapshot) => {
+  firebase.database().ref('/rooms/room' + roomnum +'/start/').on("value", (snapshot) => {
     start = snapshot.val()
     if (start) {
       console.log('START')
