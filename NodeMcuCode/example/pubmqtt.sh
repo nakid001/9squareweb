@@ -1,2 +1,2 @@
-mosquitto_pub -t 'room1/temp' -m 30
+mosquitto_pub -t 'room1/temp' -m 7
 

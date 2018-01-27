@@ -15,7 +15,7 @@ export class Start extends React.Component {
   countdown() {
     let that = this
     firebase.database().ref('/rooms/room' + that.props.test.num).update({
-      start: true
+      start: "START"
     })
     console.log(that.props.test.num)
     let countDownDate = new Date()
