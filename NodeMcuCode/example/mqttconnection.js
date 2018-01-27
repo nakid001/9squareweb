@@ -46,5 +46,7 @@ function getDataFirebase () {
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code)
   });
-  
+  firebase.database().ref('/rooms/room1/start/').on("value", (snapshot) => {
+    start = snapshot.val()
+  })
 }

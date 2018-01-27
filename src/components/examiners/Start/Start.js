@@ -12,6 +12,9 @@ export class Start extends React.Component {
     this.countdown = this.countdown.bind(this)
   }
   countdown() {
+    firebase.database().ref('/rooms/room' + that.props.test.num).set({
+      start: true
+    })
     let countDownDate = new Date()
     countDownDate = countDownDate.setSeconds(countDownDate.getSeconds() + 5);
     let that  = this

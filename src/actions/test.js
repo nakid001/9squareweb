@@ -34,7 +34,7 @@ export function showroom(arr) {
         }
       }
       let updates = {}
-      updates['/rooms/room'+j] = {num : j , ava : false}
+      updates['/rooms/room'+j] = {num : j , ava : false, start : false}
       firebase.database().ref().update(updates);  
     })  
     return{
@@ -169,6 +169,9 @@ export function showroom(arr) {
     let usr = []
     let result = [] //ไว้มาเพิ่มresult ทีหลัง
     let i = 0
+    firebase.database().ref('/rooms/room' + num).set({
+      start: false
+    })
     firebase.database().ref('/rooms/room' + num + '/devices').once('value', function (snapshot) {
       snapshot.forEach(function (childSnapshot) {
         if (childSnapshot.val().uid) {
