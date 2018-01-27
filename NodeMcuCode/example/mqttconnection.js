@@ -28,15 +28,6 @@ mongodbClient.connect(mongodbURI, (err, database) => {
   client.subscribe(deviceRoot); //subscribing to the topic name 
   client.on('message', insertEvent);
 })
-if (start === "END") {
-    firebase.database().ref('/mqtt').set({  // FOR FIREBASE
-      event: { step: step, set: set, when:new Date() } })    
-    collection.insert({  //FOR MONGODB
-      event: { step: step, set: set, when:new Date() } 
-    }).then(() => {
-        console.log('Insert Complete')
-    })
-  }
 
 function getRoomnumber() {
   const readline = require('readline');
@@ -80,7 +71,7 @@ function getDataFirebase (roomnum) {
     console.log(order)
   },  (errorObject) => {
     console.log("The read failed: " + errorObject.code)
-  });
+  })
   firebase.database().ref('/rooms/room' + roomnum +'/start/').on("value", (snapshot) => {
     start = snapshot.val()
     if (start === 'START') {
