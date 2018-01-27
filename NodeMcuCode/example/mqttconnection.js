@@ -48,5 +48,10 @@ function getDataFirebase () {
   });
   firebase.database().ref('/rooms/room1/start/').on("value", (snapshot) => {
     start = snapshot.val()
+    if (start) {
+      console.log('START')
+    } else {
+      console.log('END')
+    }    
   })
 }

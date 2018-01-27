@@ -169,7 +169,7 @@ export function showroom(arr) {
     let usr = []
     let result = [] //ไว้มาเพิ่มresult ทีหลัง
     let i = 0
-    firebase.database().ref('/rooms/room' + num).set({
+    firebase.database().ref('/rooms/room' + num).update({
       start: false
     })
     firebase.database().ref('/rooms/room' + num + '/devices').once('value', function (snapshot) {

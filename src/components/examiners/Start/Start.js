@@ -1,6 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import firebase from 'firebase'
 import './style.css'
 
 export class Start extends React.Component {
@@ -12,12 +13,13 @@ export class Start extends React.Component {
     this.countdown = this.countdown.bind(this)
   }
   countdown() {
-    firebase.database().ref('/rooms/room' + that.props.test.num).set({
+    let that = this
+    firebase.database().ref('/rooms/room' + that.props.test.num).update({
       start: true
     })
+    console.log(that.props.test.num)
     let countDownDate = new Date()
     countDownDate = countDownDate.setSeconds(countDownDate.getSeconds() + 5);
-    let that  = this
     // Update the count down every 1 second
     var x = setInterval(function() {
     
