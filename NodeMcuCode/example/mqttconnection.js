@@ -38,8 +38,8 @@ function insertEvent(topic,payload) {
     //     }
     // )
 
-    firebase.database().ref('/mqtt').set({ava : false})    
-    collection.insert({admin:'eiei'}).then(() => {
+    firebase.database().ref('/mqtt').set( { events: { event: { value:payload.toString(), when:new Date() } } })    
+    collection.insert({ events: payload.toString()}).then(() => {
         console.log('Insert Complete')
     })
 }
