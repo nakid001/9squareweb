@@ -19,7 +19,7 @@ let config = {
 let a = firebase.initializeApp(config)
 
 getRoomnumber()
-mongodbClient.connect(mongodbURI, function(err, database) {
+mongodbClient.connect(mongodbURI, (err, database) => {
   if(err) throw err;
   db=database.db("mydb")
   collection=db.collection("real"); //name of the collection in the database
@@ -55,11 +55,13 @@ function insertEvent(topic,payload) {
 }
 
 function getDataFirebase (roomnum) {
-  firebase.database().ref('/rooms/room' + roomnum +'/order/').on("value", function(snapshot) {
+  firebase.database().ref('/rooms/room' + roomnum +'/order/').on("value", (snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+        order.push(childSnapshot.val().substring(0,1))
+    })        
     console.log("READING DATA")
-    console.log(snapshot.val())
-    order = snapshot.val()
-  }, function (errorObject) {
+    console.log(order)
+  },  (errorObject) => {
     console.log("The read failed: " + errorObject.code)
   });
   firebase.database().ref('/rooms/room' + roomnum +'/start/').on("value", (snapshot) => {
