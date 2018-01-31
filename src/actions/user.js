@@ -56,6 +56,16 @@ export function gethistory (arr, username) {
     payload: 'GET HISTORY'
   }
 }
+export function getranking (arr, key, username) {
+
+  return {
+    type: 'GETRANK',
+    Hpayload: arr,
+    Kpayload: key,
+    Upayload: username,
+    payload: 'GET RANKING'
+  }
+}
 export function canlogin (username) {
   return {
     type: 'CANLOG',

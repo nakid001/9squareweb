@@ -13,6 +13,7 @@ import RegisterContainer from '../containers/users/Register.js'
 import TestContainer from '../containers/users/Test.js'
 import RoomContainer from '../containers/users/Room.js'
 import HistoryContainer from '../containers/users/History.js'
+import RankingContainer from '../containers/users/Ranking.js'
 
 import ExLoginContainer from '../containers/examiners/Login.js'
 import ExRegisterContainer from '../containers/examiners/Register.js'
@@ -31,9 +32,10 @@ class main extends React.Component {
             <Route path = '/login' component={LoginContainer}/>
             <Route path = '/register' component={RegisterContainer}/>
             <Route path = '/history' component={HistoryContainer}/>
-
+            <Route path = '/ranking' component={RankingContainer}/>
             <Route exact path = '/test' component={TestContainer}/>
             <Route path = {'/test/room'} component={RoomContainer}/>'}
+            
             <Route exact path='/examiner' component={ExHomeContainer}/>
             <Route path ='/examiner/login' component={ExLoginContainer}/>
             <Route path ='/examiner/register' component={ExRegisterContainer}/>

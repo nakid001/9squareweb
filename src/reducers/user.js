@@ -7,6 +7,7 @@ const userReducer = (state = {
     canlog: false,
     text: '',
     history: [],
+    key: [],
     loading: true
   }, action) => {
     switch (action.type) {
@@ -60,6 +61,16 @@ const userReducer = (state = {
           username: action.Upayload,
           payload: action.payload
         }
+          break
+        case 'GETRANK' :
+        state = {
+          ...state,
+          key: action.Kpayload,
+          history: action.Hpayload,
+          username: action.Upayload,
+          payload: action.payload
+        }
+          break
         case 'CANLOG': {
           state = {
             ...state,

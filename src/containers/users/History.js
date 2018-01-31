@@ -13,7 +13,6 @@ class HistoryContainer extends React.Component {
       if (userF) {
         let history = []
         if (firebase.auth().currentUser) {
-            console.log("DONE")
             let i = 0
             firebase.database().ref('/users/' + firebase.auth().currentUser.uid + '/history/').once('value', function (snapshot) {
               snapshot.forEach(function (childSnapshot) {

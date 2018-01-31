@@ -20,23 +20,11 @@ export class Start extends React.Component {
     console.log(that.props.test.num)
     let countDownDate = new Date()
     countDownDate = countDownDate.setSeconds(countDownDate.getSeconds() + 5);
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-    
-        // Get todays date and time
-        var now = new Date().getTime();
-        
-        // Find the distance between now an the count down date
-        var distance = countDownDate - now;
-        
-        // Time calculations for days, hours, minutes and seconds
-
-        var seconds = distance % (1000 * 60) / 1000;
-        
-        // Output the result in an element with id="demo"
+    let x = setInterval(function() {
+        let now = new Date().getTime();
+        let distance = countDownDate - now;
+        let seconds = distance % (1000 * 60) / 1000;
         document.getElementById("TimeCounter").innerHTML = seconds + "s ";
-        
-        // If the count down is over, write some text 
         if (distance < 0) {
             clearInterval(x);
             document.getElementById("TimeCounter").innerHTML = "EXPIRED";

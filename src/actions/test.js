@@ -166,6 +166,7 @@ export function showroom(arr) {
   }
   export function sendresult (num) {
     console.log('num = ' + num)
+    let mykey = key()
     let usr = []
     let result = [] //ไว้มาเพิ่มresult ทีหลัง
     let i = 0
@@ -187,7 +188,13 @@ export function showroom(arr) {
       console.log('result = ' + result)
     }).then(() => {
       for (let j = 0; j < usr.length; j++) {
-        firebase.database().ref('/users/' + usr[j] + '/history/'+ key()).set  ({
+        firebase.database().ref('/history/' + mykey + '/' + usr[j]).set  ({
+          step : result[j].step,
+          set : result[j].set
+        })
+      }
+      for (let j = 0; j < usr.length; j++) {
+        firebase.database().ref('/users/' + usr[j] + '/history/'+ mykey).set  ({
           step : result[j].step,
           set : result[j].set
         })
