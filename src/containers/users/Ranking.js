@@ -14,17 +14,16 @@ class RankingContainer extends React.Component {
     let set = []
     let i = 0 
     let mykey = []
-    firebase.auth().onAuthStateChanged(function(user) {
+    let myset = []
+    let mystep = []
+    let mypos = 0
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let i = 0
-        firebase.database().ref('/users/' + firebase.auth().currentUser.uid + '/history/').once('value', function (snapshot) {
-          snapshot.forEach(function (childSnapshot) {
-            console.log(childSnapshot.val())
-            arr[i] = (
-                <tr key={i}>
-                  <td>{childSnapshot.key}</td>
-                </tr>
-              )
+        firebase.database().ref('/users/' + firebase.auth().currentUser.uid + '/history/').once('value',  (snapshot) => {
+          snapshot.forEach( (childSnapshot) => {
+            myset[i] = childSnapshot.val().set
+            mystep[i] = childSnapshot.val().step
             mykey[i] = childSnapshot.key
             i++
           })
@@ -33,13 +32,28 @@ class RankingContainer extends React.Component {
         }).then(() => {
           for (let j = 0, k = 0; j < that.props.user.key.length; j++) {
             firebase.database().ref('/history/' + that.props.user.key[j]).once('value', (snapshot) => {
-              snapshot.forEach(function (childSnapshot) {
+              snapshot.forEach( (childSnapshot) => {
                 set[j,k] = childSnapshot.val().set
+                if (childSnapshot.val().set === myset[j] && childSnapshot.val().step === mystep[j]) {
+                  console.log(childSnapshot.val().set + ' ' +myset[j] + ' ' + j + ' ' + k) 
+                  mypos = k
+                }
                 k++
               })
             }).then(() => {
-              console.log(set)  
-            })
+              let sorted = set.slice().sort((a,b) => {return b-a})
+              let ranks = set.slice().map((v) => { return sorted.indexOf(v)+1 })
+
+              arr[i] = (
+                <tr key={i}>
+                  <td>{mykey}</td>
+                  <td>{ranks[mypos]}</td>
+                </tr>
+              )
+            i++
+          }).then(() => {
+          that.props.getranking(arr, mykey, user)
+        })
           }
         })
       }
