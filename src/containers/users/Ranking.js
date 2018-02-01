@@ -56,12 +56,11 @@ class RankingContainer extends React.Component {
                 <div key={i} style={{'width': '100%'}}>
                   <td>{mykey}</td>
                   <td>{ranks[mypos]}</td>
-                  <BarChart width={730} height={250} data={data}>
+                  <BarChart width={730} height={250} data={data} >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="set" />
                     <YAxis  value= "100"/>
                     <Tooltip />
-                    <Legend />
                     <Bar dataKey="set" fill="#8884d8" />
                   </BarChart>
                 </div>
