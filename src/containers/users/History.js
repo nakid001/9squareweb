@@ -28,6 +28,7 @@ class HistoryContainer extends React.Component {
               })
             }).then(() => {
               that.props.gethistory(history, userF)
+              that.props.canlogin(userF)
             })
         } else {
             console.log('please wait')
@@ -44,16 +45,6 @@ class HistoryContainer extends React.Component {
 
   render () {
     if (this.props.user.loading) {
-        return <div> Loading...
-        </div>
-      } else if (this.props.user.username) {
-        return (
-            <History {...this.props}/>
-        )
-      } else {
-        alert('Please login first!')
-        return (this.redirect())
-      }if (this.props.user.loading) {
         return <div> Loading...
         </div>
       } else if (this.props.user.username) {

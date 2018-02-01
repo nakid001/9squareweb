@@ -48,7 +48,6 @@ export function logingmail () {
   }
 }
 export function gethistory (arr, username) {
-
   return {
     type: 'GETHIS',
     Hpayload: arr,
@@ -60,7 +59,7 @@ export function getranking (arr, key, username) {
 
   return {
     type: 'GETRANK',
-    Hpayload: arr,
+    Rpayload: arr,
     Kpayload: key,
     Upayload: username,
     payload: 'GET RANKING'

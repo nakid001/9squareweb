@@ -66,7 +66,7 @@ const userReducer = (state = {
         state = {
           ...state,
           key: action.Kpayload,
-          history: action.Hpayload,
+          ranking: action.Rpayload,
           username: action.Upayload,
           payload: action.payload
         }

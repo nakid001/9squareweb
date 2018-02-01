@@ -1,0 +1,21 @@
+@media only screen and (max-width: 768px) {
+  [class*='col-'] {
+    width: 98%;
+  }
+  .typebox {
+    width: 92%;
+  }
+}
+/* @media only screen and (max-width: 500px) {
+   #loginButton {
+    font-size: 12px;
+    background-color: orange; 
+  } 
+} */
+@media only screen and (max-width: 320px) {
+  #wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 320px;
+  }
+}

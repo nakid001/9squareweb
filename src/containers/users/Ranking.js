@@ -54,8 +54,9 @@ class RankingContainer extends React.Component {
               }
               arr[i] = (
                 <div key={i} style={{'width': '100%'}}>
-                  <td>{mykey}</td>
-                  <td>{ranks[mypos]}</td>
+                  <div>{'Test key: ' + mykey}</div>
+                  <div>{' RANK NUMBER: ' + ranks[mypos]}</div>
+                  <div>{'Step: ' + mystep[j] + ' Set: ' + myset[j]}</div>
                   <BarChart width={730} height={250} data={data} >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="set" />

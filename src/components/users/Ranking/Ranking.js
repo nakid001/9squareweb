@@ -8,7 +8,7 @@ export class Ranking extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      history: [],
+      ranking: [],
     }
     // this.handleChange = this.handleChange.bind(this)
   }
@@ -28,7 +28,7 @@ export class Ranking extends React.Component {
         <div id="main-wrap">
             <div id="sidebar" className="header_content"></div>
             <div id="content-wrap">
-              {this.props.user.history}
+              {this.props.user.ranking}
             </div>
         </div>
         <div id="footer">
