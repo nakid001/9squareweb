@@ -6,7 +6,7 @@ import  { Ranking } from '../../components/users/Ranking/Ranking.js'
 import { inputreg } from '../../actions/input.js'
 import { getranking } from '../../actions/user.js'
 import {NavLink, Link} from 'react-router-dom'
-
+import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
 class RankingContainer extends React.Component {
   componentWillMount() {
     let that = this
@@ -17,6 +17,7 @@ class RankingContainer extends React.Component {
     let myset = []
     let mystep = []
     let mypos = 0
+    let data = []
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let i = 0
@@ -35,6 +36,7 @@ class RankingContainer extends React.Component {
               mykey = snapshot.key
               snapshot.forEach( (childSnapshot) => {
                 set[j,k] = childSnapshot.val().set
+                data[j,k] = {set: set[j,k]}
                 if (childSnapshot.val().set === myset[j] && childSnapshot.val().step === mystep[j]) {
                   console.log(childSnapshot.val().set + ' ' +myset[j] + ' ' + j + ' ' + k) 
                   mypos = k
@@ -42,14 +44,23 @@ class RankingContainer extends React.Component {
                 k++
               })
             }).then(() => {
+              set = set.sort()
+              data[k] = {set: set[j, k]}
               let sorted = set.slice().sort((a,b) => {return b-a})
               let ranks = set.slice().map((v) => { return sorted.indexOf(v)+1 })
-
               arr[i] = (
-                <tr key={i}>
+                <div key={i} style={{'width': '100%'}}>
                   <td>{mykey}</td>
                   <td>{ranks[mypos]}</td>
-                </tr>
+                  <BarChart width={730} height={250} data={data}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis  value= "100"/>
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="set" fill="#8884d8" />
+                  </BarChart>
+                </div>
               )
             i++
           }).then(() => {
