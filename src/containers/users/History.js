@@ -13,25 +13,25 @@ class HistoryContainer extends React.Component {
       if (userF) {
         let history = []
         if (firebase.auth().currentUser) {
-            let i = 0
-            firebase.database().ref('/users/' + firebase.auth().currentUser.uid + '/history/').once('value', function (snapshot) {
-              snapshot.forEach(function (childSnapshot) {
-                console.log(childSnapshot.val())
-                history[i] = (
-                    <tr key={i}>
-                      <td>{childSnapshot.key}</td>
-                      <td>{childSnapshot.val().step}</td>
-                      <td>{childSnapshot.val().set}</td>
-                    </tr>
-                  )
-                i++
-              })
-            }).then(() => {
-              that.props.gethistory(history, userF)
-              that.props.canlogin(userF)
+          let i = 0
+          firebase.database().ref('/users/' + firebase.auth().currentUser.uid + '/history/').once('value', function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+              console.log(childSnapshot.val())
+              history[i] = (
+                <tr key={i}>
+                  <td>{childSnapshot.key}</td>
+                  <td>{childSnapshot.val().step}</td>
+                  <td>{childSnapshot.val().set}</td>
+                </tr>
+              )
+              i++
             })
+          }).then(() => {
+            that.props.gethistory(history, userF)
+            that.props.canlogin(userF)
+          })
         } else {
-            console.log('please wait')
+          console.log('please wait')
         }
       } else {
         that.props.cannotlogin()
@@ -45,28 +45,28 @@ class HistoryContainer extends React.Component {
 
   render () {
     if (this.props.user.loading) {
-        return <div> Loading...
-        </div>
-      } else if (this.props.user.username) {
-        return (
-            <History {...this.props}/>
-        )
-      } else {
-        alert('Please login first!')
-        return (this.redirect())
-      }
+      return <div> Loading...
+      </div>
+    } else if (this.props.user.username) {
+      return (
+        <History {...this.props}/>
+      )
+    } else {
+      alert('Please login first!')
+      return (this.redirect())
     }
   }
-  const mapStateToProps = (state) => {
-    return {
-      user: state.user
-    }
+}
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
   }
-  
-  const mapDispatchToProps = (dispatch) => {
-    return bindActionCreators(
-      {
-        gethistory, canlogin, cannotlogin
-      }, dispatch)
-  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+      gethistory, canlogin, cannotlogin
+    }, dispatch)
+}
 export default connect(mapStateToProps, mapDispatchToProps)(HistoryContainer)

@@ -14,10 +14,10 @@ export function regisfire(username, password) {
       Success(username, password)      
     })
   }).catch((error) => {
-      let errorCode = error.code
-      let errorMessage = error.message
-      alert(error)
-    })
+    let errorCode = error.code
+    let errorMessage = error.message
+    alert(errorMessage + errorCode)
+  })
   return {
     type: 'REGFIRE',
     payload: 'REGISTERING'

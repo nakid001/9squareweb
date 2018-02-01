@@ -17,18 +17,18 @@ export class Test extends React.Component {
       <div id='home_wrapper'>
         <div id="header">การทดสอบ</div>
         <div id="main-wrap">
-            <div className="header_content">
+          <div className="header_content">
             Room List
             {this.props.test.room}
-            </div>
-            <div id="content-wrap">
-            </div>
-            <button onClick={()=> {
-              this.props.addroom()}}>ADD ROOM </button>
+          </div>
+          <div id="content-wrap">
+          </div>
+          <button onClick={()=> {
+            this.props.addroom()}}>ADD ROOM </button>
         </div>
         <div id="footer">Footer</div>
-          <button> <Link to ='/examiner'>GO BACK</Link> </button>
-        </div>   
+        <button> <Link to ='/examiner'>GO BACK</Link> </button>
+      </div>   
     )
   }
 }

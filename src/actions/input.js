@@ -1,9 +1,9 @@
 export function inputlog(username,password) {  
   return {
-      type: "INPUTLOG",
-      Upayload: username,
-      Ppayload: password,
-      payload: 'LOGING'
+    type: 'INPUTLOG',
+    Upayload: username,
+    Ppayload: password,
+    payload: 'LOGING'
   }
 }
 export function inputreg(username, password, repassword) {

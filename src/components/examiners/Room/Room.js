@@ -1,6 +1,6 @@
 import React from 'react'
 import {NavLink, HashRouter} from 'react-router-dom'
-import Modal from 'react-modal';
+import Modal from 'react-modal'
 
 import { Link } from 'react-router-dom'
 
@@ -15,26 +15,26 @@ export class Room extends React.Component {
       num: 0,
       order: []
     }
-      this.state = {
+    this.state = {
         
     }
    
-      this.openModal = this.openModal.bind(this);
-      this.afterOpenModal = this.afterOpenModal.bind(this);
-      this.closeModal = this.closeModal.bind(this);
-    }
+    this.openModal = this.openModal.bind(this)
+    this.afterOpenModal = this.afterOpenModal.bind(this)
+    this.closeModal = this.closeModal.bind(this)
+  }
    
-    openModal() {
-      this.setState({modalIsOpen: true})    
-    }
+  openModal() {
+    this.setState({modalIsOpen: true})    
+  }
    
-    afterOpenModal() {
-      // references are now sync'd and can be accessed.
-    }
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+  }
    
-    closeModal() {
-      this.setState({modalIsOpen: false});
-    }
+  closeModal() {
+    this.setState({modalIsOpen: false})
+  }
   
 
   // handleChange (event) {
@@ -46,7 +46,6 @@ export class Room extends React.Component {
   // }
 
   render () {
-    let arr = []
     return (
       <div id='home_wrapper'>
         <div id="header">{'ROOM '+this.props.test.num}</div>
@@ -58,168 +57,168 @@ export class Room extends React.Component {
           <div>  
             <div> Current order : {this.props.test.order} </div>
           
-          <button> <Link to ='/examiner/start'>START!!</Link> </button>
-          <button onClick={this.openModal}>Edit order</button>   
-          <button onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD DEVICE </button>
-          <Modal
-            isOpen={this.state.modalIsOpen}
-            className='col-6 Modal--matching'
-            overlayClassName='Modal--matching--overlay'
-            contentLabel='Example Modal'
-            shouldCloseOnOverlayClick={true}
-            role='dialog'
-          >
-            <div className='Modal_content'>
-              <div className='Modal_header'>
-                <div className='Modal_close' onClick={this.closeModal}>&times;</div>
+            <button> <Link to ='/examiner/start'>START!!</Link> </button>
+            <button onClick={this.openModal}>Edit order</button>   
+            <button onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD DEVICE </button>
+            <Modal
+              isOpen={this.state.modalIsOpen}
+              className='col-6 Modal--matching'
+              overlayClassName='Modal--matching--overlay'
+              contentLabel='Example Modal'
+              shouldCloseOnOverlayClick={true}
+              role='dialog'
+            >
+              <div className='Modal_content'>
+                <div className='Modal_header'>
+                  <div className='Modal_close' onClick={this.closeModal}>&times;</div>
                 Setup Order
-              </div>
-              <div className='Modal_body'>
-                <p> Order : {this.props.test.order} </p>
-                <table className='Modal_table'>
+                </div>
+                <div className='Modal_body'>
+                  <p> Order : {this.props.test.order} </p>
+                  <table className='Modal_table'>
                     <tr>
-                    <td > 
+                      <td > 
                       1
-                      <div>
-                        <div id="left" onClick={()=> {
-                      this.props.pushOrder('1L ').then(() => {
-                      })              
-                    }}>left</div>
-                        <div id="right" onClick={()=> {
-                      this.props.pushOrder('1R ').then(() => {
-                      })              
-                    }}>right</div>
-                      </div>
-                    </td>
-                    <td > 
+                        <div>
+                          <div id="left" onClick={()=> {
+                            this.props.pushOrder('1L ').then(() => {
+                            })              
+                          }}>left</div>
+                          <div id="right" onClick={()=> {
+                            this.props.pushOrder('1R ').then(() => {
+                            })              
+                          }}>right</div>
+                        </div>
+                      </td>
+                      <td > 
                       2
-                      <div>
-                        <div id="left" onClick={()=> {
-                      this.props.pushOrder('2L ').then(() => {
-                      })              
-                    }}>left</div>
-                        <div id="right" onClick={()=> {
-                      this.props.pushOrder('2R ').then(() => {
-                      })              
-                    }}>right</div>
-                      </div>
-                    </td>
-                    <td > 
+                        <div>
+                          <div id="left" onClick={()=> {
+                            this.props.pushOrder('2L ').then(() => {
+                            })              
+                          }}>left</div>
+                          <div id="right" onClick={()=> {
+                            this.props.pushOrder('2R ').then(() => {
+                            })              
+                          }}>right</div>
+                        </div>
+                      </td>
+                      <td > 
                       3
-                      <div>
-                        <div id="left" onClick={()=> {
-                      this.props.pushOrder('3L ').then(() => {
-                      })              
-                    }}>left</div>
-                        <div id="right" onClick={()=> {
-                      this.props.pushOrder('3R ').then(() => {
-                      })              
-                    }}>right</div>
-                      </div>
-                    </td>
+                        <div>
+                          <div id="left" onClick={()=> {
+                            this.props.pushOrder('3L ').then(() => {
+                            })              
+                          }}>left</div>
+                          <div id="right" onClick={()=> {
+                            this.props.pushOrder('3R ').then(() => {
+                            })              
+                          }}>right</div>
+                        </div>
+                      </td>
                     </tr> 
                     
                     <tr>
-                    <td > 
+                      <td > 
                       4
-                      <div>
-                        <div id="left" onClick={()=> {
-                      this.props.pushOrder('4L ').then(() => {
-                      })              
-                    }}>left</div>
-                        <div id="right" onClick={()=> {
-                      this.props.pushOrder('4R ').then(() => {
-                      })              
-                    }}>right</div>
-                      </div>
-                    </td>
-                    <td > 
+                        <div>
+                          <div id="left" onClick={()=> {
+                            this.props.pushOrder('4L ').then(() => {
+                            })              
+                          }}>left</div>
+                          <div id="right" onClick={()=> {
+                            this.props.pushOrder('4R ').then(() => {
+                            })              
+                          }}>right</div>
+                        </div>
+                      </td>
+                      <td > 
                       5
-                      <div>
-                        <div id="left" onClick={()=> {
-                      this.props.pushOrder('5L ').then(() => {
-                      })              
-                    }}>left</div>
-                        <div id="right" onClick={()=> {
-                      this.props.pushOrder('5R ').then(() => {
-                      })              
-                    }}>right</div>
-                      </div>
-                    </td>
-                    <td > 
+                        <div>
+                          <div id="left" onClick={()=> {
+                            this.props.pushOrder('5L ').then(() => {
+                            })              
+                          }}>left</div>
+                          <div id="right" onClick={()=> {
+                            this.props.pushOrder('5R ').then(() => {
+                            })              
+                          }}>right</div>
+                        </div>
+                      </td>
+                      <td > 
                       6
-                      <div>
-                        <div id="left" onClick={()=> {
-                      this.props.pushOrder('6L ').then(() => {
-                      })              
-                    }}>left</div>
-                        <div id="right" onClick={()=> {
-                      this.props.pushOrder('6R ').then(() => {
-                      })              
-                    }}>right</div>
-                      </div>
-                    </td>
+                        <div>
+                          <div id="left" onClick={()=> {
+                            this.props.pushOrder('6L ').then(() => {
+                            })              
+                          }}>left</div>
+                          <div id="right" onClick={()=> {
+                            this.props.pushOrder('6R ').then(() => {
+                            })              
+                          }}>right</div>
+                        </div>
+                      </td>
                     </tr>
                     
                     <tr>
-                    <td > 
+                      <td > 
                       7
-                      <div>
-                        <div id="left" onClick={()=> {
-                      this.props.pushOrder('7L ').then(() => {
-                      })              
-                    }}>left</div>
-                        <div id="right" onClick={()=> {
-                      this.props.pushOrder('7R ').then(() => {
-                      })              
-                    }}>right</div>
-                      </div>
-                    </td>
-                    <td > 
+                        <div>
+                          <div id="left" onClick={()=> {
+                            this.props.pushOrder('7L ').then(() => {
+                            })              
+                          }}>left</div>
+                          <div id="right" onClick={()=> {
+                            this.props.pushOrder('7R ').then(() => {
+                            })              
+                          }}>right</div>
+                        </div>
+                      </td>
+                      <td > 
                       8
-                      <div>
-                        <div id="left" onClick={()=> {
-                      this.props.pushOrder('8L ').then(() => {
-                      })              
-                    }}>left</div>
-                        <div id="right" onClick={()=> {
-                      this.props.pushOrder('8R ').then(() => {
-                      })              
-                    }}>right</div>
-                      </div>
-                    </td>
-                    <td > 
+                        <div>
+                          <div id="left" onClick={()=> {
+                            this.props.pushOrder('8L ').then(() => {
+                            })              
+                          }}>left</div>
+                          <div id="right" onClick={()=> {
+                            this.props.pushOrder('8R ').then(() => {
+                            })              
+                          }}>right</div>
+                        </div>
+                      </td>
+                      <td > 
                       9
-                      <div>
-                        <div id="left" onClick={()=> {
-                      this.props.pushOrder('9L ').then(() => {
-                      })              
-                    }}>left</div>
-                        <div id="right" onClick={()=> {
-                      this.props.pushOrder('9R ').then(() => {
-                      })              
-                    }}>right</div>
-                      </div>
-                    </td>
+                        <div>
+                          <div id="left" onClick={()=> {
+                            this.props.pushOrder('9L ').then(() => {
+                            })              
+                          }}>left</div>
+                          <div id="right" onClick={()=> {
+                            this.props.pushOrder('9R ').then(() => {
+                            })              
+                          }}>right</div>
+                        </div>
+                      </td>
                     </tr>
-              </table> 
-              </div>
-              <div className='Modal_footer'>
-                <div>
-                  <button className='Modal_btn' onClick={() => {this.props.submitOrder(this.props.test.num, this.props.test.order)}}> Submit </button>
-                  <button className='Modal_btn'  onClick={ () => { this.props.clearOrder() } }> Clear order</button>
+                  </table> 
                 </div>
-                <div>
-                  <button className='Modal_btn' onClick={this.closeModal}>Cancel</button>
+                <div className='Modal_footer'>
+                  <div>
+                    <button className='Modal_btn' onClick={() => {this.props.submitOrder(this.props.test.num, this.props.test.order)}}> Submit </button>
+                    <button className='Modal_btn'  onClick={ () => { this.props.clearOrder() } }> Clear order</button>
+                  </div>
+                  <div>
+                    <button className='Modal_btn' onClick={this.closeModal}>Cancel</button>
+                  </div>
                 </div>
               </div>
-            </div>
             </Modal>
           </div>
         </div>
         <div id="footer">Footer</div>
-          <button> <Link to ='/examiner/test'>GO BACK</Link> </button>
-        </div>   
+        <button> <Link to ='/examiner/test'>GO BACK</Link> </button>
+      </div>   
     )
   }
 }

@@ -19,12 +19,12 @@ export class Home extends Component {
           </div>
         </div>
         <div id="main-wrap">
-            <div id="sidebar" className="header_content">
-              <div><img src={temp} width="100%" height="400" alt=""/><h4></h4></div>
-            </div>
-            <div id="content-wrap">
-              ความพยายามอยู่ที่ไหนความสำเร็จอยู่ที่นั่น
-            </div>
+          <div id="sidebar" className="header_content">
+            <div><img src={temp} width="100%" height="400" alt=""/><h4></h4></div>
+          </div>
+          <div id="content-wrap">
+            ความพยายามอยู่ที่ไหนความสำเร็จอยู่ที่นั่น
+          </div>
         </div>
         <div id="footer">Footer</div>
       </div>    

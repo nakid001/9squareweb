@@ -6,7 +6,7 @@ import  { Ranking } from '../../components/users/Ranking/Ranking.js'
 import { inputreg } from '../../actions/input.js'
 import { getranking } from '../../actions/user.js'
 import {NavLink, Link} from 'react-router-dom'
-import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts';
+import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts'
 class RankingContainer extends React.Component {
   componentWillMount() {
     let that = this
@@ -44,7 +44,6 @@ class RankingContainer extends React.Component {
                 k++
               })
             }).then(() => {
-              let len = set.length
               let sorted = set.slice().sort((a,b) => {return b-a})
               let ranks = set.slice().map((v) => { return sorted.indexOf(v)+1 })
               set = set.sort()
@@ -66,18 +65,16 @@ class RankingContainer extends React.Component {
                   </BarChart>
                 </div>
               )
-            i++
-          }).then(() => {
-          that.props.getranking(arr, mykey, user)
-        })
+              i++
+            }).then(() => {
+              that.props.getranking(arr, mykey, user)
+            })
           }
         })
       }
     })
   }
   render () {
-    let i = 0
-    let that = this
     let content = ''
     if (firebase.auth().currentUser)
     {
@@ -85,7 +82,7 @@ class RankingContainer extends React.Component {
         <div>
           <Ranking {...this.props} />
         </div>
-        )
+      )
     } else {
       content = (
         <div>

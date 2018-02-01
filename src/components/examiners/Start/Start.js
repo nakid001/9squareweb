@@ -15,22 +15,22 @@ export class Start extends React.Component {
   countdown() {
     let that = this
     firebase.database().ref('/rooms/room' + that.props.test.num).update({
-      start: "START"
+      start: 'START'
     })
     console.log(that.props.test.num)
     let countDownDate = new Date()
-    countDownDate = countDownDate.setSeconds(countDownDate.getSeconds() + 5);
+    countDownDate = countDownDate.setSeconds(countDownDate.getSeconds() + 5)
     let x = setInterval(function() {
-        let now = new Date().getTime();
-        let distance = countDownDate - now;
-        let seconds = distance % (1000 * 60) / 1000;
-        document.getElementById("TimeCounter").innerHTML = seconds + "s ";
-        if (distance < 0) {
-            clearInterval(x);
-            document.getElementById("TimeCounter").innerHTML = "EXPIRED";
-            that.props.sendresult(that.props.test.num)
-        }
-    }, 1000);
+      let now = new Date().getTime()
+      let distance = countDownDate - now
+      let seconds = distance % (1000 * 60) / 1000
+      document.getElementById('TimeCounter').innerHTML = seconds + 's '
+      if (distance < 0) {
+        clearInterval(x)
+        document.getElementById('TimeCounter').innerHTML = 'EXPIRED'
+        that.props.sendresult(that.props.test.num)
+      }
+    }, 1000)
   }
   render () {
     return (
@@ -40,9 +40,9 @@ export class Start extends React.Component {
           <div className="content-wrap">
             <button onClick={() => {this.countdown()}}>START!</button>
             <div> TimeLeft : 
-                <div id='TimeCounter'> 
+            <div id='TimeCounter'> 
                     30 
-                </div>
+            </div>
             </div>
           </div>
         </div>

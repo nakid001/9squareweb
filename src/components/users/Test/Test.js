@@ -26,11 +26,11 @@ export class Test extends React.Component {
       <div id='home_wrapper'>
         <div id="header" className="title_content">เลือกสถานที่ทดสอบ</div>
         <div id="main-wrap">
-            <div id="sidebar" className="header_content">
-            </div>
-            <div id="content-wrap">
+          <div id="sidebar" className="header_content">
+          </div>
+          <div id="content-wrap">
             {this.props.test.room}
-            </div>
+          </div>
         </div>
         <div id="footer">
           <button> <Link to ='/'>GO BACK</Link> </button>

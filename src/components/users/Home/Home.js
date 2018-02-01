@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './style.css'
 import img from './img/template2.jpg'
 import img2 from './img/template2.jpg'
-import Modal from 'react-modal';
+import Modal from 'react-modal'
 import TestIcon from './img/start.png'
 import { Link } from 'react-router-dom'
 
@@ -36,7 +36,7 @@ export class Home extends Component {
   }
  
   closeModal() {
-    this.setState({modalIsOpen: false});
+    this.setState({modalIsOpen: false})
   }
   getCookie (name) {
     let value = '; ' + document.cookie
@@ -50,16 +50,16 @@ export class Home extends Component {
       <div id='wrapper'>
         <div id="header" className="title_content">ระบบจัดการทักษะกลไกการเคลื่อนไหว</div>
         <div id="main-wrap">
-            <div id="sidebar">
-              <div><img src={img} width="100%" height="400" alt=""/><h4></h4></div>
-            </div>
-            <div id="content-wrap" className="box_content_background">
-              <div className="box_content">
+          <div id="sidebar">
+            <div><img src={img} width="100%" height="400" alt=""/><h4></h4></div>
+          </div>
+          <div id="content-wrap" className="box_content_background">
+            <div className="box_content">
                 เพียงเข้ารับการทดสอบของเรา แล้วเราจะช่วยคุณประมวลผลและแสดงข้อมูลของคุณอย่างรวดเร็ว โดยจะแสดงให้เห็นถึง
                 ความแม่นยำ ความรวดเร็ว ในการตอบสนองของคุณ และยังแสดงให้คุณเห็นถึง ranking ของคุณเทียบกับคนอื่นอีกด้วย
-              </div>
             </div>
-            <div>
+          </div>
+          <div>
             <Modal
               isOpen={this.state.modalIsOpen}
               className='col-6 Modal--matching'
@@ -73,7 +73,7 @@ export class Home extends Component {
                   <div className='Modal--matching--close' onClick={this.closeModal}  onKeyPress={this.handlePress}>&times;</div>
                 </div>
                 <div className='Modal--matching--body'>
-                   <div>
+                  <div>
                     <Link to= '/test'><img src={TestIcon} className='TestIcon' alt=''/></Link>
                   </div> 
                 </div>
@@ -87,14 +87,14 @@ export class Home extends Component {
           </div>
         </div>
         <div id="main-wrap">
-            <div id="sidebar">
-              <div><img src={img2} width="100%" height="400" alt=""/><h4></h4></div>
+          <div id="sidebar">
+            <div><img src={img2} width="100%" height="400" alt=""/><h4></h4></div>
+          </div>
+          <div id="content-wrap" >
+            <div className='box_content'>
+              ด้วยกระบวนการรับผลตรวจสอบและแสดงผลที่เห็นได้ชัดทำให้เกิดการพัฒนาที่รวดเร็วต่อผู้ทดสอบ
             </div>
-            <div id="content-wrap" >
-              <div className='box_content'>
-                ด้วยกระบวนการรับผลตรวจสอบและแสดงผลที่เห็นได้ชัดทำให้เกิดการพัฒนาที่รวดเร็วต่อผู้ทดสอบ
-              </div>
-            </div>
+          </div>
         </div>
         <div id="footer">
           <div className='footer'>

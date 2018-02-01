@@ -27,11 +27,11 @@ export class Room extends React.Component {
       <div id='home_wrapper'>
         <div id="header" className="title_content">{'ROOM '+this.props.test.num}</div>
         <div id="main-wrap">
-            <div id="sidebar" className="header_content"></div>
-            <div id="content-wrap">
-              {this.props.test.device}
-              Current order : {this.props.test.order}
-            </div>
+          <div id="sidebar" className="header_content"></div>
+          <div id="content-wrap">
+            {this.props.test.device}
+            Current order : {this.props.test.order}
+          </div>
         </div>
         <div id="footer">
           <button> <Link to ='/test'>GO BACK</Link> </button>

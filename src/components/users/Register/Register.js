@@ -21,21 +21,21 @@ export class Register extends React.Component {
         this.props.user.password,
         this.props.user.repassword,
         this.props.user.mobile
-        )
+      )
     } else if (event.target.name === 'Pass') {
       this.props.inputreg(
         this.props.user.username,
         event.target.value,
         this.props.user.repassword,
         this.props.user.mobile
-        )
+      )
     } else if (event.target.name === 'REPass') {
       this.props.inputreg(
         this.props.user.username,
         this.props.user.password,
         event.target.value,
         this.props.user.mobile
-        )
+      )
     }
   }
 

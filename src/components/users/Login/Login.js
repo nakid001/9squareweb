@@ -1,7 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 import './style.css'
-import loginIcon from './img/UserIcon.png'
 
 export class Login extends React.Component {
   constructor (props) {
@@ -35,7 +34,6 @@ export class Login extends React.Component {
         <div className='col-4'></div>
         <div className='col-4 log_in_content'>
           <p className='login_headerText'>Log In</p>
-          {/* <img className='loginIcon' src={loginIcon} /> */}
           <div style={ {marginTop: '24px'} }>
             <input type="text" className="form-input" placeholder="Phone number or email" style={ {width: '100%'} }name='User' onChange={this.handleChange} onKeyPress={this.handlePress}/>
             <div className='space'> </div>

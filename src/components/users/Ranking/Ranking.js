@@ -26,10 +26,10 @@ export class Ranking extends React.Component {
       <div id='home_wrapper'>
         <div id="header" className="title_content">{'Ranking'}</div>
         <div id="main-wrap">
-            <div id="sidebar" className="header_content"></div>
-            <div id="content-wrap">
-              {this.props.user.ranking}
-            </div>
+          <div id="sidebar" className="header_content"></div>
+          <div id="content-wrap">
+            {this.props.user.ranking}
+          </div>
         </div>
         <div id="footer">
           <button> <Link to ='/test'>GO BACK</Link> </button>
