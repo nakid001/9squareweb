@@ -44,17 +44,21 @@ class RankingContainer extends React.Component {
                 k++
               })
             }).then(() => {
-              set = set.sort()
-              data[k] = {set: set[j, k]}
+              let len = set.length
               let sorted = set.slice().sort((a,b) => {return b-a})
               let ranks = set.slice().map((v) => { return sorted.indexOf(v)+1 })
+              set = set.sort()
+              console.log(set + 'ya' + j + k)
+              for (let x = 0; x < set.length; x++) {
+                data[x] = {set: set[j,x]}
+              }
               arr[i] = (
                 <div key={i} style={{'width': '100%'}}>
                   <td>{mykey}</td>
                   <td>{ranks[mypos]}</td>
                   <BarChart width={730} height={250} data={data}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
+                    <XAxis dataKey="set" />
                     <YAxis  value= "100"/>
                     <Tooltip />
                     <Legend />
