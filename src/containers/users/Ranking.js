@@ -32,6 +32,7 @@ class RankingContainer extends React.Component {
         }).then(() => {
           for (let j = 0, k = 0; j < that.props.user.key.length; j++) {
             firebase.database().ref('/history/' + that.props.user.key[j]).once('value', (snapshot) => {
+              mykey = snapshot.key
               snapshot.forEach( (childSnapshot) => {
                 set[j,k] = childSnapshot.val().set
                 if (childSnapshot.val().set === myset[j] && childSnapshot.val().step === mystep[j]) {
