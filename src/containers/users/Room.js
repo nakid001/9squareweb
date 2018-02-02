@@ -37,25 +37,25 @@ class RoomContainer extends React.Component {
           <div className='col-8' key={i}>
             <div className='payment_itemDiv--mid'>
               <span>
-              <p className='col-12'/>
+                <p className='col-12'/>
                 <button className={DeviceBtn} onClick={ () => {
                   if (DeviceBtn === 'DeviceAvaBtn') {
-                    let answer = window.confirm("Match to device " + childSnapshot.val().num + " ?")
+                    let answer = window.confirm('Match to device ' + childSnapshot.val().num + ' ?')
                     if (answer) {
-                        that.props.matchUserDevice(firebase.auth().currentUser.email, firebase.auth().currentUser.uid, that.props.test.num, childSnapshot.val().num)
+                      that.props.matchUserDevice(firebase.auth().currentUser.email, firebase.auth().currentUser.uid, that.props.test.num, childSnapshot.val().num)
                     }
                     else {
-                        //some code
+                      //some code
                     }
                   } else {  
                     alert('DEVICE IS NOT READY!!')
                   }
                 } 
-              }> Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '} {userID}</button> 
+                }> Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '} {userID}</button> 
               </span>
             </div>
           </div>
-          )
+        )
         i++
       })
       that.props.showDevice(device)
@@ -74,7 +74,7 @@ class RoomContainer extends React.Component {
         <div>
           <Room {...this.props} />
         </div>
-        )
+      )
       if (!this.props.test.num) {
         window.location = '/test'
       } 

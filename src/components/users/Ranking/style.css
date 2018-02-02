@@ -1,3 +1,7 @@
+.rank_content{
+  margin-left: 280px;
+}
+
 @media only screen and (max-width: 768px) {
   [class*='col-'] {
     width: 98%;
@@ -5,6 +9,10 @@
   .typebox {
     width: 92%;
   }
+  .rank_content{
+    margin-left: 0px;
+  }
+
 }
 /* @media only screen and (max-width: 500px) {
    #loginButton {

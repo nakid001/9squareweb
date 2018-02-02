@@ -23,12 +23,10 @@ export class Test extends React.Component {
 
   render () {
     return (
-      <div id='home_wrapper'>
+      <div id='wrapper'>
         <div id="header" className="title_content">เลือกสถานที่ทดสอบ</div>
-        <div id="main-wrap">
-          <div id="sidebar" className="header_content">
-          </div>
-          <div id="content-wrap">
+        <div className="test_content">
+          <div>
             {this.props.test.room}
           </div>
         </div>

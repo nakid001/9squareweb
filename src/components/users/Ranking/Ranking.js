@@ -1,7 +1,6 @@
 import React from 'react'
 import {NavLink, HashRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
-
 import './style.css'
 
 export class Ranking extends React.Component {
@@ -23,11 +22,10 @@ export class Ranking extends React.Component {
 
   render () {
     return (
-      <div id='home_wrapper'>
+      <div id='wrapper'>
         <div id="header" className="title_content">{'Ranking'}</div>
-        <div id="main-wrap">
-          <div id="sidebar" className="header_content"></div>
-          <div id="content-wrap">
+        <div className="rank_content">
+          <div>
             {this.props.user.ranking}
           </div>
         </div>
