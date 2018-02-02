@@ -19,7 +19,7 @@ export class Start extends React.Component {
     })
     console.log(that.props.test.num)
     let countDownDate = new Date()
-    countDownDate = countDownDate.setSeconds(countDownDate.getSeconds() + 5)
+    countDownDate = countDownDate.setSeconds(countDownDate.getSeconds() + 30)
     let x = setInterval(function() {
       let now = new Date().getTime()
       let distance = countDownDate - now

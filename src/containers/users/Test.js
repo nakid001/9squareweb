@@ -10,60 +10,60 @@ import { Link } from 'react-router-dom'
 import './style.css'
 class TestContainer extends React.Component {
 
-    componentWillMount() {
-      let that = this
-      let arr = []
-      let i = 0 
-      firebase.auth().onAuthStateChanged(function(user) {
-        if (user) {
-          that.props.showroom(arr)          
-        }
-      })
-    }
-    render () {
-      let i = 0
-      let that = this
-      let room = []
-      let content = ''
-      if (firebase.auth().currentUser)
-      {
-        content = (
-          <div>
-            <Test {...this.props} />
-          </div>
-          )
-        firebase.database().ref('/rooms/').once('value', function (snapshot) {
-          snapshot.forEach(function (childSnapshot) {
-            if (childSnapshot.val().ava) {
+  componentWillMount() {
+    let that = this
+    let arr = []
+    let i = 0 
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        that.props.showroom(arr)          
+      }
+    })
+  }
+  render () {
+    let i = 0
+    let that = this
+    let room = []
+    let content = ''
+    if (firebase.auth().currentUser)
+    {
+      content = (
+        <div>
+          <Test {...this.props} />
+        </div>
+      )
+      firebase.database().ref('/rooms/').once('value', function (snapshot) {
+        snapshot.forEach(function (childSnapshot) {
+          if (childSnapshot.val().ava) {
             room[i] = (
               <div key={i}>
                 <div className='col-8'>
-                <span><Link to ={'/test/room'} onClick={()=> {
+                  <span><Link to ={'/test/room'} onClick={()=> {
                     that.props.getRoomNum(childSnapshot.val().num)
                   }}>
-                  <p className='col-12'/>
-                  <div className='col-12 roomBtn'> Room:{childSnapshot.val().num}</div> 
+                    <p className='col-12'/>
+                    <div className='col-12 roomBtn'> Room:{childSnapshot.val().num}</div> 
                   </Link>
-                </span>
+                  </span>
                 </div>
                 {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
               </div>
             )}
-            i++
-          })
-        }).then(() => {
-          this.props.showroom(room)
+          i++
         })
-      } else
-      {
-        content = (
-          <div>
+      }).then(() => {
+        this.props.showroom(room)
+      })
+    } else
+    {
+      content = (
+        <div>
             Loading . . .
-          </div>
-        )
-      }
-      return content
+        </div>
+      )
     }
+    return content
+  }
 }
 const mapStateToProps = (state) => {
   return {

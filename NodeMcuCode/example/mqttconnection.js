@@ -7,7 +7,8 @@ let deviceRoot = 'room1/temp' //deviceroot is topic name given in arduino code
 let collection,client //initialise collection and client
 let order = []
 let start = false
-let i = 0, step = 0, set = 0
+let i = 0, step = 0, set = 0, count = 0
+
 let config = {
   apiKey: 'AIzaSyBN4-YyLBgRJe-_ZuBe1OtpOYYXsw29P6c',
   authDomain: 'nafire-18969.firebaseapp.com',
@@ -45,17 +46,18 @@ function getRoomnumber() {
 function insertEvent(topic,payload) {  
   let key=topic.replace(deviceRoot,'')
   console.log(payload.toString())
+  console.log(order.length + 'len')
   if (start === 'START') {
-    if (payload.toString() === order[i]) {
-      i++
+    if (payload.toString() === order[count]) {
+      count++
       step++
-      console.log(step + 'CORRECT')
-      if (i === order.length-1)
-      {
+      if (count === order.length) {
+        console.log(count + 'count')
         set++
-        i = 0
+        count = 0
       }
     } else {
+      console.log(order[count] + ': is the correct not ' + payload.toString())
       console.log('MISSING')
     }
   }
@@ -63,6 +65,7 @@ function insertEvent(topic,payload) {
 
 function getDataFirebase (roomnum) {
   firebase.database().ref('/rooms/room' + roomnum +'/order/').on('value', (snapshot) => {
+    order = []
     snapshot.forEach((childSnapshot) => {
       order.push(childSnapshot.val().substring(0,1))
     })        
