@@ -31,28 +31,28 @@ class ExTestContainer extends React.Component {
         <div>
           <Test {...this.props} />
         </div>
-        )
+      )
       firebase.database().ref('/rooms/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           room[i] = (
             <div className='col-8 payment_itemDiv' key={i}>
               <div className='payment_itemDiv--mid'>
                 <span><Link to ={'/examiner/test/room'}
-                onClick={()=> {
-                  that.props.getRoomNum(childSnapshot.val().num)
-                }}
+                  onClick={()=> {
+                    that.props.getRoomNum(childSnapshot.val().num)
+                  }}
                 >Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</Link>
-                  <button onClick={()=> {
-                    that.props.setActive(childSnapshot.val().num)
-                    }}> Active/Inactive</button>
-                  <button onClick={()=> {
-                    that.props.delRoom(childSnapshot.val().num)
-                    }}> Delete room </button>
-                  </span>
-                </div>
-                {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
+                <button onClick={()=> {
+                  that.props.setActive(childSnapshot.val().num)
+                }}> Active/Inactive</button>
+                <button onClick={()=> {
+                  that.props.delRoom(childSnapshot.val().num)
+                }}> Delete room </button>
+                </span>
               </div>
-            )
+              {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
+            </div>
+          )
           i++
         })
       }).then(() => {

@@ -4,11 +4,12 @@
         {
             "type": "gdb",
             "request": "launch",
-            "cwd": "${workspaceRoot}",
+            "cwd": "${workspaceFolder}",
             "name": "PlatformIO Debugger",
-            "target": "w:/Git/9squareweb/NodeMcuCode/.pioenvs/esp32dev/firmware.elf",
-            "gdbpath": "C:/Users/Parut/.platformio/penv/Scripts/piodebuggdb",
-            "autorun": [ "source .pioinit" ]
+            "target": "/home/kidlx/Desktop/9squareweb/NodeMcuCode/.pioenvs/esp8266dev/firmware.elf",
+            "gdbpath": "/home/kidlx/.platformio/penv/bin/piodebuggdb",
+            "autorun": [ "source .pioinit" ],
+            "preLaunchTask": "PlatformIO: Pre-Debug"
         }
     ]
 }

@@ -9,8 +9,8 @@ const char* password = "0818059521";
 // Config MQTT Server
 #define mqtt_server "192.168.1.40"
 #define mqtt_port 1883
-#define mqtt_user "admin"
-#define mqtt_password "password"
+#define mqtt_user "TEST"
+#define mqtt_password "12345"
 
 #define LED_PIN 2
 
@@ -54,37 +54,23 @@ void setup() {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
   
-  client.setServer("192.168.1.41", 1883);
+  client.setServer(mqtt_server, mqtt_port);
   client.setCallback(callback);
 }
 
 void loop() {
-  if (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
-    if (client.connect("ESP8266Client")) {
-      Serial.println("connected");
-      client.subscribe("/ESP/LED");
-    } else {
-      Serial.print("failed, rc=");
-      Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      delay(5000);
-      return;
-    }
-  }
+
     int buttonState1 = digitalRead(16);
     int buttonState2 = digitalRead(5);
 
-    // check if the pushbutton is pressed.
-    // if it is, the buttonState is HIGH:
+  // check if the pushbutton is pressed.
+  // if it is, the buttonState is HIGH:
     if (buttonState1 == HIGH) {
       // turn LED on:
       Serial.println("1HIGH");
     } else {
       // turn LED off:
       Serial.println("1LOW");
-      digitalWrite(LED_PIN, LOW); 
-
     }
     if (buttonState2 == HIGH) {
       // turn LED on:
@@ -92,10 +78,14 @@ void loop() {
     } else {
       // turn LED off:
       Serial.println("2LOW");
-      digitalWrite(LED_PIN, LOW); 
-
     }
-    delay(100);
   client.loop();
 }
 
+/* [env:esp8266dev]
+platform = espressif8266
+framework = arduino
+board = nodemcu
+
+upload_port = /dev/ttyUSB1  
+*/

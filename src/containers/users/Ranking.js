@@ -21,12 +21,17 @@ class RankingContainer extends React.Component {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let i = 0
-        firebase.database().ref('/users/' + firebase.auth().currentUser.uid + '/history/').once('value',  (snapshot) => {
+        firebase.database().ref('/history/').once('value',  (snapshot) => {
           snapshot.forEach( (childSnapshot) => {
-            myset[i] = childSnapshot.val().set
-            mystep[i] = childSnapshot.val().step
-            mykey[i] = childSnapshot.key
-            i++
+            childSnapshot.forEach ( (youngSnapshot) =>{
+              if (youngSnapshot.key === firebase.auth().currentUser.uid) {
+                myset[i] = youngSnapshot.val().set
+                mystep[i] = youngSnapshot.val().step
+                mykey[i] = childSnapshot.key
+                i++
+              }
+            })
+
           })
         }).then(() => {
           that.props.getranking(arr, mykey, user)
@@ -38,7 +43,7 @@ class RankingContainer extends React.Component {
                 set[j,k] = childSnapshot.val().set
                 data[j,k] = {set: set[j,k]}
                 if (childSnapshot.val().set === myset[j] && childSnapshot.val().step === mystep[j]) {
-                  console.log(childSnapshot.val().set + ' ' +myset[j] + ' ' + j + ' ' + k) 
+                  console.log(mykey) 
                   mypos = k
                 }
                 k++
@@ -47,10 +52,12 @@ class RankingContainer extends React.Component {
               let sorted = set.slice().sort((a,b) => {return b-a})
               let ranks = set.slice().map((v) => { return sorted.indexOf(v)+1 })
               set = set.sort()
+              data = []
               console.log(set + 'ya' + j + k)
               for (let x = 0; x < set.length; x++) {
                 data[x] = {set: set[j,x]}
               }
+              set = []
               arr[i] = (
                 <div key={i} style={{'width': '100%'}}>
                   <div>{'Test key: ' + mykey}</div>

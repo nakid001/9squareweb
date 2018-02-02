@@ -173,7 +173,7 @@ export function sendresult (num) {
   firebase.database().ref('/rooms/room' + num).update({
     start: 'END'
   })
-  firebase.database().ref('/rooms/room' + num + '/devices').once('value', function (snapshot) {
+  /*  firebase.database().ref('/rooms/room' + num + '/devices').once('value', function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
       if (childSnapshot.val().uid) {
         usr[i] = childSnapshot.val().uid
@@ -200,6 +200,7 @@ export function sendresult (num) {
       })
     }
   })
+*/
 
   return {
     type:'SENDRESULT',
