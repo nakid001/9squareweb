@@ -3,7 +3,7 @@ let mqtt = require('mqtt') //includes mqtt server
 let mongodb = require('mongodb') // includes mongoDB 
 let mongodbClient = mongodb.MongoClient //initialises the mongoDB client
 let mongodbURI = 'mongodb://127.0.0.1:27017/db' //activating the MongoDB port 27017, here TempMontor is the name of the database
-let deviceRoot = 'room1/temp' //deviceroot is topic name given in arduino code 
+let deviceRoot = '/room1/dev1' //deviceroot is topic name given in arduino code 
 let collection,client //initialise collection and client
 let order = []
 let start = false
