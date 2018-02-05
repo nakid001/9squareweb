@@ -31,7 +31,6 @@ class RankingContainer extends React.Component {
                 i++
               }
             })
-
           })
         }).then(() => {
           that.props.getranking(arr, mykey, user)
@@ -41,7 +40,6 @@ class RankingContainer extends React.Component {
               mykey = snapshot.key
               snapshot.forEach( (childSnapshot) => {
                 set[j,k] = childSnapshot.val().set
-                data[j,k] = {set: set[j,k]}
                 if (childSnapshot.val().set === myset[j] && childSnapshot.val().step === mystep[j]) {
                   console.log(mykey) 
                   mypos = k
@@ -58,17 +56,17 @@ class RankingContainer extends React.Component {
                 data[x] = {set: set[j,x]}
               }
               set = []
-              arr[i] = (
-                <div key={i} style={{'width': '100%'}}>
+              arr[j] = (
+                <div key={j} style={{'width': '100%'}}>
                   <div>{'Test key: ' + mykey}</div>
                   <div>{' RANK NUMBER: ' + ranks[mypos]}</div>
                   <div>{'Step: ' + mystep[j] + ' Set: ' + myset[j]}</div>
-                  <BarChart width={730} height={250} data={data} >
+                  <BarChart width={375} height={250} data={data} >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="set" />
                     <YAxis  value= "100"/>
-                    <Tooltip />
                     <Bar dataKey="set" fill="#8884d8" />
+                    <Tooltip />
                   </BarChart>
                 </div>
               )

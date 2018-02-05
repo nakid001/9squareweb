@@ -66,18 +66,18 @@ class App extends React.Component {
       }}
     >Logout</NavLink>
     const examlogOutBtn = <NavLink key='6' to='/examiner/login'
-    onClick={ () => {
-      firebase.auth().signOut().then(function () {
-        alert('You have signed out.')
-      }).catch(function () {
-        alert('Sign out failed.')
-      })
-      document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
-      document.cookie = 'picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
-      document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
-      document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
-    }}
-  >Logout</NavLink>
+      onClick={ () => {
+        firebase.auth().signOut().then(function () {
+          alert('You have signed out.')
+        }).catch(function () {
+          alert('Sign out failed.')
+        })
+        document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
+        document.cookie = 'picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
+        document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
+        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
+      }}
+    >Logout</NavLink>
     examiner = this.getCookie('examiner')
     
     user = this.getCookie('username')
@@ -106,7 +106,7 @@ class App extends React.Component {
         <span>
           { !this.state.docked &&
             <img src={menuIcon} onClick={this.menuButtonClick}
-            className='menuIcon' alt=''/>
+              className='menuIcon' alt=''/>
           }
           <NavLink key='5' id='brandLink2' to='/'>
             <img className='brandLogo' src={brandLogo} alt=''/>
@@ -129,7 +129,7 @@ class App extends React.Component {
         <span>
           { !this.state.docked &&
             <img src={menuIcon} onClick={this.menuButtonClick}
-            className='menuIcon' alt=''/>
+              className='menuIcon' alt=''/>
           }
           <NavLink key='5' id='brandLink2' to='/examiner'>
             <img className='brandLogo' src={brandLogo} alt=''/>
