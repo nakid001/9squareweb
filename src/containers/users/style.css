@@ -35,6 +35,7 @@
   @media only screen and (max-width: 400px) {
     .roomBtn, .DeviceAvaBtn, .DeviceNotAvaBtn {
       font-size: 20px;
+      margin-left: 15%;
     }
   }
   .loader {

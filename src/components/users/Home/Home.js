@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import './style.css'
 import img from './img/template2.jpg'
 import img2 from './img/template2.jpg'
-import bg1 from './img/a3aa4293d47b1d0e.jpg'
-import bg2 from './img/755791893f9b035.jpg'
-import bg3 from './img/47585378b3e74e1.jpg'
+import bg1 from './img/bg1.jpg'
+import bg2 from './img/bg2.jpg'
+import bg3 from './img/bg3.jpg'
 import bg4 from './img/images.jpg'
 import Modal from 'react-modal'
 import TestIcon from './img/start.png'
@@ -20,19 +20,18 @@ import {
 const items = [
   {
     src: bg1,
-
-    altText: '   ',
-    caption: '     เพียงเข้ารับการทดสอบของเรา แล้วเราจะช่วยคุณประมวลผลและแสดงข้อมูลของคุณอย่างรวดเร็ว โดยจะแสดงให้เห็นถึงความแม่นยำ ความรวดเร็ว ในการตอบสนองของคุณ และยังแสดงให้คุณเห็นถึง ranking ของคุณเทียบกับคนอื่นอีกด้วย'
+    altText: 'Slide 1',
+    // caption: '     เพียงเข้ารับการทดสอบของเรา แล้วเราจะช่วยคุณประมวลผลและแสดงข้อมูลของคุณอย่างรวดเร็ว โดยจะแสดงให้เห็นถึงความแม่นยำ ความรวดเร็ว ในการตอบสนองของคุณ และยังแสดงให้คุณเห็นถึง ranking ของคุณเทียบกับคนอื่นอีกด้วย'
   },
   {
     src: bg2,
     altText: 'Slide 2',
-    caption: 'Slide 2'
+    // caption: 'Slide 2'
   },
   {
     src: bg3,
     altText: 'Slide 3',
-    caption: 'Slide 3'
+    // caption: 'Slide 3'
   }
 ]
 // import { Link } from 'react-router'
