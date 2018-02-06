@@ -12,6 +12,7 @@ import userIcon from './components/UI/Title_Panel/img/userIcon.png'
 import { Provider } from 'react-redux'
 import store from './stores/stores'
 import * as firebase from 'firebase'
+import index from './reducers/index';
 
 const sidebar = <SidebarContent />
 
@@ -163,10 +164,15 @@ class App extends React.Component {
       transitions: this.state.transitions,
       onSetOpen: this.onSetOpen
     }
+    const sidebarStyles = {
+      sidebar: {
+        zIndex: 99,
+      }
+    }
 
     return (
       <Provider store={store}>
-        <Sidebar className='Sidebar' {...sidebarProps}>
+        <Sidebar className='Sidebar' {...sidebarProps} styles={sidebarStyles}>
           <TitlePanel title={this.checklogin()}/>
           {this.props.children}
         </Sidebar>

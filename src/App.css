@@ -256,3 +256,6 @@
   cursor: pointer;
   outline: none;
 }
+.sidebar {
+  z-index: 99;
+}

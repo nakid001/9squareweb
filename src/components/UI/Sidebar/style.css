@@ -12,14 +12,7 @@
     user-select: none;
     overflow: auto;
     background-color: #FFFFFF;
-}
-
-.sidebar {
-	width: 16em;
-    overflow: auto;
-    /*min-height: 100%;*/
-}
-
+}   
 .userSidebar {
     display: inline-block;
 }

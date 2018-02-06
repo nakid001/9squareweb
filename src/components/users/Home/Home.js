@@ -126,7 +126,7 @@ export class Home extends Component {
     return (
       <div id='wrapper'>
         <div id="header" className="title_content">ระบบจัดการทักษะกลไกการเคลื่อนไหว</div>
-        <div id="main-wrap" >
+        <div >
           <div >
 
             <Carousel
