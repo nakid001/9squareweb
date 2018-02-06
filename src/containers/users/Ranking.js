@@ -12,7 +12,6 @@ class RankingContainer extends React.Component {
     let that = this
     let arr = []
     let set = []
-    let i = 0 
     let mykey = []
     let myset = []
     let mystep = []
@@ -41,7 +40,6 @@ class RankingContainer extends React.Component {
               snapshot.forEach( (childSnapshot) => {
                 set[j,k] = childSnapshot.val().set
                 if (childSnapshot.val().set === myset[j] && childSnapshot.val().step === mystep[j]) {
-                  console.log(mykey) 
                   mypos = k
                 }
                 k++
@@ -51,7 +49,6 @@ class RankingContainer extends React.Component {
               let ranks = set.slice().map((v) => { return sorted.indexOf(v)+1 })
               set = set.sort()
               data = []
-              console.log(set + 'ya' + j + k)
               for (let x = 0; x < set.length; x++) {
                 data[x] = {set: set[j,x]}
               }
@@ -90,9 +87,7 @@ class RankingContainer extends React.Component {
       )
     } else {
       content = (
-        <div>
-          Loading . . .
-        </div>
+        <div className="loader"></div>
       )
     }
     return content    

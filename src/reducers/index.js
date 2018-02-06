@@ -19,9 +19,9 @@ const rootReducer = combineReducers({
 //   mechanic: mechanic,
 //   part: part,
 //   garage: garage,
-     user: userReducer,
-     test: testReducer,
-     exam: ExReducer
+  user: userReducer,
+  test: testReducer,
+  exam: ExReducer
 //   post: post,
 //   auth: auth,
 //   car: car,

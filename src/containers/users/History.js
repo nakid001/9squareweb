@@ -45,8 +45,8 @@ class HistoryContainer extends React.Component {
 
   render () {
     if (this.props.user.loading) {
-      return <div> Loading...
-      </div>
+      return <div className="loader"></div>
+
     } else if (this.props.user.username) {
       return (
         <History {...this.props}/>

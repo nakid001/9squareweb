@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 // import { Link } from 'react-router'
 export class Home extends Component {
   constructor() {
-    super();
+    super()
  
     this.state = {
       modalIsOpen: this.getCookie('username')
@@ -21,7 +21,6 @@ export class Home extends Component {
     this.handlePress = this.handlePress.bind(this)    
   }
   handlePress (event) {
-    alert('yaya')
     event.which = event.which || event.keyCode
     if (event.which === 27) {
       this.closeModal()
@@ -49,10 +48,7 @@ export class Home extends Component {
     return (
       <div id='wrapper'>
         <div id="header" className="title_content">ระบบจัดการทักษะกลไกการเคลื่อนไหว</div>
-        <div id="main-wrap">
-          <div id="sidebar">
-            <div><img src={img} width="100%" height="400" alt=""/><h4></h4></div>
-          </div>
+        <div id="main-wrap" className="background_1">
           <div id="content-wrap" className="box_content_background">
             <div className="box_content">
                 เพียงเข้ารับการทดสอบของเรา แล้วเราจะช่วยคุณประมวลผลและแสดงข้อมูลของคุณอย่างรวดเร็ว โดยจะแสดงให้เห็นถึง
@@ -86,14 +82,12 @@ export class Home extends Component {
             </Modal>
           </div>
         </div>
-        <div id="main-wrap">
+        <div id="main-wrap" className="background_2">
           <div id="sidebar">
             <div><img src={img2} width="100%" height="400" alt=""/><h4></h4></div>
           </div>
-          <div id="content-wrap" >
-            <div className='box_content'>
+          <div className='box_content'>
               ด้วยกระบวนการรับผลตรวจสอบและแสดงผลที่เห็นได้ชัดทำให้เกิดการพัฒนาที่รวดเร็วต่อผู้ทดสอบ
-            </div>
           </div>
         </div>
         <div id="footer">

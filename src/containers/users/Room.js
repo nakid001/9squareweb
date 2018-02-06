@@ -65,8 +65,6 @@ class RoomContainer extends React.Component {
     
   }
   render () {
-    let i = 0
-    let that = this
     let content = ''
     if (firebase.auth().currentUser)
     {
@@ -80,9 +78,7 @@ class RoomContainer extends React.Component {
       } 
     } else {
       content = (
-        <div>
-          Loading . . .
-        </div>
+        <div className="loader"></div>
       )
     }
     return content    

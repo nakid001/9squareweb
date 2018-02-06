@@ -6,7 +6,9 @@ import  { Home } from '../../components/users/Home/Home.js'
 //   LoginForm
 // } from '../components'
 export class HomeContainer extends React.Component {
+  componentDidMount() {
 
+  }
   render () {
     return (
       <div>
