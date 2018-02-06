@@ -5,6 +5,7 @@ import img2 from './img/template2.jpg'
 import bg1 from './img/a3aa4293d47b1d0e.jpg'
 import bg2 from './img/755791893f9b035.jpg'
 import bg3 from './img/47585378b3e74e1.jpg'
+import bg4 from './img/images.jpg'
 import Modal from 'react-modal'
 import TestIcon from './img/start.png'
 import { Link } from 'react-router-dom'
@@ -128,7 +129,6 @@ export class Home extends Component {
         <div id="header" className="title_content">ระบบจัดการทักษะกลไกการเคลื่อนไหว</div>
         <div >
           <div >
-
             <Carousel
               activeIndex={activeIndex}
               next={this.next}
@@ -149,14 +149,14 @@ export class Home extends Component {
               shouldCloseOnOverlayClick={true}
               role='dialog'
             >
+              <div className='Modal_space'>
+              </div>
               <div className='Modal--matching--content' >
                 <div className='Modal--matching--header'>
                   <div className='Modal--matching--close' onClick={this.closeModal}  onKeyPress={this.handlePress}>&times;</div>
                 </div>
                 <div className='Modal--matching--body'>
-                  <div>
-                    <Link to= '/test'><img src={TestIcon} className='TestIcon' alt=''/></Link>
-                  </div> 
+                  <Link to= '/test'><img src={TestIcon} className='TestIcon' alt=''  /></Link>
                 </div>
                 <div className='Modal--matching--footer'>
                   <div>
@@ -168,9 +168,6 @@ export class Home extends Component {
           </div>
         </div>
         <div id="main-wrap" className="background_2">
-          <div id="sidebar">
-            <div><img src={img2} width="100%" height="400" alt=""/><h4></h4></div>
-          </div>
           <div className='box_content'>
               ด้วยกระบวนการรับผลตรวจสอบและแสดงผลที่เห็นได้ชัดทำให้เกิดการพัฒนาที่รวดเร็วต่อผู้ทดสอบ
           </div>
