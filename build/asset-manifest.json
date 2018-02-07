@@ -1,15 +1,17 @@
 {
-  "main.css": "static/css/main.d34dcff5.css",
-  "main.css.map": "static/css/main.d34dcff5.css.map",
-  "main.js": "static/js/main.7a340529.js",
-  "main.js.map": "static/js/main.7a340529.js.map",
-  "static\\media\\755791893f9b035.jpg": "static/media/755791893f9b035.e6aef82e.jpg",
+  "main.css": "static/css/main.d5327365.css",
+  "main.css.map": "static/css/main.d5327365.css.map",
+  "main.js": "static/js/main.ecbbc8f1.js",
+  "main.js.map": "static/js/main.ecbbc8f1.js.map",
   "static\\media\\SanamDeklen_chaya.otf": "static/media/SanamDeklen_chaya.798a3888.otf",
   "static\\media\\SanamDeklen_chaya.ttf": "static/media/SanamDeklen_chaya.be5b52f4.ttf",
   "static\\media\\a3aa4293d47b1d0e.jpg": "static/media/a3aa4293d47b1d0e.baaf21d2.jpg",
+  "static\\media\\bg1.jpg": "static/media/bg1.d32842ea.jpg",
+  "static\\media\\bg2.jpg": "static/media/bg2.c725ebf0.jpg",
+  "static\\media\\bg3.jpg": "static/media/bg3.58156e1b.jpg",
   "static\\media\\menuIcon.webp": "static/media/menuIcon.7b442c03.webp",
   "static\\media\\start.png": "static/media/start.f07cc053.png",
   "static\\media\\template.png": "static/media/template.faadc896.png",
   "static\\media\\template2.jpg": "static/media/template2.6f7e0394.jpg",
-  "static\\media\\userIcon.png": "static/media/userIcon.32c389e7.png"
+  "static\\media\\userIcon.png": "static/media/userIcon.6b002231.png"
 }

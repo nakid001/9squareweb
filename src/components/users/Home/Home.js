@@ -171,7 +171,7 @@ export class Home extends Component {
               ด้วยกระบวนการรับผลตรวจสอบและแสดงผลที่เห็นได้ชัดทำให้เกิดการพัฒนาที่รวดเร็วต่อผู้ทดสอบ
           </div>
         </div>
-        <div id="footer">
+        <div>
           <div className='footer'>
             <div className='head_footer_content'> About us </div>
             <div className='footer_content'> Create and develop by Parut Singhapun </div> 
