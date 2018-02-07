@@ -46,8 +46,7 @@ export class Start extends React.Component {
             </div>
           </div>
         </div>
-        <div id="footer">Footer</div>
-        <button> <Link to ='/examiner/test'>GO BACK</Link> </button>
+        <button className="Exfooter"> <Link to ='/examiner'>GO BACK</Link> </button>
       </div>   
     )
   }

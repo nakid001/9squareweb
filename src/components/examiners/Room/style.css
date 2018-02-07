@@ -134,3 +134,22 @@
       width: 40%;
       font-family: SanamDeklen_chaya;      
   }  
+  .Room_content {
+    margin: 10%;
+    margin-top: 5%;
+    margin-bottom: 0%;
+  }
+  .Exfooter {
+    top: 0%;
+    margin-bottom: 10px; 
+    margin-top: 1%;   
+    float: right;
+    margin-right: 20%;
+  }
+  .Matching_Device_Button {
+    margin-left: 2px;
+  }
+  .Matching_Device {
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }

@@ -61,12 +61,18 @@ export class Room extends React.Component {
             {this.props.test.device}
           </div>
           <div>  
-            <div> Current order : {this.props.test.order} </div>
-            <button> <Link to ='/examiner/start'>START!!</Link> </button>
-            <button onClick={this.openModal}>Edit order</button>   
-            <button onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD DEVICE </button>
-            <input type="text" placeholder="Device number" style={ {width: '100%'} }name='Device_number' onChange={this.handleChange}/>
-            <button onClick={()=> {this.props.matchDevice(this.props.test.num, this.props.exam.username)}}>MATCH DEVICE </button>
+            <div className = 'Room_content'>
+              <div> 
+                Current order : {this.props.test.order}
+                <button onClick={this.openModal}>Edit order</button>   
+              </div>
+              <div className="Matching_Device">
+                Matching device number : 
+                <input type="text" placeholder="Device number" style={ {width: '50%'} }name='Device_number' onChange={this.handleChange}/>
+                <button className="Matching_Device_Button" onClick={()=> {this.props.matchDevice(this.props.test.num, this.props.exam.username)}}>MATCH DEVICE </button>
+              </div>
+
+            </div>
             <Modal
               isOpen={this.state.modalIsOpen}
               className='Modal--matching'
@@ -223,8 +229,9 @@ export class Room extends React.Component {
             </Modal>
           </div>
         </div>
-        <div id="footer">Footer</div>
-        <button> <Link to ='/examiner/test'>GO BACK</Link> </button>
+        <button className="Exfooter"> <Link to ='/examiner/test'>GO BACK</Link> </button>
+        <button className="Exfooter"> <Link to ='/examiner/start'>START!!</Link> </button> 
+        <button className="Exfooter"  onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD MORE DEVICE (ADMIN ) </button>
       </div>   
     )
   }
