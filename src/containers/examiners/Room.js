@@ -45,16 +45,22 @@ class ExRoomContainer extends React.Component {
       }
       firebase.database().ref('/rooms/room'+this.props.test.num+'/devices/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
+          const RoomeBtn = childSnapshot.val().ava ? 'RoomAvaBtn' : 'RoomNotAvaBtn'   
           device[i] = (
             <div className='' key={i}>
               <div className=''>
-                <span>Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}
-                  <button onClick={()=> {
-                    that.props.setDeviceActive(childSnapshot.val().num, that.props.test.num)
-                  }}> Active/Inactive</button>
-                  <button onClick={()=> {
-                    that.props.delDevice(childSnapshot.val().num, that.props.test.num)
-                  }}> Delete device </button>
+                <span>
+                  <div className={RoomeBtn}>
+                    Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}
+                  </div> 
+                  <div className="buttonSet">
+                    <button onClick={()=> {
+                      that.props.setDeviceActive(childSnapshot.val().num, that.props.test.num)
+                    }}> Active/Inactive</button>
+                    <button onClick={()=> {
+                      that.props.delDevice(childSnapshot.val().num, that.props.test.num)
+                    }}> Delete device </button>
+                  </div>
                 </span>
               </div>
               {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}

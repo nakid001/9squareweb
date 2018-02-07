@@ -48,10 +48,9 @@ export class Room extends React.Component {
   render () {
     return (
       <div id='home_wrapper'>
-        <div id="header">{'ROOM '+this.props.test.num}</div>
-        <div id="main-wrap">
+        <div id="header" className="title_content">ห้องทดสอบ {this.props.test.num}</div>
+        <div>
           <div className="header_content">
-            Device List
             {this.props.test.device}
           </div>
           <div>  
@@ -59,7 +58,6 @@ export class Room extends React.Component {
           
             <button> <Link to ='/examiner/start'>START!!</Link> </button>
             <button onClick={this.openModal}>Edit order</button>   
-            <button onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD DEVICE </button>
             <Modal
               isOpen={this.state.modalIsOpen}
               className='col-6 Modal--matching'
