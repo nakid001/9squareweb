@@ -111,6 +111,13 @@ const testReducer = (state = {
     }
   }
     break
+  case 'MATCHDEVICE': {
+    state = {
+      ...state,
+      text: action.payload
+    }
+  }
+    break
   case 'SENDRESULT': {
     state = {
       ...state,

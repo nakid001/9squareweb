@@ -13,7 +13,8 @@ export class Room extends React.Component {
       roomtest: '',
       device: [],
       num: 0,
-      order: []
+      order: [],
+      deviceNumber: 0
     }
     this.state = {
         
@@ -22,8 +23,14 @@ export class Room extends React.Component {
     this.openModal = this.openModal.bind(this)
     this.afterOpenModal = this.afterOpenModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
-   
+
+  handleChange (event) {
+    if (event.target.name === 'Device_number') {
+      this.props.inputlog(event.target.value, '')
+    } 
+  }
   openModal() {
     this.setState({modalIsOpen: true})    
   }
@@ -55,9 +62,11 @@ export class Room extends React.Component {
           </div>
           <div>  
             <div> Current order : {this.props.test.order} </div>
-          
             <button> <Link to ='/examiner/start'>START!!</Link> </button>
             <button onClick={this.openModal}>Edit order</button>   
+            <button onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD DEVICE </button>
+            <input type="text" placeholder="Device number" style={ {width: '100%'} }name='Device_number' onChange={this.handleChange}/>
+            <button onClick={()=> {this.props.matchDevice(this.props.test.num, this.props.exam.username)}}>ADD DEVICE </button>
             <Modal
               isOpen={this.state.modalIsOpen}
               className='col-6 Modal--matching'
