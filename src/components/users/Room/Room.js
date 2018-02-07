@@ -32,7 +32,7 @@ export class Room extends React.Component {
             Current order : {this.props.test.order}
           </div>
         </div>
-        <div id="footer">
+        <div className="Exfooter">
           <button> <Link to ='/test'>GO BACK</Link> </button>
         </div>
       </div>   

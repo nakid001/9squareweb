@@ -39,8 +39,10 @@
     margin-right: auto;
   }
 }
-#footer {
-  margin-top: 5%;
+.Exfooter {
+  top: 0%;
+  margin-bottom: 10px; 
+  margin-top: 1%;   
   float: right;
   margin-right: 20%;
 }

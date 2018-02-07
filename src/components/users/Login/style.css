@@ -38,7 +38,7 @@
 }*/
 
 .log_in_content {
-	margin: auto;
+  width:65%;
 	text-align: center;
 }
 
@@ -64,10 +64,9 @@
 	outline: none;
 	border-bottom: 1px solid grey;
 }
-.loginBtn--text {
+.loginBtn--texts {
   color: #EDEDED;
-  margin-left: 16px;
-
+  margin-left: 25px;
 }
 .emailLoginBtn {
   box-sizing: border-box;
@@ -182,22 +181,6 @@
   /* background-color: #DD4B39; */
 }
 
-
-.loginBtn--twitter {
-  font-family: 'Roboto', Arial, sans-serif;
-  color: #EDEDED;
-  border: 2px solid #008CBF;
-  background-color: #008CBF;
-  position: relative;
-}
-.loginBtn--twitter:before {
-  /*border-right: #0A83AF 1px solid;*/
-  position: absolute;
-  top: 50%;
-  transform: translateY(-40%);
-  background: url('img/twitter_icon_white.png') 6px 6px no-repeat;
-  /* background-color: #008CBF; */
-}
 .loginIcon {
   width : 100px;
   max-width: 100px;
