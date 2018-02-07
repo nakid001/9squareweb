@@ -39,7 +39,7 @@ class ExRoomContainer extends React.Component {
         <div>
           <Room {...this.props} />
         </div>
-        )
+      )
       if (!this.props.test.num) {
         window.location = '/examiner/test'
       }
@@ -51,15 +51,15 @@ class ExRoomContainer extends React.Component {
                 <span>Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}
                   <button onClick={()=> {
                     that.props.setDeviceActive(childSnapshot.val().num, that.props.test.num)
-                    }}> Active/Inactive</button>
+                  }}> Active/Inactive</button>
                   <button onClick={()=> {
                     that.props.delDevice(childSnapshot.val().num, that.props.test.num)
-                    }}> Delete device </button>
+                  }}> Delete device </button>
                 </span>
               </div>
-                {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
+              {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
             </div>
-            )
+          )
           i++
         })
       }).then(() => {

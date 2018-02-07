@@ -8,7 +8,7 @@ import { regisfire } from '../../actions/user.js'
 import { showroom, addroom, setActive, delRoom, getRoomNum } from '../../actions/test.js'
 import {NavLink} from 'react-router-dom'
 import { Link } from 'react-router-dom'
-
+import './style.css'
 class ExTestContainer extends React.Component {
   componentWillMount() {
     let that = this
@@ -35,19 +35,21 @@ class ExTestContainer extends React.Component {
       firebase.database().ref('/rooms/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           room[i] = (
-            <div className='col-8 payment_itemDiv' key={i}>
-              <div className='payment_itemDiv--mid'>
-                <span><Link to ={'/examiner/test/room'}
-                  onClick={()=> {
-                    that.props.getRoomNum(childSnapshot.val().num)
-                  }}
-                >Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</Link>
-                <button onClick={()=> {
-                  that.props.setActive(childSnapshot.val().num)
-                }}> Active/Inactive</button>
-                <button onClick={()=> {
-                  that.props.delRoom(childSnapshot.val().num)
-                }}> Delete room </button>
+            <div key={i}>
+              <div>
+                <span><Link to ={'/examiner/test/room'} onClick={()=> {
+                  that.props.getRoomNum(childSnapshot.val().num)
+                }}>
+                  <div className='roomBtn'> Room:{childSnapshot.val().num}</div> 
+                </Link>
+                <div className="buttonSet">
+                  <button onClick={()=> {
+                    that.props.setActive(childSnapshot.val().num)
+                  }} > Active/Inactive</button>
+                  <button onClick={()=> {
+                    that.props.delRoom(childSnapshot.val().num)
+                  }}> Delete room </button>
+                </div>
                 </span>
               </div>
               {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
