@@ -75,24 +75,6 @@ export function showDevice(arr) {
   }
 }
 
-export function matchDevice(c, numMatch) {
-  let num = []
-  let updates = {}
-
-  firebase.database().ref('/devices/device' + numMatch).once('value', (snapshot) => {
-    console.log(snapshot.val().ava)
-    if (snapshot.val().ava === 'AVALIABLE') {
-      updates['/rooms/room' + c + '/devices/device'+numMatch] = {num : numMatch , ava : snapshot.val().ava }
-    }
-  }).then(() => {
-    firebase.database().ref().update(updates)  
-  })
-  return{
-    type:'MATCHDEVICE',
-    payload: 'MATCH DEVICE'
-  }
-}
-
 export function addDevice() {
   let i = 1
   firebase.database().ref('/devices/').once('value', (snapshot) => {
@@ -110,12 +92,31 @@ export function addDevice() {
   }
 }
 
+export function matchDevice(c, numMatch) {
+  let num = []
+  let updates = {}
+
+  firebase.database().ref('/devices/device' + numMatch).once('value', (snapshot) => {
+    console.log(snapshot.val().ava)
+    if (snapshot.val().ava === 'AVALIABLE') {
+      updates['/rooms/room' + c + '/devices/device'+numMatch] = {num : numMatch , ava : true }
+      updates['/devices/device' + numMatch] = {num : numMatch , ava : true}
+    }
+  }).then(() => {
+    firebase.database().ref().update(updates)  
+  })
+  return{
+    type:'MATCHDEVICE',
+    payload: 'MATCH DEVICE'
+  }
+}
+
 export function setDeviceActive(num, c) {
   firebase.database().ref('/rooms/room' + c + '/devices/device' + num).once('value', function (snapshot) {
-    if (snapshot.val().ava === 'AVALIABLE') {
-      firebase.database().ref('/rooms/room' + c + '/devices/device' + num).update({ava : 'NOT AVALIABLE'})
+    if (snapshot.val().ava) {
+      firebase.database().ref('/rooms/room' + c + '/devices/device' + num).update({ava : false})
     } else {
-      firebase.database().ref('/rooms/room' + c + '/devices/device' + num).update({ava : 'AVALIABLE', user: '', uid: ''})
+      firebase.database().ref('/rooms/room' + c + '/devices/device' + num).update({ava : true, user: '', uid: ''})
     }
   })
   return{
@@ -125,7 +126,14 @@ export function setDeviceActive(num, c) {
 }
 
 export function delDevice(num, c) {
+  let updates = []
+  updates['/devices/device' + num] = {num : num , ava : 'AVALIABLE'}
+  console.log(updates)
+  firebase.database().ref('/devices/device' + num).update({
+    ava: 'AVALIABLE'
+  })
   firebase.database().ref('/rooms/room' + c + '/devices/device' + num).remove()
+
   return{
     type:'DELDEVICE',
     payload: 'DELETE DEVICE'

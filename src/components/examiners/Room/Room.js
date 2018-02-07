@@ -66,7 +66,7 @@ export class Room extends React.Component {
             <button onClick={this.openModal}>Edit order</button>   
             <button onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD DEVICE </button>
             <input type="text" placeholder="Device number" style={ {width: '100%'} }name='Device_number' onChange={this.handleChange}/>
-            <button onClick={()=> {this.props.matchDevice(this.props.test.num, this.props.exam.username)}}>ADD DEVICE </button>
+            <button onClick={()=> {this.props.matchDevice(this.props.test.num, this.props.exam.username)}}>MATCH DEVICE </button>
             <Modal
               isOpen={this.state.modalIsOpen}
               className='col-6 Modal--matching'
