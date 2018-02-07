@@ -60,7 +60,14 @@ export function setActive(num) {
 }
 
 export function delRoom(num) {
-  firebase.database().ref('/rooms/room' + num).remove()
+  firebase.database().ref('rooms/room' + num + '/devices/').once('value', (snapshot) => {
+    snapshot.forEach((childSnapshot) => {
+      console.log(childSnapshot.key)
+      firebase.database().ref('devices/'+childSnapshot.key).update({ava: 'AVALIABLE'})
+    })
+  }).then(() => {
+    firebase.database().ref('/rooms/room' + num).remove()
+  })
   return{
     type:'DELROOM',
     payload: 'DELETE ROOM'

@@ -28,7 +28,7 @@ export class Test extends React.Component {
           <button onClick={()=> {
             this.props.addroom()} } className="addRoom">ADD ROOM 
           </button>
-          <button className="Exfooter"> <Link to ='/examiner'>GO BACK</Link> </button>
+          <button className="Exfooter"> <Link to ='/examiner/test'>GO BACK</Link> </button>
         </div>
       </div>   
     )
