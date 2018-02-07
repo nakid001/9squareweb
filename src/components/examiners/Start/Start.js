@@ -40,14 +40,14 @@ export class Start extends React.Component {
           <div className="content-wrap">
             <button onClick={() => {this.countdown()}}>START!</button>
             <div> TimeLeft : 
-              <div id='TimeCounter'> 
+            <div id='TimeCounter'> 
                     30 
-              </div>
+            </div>
             </div>
           </div>
         </div>
         <div id="footer">Footer</div>
-        <button> <Link to ='/test'>GO BACK</Link> </button>
+        <button> <Link to ='/examiner/test'>GO BACK</Link> </button>
       </div>   
     )
   }

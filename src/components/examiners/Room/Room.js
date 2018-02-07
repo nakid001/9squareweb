@@ -69,7 +69,7 @@ export class Room extends React.Component {
             <button onClick={()=> {this.props.matchDevice(this.props.test.num, this.props.exam.username)}}>MATCH DEVICE </button>
             <Modal
               isOpen={this.state.modalIsOpen}
-              className='col-6 Modal--matching'
+              className='Modal--matching'
               overlayClassName='Modal--matching--overlay'
               contentLabel='Example Modal'
               shouldCloseOnOverlayClick={true}
@@ -212,7 +212,7 @@ export class Room extends React.Component {
                 </div>
                 <div className='Modal_footer'>
                   <div>
-                    <button className='Modal_btn' onClick={() => {this.props.submitOrder(this.props.test.num, this.props.test.order)}}> Submit </button>
+                    <button className='Modal_btn' onClick={() => {this.props.submitOrder(this.props.test.num, this.props.test.order).then(this.closeModal())}}> Submit </button>
                     <button className='Modal_btn'  onClick={ () => { this.props.clearOrder() } }> Clear order</button>
                   </div>
                   <div>
