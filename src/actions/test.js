@@ -75,7 +75,7 @@ export function showDevice(arr) {
   }
 }
 
-export function addDevice() {
+export function addDevice(num) {
   let i = 1
   firebase.database().ref('/devices/').once('value', (snapshot) => {
     snapshot.forEach(() => {
@@ -102,9 +102,14 @@ export function matchDevice(c, numMatch) {
     }
     console.log(snapshot.val().ava)
     if (snapshot.val().ava === 'AVALIABLE') {
-      updates['/rooms/room' + c + '/devices/device'+numMatch] = {num : numMatch , ava : true }
-      updates['/devices/device' + numMatch] = {num : numMatch , ava : true}
+      updates['/rooms/room' + c + '/devices/device'+numMatch] = {num : numMatch , ava : true}
+      updates['/devices/device' + numMatch] = {num : numMatch , ava : 'ROOM'+c}
+    } else if (snapshot.val().ava === 'false') {
+      alert('DEVICE NOT AVALIABLE')
+    } else {
+      alert('DEVICE AT ' + snapshot.val().ava)
     }
+
   }).then(() => {
     firebase.database().ref().update(updates)  
   })
