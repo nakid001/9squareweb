@@ -15,7 +15,7 @@ export class Aboutus extends Component {
   render() {
     return (
       <div>
-        <div id="footer">
+        <div>
           <div className='footer'>
             <div className='head_footer_content'> About us </div>
             <div className='footer_content'> Create and develop by Parut Singhapun </div> 
