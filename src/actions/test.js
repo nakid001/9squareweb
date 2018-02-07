@@ -95,8 +95,11 @@ export function addDevice() {
 export function matchDevice(c, numMatch) {
   let num = []
   let updates = {}
-
   firebase.database().ref('/devices/device' + numMatch).once('value', (snapshot) => {
+    if (!snapshot.val()) {
+      alert('NO DEVICE AVALIABLE')
+      return null
+    }
     console.log(snapshot.val().ava)
     if (snapshot.val().ava === 'AVALIABLE') {
       updates['/rooms/room' + c + '/devices/device'+numMatch] = {num : numMatch , ava : true }
