@@ -34,20 +34,24 @@ class ExTestContainer extends React.Component {
       )
       firebase.database().ref('/rooms/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
+          const RoomeBtn = childSnapshot.val().ava ? 'RoomAvaBtn' : 'RoomNotAvaBtn'   
           room[i] = (
             <div key={i}>
               <div>
                 <span><Link to ={'/examiner/test/room'} onClick={()=> {
                   that.props.getRoomNum(childSnapshot.val().num)
                 }}>
-                  <div className='roomBtn'> Room:{childSnapshot.val().num}</div> 
+                  <div className={RoomeBtn}> Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</div> 
                 </Link>
                 <div className="buttonSet">
                   <button onClick={()=> {
                     that.props.setActive(childSnapshot.val().num)
                   }} > Active/Inactive</button>
                   <button onClick={()=> {
-                    that.props.delRoom(childSnapshot.val().num)
+                    let answer = window.confirm('WARNING! You are deleting room ' + childSnapshot.val().num + ' Continue?')
+                    if (answer) {
+                      that.props.delRoom(childSnapshot.val().num)
+                    }
                   }}> Delete room </button>
                 </div>
                 </span>

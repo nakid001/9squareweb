@@ -14,28 +14,36 @@
     cursor: pointer;
     width: 75%;
     margin-left: 15%;
+    margin-top: 1%;
   }
-  .DeviceAvaBtn {
+  .RoomAvaBtn {
     border-radius: 25px;    
     color: black;
+    background: #69BADA;
+    border: 2px solid ;
+    height: 45px;    
+    font-size: 24px;    
+    text-align: center;
+    cursor: pointer;
+    width: 75%;
+    margin-left: 15%;
+    margin-top: 1%;
     background: #0CE61E;
-    border: 2px solid ;
-    height: 45px;    
-    font-size: 24px;    
-    text-align: center;
-    width: 100%;
-    cursor: pointer;
+
   }
-  .DeviceNotAvaBtn {
+  .RoomNotAvaBtn {
     border-radius: 25px;    
     color: black;
-    background: #E60C0C;
+    background: #69BADA;
     border: 2px solid ;
     height: 45px;    
     font-size: 24px;    
     text-align: center;
-    width: 100%;
     cursor: pointer;
+    width: 75%;
+    margin-left: 15%;
+    margin-top: 1%;
+    background: #E60C0C;
   }
   @media only screen and (max-width: 400px) {
     .roomBtn, .DeviceAvaBtn, .DeviceNotAvaBtn {
