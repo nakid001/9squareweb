@@ -7,6 +7,11 @@
     width: 320px;
   }
 }
+@media only screen and (min-width: 768px) {
+  .Modal--matching {
+    width: 50%;
+  }
+}
 @font-face { font-family: SanamDeklen_chaya; src: url('./SanamDeklen_chaya/SanamDeklen_chaya.otf'); } 
 @font-face { font-family: SanamDeklen_chaya; font-weight: bold; src: url('./SanamDeklen_chaya/SanamDeklen_chaya.ttf');}
 #header,
@@ -49,7 +54,6 @@
     /*overflow: auto;*/
     height: 75%;
     border-radius: 4px;
-    
   }
   .Modal--matching--overlay {     /* Below layer of Modal Box */
     top: 0;

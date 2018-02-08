@@ -142,14 +142,12 @@ export class Home extends Component {
           <div>
             <Modal
               isOpen={this.state.modalIsOpen}
-              className='col-6 Modal--matching'
+              className='Modal--matching'
               overlayClassName='Modal--matching--overlay'
               contentLabel='Example Modal'
               shouldCloseOnOverlayClick={true}
               role='dialog'
             >
-              <div className='Modal_space'>
-              </div>
               <div className='Modal--matching--content' >
                 <div className='Modal--matching--header'>
                   <div className='Modal--matching--close' onClick={this.closeModal}  onKeyPress={this.handlePress}>&times;</div>
