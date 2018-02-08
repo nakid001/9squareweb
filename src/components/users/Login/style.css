@@ -39,7 +39,8 @@
 
 .log_in_content {
   width:65%;
-	text-align: center;
+  text-align: center;
+  margin: auto;
 }
 
 .log_in_content::after {

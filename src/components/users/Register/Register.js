@@ -49,8 +49,8 @@ export class Register extends React.Component {
   render () {
     return (
       <div id='wrapper'>
-        <div className='col-4'></div>
-        <div className='col-4 sign_up_content'>
+        <div className=''></div>
+        <div className=' sign_up_content'>
           <p className='signup_headerText'>Sign Up</p>
           {/* <form action='' id='uesr_login_form'>
             <input type='text' placeholder='E-mail or username' className='typebox' name='User' onChange={this.handleChange}/>
@@ -68,7 +68,7 @@ export class Register extends React.Component {
           <p className='col-12 signUpDivider'/>
           <div className='col-12'><p className='guideText'>Already have an account? <span><NavLink key='10' activeClassName='active' to='/login' id='signUpLink'>Log In</NavLink></span></p></div>
         </div>
-        <div className='col-4'></div>
+        <div className=''></div>
       </div>
     )
   }

@@ -38,8 +38,9 @@
 }*/
 
 .log_in_content {
-	margin: auto;
-	text-align: center;
+  width:65%;
+  text-align: center;
+  margin: auto;
 }
 
 .log_in_content::after {
@@ -226,3 +227,6 @@
 .loginBtn--twitter:focus {
   background: #0fA4DB;
 } */
+.space {
+  height: 10px;
+}

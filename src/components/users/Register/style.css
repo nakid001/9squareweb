@@ -34,10 +34,9 @@
 }
 
 .sign_up_content {
-	margin: auto;
-	/*width: 60%;
-	padding: 2em;*/
-	text-align: center;
+  width:65%;
+  text-align: center;
+  margin: auto;
 }
 
 .sign_up_content::after {

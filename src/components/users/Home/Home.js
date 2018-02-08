@@ -164,7 +164,7 @@ export class Home extends Component {
             </Modal>
           </div>
         </div>
-        <div id="main-wrap" className="background_2">
+        <div id="main-wrap" className="">
           <div className='box_content'>
               ด้วยกระบวนการรับผลตรวจสอบและแสดงผลที่เห็นได้ชัดทำให้เกิดการพัฒนาที่รวดเร็วต่อผู้ทดสอบ
           </div>
