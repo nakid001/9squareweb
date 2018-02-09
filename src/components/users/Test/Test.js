@@ -30,7 +30,7 @@ export class Test extends React.Component {
             {this.props.test.room}
           </div>
         </div>
-        <div id="footer">
+        <div className="Exfooter">
           <button> <Link to ='/'>GO BACK</Link> </button>
         </div>
       </div>   

@@ -13,7 +13,8 @@ export class Room extends React.Component {
       roomtest: '',
       device: [],
       num: 0,
-      order: []
+      order: [],
+      deviceNumber: 0
     }
     this.state = {
         
@@ -22,8 +23,14 @@ export class Room extends React.Component {
     this.openModal = this.openModal.bind(this)
     this.afterOpenModal = this.afterOpenModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
-   
+
+  handleChange (event) {
+    if (event.target.name === 'Device_number') {
+      this.props.inputlog(event.target.value, '')
+    } 
+  }
   openModal() {
     this.setState({modalIsOpen: true})    
   }
@@ -48,21 +55,27 @@ export class Room extends React.Component {
   render () {
     return (
       <div id='home_wrapper'>
-        <div id="header">{'ROOM '+this.props.test.num}</div>
-        <div id="main-wrap">
+        <div id="header" className="title_content">ห้องทดสอบ {this.props.test.num}</div>
+        <div>
           <div className="header_content">
-            Device List
             {this.props.test.device}
           </div>
           <div>  
-            <div> Current order : {this.props.test.order} </div>
-          
-            <button> <Link to ='/examiner/start'>START!!</Link> </button>
-            <button onClick={this.openModal}>Edit order</button>   
-            <button onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD DEVICE </button>
+            <div className = 'Room_content'>
+              <div> 
+                Current order : {this.props.test.order}
+                <button onClick={this.openModal}>Edit order</button>   
+              </div>
+              <div className="Matching_Device">
+                Matching device number : 
+                <input type="text" placeholder="Device number" style={ {width: '50%'} }name='Device_number' onChange={this.handleChange}/>
+                <button className="Matching_Device_Button" onClick={()=> {this.props.matchDevice(this.props.test.num, this.props.exam.username)}}>MATCH DEVICE </button>
+              </div>
+
+            </div>
             <Modal
               isOpen={this.state.modalIsOpen}
-              className='col-6 Modal--matching'
+              className='Modal--matching'
               overlayClassName='Modal--matching--overlay'
               contentLabel='Example Modal'
               shouldCloseOnOverlayClick={true}
@@ -205,7 +218,7 @@ export class Room extends React.Component {
                 </div>
                 <div className='Modal_footer'>
                   <div>
-                    <button className='Modal_btn' onClick={() => {this.props.submitOrder(this.props.test.num, this.props.test.order)}}> Submit </button>
+                    <button className='Modal_btn' onClick={() => {this.props.submitOrder(this.props.test.num, this.props.test.order).then(this.closeModal())}}> Submit </button>
                     <button className='Modal_btn'  onClick={ () => { this.props.clearOrder() } }> Clear order</button>
                   </div>
                   <div>
@@ -216,8 +229,9 @@ export class Room extends React.Component {
             </Modal>
           </div>
         </div>
-        <div id="footer">Footer</div>
-        <button> <Link to ='/examiner/test'>GO BACK</Link> </button>
+        <button className="Exfooter"> <Link to ='/examiner/test'>GO BACK</Link> </button>
+        <button className="Exfooter"> <Link to ='/examiner/start'>START!!</Link> </button> 
+        <button className="Exfooter"  onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD MORE DEVICE (ADMIN ) </button>
       </div>   
     )
   }

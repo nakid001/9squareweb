@@ -1,0 +1,67 @@
+.buttonSet {
+  text-align: center;
+}
+.col-12 {width: 100%;}
+
+.roomBtn {
+    border-radius: 25px;    
+    color: black;
+    background: #69BADA;
+    border: 2px solid ;
+    height: 45px;    
+    font-size: 24px;    
+    text-align: center;
+    cursor: pointer;
+    width: 75%;
+    margin-left: 15%;
+    margin-top: 1%;
+  }
+  .RoomAvaBtn {
+    border-radius: 25px;    
+    color: black;
+    background: #69BADA;
+    border: 2px solid ;
+    height: 45px;    
+    font-size: 24px;    
+    text-align: center;
+    cursor: pointer;
+    width: 75%;
+    margin-left: 15%;
+    margin-top: 1%;
+    background: #0CE61E;
+
+  }
+  .RoomNotAvaBtn {
+    border-radius: 25px;    
+    color: black;
+    background: #69BADA;
+    border: 2px solid ;
+    height: 45px;    
+    font-size: 24px;    
+    text-align: center;
+    cursor: pointer;
+    width: 75%;
+    margin-left: 15%;
+    margin-top: 1%;
+    background: #E60C0C;
+  }
+  @media only screen and (max-width: 400px) {
+    .roomBtn, .DeviceAvaBtn, .DeviceNotAvaBtn {
+      font-size: 20px;
+      margin-left: 15%;
+    }
+  }
+  .loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

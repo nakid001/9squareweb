@@ -7,38 +7,38 @@
     width: 320px;
   }
 }
+@media only screen and (min-width: 768px) {
+  .Modal--matching {
+    width: 50%;
+  }
+}
 @font-face { font-family: SanamDeklen_chaya; src: url('./SanamDeklen_chaya/SanamDeklen_chaya.otf'); } 
 @font-face { font-family: SanamDeklen_chaya; font-weight: bold; src: url('./SanamDeklen_chaya/SanamDeklen_chaya.ttf');}
 #header,
 #footer {
     min-height: 40px;
+    width: 100%;
+    height: 100%;
 }
 
 /* layout */
-#main-wrap {
-    /* overflow to handle inner floating block */
-    overflow: hidden;
-}
-
-#sidebar {
-    float: left;
-    width: 30%;
-}
-
-#content-wrap {
-    float: right;
-    width: 65%;
-    font-family: SanamDeklen_chaya;      
-}
 .box_content {
   padding-top: 10px;
   padding-left: 10px;
   border: 1px solid rgba(83, 83, 83, 0.678);
   height: 390px;
 }
+.background_1 {
+  background-image: url('./img/a3aa4293d47b1d0e.jpg');
+  background-size: cover;
+}
+.background_2 {
+  background-image: url('./img/images.jpg');
+  background-size: cover;
+}
+
 .title_content {
-  background-color : rgb(11, 211, 151) ;
-  font-family: SanamDeklen_chaya;  
+  background-color : rgb(11, 211, 151) ;  
   font-size: 32px;
   text-align: center;
   border: 3px  #123412;
@@ -53,7 +53,6 @@
     bottom: 0;
     /*overflow: auto;*/
     height: 75%;
-    background-color : #EAE6C7;
     border-radius: 4px;
   }
   .Modal--matching--overlay {     /* Below layer of Modal Box */
@@ -61,7 +60,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1; 
+    z-index: 40; 
     position: fixed;
     background-color: rgba(0, 0, 0, 0.75);
   }
@@ -86,10 +85,10 @@
     text-decoration: none;
     cursor: pointer;
     user-select: none;
+    z-index: 1;
   }
   .Modal--matching--body {
     position: relative;
-    margin: auto;
     height: 70%;
     padding: 8px;
     background-color: #EFEFEF;  
@@ -132,22 +131,22 @@
   }
   .TestIcon {
     width: 70%;
-    height: 100%;
+    height: 95%;
     position: absolute;
-    top: 30%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
   .footer {
     background-color: grey;
     text-align: center;    
-    height: 100px;
+    width: 100%;
   }
   .head_footer_content {
     padding: 15px;
     font-size: 26px;
     text-align: center;
   }
-  .footer_content{
- 
+  .Modal_space {
+    margin-top: 100px
   }

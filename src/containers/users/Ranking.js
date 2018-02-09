@@ -12,7 +12,6 @@ class RankingContainer extends React.Component {
     let that = this
     let arr = []
     let set = []
-    let i = 0 
     let mykey = []
     let myset = []
     let mystep = []
@@ -31,7 +30,6 @@ class RankingContainer extends React.Component {
                 i++
               }
             })
-
           })
         }).then(() => {
           that.props.getranking(arr, mykey, user)
@@ -41,9 +39,7 @@ class RankingContainer extends React.Component {
               mykey = snapshot.key
               snapshot.forEach( (childSnapshot) => {
                 set[j,k] = childSnapshot.val().set
-                data[j,k] = {set: set[j,k]}
                 if (childSnapshot.val().set === myset[j] && childSnapshot.val().step === mystep[j]) {
-                  console.log(mykey) 
                   mypos = k
                 }
                 k++
@@ -53,22 +49,21 @@ class RankingContainer extends React.Component {
               let ranks = set.slice().map((v) => { return sorted.indexOf(v)+1 })
               set = set.sort()
               data = []
-              console.log(set + 'ya' + j + k)
               for (let x = 0; x < set.length; x++) {
                 data[x] = {set: set[j,x]}
               }
               set = []
-              arr[i] = (
-                <div key={i} style={{'width': '100%'}}>
+              arr[j] = (
+                <div key={j} style={{'width': '100%'}}>
                   <div>{'Test key: ' + mykey}</div>
                   <div>{' RANK NUMBER: ' + ranks[mypos]}</div>
                   <div>{'Step: ' + mystep[j] + ' Set: ' + myset[j]}</div>
-                  <BarChart width={730} height={250} data={data} >
+                  <BarChart width={375} height={250} data={data} >
                     <CartesianGrid strokeDasharray="3 3" />
                     <XAxis dataKey="set" />
                     <YAxis  value= "100"/>
-                    <Tooltip />
                     <Bar dataKey="set" fill="#8884d8" />
+                    <Tooltip />
                   </BarChart>
                 </div>
               )
@@ -92,9 +87,7 @@ class RankingContainer extends React.Component {
       )
     } else {
       content = (
-        <div>
-          Loading . . .
-        </div>
+        <div className="loader"></div>
       )
     }
     return content    

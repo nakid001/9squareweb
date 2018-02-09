@@ -25,3 +25,8 @@
 .header_content {
   border: 3px  #123412;
 }
+.Exfooter {
+    margin-bottom: 10px;    
+    float: right;
+    margin-right: 20%;
+}

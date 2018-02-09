@@ -31,8 +31,7 @@ export class Login extends React.Component {
   render () {
     return (
       <div id='wrapper'>
-        <div className='col-4'></div>
-        <div className='col-4 log_in_content'>
+        <div className='log_in_content'>
           <p className='login_headerText'>Log In</p>
           <div style={ {marginTop: '24px'} }>
             <input type="text" className="form-input" placeholder="Phone number or email" style={ {width: '100%'} }name='User' onChange={this.handleChange} onKeyPress={this.handlePress}/>
@@ -41,11 +40,10 @@ export class Login extends React.Component {
           </div>
           <button className='col-12 emailLoginBtn' onClick={ () => { this.props.loginfire(this.props.user.username, this.props.user.password) } }><span className='loginBtn--text'>Submit</span></button>
           <p className='col-12 loginDivider'/>
-          <button className='col-12 loginBtn loginBtn--google' onClick={ () => { this.props.logingmail() } }><span className='loginBtn--text'>Google</span></button>
+          <button className='col-12 loginBtn loginBtn--google' onClick={ () => { this.props.logingmail() } }><span className='loginBtn--texts'>Google</span></button>
           <p className='col-12 loginDivider'/>
           <div className='col-12'><p className='guideText'>Don't have an account? <span><NavLink key='10' activeClassName='active' to='/register' id='signUpLink'>Sign Up</NavLink></span></p></div>
         </div>
-        <div className='col-4'></div>
       </div>
     )
   }
