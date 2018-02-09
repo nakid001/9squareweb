@@ -46,7 +46,6 @@ function getRoomnumber() {
 function insertEvent(topic,payload) {  
   let key=topic.replace(deviceRoot,'')
   console.log(payload.toString())
-  console.log(order.length + 'len')
   if (start === 'START') {
     if (payload.toString() === order[count]) {
       count++

@@ -3,15 +3,15 @@
 #include <PubSubClient.h>
 
 // Update these with values suitable for your network.
-const char* ssid = "Songpon";
-const char* password = "0818059521";
+const char* ssid = "KUWIN";
+const char* password = "";
 
 // Config MQTT Server
-#define mqtt_server "192.168.1.40"
+#define mqtt_server "158.108.181.230"
 #define mqtt_port 1883
 #define mqtt_user "admin"
 #define mqtt_password "password"
-
+#define TOPIC1 "/room1/dev1"
 #define LED_PIN 2
 
 WiFiClient espClient;
@@ -28,7 +28,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.println("Send !");
     return;
   }
-  digitalWrite(LED_PIN, (msg == "LEDON" ? HIGH : LOW));
   Serial.println(msg);
 }
 void setup() {
@@ -54,7 +53,7 @@ void setup() {
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
   
-  client.setServer("192.168.1.41", 1883);
+  client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
 }
 
@@ -80,6 +79,7 @@ void loop() {
     if (buttonState1 == HIGH) {
       // turn LED on:
       Serial.println("1HIGH");
+      client.publish(TOPIC1,"1");    
     } else {
       // turn LED off:
       Serial.println("1LOW");
@@ -88,6 +88,7 @@ void loop() {
     }
     if (buttonState2 == HIGH) {
       // turn LED on:
+      client.publish(TOPIC1,"2");    
       Serial.println("2HIGH");
     } else {
       // turn LED off:
