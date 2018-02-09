@@ -8,11 +8,19 @@ const char* ssid = "KUWIN";
 const char* password = "";
 
 // Config MQTT Server
+<<<<<<< HEAD
 #define mqtt_server "158.108.43.150"
 #define mqtt_port 1883
 #define mqtt_user "admin"
 #define mqtt_password "password"
 #define TOPIC1 "/dev1"
+=======
+#define mqtt_server "158.108.181.230"
+#define mqtt_port 1883
+#define mqtt_user "admin"
+#define mqtt_password "password"
+#define TOPIC1 "/room1/dev1"
+>>>>>>> c88fa8c9d6ae85568a60e2ba4e297f6174106bd1
 #define LED_PIN 2
 
 WiFiClient espClient;
@@ -29,7 +37,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
     Serial.println("Send !");
     return;
   }
-  digitalWrite(LED_PIN, (msg == "LEDON" ? HIGH : LOW));
   Serial.println(msg);
 }
 void setup() {
@@ -81,7 +88,11 @@ void loop() {
     if (buttonState1 == HIGH) {
       // turn LED on:
       Serial.println("1HIGH");
+<<<<<<< HEAD
       client.publish(TOPIC1, "1");
+=======
+      client.publish(TOPIC1,"1");    
+>>>>>>> c88fa8c9d6ae85568a60e2ba4e297f6174106bd1
     } else {
       // turn LED off:
       Serial.println("1LOW");
@@ -90,7 +101,11 @@ void loop() {
     }
     if (buttonState2 == HIGH) {
       // turn LED on:
+<<<<<<< HEAD
       client.publish(TOPIC1, "2");
+=======
+      client.publish(TOPIC1,"2");    
+>>>>>>> c88fa8c9d6ae85568a60e2ba4e297f6174106bd1
       Serial.println("2HIGH");
     } else {
       // turn LED off:
