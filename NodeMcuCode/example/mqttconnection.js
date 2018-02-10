@@ -103,12 +103,14 @@ function getDataFirebase (roomnum) {
           })
           console.log('result = ' + result)
         }).then(() => {
-          for (let j = 0; j < usr.length; j++) {
-            firebase.database().ref('/history/' + Date() + '/' + usr[j]).set  ({
-              step : result[j].step,
-              set : result[j].set
-            })
-          }
+          let uname = '' 
+          firebase.database().ref('/devices/device1').once('value', (snapshot) => {
+            uname=snapshot.val().last_user
+          })
+          firebase.database().ref('/history/' + Date() + '/' + uname).set  ({
+            step : result[j].step,
+            set : result[j].set
+          })
           firebase.database().ref('/rooms/room' + roomnum).update({
             start: 'READY'
           })
