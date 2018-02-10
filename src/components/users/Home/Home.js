@@ -183,6 +183,21 @@ export class Home extends Component {
               <img src={boximg2} alt={'BOX IMAGE'}  className="box_image"/>
               <img src={boximg3} alt={'BOX IMAGE'}  className="box_image"/>
             </div>
+            <div className = 'box_content_head'>
+              <div className = 'box_content_text'>
+              เรามีระบบที่จะช่วยให้นักกีฬา และผู้คุมการทดสอบได้ใช้ในการประเมิณศักยภาพของนักกีฬาอย่างถูกต้องและเหมาะสม
+              </div>
+            </div>
+            <div className = 'box_content_head'>
+              <div className = 'box_content_text'>
+              นอกจากระบบตรวจสอบการประเมิณศักยภาพแล้ว เรายังมีระบบที่ช่วยในการจัดเก็บข้อมูลผลลัพธ์การทดสอบ เพื่อที่จะนำมาใช้ดูพัฒนาการของผู้ทดสอบได้อีกด้วย
+              </div>
+            </div>
+            <div className = 'box_content_head'>
+              <div className = 'box_content_text'>
+              เรายังมีระบบที่จะช่วยในการเปรียบเทียบและคาดคะเน ความสามารถของนักกีฬากับผู้ร่วมทดสอบท่านอื่นๆซึ่งทำให้นักกีฬาคนนั้นๆสามารถรับรู้ได้ถึงความสามารถของตนเองทียบกับผู้อื่น
+              </div>
+            </div>
           </div>
         </div>
         <div>
