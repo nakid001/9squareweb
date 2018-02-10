@@ -20,10 +20,18 @@
     background-color: orange; 
   } 
 } */
-@media only screen and (max-width: 320px) {
-  #wrapper {
+@media only screen and (max-width: 433px) {
+  #rank_wrapper {
     margin-left: auto;
     margin-right: auto;
-    width: 320px;
+    width: 433px;
   }
+}
+
+#rank_wrapper {
+  background-color: rgb(217, 221, 221);
+}
+.rank_button {
+  position: relative;
+  margin-left: 280px;
 }

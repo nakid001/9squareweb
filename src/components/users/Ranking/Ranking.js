@@ -1,6 +1,7 @@
 import React from 'react'
 import {NavLink, HashRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import bg from './img/ranking_background.jpg'
 import './style.css'
 
 export class Ranking extends React.Component {
@@ -22,15 +23,11 @@ export class Ranking extends React.Component {
 
   render () {
     return (
-      <div id='wrapper'>
+      <div id="rank_wrapper">
         <div id="header" className="title_content">{'Ranking'}</div>
         <div className="rank_content">
-          <div>
-            {this.props.user.ranking}
-          </div>
-        </div>
-        <div id="footer">
-          <button> <Link to ='/test'>GO BACK</Link> </button>
+          {this.props.user.ranking}
+          <button className="rank_button"> <Link to ='/'>GO BACK</Link> </button>
         </div>
       </div>   
     )
