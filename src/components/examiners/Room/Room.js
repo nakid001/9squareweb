@@ -1,10 +1,9 @@
 import React from 'react'
 import {NavLink, HashRouter} from 'react-router-dom'
 import Modal from 'react-modal'
-
 import { Link } from 'react-router-dom'
-
 import './style.css'
+import bg from './img/room_background.jpg'
 
 export class Room extends React.Component {
   constructor (props) {
@@ -56,11 +55,10 @@ export class Room extends React.Component {
     return (
       <div id='home_wrapper'>
         <div id="header" className="title_content">ห้องทดสอบ {this.props.test.num}</div>
-        <div>
-          <div className="header_content">
+        <div  className="room_body">
+          <img src ={bg} className="room_body_background"/>
+          <div className="room_content">
             {this.props.test.device}
-          </div>
-          <div>  
             <div className = 'Room_content'>
               <div> 
                 Current order : {this.props.test.order}
@@ -71,8 +69,12 @@ export class Room extends React.Component {
                 <input type="text" placeholder="Device number" style={ {width: '50%'} }name='Device_number' onChange={this.handleChange}/>
                 <button className="Matching_Device_Button" onClick={()=> {this.props.matchDevice(this.props.test.num, this.props.exam.username)}}>MATCH DEVICE </button>
               </div>
-
+              <button className="Exfooter"> <Link to ='/examiner/test'>GO BACK</Link> </button>
+              <button className="Exfooter"> <Link to ='/examiner/start'>START!!</Link> </button> 
+              <button className="Exfooter"  onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD MORE DEVICE (ADMIN ) </button>
             </div>
+          </div>
+          <div>  
             <Modal
               isOpen={this.state.modalIsOpen}
               className='Modal--matching'
@@ -229,9 +231,6 @@ export class Room extends React.Component {
             </Modal>
           </div>
         </div>
-        <button className="Exfooter"> <Link to ='/examiner/test'>GO BACK</Link> </button>
-        <button className="Exfooter"> <Link to ='/examiner/start'>START!!</Link> </button> 
-        <button className="Exfooter"  onClick={()=> {this.props.addDevice(this.props.test.num)}}>ADD MORE DEVICE (ADMIN ) </button>
       </div>   
     )
   }

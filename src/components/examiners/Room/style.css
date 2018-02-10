@@ -135,6 +135,8 @@
       font-family: SanamDeklen_chaya;      
   }  
   .Room_content {
+    background-color: #E0E0E0;
+    opacity: 0.9;
     margin: 10%;
     margin-top: 5%;
     margin-bottom: 0%;
