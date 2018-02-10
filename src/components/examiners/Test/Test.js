@@ -20,9 +20,6 @@ export class Test extends React.Component {
           <div className="header_content">
             {this.props.test.room}
           </div>
-          <div id="content-wrap">
-          </div>
-
         </div>
         <div>
           <button onClick={()=> {

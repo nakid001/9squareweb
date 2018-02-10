@@ -47,7 +47,7 @@ class RoomContainer extends React.Component {
           const DeviceBtn = childSnapshot.val().ava ? 'DeviceAvaBtn' : 'DeviceNotAvaBtn'   
           const userID = childSnapshot.val().user       
           device[i] = (
-            <div className='col-8' key={i}>
+            <div className='' key={i}>
               <div className='payment_itemDiv--mid'>
                 <span>
                   <p className='col-12'/>

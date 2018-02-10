@@ -26,9 +26,11 @@ export class Room extends React.Component {
     return (
       <div id='home_wrapper'>
         <div id="header" className="title_content">{'ROOM '+this.props.test.num}</div>
+        <div>
+          {this.props.test.device}
+        </div>
         <div className="room_content">
           <div>
-            {this.props.test.device}
             Current order : {this.props.test.order}
           </div>
         </div>

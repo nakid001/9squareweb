@@ -25,13 +25,15 @@ export class Test extends React.Component {
     return (
       <div id='wrapper'>
         <div id="header" className="title_content">เลือกสถานที่ทดสอบ</div>
-        <div className="test_content">
-          <div>
-            {this.props.test.room}
+        <div className="test_body">
+          <div className="test_content">
+            <div>
+              {this.props.test.room}
+            </div>
           </div>
-        </div>
-        <div className="Exfooter">
-          <button> <Link to ='/'>GO BACK</Link> </button>
+          <div className="Exfooter">
+            <button> <Link to ='/'>GO BACK</Link> </button>
+          </div>
         </div>
       </div>   
     )

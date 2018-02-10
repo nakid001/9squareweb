@@ -37,12 +37,12 @@ class TestContainer extends React.Component {
           if (childSnapshot.val().ava) {
             room[i] = (
               <div key={i}>
-                <div className='col-8'>
+                <div>
                   <span><Link to ={'/test/room'} onClick={()=> {
                     that.props.getRoomNum(childSnapshot.val().num)
                   }}>
                     <p className='col-12'/>
-                    <div className='col-12 roomBtn'> Room:{childSnapshot.val().num}</div> 
+                    <div className='roomBtn'> Room:{childSnapshot.val().num}</div> 
                   </Link>
                   </span>
                 </div>

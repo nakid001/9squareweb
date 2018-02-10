@@ -11,9 +11,6 @@
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
 
-.test_content{
-  margin-left: 280px;
-}
 
 @media only screen and (max-width: 768px) {
   [class*='col-'] {
@@ -39,10 +36,9 @@
     margin-right: auto;
   }
 }
-#footer {
-  margin-top: 5%;
-  float: right;
-  margin-right: 20%;
+.test_body {
+  background-image: url('./img/test_background.jpg');
+  background-size: 100%;
 }
 .Exfooter {
   top: 0%;
