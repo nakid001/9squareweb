@@ -19,11 +19,7 @@
   .typebox {
     width: 92%;
   }
-  .test_content{
-    margin-left: 30%;
   }
-
-}
 /* @media only screen and (max-width: 500px) {
    #loginButton {
     font-size: 12px;
@@ -37,8 +33,20 @@
   }
 }
 .test_body {
-  background-image: url('./img/test_background.jpg');
-  background-size: 100%;
+  position: relative;
+  text-align: center;
+  color: white;
+  height: 100vh;
+}
+.test_body_background {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.test_content {
+  position: absolute;
+  top: 0%;
+  width: 100%;
 }
 .Exfooter {
   top: 0%;
