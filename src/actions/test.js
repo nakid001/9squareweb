@@ -199,6 +199,9 @@ export function matchUserDevice (email, uid, room, num) {
     uid : uid,
     ava : false
   })
+  firebase.database().ref( '/devices/device' + num).update ({
+    last_user: uid
+  })
   return {
     type:'MATCHUSERDEVICE',
     payload: 'MATCHING USER AND DEVICE  '

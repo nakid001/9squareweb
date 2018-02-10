@@ -3,7 +3,7 @@ let mqtt = require('mqtt') //includes mqtt server
 let mongodb = require('mongodb') // includes mongoDB 
 let mongodbClient = mongodb.MongoClient //initialises the mongoDB client
 let mongodbURI = 'mongodb://127.0.0.1:27017/db' //activating the MongoDB port 27017, here TempMontor is the name of the database
-let deviceRoot = '/dev1' //deviceroot is topic name given in arduino code 
+let deviceRoot = '/dev/' //deviceroot is topic name given in arduino code 
 let collection,client //initialise collection and client
 let order = []
 let start = false
@@ -25,7 +25,7 @@ mongodbClient.connect(mongodbURI, (err, database) => {
   db=database.db('mydb')
   collection=db.collection('real') //name of the collection in the database
   client=mqtt.connect({ host: 'localhost', port: 1883 }) //connecting the mqtt server with the MongoDB database
-  client.subscribe(deviceRoot) //subscribing to the topic name 
+  client.subscribe(deviceRoot+'+') //subscribing to the topic name 
   client.on('message', insertEvent)
 })
 
@@ -73,6 +73,10 @@ function getDataFirebase (roomnum) {
   },  (errorObject) => {
     console.log('The read failed: ' + errorObject.code)
   })
+  let uname = '' 
+  firebase.database().ref('/devices/device1').once('value', (snapshot) => {
+    uname=snapshot.val().last_user
+  })
   firebase.database().ref('/rooms/room' + roomnum +'/start/').on('value', (snapshot) => {
     start = snapshot.val()
     if (start === 'START') {
@@ -103,13 +107,9 @@ function getDataFirebase (roomnum) {
           })
           console.log('result = ' + result)
         }).then(() => {
-          let uname = '' 
-          firebase.database().ref('/devices/device1').once('value', (snapshot) => {
-            uname=snapshot.val().last_user
-          })
           firebase.database().ref('/history/' + Date() + '/' + uname).set  ({
-            step : result[j].step,
-            set : result[j].set
+            step : result[0].step,
+            set : result[0].set
           })
           firebase.database().ref('/rooms/room' + roomnum).update({
             start: 'READY'

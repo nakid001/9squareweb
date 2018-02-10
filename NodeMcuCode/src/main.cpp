@@ -12,7 +12,7 @@ const char* password = "";
 #define mqtt_port 1883
 #define mqtt_user "admin"
 #define mqtt_password "password"
-#define TOPIC1 "/dev1"
+#define TOPIC1 "/dev/1"
 #define LED_PIN 2
 
 WiFiClient espClient;
