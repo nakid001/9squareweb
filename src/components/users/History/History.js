@@ -25,14 +25,13 @@ export class History extends React.Component {
                 <th>Set</th>
                 <th>Step</th>
               </tr>
-              {//this.props.user.history
-              }
-              MAINTAINECE!
+              { this.props.user.history }
             </table>
           </div>
+        </div>
+        <div className="Exfooter">
           <button> <Link to ='../'>GO BACK</Link> </button>
         </div>
-        <div id="footer">Footer</div>
       </div>   
     )
   }

@@ -14,17 +14,20 @@ class HistoryContainer extends React.Component {
         let history = []
         if (firebase.auth().currentUser) {
           let i = 0
-          firebase.database().ref('/users/' + firebase.auth().currentUser.uid + '/history/').once('value', function (snapshot) {
-            snapshot.forEach(function (childSnapshot) {
-              console.log(childSnapshot.val())
-              history[i] = (
-                <tr key={i}>
-                  <td>{childSnapshot.key}</td>
-                  <td>{childSnapshot.val().step}</td>
-                  <td>{childSnapshot.val().set}</td>
-                </tr>
-              )
-              i++
+          firebase.database().ref('/history').once('value', (snapshot) => {
+            snapshot.forEach((childSnapshot) => {
+              childSnapshot.forEach((youngSnapshot) => {
+                if (youngSnapshot.key === firebase.auth().currentUser.uid) {
+                  history[i] = (
+                    <tr key={i}>
+                      <td>{ childSnapshot.key}</td>
+                      <td>{youngSnapshot.val().step}</td>
+                      <td>{youngSnapshot.val().set}</td>
+                    </tr>
+                  )
+                  i++
+                }
+              })
             })
           }).then(() => {
             that.props.gethistory(history, userF)
