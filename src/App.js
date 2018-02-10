@@ -12,7 +12,7 @@ import userIcon from './components/UI/Title_Panel/img/userIcon.png'
 import { Provider } from 'react-redux'
 import store from './stores/stores'
 import * as firebase from 'firebase'
-import index from './reducers/index';
+import index from './reducers/index'
 
 const sidebar = <SidebarContent />
 
@@ -116,7 +116,7 @@ class App extends React.Component {
             <img src={picture} className='titleUserIcon' alt=''/>
             <img src={downArrow} className='downArrow' alt=''/>
             <div className='dropdown-content'>
-              <NavLink key='4' activeClassName='dropdownActive' to='/settings'>Setting</NavLink>
+              {/* <NavLink key='4' activeClassName='dropdownActive' to='/settings'>Setting</NavLink> */}
               {logOutBtn}
             </div>
           </div>
