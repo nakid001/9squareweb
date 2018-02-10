@@ -27,10 +27,8 @@ export class Test extends React.Component {
         <div id="header" className="title_content">เลือกสถานที่ทดสอบ</div>
         <div className="test_body">
           <img src ={bg} className="test_body_background"/>
-          <div className="test_content">
-            <div>
-              {this.props.test.room}
-            </div>
+          <div  className="test_content">
+            {this.props.test.room}
             <div className="Exfooter">
               <button> <Link to ='/'>GO BACK</Link> </button>
             </div>

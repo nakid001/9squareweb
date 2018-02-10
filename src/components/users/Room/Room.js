@@ -1,7 +1,7 @@
 import React from 'react'
 import {NavLink, HashRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
-
+import bg from './img/room_background.jpg'
 import './style.css'
 
 export class Room extends React.Component {
@@ -26,16 +26,15 @@ export class Room extends React.Component {
     return (
       <div id='home_wrapper'>
         <div id="header" className="title_content">{'ROOM '+this.props.test.num}</div>
-        <div>
-          {this.props.test.device}
-        </div>
-        <div className="room_content">
-          <div>
+        <div  className="room_body">
+          <img src ={bg} className="room_body_background"/>
+          <div className="room_content">
+            {this.props.test.device}
             Current order : {this.props.test.order}
+            <div className="Exfooter">
+              <button> <Link to ='/test'>GO BACK</Link> </button>
+            </div>
           </div>
-        </div>
-        <div className="Exfooter">
-          <button> <Link to ='/test'>GO BACK</Link> </button>
         </div>
       </div>   
     )

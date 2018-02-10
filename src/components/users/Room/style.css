@@ -38,8 +38,18 @@
   float: right;
   margin-right: 20%;
 }
+.room_body {
+  position: relative;
+  text-align: center;
+  height: 100vh;  
+}
 .room_content {
-  margin: 10%;
-  margin-top: 5%;
-  margin-bottom: 0%;
+  position: absolute;
+  top: 0%;
+  width: 100%;
+}
+.room_body_background {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
