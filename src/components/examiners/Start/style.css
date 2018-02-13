@@ -26,7 +26,36 @@
   border: 3px  #123412;
 }
 .Exfooter {
-    margin-bottom: 10px;    
-    float: right;
-    margin-right: 20%;
+  margin-bottom: 10px;    
+  float: right;
+  margin-right: 20%;
 }
+.start_body {
+  position: relative;
+  text-align: center;
+}
+.start_header {
+  text-align: center;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%, -5%);
+  margin-top: 2%;   
+  font-size: 32px;
+}
+.start_content {
+  position: absolute;
+  border-style: dashed;
+  width: 50%;
+  min-width: 195px;
+  min-height: 100px;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 20px;
+  z-index: 0;
+}
+.start_body_background {
+    width: 100%;
+    height: 100vh;
+  }

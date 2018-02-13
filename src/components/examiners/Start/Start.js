@@ -2,6 +2,9 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import firebase from 'firebase'
+import bg from './img/start_background.jpg'
+import { Button } from 'reactstrap';
+
 import './style.css'
 
 export class Start extends React.Component {
@@ -27,7 +30,7 @@ export class Start extends React.Component {
       document.getElementById('TimeCounter').innerHTML = seconds + 's '
       if (distance < 0) {
         clearInterval(x)
-        document.getElementById('TimeCounter').innerHTML = 'EXPIRED'
+        document.getElementById('TimeCounter').innerHTML = 'หมดเวลา!'
         that.props.sendresult(that.props.test.num)
       }
     }, 1000)
@@ -35,10 +38,14 @@ export class Start extends React.Component {
   render () {
     return (
       <div id='home_wrapper'>
-        <div id="header">การทดสอบ</div>
-        <div id="main-wrap">
-          <div className="content-wrap">
-            <button onClick={() => {this.countdown()}}>START!</button>
+        <div id="header" className="title_content">ห้องเริ่มทดสอบ</div>
+        <div className="start_body">
+          <img src ={bg} className="start_body_background"/>
+          <div id="start_header "className="start_header">
+          </div>
+          <div className="start_content">
+            <div>เตรียมตัวเริ่มการทดสอบ</div>
+            <Button  outline color="success" onClick={() => {this.countdown()}}>START!</Button>
             <div> TimeLeft : 
             <div id='TimeCounter'> 
                     30 
@@ -46,7 +53,6 @@ export class Start extends React.Component {
             </div>
           </div>
         </div>
-        <button className="Exfooter"> <Link to ='/examiner'>GO BACK</Link> </button>
       </div>   
     )
   }
