@@ -9,6 +9,13 @@ import { showDevice, addDevice, setActive, delDevice, setDeviceActive, getRoomNu
 import {NavLink, Link} from 'react-router-dom'
 
 class RoomContainer extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      device: [],
+      num: 0
+    }
+  }
   componentWillMount() {
     let that = this
     let arr = []

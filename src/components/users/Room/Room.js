@@ -5,27 +5,11 @@ import bg from './img/room_background.jpg'
 import './style.css'
 
 export class Room extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      device: [],
-      num: 0
-    }
-    // this.handleChange = this.handleChange.bind(this)
-  }
-
-  // handleChange (event) {
-  //   if (event.target.name === 'User') {
-  //     this.props.inputlog(event.target.value, this.props.user.password)
-  //   } else if (event.target.name === 'Pass') {
-  //     this.props.inputlog(this.props.user.username, event.target.value)
-  //   }
-  // }
 
   render () {
     return (
       <div id='home_wrapper'>
-        <div id="header" className="title_content">{'ROOM '+this.props.test.num}</div>
+        <div id="header" className="title_content">{'ตารางเก้าช่อง '+this.props.test.num}</div>
         <div  className="room_body">
           <img src ={bg} className="room_body_background"/>
           <div className="room_content">

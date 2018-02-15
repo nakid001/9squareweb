@@ -13,6 +13,8 @@ import { Provider } from 'react-redux'
 import store from './stores/stores'
 import * as firebase from 'firebase'
 import index from './reducers/index'
+import {persistStore} from 'redux-persist'
+
 
 const sidebar = <SidebarContent />
 
@@ -149,7 +151,11 @@ class App extends React.Component {
     }
     return headerContent
   }
-
+  componentWillMount() {
+    persistStore(store, {}, () => {
+      this.setState({rehydrated: true})
+    })
+  }
   render () {
     const sidebarProps = {
       sidebar: sidebar,

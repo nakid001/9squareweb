@@ -4,11 +4,11 @@
 #include <PubSubClient.h>
 
 // Update these with values suitable for your network.
-const char* ssid = "KUWIN";
-const char* password = "";
+const char* ssid = "DevNaKUb";
+const char* password = "aanaku74";
 
 // Config MQTT Server
-#define mqtt_server "158.108.43.150"
+#define mqtt_server "192.168.43.96"
 #define mqtt_port 1883
 #define mqtt_user "admin"
 #define mqtt_password "password"
@@ -42,12 +42,12 @@ void setup() {
   Serial.print("Connecting to ");
   Serial.println(ssid);
 
-  WiFi.begin(ssid, password);
+  // WiFi.begin(ssid, password);
 
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
+  // while (WiFi.status() != WL_CONNECTED) {
+  //   delay(500);
+  //   Serial.print(".");
+  // }
 
   Serial.println("");
   Serial.println("WiFi connected");
@@ -59,19 +59,19 @@ void setup() {
 }
 
 void loop() {
-  if (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
-    if (client.connect("ESP8266Client")) {
-      Serial.println("connected");
-      client.subscribe("/ESP/LED");
-    } else {
-      Serial.print("failed, rc=");
-      Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      delay(5000);
-      return;
-    }
-  }
+  // if (!client.connected()) {
+  //   Serial.print("Attempting MQTT connection...");
+  //   if (client.connect("ESP8266Client")) {
+  //     Serial.println("connected");
+  //     client.subscribe("/ESP/LED");
+  //   } else {
+  //     Serial.print("failed, rc=");
+  //     Serial.print(client.state());
+  //     Serial.println(" try again in 5 seconds");
+  //     delay(5000);
+  //     return;
+  //   }
+  // }
     int buttonState1 = digitalRead(33);
     int buttonState2 = digitalRead(25);
 
@@ -100,4 +100,3 @@ void loop() {
     delay(100);
   client.loop();
 }
-

@@ -4,6 +4,9 @@ import bg1 from './img/bg1.jpg'
 import bg2 from './img/bg2.jpg'
 import bg3 from './img/bg3.jpg'
 import bg4 from './img/images.jpg'
+import boximg1 from './img/images.png'
+import boximg2 from './img/ic_history_48px-512.png'
+import boximg3 from './img/graph_icon.png'
 import { Link } from 'react-router-dom'
 import {
   Carousel,
@@ -116,9 +119,37 @@ export class Home extends Component {
             </Carousel>
           </div>
         </div>
-        <div id="main-wrap" className="background_2">
+        <div id="main-wrap" className="">
           <div className='box_content'>
-              ด้วยกระบวนการรับผลตรวจสอบและแสดงผลที่เห็นได้ชัดทำให้เกิดการพัฒนาที่รวดเร็วต่อผู้ทดสอบ
+            <div className = 'box_content_head'>
+              ระบบตรวจวัดการทดสอบ
+            </div>
+            <div className = 'box_content_head'>
+              ระบบเก็บประวัติ
+            </div>
+            <div className = 'box_content_head'>
+              ระบบแสดงผลกราฟ
+            </div>
+            <div className = 'box_content_image'>
+              <img src={boximg1} alt={'BOX IMAGE'}  className="box_image"/>
+              <img src={boximg2} alt={'BOX IMAGE'}  className="box_image"/>
+              <img src={boximg3} alt={'BOX IMAGE'}  className="box_image"/>
+            </div>
+            <div className = 'box_content_head'>
+              <div className = 'box_content_text'>
+              เรามีระบบที่จะช่วยให้นักกีฬา และผู้คุมการทดสอบได้ใช้ในการประเมิณศักยภาพของนักกีฬาอย่างถูกต้องและเหมาะสม
+              </div>
+            </div>
+            <div className = 'box_content_head'>
+              <div className = 'box_content_text'>
+              นอกจากระบบตรวจสอบการประเมิณศักยภาพแล้ว เรายังมีระบบที่ช่วยในการจัดเก็บข้อมูลผลลัพธ์การทดสอบ เพื่อที่จะนำมาใช้ดูพัฒนาการของผู้ทดสอบได้อีกด้วย
+              </div>
+            </div>
+            <div className = 'box_content_head'>
+              <div className = 'box_content_text'>
+              เรายังมีระบบที่จะช่วยในการเปรียบเทียบและคาดคะเน ความสามารถของนักกีฬากับผู้ร่วมทดสอบท่านอื่นๆซึ่งทำให้นักกีฬาคนนั้นๆสามารถรับรู้ได้ถึงความสามารถของตนเองทียบกับผู้อื่น
+              </div>
+            </div>
           </div>
         </div>
         <div>

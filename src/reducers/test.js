@@ -3,7 +3,7 @@ const testReducer = (state = {
   num: 0,
   device: [],
   text: '',
-  order: []
+  order: [],
 }, action) => {
   switch (action.type) {
   case 'SHOWROOM': {
@@ -55,13 +55,6 @@ const testReducer = (state = {
         device: action.device,          
         text: action.payload
       }
-    }
-  }
-    break
-  case 'DELROOM': {
-    state = {
-      ...state,
-      text: action.payload
     }
   }
     break

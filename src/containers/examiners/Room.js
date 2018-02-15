@@ -10,6 +10,37 @@ import {NavLink} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 class ExRoomContainer extends React.Component {
+  
+  constructor (props) {
+    super(props)
+    this.state = {
+      roomtest: '',
+      device: [],
+      num: 0,
+      order: [],
+      deviceNumber: 0
+    }
+    this.state = {
+        
+    }
+  }
+
+  handleChange (event) {
+    if (event.target.name === 'Device_number') {
+      this.props.inputlog(event.target.value, '')
+    } 
+  }
+  openModal() {
+    this.setState({modalIsOpen: true})    
+  }
+   
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+  }
+   
+  closeModal() {
+    this.setState({modalIsOpen: false})
+  }
   componentWillMount() {
     let that = this
     let arr = []
@@ -37,7 +68,11 @@ class ExRoomContainer extends React.Component {
     {
       content = (
         <div>
-          <Room {...this.props} />
+          <Room {...this.props}   
+            openModal = {this.openModal.bind(this)}
+            afterOpenModal = {this.afterOpenModal.bind(this)}
+            closeModal = {this.closeModal.bind(this)}
+            handleChange = {this.handleChange.bind(this)} />
         </div>
       )
       if (!this.props.test.num) {
