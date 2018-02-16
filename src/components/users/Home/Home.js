@@ -6,7 +6,7 @@ import bg3 from './img/bg3.jpg'
 import boximg1 from './img/images.png'
 import boximg2 from './img/ic_history_48px-512.png'
 import boximg3 from './img/graph_icon.png'
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal } from 'reactstrap'
 import TestIcon from './img/start.png'
 import { Link } from 'react-router-dom'
 import {

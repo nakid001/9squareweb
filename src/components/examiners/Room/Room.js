@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal from 'react-modal'
+import { Modal } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import './style.css'
 import bg from './img/room_background.jpg'
