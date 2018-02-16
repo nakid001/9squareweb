@@ -84,9 +84,9 @@ const SidebarContent = (props) => {
       </span>,
       <div key='sb7' className='sidebarDivider' />,
       <NavLink key='sb3' exact activeClassName='sbLinkActive' to='/examiner/test' className='sidebarLink'>Test</NavLink>,
-      <NavLink key='sb4' activeClassName='sbLinkActive' to='/examiner/history' className='sidebarLink'>History</NavLink>,
-      <NavLink key='sb5' activeClassName='sbLinkActive' to='/examiner/ranking' className='sidebarLink'>Ranking</NavLink>,
-      <NavLink key='sb6' activeClassName='sbLinkActive' to='/examiner/aboutus' className='sidebarLink'>About us</NavLink>  
+      // <NavLink key='sb4' activeClassName='sbLinkActive' to='/examiner/history' className='sidebarLink'>History</NavLink>,
+      // <NavLink key='sb5' activeClassName='sbLinkActive' to='/examiner/ranking' className='sidebarLink'>Ranking</NavLink>,
+      // <NavLink key='sb6' activeClassName='sbLinkActive' to='/examiner/aboutus' className='sidebarLink'>About us</NavLink>  
     ] 
   }
   if (user === '') {
