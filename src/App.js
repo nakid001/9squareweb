@@ -122,7 +122,10 @@ class App extends React.Component {
               {logOutBtn}
             </div>
           </div>
-          <NavLink key='7' id='titleUserName' activeClassName='active' to='/user'>{user}</NavLink>
+          {/*<NavLink key='7' id='titleUserName' activeClassName='active' to='/user'>{user}</NavLink>*/}
+          <div id='titleUserName' activeClassName='active'>
+            {user}
+          </div>
         </span>
       )
     } else if (examiner) {
@@ -145,7 +148,10 @@ class App extends React.Component {
               {examlogOutBtn}
             </div>
           </div>
-          <NavLink key='7' id='titleUserName' activeClassName='active' to='/examiner/user'>{user}</NavLink>
+          {/*<NavLink key='7' id='titleUserName' activeClassName='active' to='/examiner/user'>{user}</NavLink>*/}
+          <div id='titleUserName' activeClassName='active'>
+            {user}
+          </div>
         </span>
       )
     }
