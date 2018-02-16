@@ -1,5 +1,4 @@
 import React from 'react'
-import {NavLink, HashRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import bg from './img/ranking_background.jpg'
 import './style.css'

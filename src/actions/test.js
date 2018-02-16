@@ -1,5 +1,5 @@
 import * as firebase from 'firebase'  
-import { key } from 'firebase-key'
+// import { key } from 'firebase-key'
 
 export function getRoomNum (n) {
   return {

@@ -176,9 +176,9 @@ export class Home extends Component {
               ระบบแสดงผลกราฟ
             </div>
             <div className = 'box_content_image'>
-              <img src={boximg1} alt={'BOX IMAGE'} alt=''  className="box_image"/>
-              <img src={boximg2} alt={'BOX IMAGE'} alt=''  className="box_image"/>
-              <img src={boximg3} alt={'BOX IMAGE'} alt=''  className="box_image"/>
+              <img src={boximg1} alt={'BOX'} className="box_image"/>
+              <img src={boximg2} alt={'BOX'} className="box_image"/>
+              <img src={boximg3} alt={'BOX'} className="box_image"/>
             </div>
             <div className = 'box_content_head'>
               <div className = 'box_content_text'>
