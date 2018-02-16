@@ -7,43 +7,38 @@ const initialState = {
 }
 const testReducer = (state = initialState, action) => {
   switch (action.type) {
-  case 'SHOWROOM': {
+  case 'SHOWROOM':
     state = {
       ...state,
       room: action.room,
       text: action.payload
     }
-  }
     break
-  case 'ADDROOM': {
+  case 'ADDROOM':
     state = {
       ...state,
       text: action.payload
     }
-  }
     break
-  case 'DELROOM': {
+  case 'DELROOM':
     state = {
       ...state,
       text: action.payload
     }
-  }
     break
-  case 'SETROOM': {
+  case 'SETROOM':
     state = {
       ...state,
       text: action.payload
     }
-  }
     break
-  case 'ADDDEVICE': {
+  case 'ADDDEVICE':
     state = {
       ...state,
       text: action.payload
     }
-  }
     break
-  case 'SHOWDEVICE': {
+  case 'SHOWDEVICE': 
     if (action.device.length === 0) {
       state = {
         ...state,
@@ -57,67 +52,58 @@ const testReducer = (state = initialState, action) => {
         text: action.payload
       }
     }
-  }
     break
-  case 'PUSHORDER': {
+  case 'PUSHORDER':
     state = {
       ...state,
       order : [...state.order, action.Npayload],
       text: action.payload
     }
-  }
     break
-  case 'SUBMITORDER': {
+  case 'SUBMITORDER':
     state = {
       ...state,
       text: action.payload
     }
-  }
     break
-  case 'GETORDER': {
+  case 'GETORDER':
     state = {
       ...state,
       order : action.Opayload,
       text: action.payload
     }
-  }
     break
-  case 'CLEARORDER': {
+  case 'CLEARORDER':
     state = {
       ...state,
       order : '',
       text: action.payload
     }
-  }
     break
-  case 'GETROOMNUM': {
+  case 'GETROOMNUM':
     state = {
       ...state,
       num: action.num,
       text: action.payload
     }
-  }
     break
-  case 'MATCHUSERDEVICE': {
+  case 'MATCHUSERDEVICE':
     state = {
       ...state,
       text: action.payload
     }
-  }
     break
-  case 'MATCHDEVICE': {
+  case 'MATCHDEVICE':
     state = {
       ...state,
       text: action.payload
     }
-  }
     break
-  case 'SENDRESULT': {
+  case 'SENDRESULT':
     state = {
       ...state,
       text: action.payload
     }
-  }
     break
   default :
     break

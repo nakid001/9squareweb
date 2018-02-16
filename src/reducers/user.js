@@ -71,13 +71,12 @@ const userReducer = (state = {
       payload: action.payload
     }
     break
-  case 'CANLOG': {
+  case 'CANLOG': 
     state = {
       ...state,
       username: action.Upayload,
       loading: action.Lpayload
     }
-  }
     break
   case 'CANNOTLOG':
     state = {
