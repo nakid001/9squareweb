@@ -66,9 +66,7 @@ class ExTestContainer extends React.Component {
       })
     } else {
       content = (
-        <div>
-          Loading . . .
-        </div>
+        <div className="loader"></div>
       )
     }
     return content    
