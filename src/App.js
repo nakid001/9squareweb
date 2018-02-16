@@ -175,7 +175,7 @@ class App extends React.Component {
         zIndex: 99,
       }
     }
-
+    console.log(store.getState())
     return (
       <Provider store={store}>
         <Sidebar className='Sidebar' {...sidebarProps} styles={sidebarStyles}>

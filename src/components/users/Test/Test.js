@@ -5,21 +5,6 @@ import bg from './img/test_background.jpg'
 import './style.css'
 
 export class Test extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      room: 'empty'
-    }
-    this.handleChange = this.handleChange.bind(this)
-  }
-
-  handleChange (event) {
-    if (event.target.name === 'User') {
-      this.props.inputlog(event.target.value, this.props.user.password)
-    } else if (event.target.name === 'Pass') {
-      this.props.inputlog(this.props.user.username, event.target.value)
-    }
-  }
 
   render () {
     return (

@@ -21,8 +21,8 @@ class HistoryContainer extends React.Component {
                   history[i] = (
                     <tr key={i}>
                       <td>{ childSnapshot.key}</td>
-                      <td>{youngSnapshot.val().step}</td>
                       <td>{youngSnapshot.val().set}</td>
+                      <td>{youngSnapshot.val().step}</td>
                     </tr>
                   )
                   i++

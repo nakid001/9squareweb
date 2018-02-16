@@ -9,11 +9,16 @@ import { showroom, getRoomNum } from '../../actions/test.js'
 import { Link } from 'react-router-dom'
 import './style.css'
 class TestContainer extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      room: 'empty'
+    }
+  }
 
   componentWillMount() {
     let that = this
     let arr = []
-    let i = 0 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         that.props.showroom(arr)          

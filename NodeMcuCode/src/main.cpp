@@ -4,11 +4,11 @@
 #include <PubSubClient.h>
 
 // Update these with values suitable for your network.
-const char* ssid = "DevNaKUb";
-const char* password = "aanaku74";
+const char* ssid = "GrowthChamberAIS";
+const char* password = "37617981";
 
 // Config MQTT Server
-#define mqtt_server "192.168.43.96"
+#define mqtt_server "192.168.0.100"
 #define mqtt_port 1883
 #define mqtt_user "admin"
 #define mqtt_password "password"
@@ -35,6 +35,10 @@ void setup() {
   pinMode(LED_PIN, OUTPUT);
   pinMode(33, INPUT);
   pinMode(25, INPUT);  
+  pinMode(26, INPUT);
+  pinMode(27, INPUT);  
+  pinMode(17, INPUT);
+  pinMode(16, INPUT);  
   Serial.begin(9600);
   delay(10);
 
@@ -42,12 +46,12 @@ void setup() {
   Serial.print("Connecting to ");
   Serial.println(ssid);
 
-  // WiFi.begin(ssid, password);
+  WiFi.begin(ssid, password);
 
-  // while (WiFi.status() != WL_CONNECTED) {
-  //   delay(500);
-  //   Serial.print(".");
-  // }
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
 
   Serial.println("");
   Serial.println("WiFi connected");
@@ -59,44 +63,58 @@ void setup() {
 }
 
 void loop() {
-  // if (!client.connected()) {
-  //   Serial.print("Attempting MQTT connection...");
-  //   if (client.connect("ESP8266Client")) {
-  //     Serial.println("connected");
-  //     client.subscribe("/ESP/LED");
-  //   } else {
-  //     Serial.print("failed, rc=");
-  //     Serial.print(client.state());
-  //     Serial.println(" try again in 5 seconds");
-  //     delay(5000);
-  //     return;
-  //   }
-  // }
-    int buttonState1 = digitalRead(33);
-    int buttonState2 = digitalRead(25);
+  if (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    if (client.connect("ESP8266Client")) {
+      Serial.println("connected");
+      client.subscribe("/ESP/LED");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      delay(5000);
+      return;
+    }
+  }
+    int buttonState1L = digitalRead(33);
+    int buttonState1R = digitalRead(25);
+    int buttonState2L = digitalRead(26);
+    int buttonState2R = digitalRead(27);
+    int buttonState3L = digitalRead(17);
+    int buttonState3R = digitalRead(16);
 
     // check if the pushbutton is pressed.
     // if it is, the buttonState is HIGH:
-    if (buttonState1 == HIGH) {
+    if (buttonState1L == HIGH && buttonState1R == HIGH) {
       // turn LED on:
       Serial.println("1HIGH");
-      client.publish(TOPIC1, "1");
-    } else {
+    } else if ((buttonState1L == LOW || buttonState1R == LOW)){
       // turn LED off:
+      client.publish(TOPIC1, "1");
       Serial.println("1LOW");
       digitalWrite(LED_PIN, LOW); 
 
     }
-    if (buttonState2 == HIGH) {
+    if (buttonState2L == HIGH && buttonState2R == HIGH) {
       // turn LED on:
-      client.publish(TOPIC1, "2");
       Serial.println("2HIGH");
-    } else {
+    } else if ((buttonState2L == LOW || buttonState2R == LOW)){
       // turn LED off:
+      client.publish(TOPIC1, "2");
       Serial.println("2LOW");
       digitalWrite(LED_PIN, LOW); 
 
     }
-    delay(100);
+    if (buttonState3L == HIGH && buttonState3R == HIGH) {
+      // turn LED on:
+      Serial.println("3HIGH");
+    } else if ((buttonState3L == LOW || buttonState3R == LOW)){
+      // turn LED off:
+      client.publish(TOPIC1, "3");
+      Serial.println("3LOW");
+      digitalWrite(LED_PIN, LOW); 
+
+    }
+    delay(200);
   client.loop();
 }

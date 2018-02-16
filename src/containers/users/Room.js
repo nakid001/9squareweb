@@ -13,14 +13,12 @@ class RoomContainer extends React.Component {
     super(props)
     this.state = {
       device: [],
-      num: 0
     }
   }
   componentWillMount() {
     let that = this
     let arr = []
     let order = []
-    let i = 0 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         that.props.showDevice(arr)
@@ -43,7 +41,11 @@ class RoomContainer extends React.Component {
     {
       content = (
         <div>
-          <Room {...this.props} />
+          <Room 
+            num = {this.props.test.num}
+            device = {this.props.test.device}
+            order = {this.props.test.order}
+          />
         </div>
       )
       if (!this.props.test.num) {
@@ -83,9 +85,7 @@ class RoomContainer extends React.Component {
       })
     } else {
       content = (
-        <div>
-          Loading . . .
-        </div>
+        <div className="loader"></div>
       )
     }
     return content    

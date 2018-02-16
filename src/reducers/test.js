@@ -1,10 +1,11 @@
-const testReducer = (state = {
+const initialState = {
   room: [],
   num: 0,
   device: [],
   text: '',
   order: [],
-}, action) => {
+}
+const testReducer = (state = initialState, action) => {
   switch (action.type) {
   case 'SHOWROOM': {
     state = {
