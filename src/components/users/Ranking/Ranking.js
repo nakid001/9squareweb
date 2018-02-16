@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import bg from './img/ranking_background.jpg'
 import './style.css'
 
 export class Ranking extends React.Component {

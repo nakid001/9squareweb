@@ -18,7 +18,7 @@ export class Test extends React.Component {
       <div>
         <div id="header" className="title_content">ระบบควบคุมห้องทดสอบ</div>
         <div className="test_body">
-          <img src ={bg} className="test_body_background"/>
+          <img src ={bg} alt='' className="test_body_background"/>
           <div  className="test_content">
             {this.props.test.room}
             <button onClick={()=> {

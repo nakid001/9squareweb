@@ -56,7 +56,7 @@ export class Room extends React.Component {
       <div id='home_wrapper'>
         <div id="header" className="title_content">ห้องทดสอบ {this.props.test.num}</div>
         <div  className="room_body">
-          <img src ={bg} className="room_body_background"/>
+          <img src ={bg} alt='' className="room_body_background"/>
           <div className="room_content">
             {this.props.test.device}
             <div className = 'Room_content'>

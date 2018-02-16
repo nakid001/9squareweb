@@ -1,5 +1,4 @@
 import React from 'react'
-import {NavLink} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import firebase from 'firebase'
 import bg from './img/start_background.jpg'
@@ -42,7 +41,7 @@ export class Start extends React.Component {
       <div id='home_wrapper'>
         <div id="header" className="title_content">ห้องเริ่มทดสอบ</div>
         <div className="start_body">
-          <img src ={bg} className="start_body_background"/>
+          <img src ={bg} alt= '' className="start_body_background"/>
           <div id="start_header "className="start_header">
           </div>
           <div className="start_content">
