@@ -13,7 +13,6 @@ import { Provider } from 'react-redux'
 import store from './stores/stores'
 import * as firebase from 'firebase'
 import index from './reducers/index'
-import {persistStore} from 'redux-persist'
 
 
 const sidebar = <SidebarContent />
@@ -93,10 +92,10 @@ class App extends React.Component {
             <NavLink key='5' id='brandLink' to='/'>
               <img className='brandLogo' src={brandLogo} alt=''/>
             </NavLink>
-            <NavLink key='6' activeClassName='active' to='/register'>
+            <NavLink key='6'  to='/register'>
               <button id='signupButton' className='signupBtnText'>Sign Up</button>
             </NavLink>
-            <NavLink key='7' activeClassName='active' to='/login'>
+            <NavLink key='7'  to='/login'>
               <button id='loginButton' className='loginBtnText'>Log In</button>
             </NavLink>
           </span>
@@ -118,12 +117,12 @@ class App extends React.Component {
             <img src={picture} className='titleUserIcon' alt=''/>
             <img src={downArrow} className='downArrow' alt=''/>
             <div className='dropdown-content'>
-              {/* <NavLink key='4' activeClassName='dropdownActive' to='/settings'>Setting</NavLink> */}
+              {/* <NavLink key='4'  to='/settings'>Setting</NavLink> */}
               {logOutBtn}
             </div>
           </div>
-          {/*<NavLink key='7' id='titleUserName' activeClassName='active' to='/user'>{user}</NavLink>*/}
-          <div id='titleUserName' activeClassName='active'>
+          {/*<NavLink key='7' id='titleUserName'  to='/user'>{user}</NavLink>*/}
+          <div id='titleUserName' >
             {user}
           </div>
         </span>
@@ -144,23 +143,18 @@ class App extends React.Component {
             <img src={picture} className='titleUserIcon' alt=''/>
             <img src={downArrow} className='downArrow' alt=''/>
             <div className='dropdown-content'>
-              <NavLink key='4' activeClassName='dropdownActive' to='/examiner/settings'>Setting</NavLink>
+              <NavLink key='4'  to='/examiner/settings'>Setting</NavLink>
               {examlogOutBtn}
             </div>
           </div>
-          {/*<NavLink key='7' id='titleUserName' activeClassName='active' to='/examiner/user'>{user}</NavLink>*/}
-          <div id='titleUserName' activeClassName='active'>
+          {/*<NavLink key='7' id='titleUserName'  to='/examiner/user'>{user}</NavLink>*/}
+          <div id='titleUserName' >
             {user}
           </div>
         </span>
       )
     }
     return headerContent
-  }
-  componentWillMount() {
-    persistStore(store, {}, () => {
-      this.setState({rehydrated: true})
-    })
   }
   render () {
     const sidebarProps = {
@@ -181,7 +175,6 @@ class App extends React.Component {
         zIndex: 99,
       }
     }
-    console.log(store.getState())
     return (
       <Provider store={store}>
         <Sidebar className='Sidebar' {...sidebarProps} styles={sidebarStyles}>

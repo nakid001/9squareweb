@@ -20,17 +20,17 @@ const items = [
   {
     src: bg1,
     altText: 'Slide 1',
-    // caption: '     เพียงเข้ารับการทดสอบของเรา แล้วเราจะช่วยคุณประมวลผลและแสดงข้อมูลของคุณอย่างรวดเร็ว โดยจะแสดงให้เห็นถึงความแม่นยำ ความรวดเร็ว ในการตอบสนองของคุณ และยังแสดงให้คุณเห็นถึง ranking ของคุณเทียบกับคนอื่นอีกด้วย'
+    caption: ''
   },
   {
     src: bg2,
     altText: 'Slide 2',
-    // caption: 'Slide 2'
+    caption: ''
   },
   {
     src: bg3,
     altText: 'Slide 3',
-    // caption: 'Slide 3'
+    caption: ''
   }
 ]
 export class Home extends Component {

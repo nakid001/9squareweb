@@ -74,7 +74,6 @@ class ExTestContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    exam: state.exam,
     test: state.test
   }
 }

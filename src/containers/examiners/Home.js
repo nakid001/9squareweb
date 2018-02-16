@@ -16,16 +16,15 @@ export class ExHomeContainer extends React.Component {
   }
 }
 const mapStateToProps = (state) => {
-//   return {
-//     user: state.user
-//   }
+  return {
+    exam: state.examiner
+  }
 }
 
 const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators(
-//     {
-//       thelogin, googlelogin, facelogin, twitterlogin, firebaselogin
-//     }, dispatch)
+  return bindActionCreators(
+    {
+    }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ExHomeContainer)
 
