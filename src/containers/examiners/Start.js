@@ -6,14 +6,11 @@ import  { Start } from '../../components/examiners/Start/Start.js'
 import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
 import { showroom, addroom, setActive, delRoom, getRoomNum, sendresult } from '../../actions/test.js'
-import {NavLink} from 'react-router-dom'
-import { Link } from 'react-router-dom'
 
 class ExStartContainer extends React.Component {
   componentWillMount() {
     let that = this
     let arr = []
-    let i = 0 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         that.props.showroom(arr)          
@@ -22,9 +19,6 @@ class ExStartContainer extends React.Component {
   }
 
   render () {
-    let i = 0
-    let that = this
-    let room = []
     let content = ''
     if (!this.props.test.num) {
       // window.location = '/examiner/test'

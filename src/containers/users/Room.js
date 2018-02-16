@@ -5,8 +5,7 @@ import { bindActionCreators } from 'redux'
 import  { Room } from '../../components/users/Room/Room.js'
 import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
-import { showDevice, addDevice, setActive, delDevice, setDeviceActive, getRoomNum, getOrder, matchUserDevice } from '../../actions/test.js'
-import {NavLink, Link} from 'react-router-dom'
+import { showDevice, addDevice, setActive, delDevice, setDeviceActive, getOrder, matchUserDevice } from '../../actions/test.js'
 
 class RoomContainer extends React.Component {
   constructor (props) {

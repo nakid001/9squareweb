@@ -3,10 +3,8 @@ import * as firebase from 'firebase'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import  { Ranking } from '../../components/users/Ranking/Ranking.js'
-import { inputreg } from '../../actions/input.js'
 import { getranking } from '../../actions/user.js'
-import {NavLink, Link} from 'react-router-dom'
-import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from 'recharts'
+import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar } from 'recharts'
 class RankingContainer extends React.Component {
   componentWillMount() {
     let that = this

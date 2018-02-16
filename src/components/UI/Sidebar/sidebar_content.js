@@ -51,8 +51,9 @@ const SidebarContent = (props) => {
   let user = ''
   let picture = ''
   let examiner = getCookie('examiner')
+  let navLinks = ''
   if (!examiner) {
-    var navLinks = [
+    navLinks = [
       <span key='sb1' className='userSidebar'>
         <NavLink activeClassName='sbLinkActive' style={ {visibility: 'hidden'} } to='/user' className='sidebarLink2'>{user}</NavLink>
         <img src={picture} className='userIcon' alt=''></img>
@@ -77,7 +78,7 @@ const SidebarContent = (props) => {
       //   >Logout</NavLink>
     ]
   } else {
-    var navLinks = [
+    navLinks = [
       <span key='sb1' className='userSidebar'>
         <NavLink activeClassName='sbLinkActive' style={ {visibility: 'hidden'} } to='/examiner/user' className='sidebarLink2'>{user}</NavLink>
         <img src={picture} className='userIcon' alt=''></img>

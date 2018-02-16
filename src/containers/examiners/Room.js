@@ -5,9 +5,7 @@ import { bindActionCreators } from 'redux'
 import  { Room } from '../../components/examiners/Room/Room.js'
 import { inputlog } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
-import { showDevice, addDevice, setActive, delDevice, setDeviceActive, getRoomNum, pushOrder, clearOrder, submitOrder, getOrder, matchDevice } from '../../actions/test.js'
-import {NavLink} from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { showDevice, addDevice, setActive, delDevice, setDeviceActive, pushOrder, clearOrder, submitOrder, getOrder, matchDevice } from '../../actions/test.js'
 
 class ExRoomContainer extends React.Component {
   
@@ -44,7 +42,6 @@ class ExRoomContainer extends React.Component {
   componentWillMount() {
     let that = this
     let arr = []
-    let i = 0 
     let order = []
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {

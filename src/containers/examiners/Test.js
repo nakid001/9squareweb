@@ -6,14 +6,12 @@ import  { Test } from '../../components/examiners/Test/Test.js'
 import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
 import { showroom, addroom, setActive, delRoom, getRoomNum } from '../../actions/test.js'
-import {NavLink} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import './style.css'
 class ExTestContainer extends React.Component {
   componentWillMount() {
     let that = this
     let arr = []
-    let i = 0 
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
         that.props.showroom(arr)          

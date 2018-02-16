@@ -100,7 +100,6 @@ export function addDevice(num) {
 }
 
 export function matchDevice(c, numMatch) {
-  let num = []
   let updates = {}
   firebase.database().ref('/devices/device' + numMatch).once('value', (snapshot) => {
     if (!snapshot.val()) {
@@ -210,10 +209,6 @@ export function matchUserDevice (email, uid, room, num) {
 
 export function sendresult (num) {
   console.log('num = ' + num)
-  let mykey = key()
-  let usr = []
-  let result = [] //ไว้มาเพิ่มresult ทีหลัง
-  let i = 0
   firebase.database().ref('/rooms/room' + num).update({
     start: 'END'
   })

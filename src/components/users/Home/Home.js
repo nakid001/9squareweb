@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
 import './style.css'
-import img from './img/template2.jpg'
-import img2 from './img/template2.jpg'
 import bg1 from './img/bg1.jpg'
 import bg2 from './img/bg2.jpg'
 import bg3 from './img/bg3.jpg'
-import bg4 from './img/images.jpg'
 import boximg1 from './img/images.png'
 import boximg2 from './img/ic_history_48px-512.png'
 import boximg3 from './img/graph_icon.png'
@@ -179,9 +176,9 @@ export class Home extends Component {
               ระบบแสดงผลกราฟ
             </div>
             <div className = 'box_content_image'>
-              <img src={boximg1} alt={'BOX IMAGE'}  className="box_image"/>
-              <img src={boximg2} alt={'BOX IMAGE'}  className="box_image"/>
-              <img src={boximg3} alt={'BOX IMAGE'}  className="box_image"/>
+              <img src={boximg1} alt={'BOX IMAGE'} alt=''  className="box_image"/>
+              <img src={boximg2} alt={'BOX IMAGE'} alt=''  className="box_image"/>
+              <img src={boximg3} alt={'BOX IMAGE'} alt=''  className="box_image"/>
             </div>
             <div className = 'box_content_head'>
               <div className = 'box_content_text'>
