@@ -48,7 +48,6 @@ export class Home extends Component {
     this.afterOpenModal = this.afterOpenModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
     this.handlePress = this.handlePress.bind(this)    
-    this.getScroll = this.getScroll.bind(this)
     this.next = this.next.bind(this)
     this.previous = this.previous.bind(this)
     this.goToIndex = this.goToIndex.bind(this)
@@ -103,10 +102,6 @@ export class Home extends Component {
     if (parts.length === 2) {
       return parts.pop().split(';').shift()
     } else return ''
-  }
-  getScroll () {
-    let sc = document.scrollingElement
-    console.log(sc.scrollTop)
   }
   render() {
     const { activeIndex } = this.state
