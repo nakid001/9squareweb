@@ -28,9 +28,11 @@ export class Start extends React.Component {
       let distance = countDownDate - now
       let seconds = distance % (1000 * 60) / 1000
       document.getElementById('TimeCounter').innerHTML = seconds + 's '
+      document.getElementById('start_status').innerHTML = 'เริ่มการทดสอบ!'
       if (distance < 0) {
         clearInterval(x)
         document.getElementById('TimeCounter').innerHTML = 'หมดเวลา!'
+        document.getElementById('start_status').innerHTML = ''
         that.props.sendresult(that.props.test.num)
       }
     }, 1000)
@@ -44,12 +46,14 @@ export class Start extends React.Component {
           <div id="start_header "className="start_header">
           </div>
           <div className="start_content">
-            <div>เตรียมตัวเริ่มการทดสอบ</div>
+            <div id='start_status'>เตรียมตัวเริ่มการทดสอบ</div>
             <Button  outline color="success" onClick={() => {this.countdown()}}>START!</Button>
             <div> TimeLeft : 
             <div id='TimeCounter'> 
                     30 
             </div>
+            <button className="Exfooter"> <Link to ='/examiner/test'>GO BACK</Link> </button>
+
             </div>
           </div>
         </div>
