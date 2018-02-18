@@ -4,11 +4,11 @@
 #include <PubSubClient.h>
 
 // Update these with values suitable for your network.
-const char* ssid = "GrowthChamberAIS";
-const char* password = "37617981";
+const char* ssid = "wsiit";
+const char* password = "";
 
 // Config MQTT Server
-#define mqtt_server "192.168.0.100"
+#define mqtt_server "192.168.202.71"
 #define mqtt_port 1883
 #define mqtt_user "admin"
 #define mqtt_password "password"
