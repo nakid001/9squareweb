@@ -75,14 +75,12 @@ const testReducer = (state = initialState, action) => {
     break
   case 'CLEARORDER':
     state = {
-      ...state,
       order : '',
       text: action.payload
     }
     break
   case 'GETROOMNUM':
     state = {
-      ...state,
       num: action.num,
       text: action.payload
     }

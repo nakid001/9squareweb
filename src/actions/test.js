@@ -190,17 +190,32 @@ export function clearOrder () {
 }
 
 export function matchUserDevice (email, uid, room, num) {
-  firebase.database().ref('/users/' + uid + '/test').update({
-    last_device : 'room' + room +'/device'+num
+  let olddevice 
+  firebase.database().ref('/users/' + uid + '/test').once('value', (snapshot) => {
+    olddevice=snapshot.val().last_device.split('/')
+  }).then(() => {
+    firebase.database().ref('/rooms/' + olddevice[0] + '/devices/' + olddevice[1] ).update({
+      user : '',
+      uid : '',
+      ava : true
+    })
+    firebase.database().ref('/devices/' + olddevice[1]).update({
+      last_user: ''
+    })
+    firebase.database().ref('/users/' + uid + '/test').update({
+      last_device : 'room' + room +'/device'+num
+    })
+    firebase.database().ref('/rooms/room' + room + '/devices/device' + num).update({
+      user : email,
+      uid : uid,
+      ava : false
+    })
+    firebase.database().ref( '/devices/device' + num).update ({
+      last_user: uid
+    })
   })
-  firebase.database().ref('/rooms/room' + room + '/devices/device' + num).update({
-    user : email,
-    uid : uid,
-    ava : false
-  })
-  firebase.database().ref( '/devices/device' + num).update ({
-    last_user: uid
-  })
+
+
   return {
     type:'MATCHUSERDEVICE',
     payload: 'MATCHING USER AND DEVICE  '

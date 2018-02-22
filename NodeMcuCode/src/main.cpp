@@ -4,7 +4,7 @@
 #include <PubSubClient.h>
 
 // Update these with values suitable for your network.
-const char* ssid = "wsiit";
+const char* ssid = "KUWIN";
 const char* password = "";
 
 // Config MQTT Server
@@ -63,19 +63,19 @@ void setup() {
 }
 
 void loop() {
-  if (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
-    if (client.connect("ESP8266Client")) {
-      Serial.println("connected");
-      client.subscribe("/ESP/LED");
-    } else {
-      Serial.print("failed, rc=");
-      Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      delay(5000);
-      return;
-    }
-  }
+  // if (!client.connected()) {
+  //   Serial.print("Attempting MQTT connection...");
+  //   if (client.connect("ESP8266Client")) {
+  //     Serial.println("connected");
+  //     client.subscribe("/ESP/LED");
+  //   } else {
+  //     Serial.print("failed, rc=");
+  //     Serial.print(client.state());
+  //     Serial.println(" try again in 5 seconds");
+  //     delay(5000);
+  //     return;
+  //   }
+  // }
     int buttonState1L = digitalRead(33);
     int buttonState1R = digitalRead(25);
     int buttonState2L = digitalRead(26);
