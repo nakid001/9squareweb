@@ -6,6 +6,14 @@
 // Update these with values suitable for your network.
 const char* ssid = "GrowthChamberAIS";
 const char* password = "37617981";
+int LastState1L = 0;
+int LastState1R = 0;
+int LastState2L = 0;
+int LastState2R = 0;
+int LastState3L = 0;
+int LastState3R = 0;
+int LastState4L = 0;
+int LastState4R = 0;
 
 // Config MQTT Server
 #define mqtt_server "192.168.202.71"
@@ -83,38 +91,42 @@ void loop() {
     int buttonState3L = digitalRead(17);
     int buttonState3R = digitalRead(16);
 
-    // check if the pushbutton is pressed.
-    // if it is, the buttonState is HIGH:
-    if (buttonState1L == HIGH && buttonState1R == HIGH) {
-      // turn LED on:
-      Serial.println("1HIGH");
-    } else if ((buttonState1L == LOW || buttonState1R == LOW)){
-      // turn LED off:
-      client.publish(TOPIC1, "1");
-      Serial.println("1LOW");
-      digitalWrite(LED_PIN, LOW); 
-
+    if (buttonState1L != LastState1L || buttonState1R != LastState1R){
+      if (buttonState1L == HIGH && buttonState1R == HIGH) {
+        // turn LED on:
+        Serial.println("1HIGH");
+      } else if ((buttonState1L == LOW || buttonState1R == LOW)){
+        // turn LED off:
+        client.publish(TOPIC1, "1");
+        Serial.println("1LOW");
+      }
+      LastState1L = buttonState1L;
+      LastState1R = buttonState1R;
     }
-    if (buttonState2L == HIGH && buttonState2R == HIGH) {
-      // turn LED on:
-      Serial.println("2HIGH");
-    } else if ((buttonState2L == LOW || buttonState2R == LOW)){
-      // turn LED off:
-      client.publish(TOPIC1, "2");
-      Serial.println("2LOW");
-      digitalWrite(LED_PIN, LOW); 
-
+    if (buttonState2L != LastState2L || buttonState2R != LastState2R) {
+      if (buttonState2L == HIGH && buttonState2R == HIGH) {
+        // turn LED on:
+        Serial.println("2HIGH");
+      } else if ((buttonState2L == LOW || buttonState2R == LOW)){
+        // turn LED off:
+        client.publish(TOPIC1, "2");
+        Serial.println("2LOW");
+      }
+      LastState2L = buttonState2L;
+      LastState2R = buttonState2R;
     }
-    if (buttonState3L == HIGH && buttonState3R == HIGH) {
-      // turn LED on:
-      Serial.println("3HIGH");
-    } else if ((buttonState3L == LOW || buttonState3R == LOW)){
-      // turn LED off:
-      client.publish(TOPIC1, "3");
-      Serial.println("3LOW");
-      digitalWrite(LED_PIN, LOW); 
-
+    if (buttonState3L != LastState3L || buttonState3R != LastState3R){
+      if (buttonState3L == HIGH && buttonState3R == HIGH) {
+        // turn LED on:
+        Serial.println("3HIGH");
+      } else if ((buttonState3L == LOW || buttonState3R == LOW)){
+        // turn LED off:
+        client.publish(TOPIC1, "3");
+        Serial.println("3LOW");
+      }
+      LastState3L = buttonState3L;
+      LastState3R = buttonState3R;
     }
-    delay(100);
+    delay(200);
   client.loop();
 }
