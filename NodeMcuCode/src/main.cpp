@@ -4,8 +4,8 @@
 #include <PubSubClient.h>
 
 // Update these with values suitable for your network.
-const char* ssid = "KUWIN";
-const char* password = "";
+const char* ssid = "GrowthChamberAIS";
+const char* password = "37617981";
 
 // Config MQTT Server
 #define mqtt_server "192.168.202.71"
@@ -115,6 +115,6 @@ void loop() {
       digitalWrite(LED_PIN, LOW); 
 
     }
-    delay(200);
+    delay(100);
   client.loop();
 }
