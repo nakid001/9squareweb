@@ -16,7 +16,7 @@ int LastState4L = 0;
 int LastState4R = 0;
 
 // Config MQTT Server
-#define mqtt_server "192.168.202.71"
+#define mqtt_server "192.168.0.100"
 #define mqtt_port 1883
 #define mqtt_user "admin"
 #define mqtt_password "password"
@@ -71,19 +71,19 @@ void setup() {
 }
 
 void loop() {
-  // if (!client.connected()) {
-  //   Serial.print("Attempting MQTT connection...");
-  //   if (client.connect("ESP8266Client")) {
-  //     Serial.println("connected");
-  //     client.subscribe("/ESP/LED");
-  //   } else {
-  //     Serial.print("failed, rc=");
-  //     Serial.print(client.state());
-  //     Serial.println(" try again in 5 seconds");
-  //     delay(5000);
-  //     return;
-  //   }
-  // }
+  if (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    if (client.connect("ESP8266Client")) {
+      Serial.println("connected");
+      client.subscribe("/ESP/LED");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      delay(5000);
+      return;
+    }
+  }
     int buttonState1L = digitalRead(33);
     int buttonState1R = digitalRead(25);
     int buttonState2L = digitalRead(26);

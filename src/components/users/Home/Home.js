@@ -6,7 +6,7 @@ import bg3 from './img/bg3.jpg'
 import boximg1 from './img/images.png'
 import boximg2 from './img/ic_history_48px-512.png'
 import boximg3 from './img/graph_icon.png'
-import { Modal } from 'reactstrap'
+import { MyModal } from './MyModal'
 import TestIcon from './img/start.png'
 import { Link } from 'react-router-dom'
 import {
@@ -38,15 +38,11 @@ const items = [
 export class Home extends Component {
   constructor() {
     super()
- 
+  
     this.state = {
       modalIsOpen: this.getCookie('username'),
       activeIndex: 0 
     }
- 
-    this.openModal = this.openModal.bind(this)
-    this.afterOpenModal = this.afterOpenModal.bind(this)
-    this.closeModal = this.closeModal.bind(this)
     this.handlePress = this.handlePress.bind(this)    
     this.next = this.next.bind(this)
     this.previous = this.previous.bind(this)
@@ -135,28 +131,12 @@ export class Home extends Component {
             </Carousel>
           </div>
           <div>
-            <Modal
-              isOpen={this.state.modalIsOpen}
-              className='Modal--matching'
-              overlayClassName='Modal--matching--overlay'
-              contentLabel='Example Modal'
-              shouldCloseOnOverlayClick={true}
-              role='dialog'
-            >
-              <div className='Modal--matching--content' >
-                <div className='Modal--matching--header'>
-                  <div className='Modal--matching--close' onClick={this.closeModal}  onKeyPress={this.handlePress}>&times;</div>
-                </div>
-                <div className='Modal--matching--body'>
-                  <Link to= '/test'><img src={TestIcon} className='TestIcon' alt=''  /></Link>
-                </div>
-                <div className='Modal--matching--footer'>
-                  <div>
-                    <button className='Modal--matching--btn' onClick={this.closeModal}>Cancel</button>
-                  </div>
-                </div>
-              </div>
-            </Modal>
+            <MyModal 
+              closeModal = {this.closeModal.bind(this)}
+              openModal = {this.openModal.bind(this)}
+              handlePress = {this.handlePress.bind(this)}
+              modalIsOpen = {this.state.modalIsOpen}
+            />
           </div>
         </div>
         <div id="main-wrap" className="">
