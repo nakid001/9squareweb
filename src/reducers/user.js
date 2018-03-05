@@ -8,6 +8,7 @@ const userReducer = (state = {
   text: '',
   history: [],
   key: [],
+  num:0,
   loading: true
 }, action) => {
   switch (action.type) {
@@ -60,6 +61,20 @@ const userReducer = (state = {
       history: action.Hpayload,
       username: action.Upayload,
       payload: action.payload
+    }
+    break
+  case 'GONEXT' :
+    state = {
+      ...state,
+      num: action.Npayload,
+      text: action.payload
+    }
+    break
+  case 'GOPREVIOUS' :
+    state = {
+      ...state,
+      num: action.Npayload,
+      text: action.payload
     }
     break
   case 'GETRANK' :

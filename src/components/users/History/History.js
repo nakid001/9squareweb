@@ -2,12 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import bg from './img/history_background.jpg'
 import './style.css'
+import { Button } from 'reactstrap';
 
 export class History extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      history: []
+      history: [],
+      num: 0
     }
   }
   render () {
@@ -23,8 +25,13 @@ export class History extends React.Component {
                 <th>Set</th>
                 <th>Step</th>
               </tr>
-              { this.props.user.history }
+              { this.props.user.history.slice(this.props.user.num,this.props.user.num+10) }
             </table> 
+            <div>
+              <Button  color="danger" onClick={() => {this.props.goPrevious(this.props.user.num - 10, this.props.user.history.length)}}>Previous!</Button>
+              {Math.ceil(this.props.user.num/10) + 1} / {Math.ceil(this.props.user.history.length/10)}
+              <Button  color="success" onClick={() => {this.props.goNext(this.props.user.num + 10,  this.props.user.history.length)}}>Next!</Button>
+            </div>
             <div className="history_footer">
               <button> <Link to ='../'>GO BACK</Link> </button>
             </div>

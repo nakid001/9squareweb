@@ -55,6 +55,27 @@ export function gethistory (arr, username) {
     payload: 'GET HISTORY'
   }
 }
+export function goNext (num, len) {
+  console.log(len)
+  if (num >= len) {
+    num = 0
+  }
+  return {
+    type: 'GONEXT',
+    Npayload: num,
+    payload: 'GO NEXT'
+  }
+}
+export function goPrevious (num, len) {
+  if (num < 0) {
+    num = Math.ceil(len-10)
+  }
+  return {
+    type: 'GOPREVIOUS',
+    Npayload: num,
+    payload: 'GO PREVIOUS'
+  }
+}
 export function getranking (arr, key, username) {
 
   return {
