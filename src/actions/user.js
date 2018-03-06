@@ -67,8 +67,12 @@ export function goNext (num, len) {
   }
 }
 export function goPrevious (num, len) {
-  if (num < 0) {
+  num -= 10
+  if (num < -9) {
     num = Math.ceil(len-10)
+  }
+  if (num <-1) {
+    num = 0
   }
   return {
     type: 'GOPREVIOUS',

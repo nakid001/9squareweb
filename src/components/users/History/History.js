@@ -28,7 +28,7 @@ export class History extends React.Component {
               { this.props.user.history.slice(this.props.user.num,this.props.user.num+10) }
             </table> 
             <div>
-              <Button  color="danger" onClick={() => {this.props.goPrevious(this.props.user.num - 10, this.props.user.history.length)}}>Previous!</Button>
+              <Button  color="danger" onClick={() => {this.props.goPrevious(this.props.user.num, this.props.user.history.length)}}>Previous!</Button>
               {Math.ceil(this.props.user.num/10) + 1} / {Math.ceil(this.props.user.history.length/10)}
               <Button  color="success" onClick={() => {this.props.goNext(this.props.user.num + 10,  this.props.user.history.length)}}>Next!</Button>
             </div>
