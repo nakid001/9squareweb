@@ -8,6 +8,7 @@ const userReducer = (state = {
   text: '',
   history: [],
   key: [],
+  ranking: [1],
   num:0,
   loading: true
 }, action) => {

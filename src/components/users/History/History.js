@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import bg from './img/history_background.jpg'
 import './style.css'
-import { Button } from 'reactstrap';
+import { Button } from 'reactstrap'
 
 export class History extends React.Component {
   constructor (props) {
