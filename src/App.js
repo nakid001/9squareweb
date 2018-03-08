@@ -116,7 +116,7 @@ class App extends React.Component {
             <img src={picture} className='titleUserIcon' alt=''/>
             <img src={downArrow} className='downArrow' alt=''/>
             <div className='dropdown-content'>
-              {/* <NavLink key='4'  to='/settings'>Setting</NavLink> */}
+              <NavLink key='4'  to='/aboutus'>About Us</NavLink>
               {logOutBtn}
             </div>
           </div>
@@ -142,7 +142,7 @@ class App extends React.Component {
             <img src={picture} className='titleUserIcon' alt=''/>
             <img src={downArrow} className='downArrow' alt=''/>
             <div className='dropdown-content'>
-              {/* <NavLink key='4'  to='/examiner/settings'>Setting</NavLink> */}
+              <NavLink key='4'  to='/aboutus'>About Us</NavLink>
               {examlogOutBtn}
             </div>
           </div>

@@ -1,8 +1,9 @@
 /* sizes */
 #main-wrap > div { min-height: 100px; }
-@media only screen and (max-width: 362px) {
-  .modal-content {
-    width: 362px;
+@media only screen and (max-width: 400px) {
+  .Modal_content {
+    width: 400px;
+    height: 100%;
   }
 }
 
@@ -37,7 +38,6 @@
     right: 0;
     bottom: 0;
     /*overflow: auto;*/
-    height: 75%;
     background-color : #EAE6C7;
     border-radius: 4px;
   }
@@ -55,7 +55,6 @@
     background-color: #EAE6C7;
     padding: 0;
     width: 100%;
-    height: 100%;
   }
   .Modal_header {      /* Header Modal Box */
     padding: 20px;
