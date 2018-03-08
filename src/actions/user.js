@@ -66,10 +66,10 @@ export function goNext (num, len) {
     payload: 'GO NEXT'
   }
 }
-export function goPrevious (num, len) {
-  num -= 10
-  if (num < -9) {
-    num = Math.ceil(len-10)
+export function goPrevious (num, len, minus) {
+  console.log(num)
+  if (num < -minus + 1) {
+    num = Math.ceil(len - minus)
   }
   if (num <-1) {
     num = 0

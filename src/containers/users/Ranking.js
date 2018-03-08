@@ -3,7 +3,7 @@ import * as firebase from 'firebase'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import  { Ranking } from '../../components/users/Ranking/Ranking.js'
-import { getranking, goNext, goPrevious, canlogin} from '../../actions/user.js'
+import { getranking, goNext, goPrevious } from '../../actions/user.js'
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar } from 'recharts'
 class RankingContainer extends React.Component {
   componentWillMount() {
@@ -67,7 +67,7 @@ class RankingContainer extends React.Component {
               )
               i++
             }).then(() => {
-              that.props.canlogin(user)
+              that.props.getranking(arr, mykey, user)
             })
           }
         })
@@ -100,7 +100,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      getranking, goNext, goPrevious, canlogin
+      getranking, goNext, goPrevious 
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(RankingContainer)

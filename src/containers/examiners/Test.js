@@ -23,6 +23,7 @@ class ExTestContainer extends React.Component {
     let that = this
     let room = []
     let content = ''
+    let ava = ''
     if (firebase.auth().currentUser)
     {
       content = (
@@ -32,14 +33,19 @@ class ExTestContainer extends React.Component {
       )
       firebase.database().ref('/rooms/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
-          const TestBtn = childSnapshot.val().ava ? 'RoomAvaBtn' : 'RoomNotAvaBtn'   
+          const TestBtn = childSnapshot.val().ava ? 'RoomAvaBtn' : 'RoomNotAvaBtn'
+          if (childSnapshot.val().ava) {
+            ava = 'AVALIABLE'
+          } else {
+            ava = 'NOT AVALIABLE'
+          }
           room[i] = (
             <div key={i}>
               <div>
                 <span><Link to ={'/examiner/test/room'} onClick={()=> {
                   that.props.getRoomNum(childSnapshot.val().num)
                 }}>
-                  <div className={TestBtn}> Room:{childSnapshot.val().num}: {childSnapshot.val().ava+' '}</div> 
+                  <div className={TestBtn}> Room:{childSnapshot.val().num}: {ava}</div> 
                 </Link>
                 <div className="buttonSet">
                   <button onClick={()=> {

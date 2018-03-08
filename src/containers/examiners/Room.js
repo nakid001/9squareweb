@@ -61,6 +61,7 @@ class ExRoomContainer extends React.Component {
     let that = this
     let device = []
     let content = ''
+    let ava = ''
     if (firebase.auth().currentUser)
     {
       content = (
@@ -79,13 +80,17 @@ class ExRoomContainer extends React.Component {
         snapshot.forEach(function (childSnapshot) {
           const RoomeBtn = childSnapshot.val().ava ? 'RoomAvaBtn' : 'RoomNotAvaBtn'   
           const userID = childSnapshot.val().user       
-
+          if (childSnapshot.val().ava) {
+            ava = 'AVALIABLE'
+          } else {
+            ava = 'NOT AVALIABLE'
+          }
           device[i] = (
             <div className='' key={i}>
               <div className=''>
                 <span>
                   <div className={RoomeBtn}>
-                    Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '} {userID}
+                    Device:{childSnapshot.val().num}: {ava} {userID}
                   </div> 
                   <div className="buttonSet">
                     <button onClick={()=> {

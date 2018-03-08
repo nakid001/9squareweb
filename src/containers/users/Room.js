@@ -36,6 +36,7 @@ class RoomContainer extends React.Component {
     let that = this
     let device = []
     let content = ''
+    let ava = ''
     if (firebase.auth().currentUser)
     {
       content = (
@@ -53,6 +54,11 @@ class RoomContainer extends React.Component {
       firebase.database().ref('/rooms/room'+this.props.test.num+'/devices/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           const DeviceBtn = childSnapshot.val().ava ? 'DeviceAvaBtn' : 'DeviceNotAvaBtn'   
+          if (childSnapshot.val().ava) {
+            ava = 'AVALIABLE'
+          } else {
+            ava = 'NOT AVALIABLE'
+          }
           const userID = childSnapshot.val().user       
           device[i] = (
             <div className='' key={i}>
@@ -72,7 +78,7 @@ class RoomContainer extends React.Component {
                       alert('DEVICE IS NOT READY!!')
                     }
                   } 
-                  }> Device:{childSnapshot.val().num}: {childSnapshot.val().ava+' '} {userID}</button> 
+                  }> Device:{childSnapshot.val().num}: {ava} {userID}</button> 
                 </span>
               </div>
             </div>
