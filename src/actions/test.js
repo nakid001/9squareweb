@@ -190,18 +190,22 @@ export function clearOrder () {
 }
 
 export function matchUserDevice (email, uid, room, num) {
-  let olddevice 
+  let olddevice = ''
   firebase.database().ref('/users/' + uid + '/test').once('value', (snapshot) => {
-    olddevice=snapshot.val().last_device.split('/')
+    if (snapshot.val()) {
+      olddevice=snapshot.val().last_device.split('/')
+    }
   }).then(() => {
-    firebase.database().ref('/rooms/' + olddevice[0] + '/devices/' + olddevice[1] ).update({
-      user : '',
-      uid : '',
-      ava : true
-    })
-    firebase.database().ref('/devices/' + olddevice[1]).update({
-      last_user: ''
-    })
+    if (olddevice !== '') {
+      firebase.database().ref('/rooms/' + olddevice[0] + '/devices/' + olddevice[1] ).update({
+        user : '',
+        uid : '',
+        ava : true
+      })
+      firebase.database().ref('/devices/' + olddevice[1]).update({
+        last_user: ''
+      })
+    }
     firebase.database().ref('/users/' + uid + '/test').update({
       last_device : 'room' + room +'/device'+num
     })
