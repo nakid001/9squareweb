@@ -5,7 +5,7 @@
 
 // Update these with values suitable for your network.
 const char* ssid = "GrowthChamberAIS";
-const char* password = "37632981";
+const char* password = "0123456789012";
 int LastState1L = 0;
 int LastState1R = 0;
 int LastState2L = 0;
@@ -24,9 +24,10 @@ int LastState8L = 0;
 int LastState8R = 0;
 int LastState9L = 0;
 int LastState9R = 0;
+int count = 0;
 
 // Config MQTT Server
-#define mqtt_server "192.338.0.100"
+#define mqtt_server "192.168.0.100"
 #define mqtt_port 1883
 #define mqtt_user "admin"
 #define mqtt_password "password"
@@ -81,10 +82,10 @@ void setup() {
 
   WiFi.begin(ssid, password);
 
-  // while (WiFi.status() != WL_CONNECTED) {
-  //   delay(500);
-  //   Serial.print(".");
-  // }
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
 
   Serial.println("");
   Serial.println("WiFi connected");
@@ -96,19 +97,19 @@ void setup() {
 }
 
 void loop() {
-  // if (!client.connected()) {
-  //   Serial.print("Attempting MQTT connection...");
-  //   if (client.connect("ESP8346Client")) {
-  //     Serial.println("connected");
-  //     client.subscribe("/ESP/LED");
-  //   } else {
-  //     Serial.print("failed, rc=");
-  //     Serial.print(client.state());
-  //     Serial.println(" try again in 5 seconds");
-  //     delay(5000);
-  //     return;
-  //   }
-  // }
+  if (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    if (client.connect("ESP8346Client")) {
+      Serial.println("connected");
+      client.subscribe("/ESP/LED");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      delay(5000);
+      return;
+    }
+  }
     int buttonState1L = digitalRead(36);
     int buttonState1R = digitalRead(39);
     int buttonState2L = digitalRead(34);
@@ -138,6 +139,8 @@ void loop() {
         // turn LED off:
         client.publish(TOPIC1, "1");
         Serial.println("1LOW");
+        count += 1;
+        Serial.println(count);
       }
       LastState1L = buttonState1L;
       LastState1R = buttonState1R;
@@ -150,6 +153,8 @@ void loop() {
         // turn LED off:
         client.publish(TOPIC1, "2");
         Serial.println("2LOW");
+        count += 1;
+        Serial.println(count);
       }
       LastState2L = buttonState2L;
       LastState2R = buttonState2R;
@@ -162,6 +167,8 @@ void loop() {
         // turn LED off:
         client.publish(TOPIC1, "3");
         Serial.println("3LOW");
+        count += 1;
+        Serial.println(count);
       }
       LastState3L = buttonState3L;
       LastState3R = buttonState3R;
@@ -174,6 +181,8 @@ void loop() {
         // turn LED off:
         client.publish(TOPIC1, "4");
         Serial.println("4LOW");
+        count += 1;
+        Serial.println(count);
       }
       LastState4L = buttonState4L;
       LastState4R = buttonState4R;
@@ -186,6 +195,8 @@ void loop() {
         // turn LED off:
         client.publish(TOPIC1, "5");
         Serial.println("5LOW");
+        count += 1;
+        Serial.println(count);
       }
       LastState5L = buttonState5L;
       LastState5R = buttonState5R;
@@ -198,6 +209,8 @@ void loop() {
         // turn LED off:
         client.publish(TOPIC1, "6");
         Serial.println("6LOW");
+        count += 1;
+        Serial.println(count);
       }
       LastState6L = buttonState6L;
       LastState6R = buttonState6R;
@@ -210,6 +223,8 @@ void loop() {
         // turn LED off:
         client.publish(TOPIC1, "7");
         Serial.println("7LOW");
+        count += 1;
+        Serial.println(count);
       }
       LastState7L = buttonState7L;
       LastState7R = buttonState7R;
@@ -222,6 +237,8 @@ void loop() {
         // turn LED off:
         client.publish(TOPIC1, "8");
         Serial.println("8LOW");
+        count += 1;
+        Serial.println(count);
       }
       LastState8L = buttonState8L;
       LastState8R = buttonState8R;
@@ -230,6 +247,8 @@ void loop() {
       if (buttonState9L == HIGH && buttonState9R == HIGH) {
         // turn LED on:
         Serial.println("9HIGH");
+        count += 1;
+        Serial.println(count);
       } else if ((buttonState9L == LOW || buttonState9R == LOW)){
         // turn LED off:
         client.publish(TOPIC1, "9");
