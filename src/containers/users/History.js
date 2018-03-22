@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { History } from '../../components/users/History/History.js'
-import { gethistory, goNext, goPrevious, canlogin, cannotlogin } from  '../../actions/user'
+import { gethistory, goNext, goPrevious, canlogin, cannotlogin, addhistory } from  '../../actions/user'
 
 import * as firebase from 'firebase'
 class HistoryContainer extends React.Component {
@@ -16,17 +16,23 @@ class HistoryContainer extends React.Component {
           let i = 0
           firebase.database().ref('/history').once('value', (snapshot) => {
             snapshot.forEach((childSnapshot) => {
-              childSnapshot.forEach((youngSnapshot) => {
-                if (youngSnapshot.key === firebase.auth().currentUser.uid) {
-                  history[i] = (
-                    <tr key={i}>
-                      <td>{ childSnapshot.key}</td>
-                      <td>{youngSnapshot.val().set}</td>
-                      <td>{youngSnapshot.val().step}</td>
-                    </tr>
-                  )
-                  i++
-                }
+              childSnapshot.forEach((elderSnapshot) => {
+                elderSnapshot.forEach((brotherSnapshot) => {
+                  brotherSnapshot.forEach((timeSnapshot) => {
+                    timeSnapshot.forEach((youngSnapshot) => {
+                      if (youngSnapshot.key === firebase.auth().currentUser.uid) {
+                        history[i] = (
+                          <tr key={i}>
+                            <td>{ childSnapshot.key + '.' + elderSnapshot.key + '.' + brotherSnapshot.key + '/' + timeSnapshot.key}</td>
+                            <td>{youngSnapshot.val().set}</td>
+                            <td>{youngSnapshot.val().step}</td>
+                          </tr>
+                        )
+                        i++
+                      }
+                    })
+                  })
+                })
               })
             })
           }).then(() => {
@@ -37,7 +43,7 @@ class HistoryContainer extends React.Component {
           console.log('please wait')
         }
       } else {
-        that.props.cannotlogin()
+        that.props.cannotlogin, addhistory()
       }
     })
   }
@@ -69,7 +75,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      gethistory, goNext, goPrevious, canlogin, cannotlogin
+      gethistory, goNext, goPrevious, canlogin, cannotlogin, addhistory
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(HistoryContainer)

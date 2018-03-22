@@ -55,6 +55,17 @@ export function gethistory (arr, username) {
     payload: 'GET HISTORY'
   }
 }
+export function addhistory () {
+  let d = new Date()
+  firebase.database().ref('/history/' + d.getFullYear() + '/' + d.getMonth() + '/' + d.getDate() + '/' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds() + '/' + firebase.auth().currentUser.uid).set  ({
+    step : 123,
+    set : 456
+  })
+  return {
+    type: 'ADDHISTORY',
+    payload: 'Ad temp history'
+  }
+}
 export function goNext (num, len) {
   console.log(len)
   if (num >= len) {

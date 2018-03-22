@@ -64,6 +64,12 @@ const userReducer = (state = {
       payload: action.payload
     }
     break
+  case 'ADDHIS' :
+    state = {
+      ...state,
+      text: action.payload
+    }
+    break
   case 'GONEXT' :
     state = {
       ...state,
