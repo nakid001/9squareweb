@@ -95,7 +95,7 @@ function getDataFirebase (roomnum) {
         })
         firebase.database().ref('/rooms/room' + num + '/devices').once('value', function (snapshot) {
           snapshot.forEach(function (childSnapshot) {
-            if (childSnapshot.val().uid) {
+            if (childSnapshot.val().uid) {  
               usr[i] = childSnapshot.val().uid
               result[i] = {
                 step: step,
@@ -107,7 +107,7 @@ function getDataFirebase (roomnum) {
           })
           console.log('result = ' + result)
         }).then(() => {
-          firebase.database().ref('/history/' + Date() + '/' + uname).set  ({
+          firebase.database().ref('/history/' + d.getFullYear() + '/' + d.getMonth() + '/' + d.getDate() + '/' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds() + '/' + uname).set  ({
             step : result[0].step,
             set : result[0].set
           })
