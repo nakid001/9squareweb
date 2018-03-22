@@ -3,40 +3,15 @@ import {NavLink} from 'react-router-dom'
 import './style.css'
 
 export class Login extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = {
-      username: '',
-      password: ''
-    }
-    this.handleChange = this.handleChange.bind(this)
-    this.handlePress = this.handlePress.bind(this)
-  }
-
-  handleChange (event) {
-    if (event.target.name === 'User') {
-      this.props.inputlog(event.target.value, this.props.user.password)
-    } else if (event.target.name === 'Pass') {
-      this.props.inputlog(this.props.user.username, event.target.value)
-    }
-  }
-
-  handlePress (event) {
-    event.which = event.which || event.keyCode
-    if (event.which === 13) {
-      this.props.loginfire(this.props.user.username, this.props.user.password)
-    }
-  }
-
   render () {
     return (
       <div id='wrapper'>
         <div className='log_in_content'>
           <p className='login_headerText'>Log In</p>
           <div style={ {marginTop: '24px'} }>
-            <input type="text" className="form-input" placeholder="Phone number or email" style={ {width: '100%'} }name='User' onChange={this.handleChange} onKeyPress={this.handlePress}/>
+            <input type="text" className="form-input" placeholder="Phone number or email" style={ {width: '100%'} }name='User' onChange={this.props.handleChange} onKeyPress={this.props.handlePress}/>
             <div className='space'> </div>
-            <input type="password" className="form-input" placeholder="Password" style={ {width: '100%'} } name='Pass' onChange={this.handleChange} onKeyPress={this.handlePress}/>
+            <input type="password" className="form-input" placeholder="Password" style={ {width: '100%'} } name='Pass' onChange={this.props.handleChange} onKeyPress={this.props.handlePress}/>
           </div>
           <button className='col-12 emailLoginBtn' onClick={ () => { this.props.loginfire(this.props.user.username, this.props.user.password) } }><span className='loginBtn--text'>Submit</span></button>
           <p className='col-12 loginDivider'/>
