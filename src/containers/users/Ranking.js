@@ -60,9 +60,9 @@ class RankingContainer extends React.Component {
             }
             arr[j] = (
               <div key={j} style={{'width': '100%'}}>
-                <div>{'Test key: ' + mykey[j]}</div>
-                <div>{' RANK NUMBER: ' + ranks[mypos[j]]}</div>
-                <div>{'Step: ' + mystep[j] + ' Set: ' + myset[j]}</div>
+                <div>{'วันเวลาที่ทดสอบ : ' + mykey[j]}</div>
+                <div>{' อันดับ : ' + ranks[mypos[j]]}</div>
+                <div>{' ก้าว : ' + mystep[j] + ' เซต: ' + myset[j]}</div>
                 <BarChart width={375} height={250} data={data} >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="set" />
@@ -74,7 +74,6 @@ class RankingContainer extends React.Component {
             )
             i++
           }
-          
         }).then(() => {
           that.props.getranking(arr, mykey, user)
         })
