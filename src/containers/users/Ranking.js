@@ -53,14 +53,11 @@ class RankingContainer extends React.Component {
           for (let j = 0; j < that.props.user.key.length; j++) {
             let sorted = naset[j].slice().sort((a,b) => {return b-a})
             let ranks = naset[j].slice().map((v) => { return sorted.indexOf(v)+1 })
-            console.log(ranks)
-            console.log(mypos)
             naset[j] = naset[j].sort()
             data = []
             for (let x = 0; x < naset[j].length; x++) {
               data[x] = {set: naset[j][x]}
             }
-            console.log(data)
             arr[j] = (
               <div key={j} style={{'width': '100%'}}>
                 <div>{'Test key: ' + mykey[j]}</div>
