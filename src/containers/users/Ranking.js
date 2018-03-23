@@ -10,6 +10,7 @@ class RankingContainer extends React.Component {
     let that = this
     let arr = []
     let set = []
+    let naset = []
     let mykey = []
     let myset = []
     let mystep = []
@@ -18,58 +19,64 @@ class RankingContainer extends React.Component {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let i = 0
-        firebase.database().ref('/history/').once('value',  (snapshot) => {
-          snapshot.forEach( (childSnapshot) => {
-            childSnapshot.forEach ( (youngSnapshot) =>{
-              if (youngSnapshot.key === firebase.auth().currentUser.uid) {
-                myset[i] = youngSnapshot.val().set
-                mystep[i] = youngSnapshot.val().step
-                mykey[i] = childSnapshot.key
-                i++
-              }
+        let userkey = []
+        let j = 0, k = 0
+        firebase.database().ref('/history').once('value', (snapshot) => {
+          snapshot.forEach((yearSnapshot) => {
+            yearSnapshot.forEach((monthSnapshot) => {
+              monthSnapshot.forEach((daySnapshot) => {
+                daySnapshot.forEach((timeSnapshot) => {
+                  timeSnapshot.forEach((dataSnapshot) => {
+                    set[k] = dataSnapshot.val().set
+                    userkey[k] = dataSnapshot.key
+                    k++
+                    if (dataSnapshot.key === firebase.auth().currentUser.uid) {
+                      myset[i] = dataSnapshot.val().set
+                      mystep[i] = dataSnapshot.val().step
+                      mykey[i] = yearSnapshot.key + '.' + monthSnapshot.key + '.' + daySnapshot.key + '/' + timeSnapshot.key
+                      i++
+                    }
+                  })
+                  k=0
+                  naset.push(set)
+                  set = []
+                  j++
+                })
+                j=0
+              })
             })
           })
         }).then(() => {
           that.props.getranking(arr, mykey, user)
         }).then(() => {
-          for (let j = 0, k = 0; j < that.props.user.key.length; j++) {
-            firebase.database().ref('/history/' + that.props.user.key[j]).once('value', (snapshot) => {
-              mykey = snapshot.key
-              snapshot.forEach( (childSnapshot) => {
-                set[j,k] = childSnapshot.val().set
-                if (childSnapshot.val().set === myset[j] && childSnapshot.val().step === mystep[j]) {
-                  mypos = k
-                }
-                k++
-              })
-            }).then(() => {
-              let sorted = set.slice().sort((a,b) => {return b-a})
-              let ranks = set.slice().map((v) => { return sorted.indexOf(v)+1 })
-              set = set.sort()
-              data = []
-              for (let x = 0; x < set.length; x++) {
-                data[x] = {set: set[j,x]}
-              }
-              set = []
-              arr[j] = (
-                <div key={j} style={{'width': '100%'}}>
-                  <div>{'Test key: ' + mykey}</div>
-                  <div>{' RANK NUMBER: ' + ranks[mypos]}</div>
-                  <div>{'Step: ' + mystep[j] + ' Set: ' + myset[j]}</div>
-                  <BarChart width={375} height={250} data={data} >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="set" />
-                    <YAxis  value= "100"/>
-                    <Bar dataKey="set" fill="#8884d8" />
-                    <Tooltip />
-                  </BarChart>
-                </div>
-              )
-              i++
-            }).then(() => {
-              that.props.getranking(arr, mykey, user)
-            })
+          for (let j = 0; j < that.props.user.key.length; j++) {
+            let sorted = naset[j].slice().sort((a,b) => {return b-a})
+            let ranks = naset[j].slice().map((v) => { return sorted.indexOf(v)+1 })
+            naset[j] = naset[j].sort()
+            data = []
+            for (let x = 0; x < naset[j].length; x++) {
+              data[x] = {set: naset[j][x]}
+            }
+            console.log(data)
+            arr[j] = (
+              <div key={j} style={{'width': '100%'}}>
+                <div>{'Test key: ' + mykey[j]}</div>
+                <div>{' RANK NUMBER: ' + ranks[mypos]}</div>
+                <div>{'Step: ' + mystep[j] + ' Set: ' + myset[j]}</div>
+                <BarChart width={375} height={250} data={data} >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="set" />
+                  <YAxis  value= "100"/>
+                  <Bar dataKey="set" fill="#8884d8" />
+                  <Tooltip />
+                </BarChart>
+              </div>
+            )
+            i++
           }
+          
+        }).then(() => {
+          that.props.getranking(arr, mykey, user)
         })
       }
     })
