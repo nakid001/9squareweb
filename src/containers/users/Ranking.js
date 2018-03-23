@@ -14,7 +14,7 @@ class RankingContainer extends React.Component {
     let mykey = []
     let myset = []
     let mystep = []
-    let mypos = 0
+    let mypos = []
     let data = []
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -31,6 +31,7 @@ class RankingContainer extends React.Component {
                     userkey[k] = dataSnapshot.key
                     k++
                     if (dataSnapshot.key === firebase.auth().currentUser.uid) {
+                      mypos[i] = k-1
                       myset[i] = dataSnapshot.val().set
                       mystep[i] = dataSnapshot.val().step
                       mykey[i] = yearSnapshot.key + '.' + monthSnapshot.key + '.' + daySnapshot.key + '/' + timeSnapshot.key
@@ -52,6 +53,8 @@ class RankingContainer extends React.Component {
           for (let j = 0; j < that.props.user.key.length; j++) {
             let sorted = naset[j].slice().sort((a,b) => {return b-a})
             let ranks = naset[j].slice().map((v) => { return sorted.indexOf(v)+1 })
+            console.log(ranks)
+            console.log(mypos)
             naset[j] = naset[j].sort()
             data = []
             for (let x = 0; x < naset[j].length; x++) {
@@ -61,7 +64,7 @@ class RankingContainer extends React.Component {
             arr[j] = (
               <div key={j} style={{'width': '100%'}}>
                 <div>{'Test key: ' + mykey[j]}</div>
-                <div>{' RANK NUMBER: ' + ranks[mypos]}</div>
+                <div>{' RANK NUMBER: ' + ranks[mypos[j]]}</div>
                 <div>{'Step: ' + mystep[j] + ' Set: ' + myset[j]}</div>
                 <BarChart width={375} height={250} data={data} >
                   <CartesianGrid strokeDasharray="3 3" />
