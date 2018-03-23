@@ -16,6 +16,7 @@ class RankingContainer extends React.Component {
     let mystep = []
     let mypos = []
     let data = []
+    let num = 0
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let i = 0
@@ -28,8 +29,8 @@ class RankingContainer extends React.Component {
                 daySnapshot.forEach((timeSnapshot) => {
                   timeSnapshot.forEach((dataSnapshot) => {
                     set[k] = dataSnapshot.val().set
-                    userkey[k] = dataSnapshot.key
                     k++
+                    userkey[k] = dataSnapshot.key
                     if (dataSnapshot.key === firebase.auth().currentUser.uid) {
                       mypos[i] = k-1
                       myset[i] = dataSnapshot.val().set
@@ -41,6 +42,7 @@ class RankingContainer extends React.Component {
                   k=0
                   naset.push(set)
                   set = []
+                  num++
                   j++
                 })
                 j=0
@@ -48,9 +50,7 @@ class RankingContainer extends React.Component {
             })
           })
         }).then(() => {
-          that.props.getranking(arr, mykey, user)
-        }).then(() => {
-          for (let j = 0; j < that.props.user.key.length; j++) {
+          for (let j = 0; j < num; j++) {
             let sorted = naset[j].slice().sort((a,b) => {return b-a})
             let ranks = naset[j].slice().map((v) => { return sorted.indexOf(v)+1 })
             naset[j] = naset[j].sort()
