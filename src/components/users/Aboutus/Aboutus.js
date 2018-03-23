@@ -16,8 +16,8 @@ export class Aboutus extends Component {
       <div>
         <div>
           <div className='footer'>
-            <div className='head_footer_content'> About us </div>
-            <div className='footer_content'> Create and develop by Parut Singhapun </div> 
+            <div className='head_footer_content'> เกี่ยวกับเรา </div>
+            <div className='footer_content'>สร้างสรรค์ และออกแบบโดย ภารุจ สิงหพันธุ์  </div> 
           </div>
         </div>
       </div>    

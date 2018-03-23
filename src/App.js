@@ -65,7 +65,7 @@ class App extends React.Component {
         document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
         document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
       }}
-    >Logout</NavLink>
+    >ลงชื่อออก</NavLink>
     const examlogOutBtn = <NavLink key='6' to='/examiner/login'
       onClick={ () => {
         firebase.auth().signOut().then(function () {
@@ -78,7 +78,7 @@ class App extends React.Component {
         document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
         document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
       }}
-    >Logout</NavLink>
+    >ลงชื่อออก</NavLink>
     examiner = this.getCookie('examiner')
     
     user = this.getCookie('username')
@@ -92,10 +92,10 @@ class App extends React.Component {
               <img className='brandLogo' src={brandLogo} alt=''/>
             </NavLink>
             <NavLink key='6'  to='/register'>
-              <button id='signupButton' className='signupBtnText'>Sign Up</button>
+              <button id='signupButton' className='signupBtnText'>ลงทะเบียน</button>
             </NavLink>
             <NavLink key='7'  to='/login'>
-              <button id='loginButton' className='loginBtnText'>Log In</button>
+              <button id='loginButton' className='loginBtnText'>ลงชื่อเข้าใช้</button>
             </NavLink>
           </span>
         </div>
@@ -116,7 +116,7 @@ class App extends React.Component {
             <img src={picture} className='titleUserIcon' alt=''/>
             <img src={downArrow} className='downArrow' alt=''/>
             <div className='dropdown-content'>
-              <NavLink key='4'  to='/aboutus'>About Us</NavLink>
+              <NavLink key='4'  to='/aboutus'>เกี่ยวกับเรา</NavLink>
               {logOutBtn}
             </div>
           </div>
@@ -142,7 +142,7 @@ class App extends React.Component {
             <img src={picture} className='titleUserIcon' alt=''/>
             <img src={downArrow} className='downArrow' alt=''/>
             <div className='dropdown-content'>
-              <NavLink key='4'  to='/aboutus'>About Us</NavLink>
+              <NavLink key='4'  to='/aboutus'>เกี่ยวกับเรา</NavLink>
               {examlogOutBtn}
             </div>
           </div>

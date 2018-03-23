@@ -8,7 +8,7 @@ export class Register extends React.Component {
       <div id='wrapper'>
         <div className=''></div>
         <div className=' sign_up_content'>
-          <p className='signup_headerText'>Sign Up</p>
+          <p className='signup_headerText'>ลงทะเบียน</p>
           <div style={ {marginTop: '24px'} }>
             <input type="text" className="form-input" placeholder="Email" style={{'width': '100%'}} name='User' onChange={this.props.handleChange}  onKeyPress={this.props.handlePress}/>
             <div className='space'></div>
@@ -16,9 +16,9 @@ export class Register extends React.Component {
             <div className='space'></div>
             <input type="password" className="form-input" placeholder="Re enter password" style={{'width': '100%'}} name='REPass' onChange={this.props.handleChange}  onKeyPress={this.props.handlePress}/>
           </div>
-          <button className='col-12 registerBtn' onClick={ () => { this.props.regisfire(this.props.user.username, this.props.user.password, this.props.user.repassword, this.props.user.mobile) } }><span className='signup--text'>Sign Up</span></button>
+          <button className='col-12 registerBtn' onClick={ () => { this.props.regisfire(this.props.user.username, this.props.user.password, this.props.user.repassword, this.props.user.mobile) } }><span className='signup--text'>Submit</span></button>
           <p className='col-12 signUpDivider'/>
-          <div className='col-12'><p className='guideText'>Already have an account? <span><NavLink key='10' activeClassName='active' to='/login' id='signUpLink'>Log In</NavLink></span></p></div>
+          <div className='col-12'><p className='guideText'>มีแอคเคาท์อยู่แล้ว ? <span><NavLink key='10' activeClassName='active' to='/login' id='signUpLink'>ลงชื่อเข้าใช้</NavLink></span></p></div>
         </div>
         <div className=''></div>
       </div>

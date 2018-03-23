@@ -7,7 +7,7 @@ export class Login extends React.Component {
     return (
       <div id='wrapper'>
         <div className='log_in_content'>
-          <p className='login_headerText'>Log In</p>
+          <p className='login_headerText'>ลงชื่อเข้าใช้</p>
           <div style={ {marginTop: '24px'} }>
             <input type="text" className="form-input" placeholder="Phone number or email" style={ {width: '100%'} }name='User' onChange={this.props.handleChange} onKeyPress={this.props.handlePress}/>
             <div className='space'> </div>
@@ -17,7 +17,7 @@ export class Login extends React.Component {
           <p className='col-12 loginDivider'/>
           <button className='col-12 loginBtn loginBtn--google' onClick={ () => { this.props.logingmail() } }><span className='loginBtn--texts'>Google</span></button>
           <p className='col-12 loginDivider'/>
-          <div className='col-12'><p className='guideText'>Don't have an account? <span><NavLink key='10' activeClassName='active' to='/register' id='signUpLink'>Sign Up</NavLink></span></p></div>
+          <div className='col-12'><p className='guideText'>ยังไม่มีแอคเคาท์? <span><NavLink key='10' activeClassName='active' to='/register' id='signUpLink'>สมัครเลย</NavLink></span></p></div>
         </div>
       </div>
     )
