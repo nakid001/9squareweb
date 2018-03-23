@@ -24,7 +24,7 @@ export class Ranking extends React.Component {
   render () {
     return (
       <div id="rank_wrapper">
-        <div id="header" className="title_content">{'Ranking'}</div>
+        <div id="header" className="title_content">{'ลำดับ'}</div>
         <div className="rank_content">
           {this.props.user.ranking.slice(this.props.user.num,this.props.user.num+5)}
           <Button  color="danger" onClick={() => {this.props.goPrevious(this.props.user.num - 5, this.props.user.ranking.length, 5)}}>Previous!</Button>

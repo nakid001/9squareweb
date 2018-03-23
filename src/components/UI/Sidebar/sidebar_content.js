@@ -59,10 +59,10 @@ const SidebarContent = (props) => {
         <img src={picture} className='userIcon' alt=''></img>
       </span>,
       <div key='sb7' className='sidebarDivider' />,
-      <NavLink key='sb3' exact activeClassName='sbLinkActive' to='/test' className='sidebarLink'>Test</NavLink>,
-      <NavLink key='sb4' activeClassName='sbLinkActive' to='/history' className='sidebarLink'>History</NavLink>,
-      <NavLink key='sb5' activeClassName='sbLinkActive' to='/ranking' className='sidebarLink'>Ranking</NavLink>,
-      <NavLink key='sb6' activeClassName='sbLinkActive' to='/aboutus' className='sidebarLink'>About us</NavLink>    
+      <NavLink key='sb3' exact activeClassName='sbLinkActive' to='/test' className='sidebarLink'>การทดสอบ</NavLink>,
+      <NavLink key='sb4' activeClassName='sbLinkActive' to='/history' className='sidebarLink'>ประวัติการทดสอบ</NavLink>,
+      <NavLink key='sb5' activeClassName='sbLinkActive' to='/ranking' className='sidebarLink'>ลำดับ</NavLink>,
+      <NavLink key='sb6' activeClassName='sbLinkActive' to='/aboutus' className='sidebarLink'>เกี่ยวกับเรา</NavLink>    
       // <NavLink key='sb6' activeClassName='active' to='/notification' className='sidebarLink' >Notification</NavLink>,
       // <div key='sb7' className='sidebarDivider' />,
       // <NavLink key='sb8' activeClassName='sbLinkActive' to='/settings' className='sidebarLink' >Settings</NavLink>,
@@ -84,10 +84,10 @@ const SidebarContent = (props) => {
         <img src={picture} className='userIcon' alt=''></img>
       </span>,
       <div key='sb7' className='sidebarDivider' />,
-      <NavLink key='sb3' exact activeClassName='sbLinkActive' to='/examiner/test' className='sidebarLink'>Test</NavLink>,
+      <NavLink key='sb3' exact activeClassName='sbLinkActive' to='/examiner/test' className='sidebarLink'>การควบคุมทดสอบ</NavLink>,
       // <NavLink key='sb4' activeClassName='sbLinkActive' to='/examiner/history' className='sidebarLink'>History</NavLink>,
       // <NavLink key='sb5' activeClassName='sbLinkActive' to='/examiner/ranking' className='sidebarLink'>Ranking</NavLink>,
-      <NavLink key='sb6' activeClassName='sbLinkActive' to='/aboutus' className='sidebarLink'>About us</NavLink>  
+      <NavLink key='sb6' activeClassName='sbLinkActive' to='/aboutus' className='sidebarLink'>เกี่ยวกับเรา</NavLink>  
     ] 
   }
   if (user === '') {

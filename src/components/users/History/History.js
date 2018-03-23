@@ -21,9 +21,9 @@ export class History extends React.Component {
           <div className="history_content">
             <table>
               <tr>
-                <th>Test ID</th>
-                <th>Set</th>
-                <th>Step</th>
+                <th>วัน/เวลา</th>
+                <th>วงรอบ</th>
+                <th>ก้าว</th>
               </tr>
               { this.props.user.history.slice(this.props.user.num,this.props.user.num+10) }
             </table> 
