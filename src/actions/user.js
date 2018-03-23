@@ -57,7 +57,7 @@ export function gethistory (arr, username) {
 }
 export function addhistory () {
   let d = new Date()
-  firebase.database().ref('/history/' + d.getFullYear() + '/' + d.getMonth() + '/' + d.getDate() + '/' + d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds() + '/' + firebase.auth().currentUser.uid).set  ({
+  firebase.database().ref('/history/' + d.getFullYear() + '/' +('0' + d.getMonth()).slice(-2) + '/' +('0' + d.getDate()).slice(-2)+ '/' +('0' + d.getHours()).slice(-2) + ':' +('0' + d.getMinutes()).slice(-2) + ':' +('0' + d.getSeconds()).slice(-2) + '/' + firebase.auth().currentUser.uid).set  ({
     step : 123,
     set : 456
   })
