@@ -67,7 +67,8 @@ tr:nth-child(odd) {
   height: 100vh;  
 }
 .history_content {
-  position: absolute;
+  position: absolute; 
+  margin-top: 15px;
   top: 0%;
 }
 .history_body_background {
