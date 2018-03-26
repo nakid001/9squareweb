@@ -81,28 +81,30 @@ class ExRoomContainer extends React.Component {
           const RoomeBtn = childSnapshot.val().ava ? 'RoomAvaBtn' : 'RoomNotAvaBtn'   
           const userID = childSnapshot.val().user       
           if (childSnapshot.val().ava) {
-            ava = 'AVALIABLE'
+            ava = 'พร้อม'
           } else {
-            ava = 'NOT AVALIABLE'
+            ava = 'จอง'
           }
           device[i] = (
             <div className='' key={i}>
               <div className=''>
                 <span>
                   <div className={RoomeBtn}>
-                    Device:{childSnapshot.val().num}: {ava} {userID}
+                    อุปกรณ์หมายเลข:{childSnapshot.val().num}: {ava} {userID}
                   </div> 
                   <div className="buttonSet">
                     <button onClick={()=> {
                       that.props.setDeviceActive(childSnapshot.val().num, that.props.test.num)
-                    }}> Active/Inactive</button>
+                    }}> เปิด/ปิด</button>
                     <button onClick={()=> {
-                      that.props.delDevice(childSnapshot.val().num, that.props.test.num)
-                    }}> Delete device </button>
+                      let answer = window.confirm('คำเตือน!: คุณกำลังจะลบอุปกรณ์หมายเลข ' + childSnapshot.val().num + ' ยืนยัน?')
+                      if (answer) {
+                        that.props.delDevice(childSnapshot.val().num, that.props.test.num)
+                      }
+                    }}> ลบอุปกรณ์</button>
                   </div>
                 </span>
               </div>
-              {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
             </div>
           )
           i++

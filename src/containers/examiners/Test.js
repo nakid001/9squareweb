@@ -35,9 +35,9 @@ class ExTestContainer extends React.Component {
         snapshot.forEach(function (childSnapshot) {
           const TestBtn = childSnapshot.val().ava ? 'RoomAvaBtn' : 'RoomNotAvaBtn'
           if (childSnapshot.val().ava) {
-            ava = 'AVALIABLE'
+            ava = 'พร้อม'
           } else {
-            ava = 'NOT AVALIABLE'
+            ava = 'ปรับปรุง'
           }
           room[i] = (
             <div key={i}>
@@ -45,18 +45,18 @@ class ExTestContainer extends React.Component {
                 <span><Link to ={'/examiner/test/room'} onClick={()=> {
                   that.props.getRoomNum(childSnapshot.val().num)
                 }}>
-                  <div className={TestBtn}> Room:{childSnapshot.val().num}: {ava}</div> 
+                  <div className={TestBtn}> สถานที่ทดสอบ:{childSnapshot.val().num}: {ava}</div> 
                 </Link>
                 <div className="buttonSet">
                   <button onClick={()=> {
                     that.props.setActive(childSnapshot.val().num)
-                  }} > Active/Inactive</button>
+                  }} > เปิด/ปิด</button>
                   <button onClick={()=> {
-                    let answer = window.confirm('WARNING! You are deleting room ' + childSnapshot.val().num + ' Continue?')
+                    let answer = window.confirm('คำเตือน!: คุณกำลังจะลบสถานที่หมายเลข ' + childSnapshot.val().num + ' ยืนยัน?')
                     if (answer) {
                       that.props.delRoom(childSnapshot.val().num)
                     }
-                  }}> Delete room </button>
+                  }}>ลบสถานที่ทดสอบ </button>
                 </div>
                 </span>
               </div>

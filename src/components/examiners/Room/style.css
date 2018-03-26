@@ -1,12 +1,5 @@
 /* sizes */
 #main-wrap > div { min-height: 100px; }
-@media only screen and (max-width: 400px) {
-  .Modal_content {
-    width: 400px;
-    height: 100%;
-  }
-}
-
 #header,
 #footer {
 }
@@ -119,6 +112,17 @@
     font-size: 20px;
     text-align: center;
   }
+  .Modal_list {
+    margin: 0 auto;
+    width: 360px;
+    height: 240px;
+    font-size: 20px;
+    text-align: center;
+  }
+  .Modal_list_btn {
+    margin-left: 15px;
+    margin-top: 15px;
+  }
   .modal-content {
     height: 100%;
   }
@@ -160,4 +164,20 @@
   .Matching_Device {
     margin-top: 5px;
     margin-bottom: 10px;
+  }
+  @media only screen and (max-width: 400px) {
+    .Modal_content {
+      width: 400px;
+      height: 100%;
+    }
+    .Modal_list {
+      width: 120px;
+      margin-left: 15px;
+    }
+    .Modal_footer {
+      padding: 0;
+    }
+    #home_wrapper {
+      width: 400px;
+    }
   }
