@@ -12,9 +12,7 @@ export class Room extends React.Component {
       device: [],
       num: 0,
       order: [],
-      deviceNumber: 0
-    }
-    this.state = {
+      deviceNumber: 0,
       manual: false
     }
    

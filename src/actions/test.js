@@ -222,6 +222,14 @@ export function matchUserDevice (email, uid, room, num) {
   }
 }
 
+export function setTime (num) {
+  return {
+    type: 'SETTIME',
+    time: num,
+    payload: 'SET TIME FOR THE TEST'
+  }
+}
+
 export function sendresult (num) {
   console.log('num = ' + num)
   firebase.database().ref('/rooms/room' + num).update({

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import  { Start } from '../../components/examiners/Start/Start.js'
 import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
-import { showroom, addroom, setActive, delRoom, getRoomNum, sendresult } from '../../actions/test.js'
+import { showroom, addroom, setActive, delRoom, getRoomNum, sendresult, setTime } from '../../actions/test.js'
 
 class ExStartContainer extends React.Component {
   componentWillMount() {
@@ -47,7 +47,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      inputreg, regisfire, showroom, addroom, setActive, delRoom, getRoomNum, sendresult
+      inputreg, regisfire, showroom, addroom, setActive, delRoom, getRoomNum, sendresult, setTime
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ExStartContainer)

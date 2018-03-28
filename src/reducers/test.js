@@ -4,6 +4,7 @@ const initialState = {
   device: [],
   text: '',
   order: [],
+  time: 0,
 }
 const testReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -95,6 +96,13 @@ const testReducer = (state = initialState, action) => {
   case 'MATCHDEVICE':
     state = {
       ...state,
+      text: action.payload
+    }
+    break
+  case 'SETTIME':
+    state = {
+      ...state,
+      time: action.time,
       text: action.payload
     }
     break
