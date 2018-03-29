@@ -1,5 +1,19 @@
 {
   "rules": {
+    "history": {
+      ".read": "true",
+      ".write": "true"
+    }, "mqtt": {
+      ".read": "true",
+      ".write": "true"
+    }, "rooms": {
+      ".read": "true",
+      ".write": "true"
+    },
+      "devices": {
+      ".read": "true",
+      ".write": "true"
+    },
     ".read": "auth != null",
     ".write": "auth != null"
   }

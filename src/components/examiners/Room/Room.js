@@ -216,7 +216,7 @@ export class Room extends React.Component {
           </div>
           <div className='Modal_footer'>
             <div>
-              <button className='Modal_btn' onClick={() => {this.props.submitOrder(this.props.test.num, this.props.test.order).then(this.closeModal())}}> ยืนยัน </button>
+              <button className='Modal_btn' onClick={() => {this.props.submitOrder(this.props.test.num, this.props.test.order[0]).then(this.closeModal())}}> ยืนยัน </button>
               <button className='Modal_btn'  onClick={ () => { this.props.clearOrder() } }> ล้างรูปแบบ</button>
               <button className='Modal_btn'  onClick={ () => { this.setState({manual: true}) } }> กำหนดใหม่</button>
             </div>

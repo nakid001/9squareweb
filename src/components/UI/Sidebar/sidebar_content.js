@@ -85,7 +85,7 @@ const SidebarContent = (props) => {
       </span>,
       <div key='sb7' className='sidebarDivider' />,
       <NavLink key='sb3' exact activeClassName='sbLinkActive' to='/examiner/test' className='sidebarLink'>การควบคุมทดสอบ</NavLink>,
-      // <NavLink key='sb4' activeClassName='sbLinkActive' to='/examiner/history' className='sidebarLink'>History</NavLink>,
+      <NavLink key='sb4' activeClassName='sbLinkActive' to='/examiner/history' className='sidebarLink'>ตรวจสอบประวัติการทดสอบ</NavLink>,
       // <NavLink key='sb5' activeClassName='sbLinkActive' to='/examiner/ranking' className='sidebarLink'>Ranking</NavLink>,
       <NavLink key='sb6' activeClassName='sbLinkActive' to='/aboutus' className='sidebarLink'>เกี่ยวกับเรา</NavLink>  
     ] 

@@ -2,10 +2,36 @@
 #include <driver/adc.h>
 #include <WiFi.h>
 #include <PubSubClient.h>
+#include <Thread.h>
+#include <ThreadController.h>
+#include <pthread.h>
 
 // Update these with values suitable for your network.
-const char* ssid = "GrowthChamberAIS";
-const char* password = "0123456789012";
+// const char* ssid = "GrowthChamberAIS";
+// const char* password = "0123456789012";
+const char* ssid = "MTN-MobileWiFi-E5573";
+const char* password = "ET4F92MN";
+
+
+
+ThreadController controll = ThreadController();
+
+//My Thread
+Thread Thread1 = Thread();
+//His Thread
+Thread Thread2 = Thread();
+Thread Thread3 = Thread();
+Thread Thread4 = Thread();
+Thread Thread5 = Thread();
+Thread Thread6 = Thread();
+Thread Thread7 = Thread();
+Thread Thread8 = Thread();
+Thread Thread9 = Thread();
+
+
+ThreadController groupOfThreads = ThreadController();
+
+
 int LastState1L = 0;
 int LastState1R = 0;
 int LastState2L = 0;
@@ -26,8 +52,9 @@ int LastState9L = 0;
 int LastState9R = 0;
 int count = 0;
 
+
 // Config MQTT Server
-#define mqtt_server "192.168.0.100"
+#define mqtt_server "192.168.8.100"
 #define mqtt_port 1883
 #define mqtt_user "admin"
 #define mqtt_password "password"
@@ -50,80 +77,22 @@ void callback(char* topic, byte* payload, unsigned int length) {
   }
   Serial.println(msg);
 }
-void setup() {
-  pinMode(LED_PIN, OUTPUT);
-  pinMode(36, INPUT);
-  pinMode(39, INPUT);  
-  pinMode(34, INPUT);
-  pinMode(35, INPUT);  
-  pinMode(32, INPUT);
-  pinMode(33, INPUT); 
 
-  pinMode(25, INPUT);
-  pinMode(26, INPUT);
-  pinMode(27, INPUT);
-  pinMode(14, INPUT);
-  pinMode(12, INPUT);
-  pinMode(19, INPUT);
-
-  pinMode(18, INPUT);
-  pinMode(5, INPUT);
-  pinMode(17, INPUT);
-  pinMode(16, INPUT);
-  pinMode(4, INPUT);
-  pinMode(2, INPUT);
-                                                                                                                                 
-  Serial.begin(9600);
-  delay(10);
-
-  Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
-
-  WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-  
-  client.setServer(mqtt_server, 1883);
-  client.setCallback(callback);
-}
-
-void loop() {
-  if (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
-    if (client.connect("ESP8346Client")) {
-      Serial.println("connected");
-      client.subscribe("/ESP/LED");
-    } else {
-      Serial.print("failed, rc=");
-      Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
-      delay(5000);
-      return;
-    }
-  }
+  void checkPress(){
     int buttonState1L = digitalRead(36);
     int buttonState1R = digitalRead(39);
     int buttonState2L = digitalRead(34);
     int buttonState2R = digitalRead(35);
     int buttonState3L = digitalRead(32);
     int buttonState3R = digitalRead(33);
-
+    
     int buttonState4L = digitalRead(25);
     int buttonState4R = digitalRead(26);
     int buttonState5L = digitalRead(27);
     int buttonState5R = digitalRead(14);
     int buttonState6L = digitalRead(12);
     int buttonState6R = digitalRead(19);
-
+    
     int buttonState7L = digitalRead(18);
     int buttonState7R = digitalRead(5);
     int buttonState8L = digitalRead(17);
@@ -215,48 +184,143 @@ void loop() {
       LastState6L = buttonState6L;
       LastState6R = buttonState6R;
     }
-    if (buttonState7L != LastState7L || buttonState7R != LastState7R){
-      if (buttonState7L == HIGH && buttonState7R == HIGH) {
-        // turn LED on:
-        Serial.println("7HIGH");
-      } else if ((buttonState7L == LOW || buttonState7R == LOW)){
-        // turn LED off:
-        client.publish(TOPIC1, "7");
-        Serial.println("7LOW");
-        count += 1;
-        Serial.println(count);
-      }
-      LastState7L = buttonState7L;
-      LastState7R = buttonState7R;
+    // if (buttonState7L != LastState7L || buttonState7R != LastState7R){
+    //   if (buttonState7L == HIGH && buttonState7R == HIGH) {
+    //     // turn LED on:
+    //     Serial.println("7HIGH");
+    //   } else if ((buttonState7L == LOW || buttonState7R == LOW)){
+    //     // turn LED off:
+    //     client.publish(TOPIC1, "7"); 
+    //     Serial.println("7LOW");
+    //     count += 1;
+    //     Serial.println(count);
+    //   }
+    //   LastState7L = buttonState7L;
+    //   LastState7R = buttonState7R;
+    // }
+    // if (buttonState8L != LastState8L || buttonState8R != LastState8R){
+    //   if (buttonState8L == HIGH && buttonState8R == HIGH) {
+    //     // turn LED on:
+    //     Serial.println("8HIGH");
+    //   } else if ((buttonState8L == LOW || buttonState8R == LOW)){
+    //     // turn LED off:
+    //     client.publish(TOPIC1, "8");
+    //     Serial.println("8LOW");
+    //     count += 1;
+    //     Serial.println(count);
+    //   }
+    //   LastState8L = buttonState8L;
+    //   LastState8R = buttonState8R;
+    // }
+    // if (buttonState9L != LastState9L || buttonState9R != LastState9R){
+    //   if (buttonState9L == HIGH && buttonState9R == HIGH) {
+    //     // turn LED on:
+    //     Serial.println("9HIGH");
+    //     count += 1;
+    //     Serial.println(count);
+    //   } else if ((buttonState9L == LOW || buttonState9R == LOW)){
+    //     // turn LED off:
+    //     client.publish(TOPIC1, "9");
+    //     Serial.println("9LOW");
+    //   }
+    //   LastState9L = buttonState9L;
+    //   LastState9R = buttonState9R;
+    // }
+}
+void setup() {
+
+	// Configure Thread1
+	Thread1.onRun(checkPress);
+
+	// Configure Thread2
+	Thread2.onRun(checkPress);
+	Thread3.onRun(checkPress);
+	Thread4.onRun(checkPress);
+	Thread5.onRun(checkPress);
+	Thread6.onRun(checkPress);
+	Thread7.onRun(checkPress);
+	Thread8.onRun(checkPress);
+	Thread9.onRun(checkPress);
+
+	// Adds Thread1 to the controll
+	// Adds Thread1 to the controll
+
+	// Adds Thread2 and blinkLedThread to groupOfThreads
+	groupOfThreads.add(&Thread1);
+	groupOfThreads.add(&Thread2);
+
+	// Add groupOfThreads to controll
+	controll.add(&Thread1);
+  controll.add(&Thread2);
+  controll.add(&Thread3);
+  controll.add(&Thread4);
+  controll.add(&Thread5);
+  controll.add(&Thread6);
+  controll.add(&Thread7);
+  controll.add(&Thread8);
+  controll.add(&Thread9);
+  
+  pinMode(LED_PIN, OUTPUT);
+  pinMode(36, INPUT);
+  pinMode(39, INPUT);  
+  pinMode(34, INPUT);
+  pinMode(35, INPUT);  
+  pinMode(32, INPUT);
+  pinMode(33, INPUT); 
+
+  pinMode(25, INPUT);
+  pinMode(26, INPUT);
+  pinMode(27, INPUT);
+  pinMode(14, INPUT);
+  pinMode(12, INPUT);
+  pinMode(19, INPUT);
+
+  pinMode(18, INPUT);
+  pinMode(5, INPUT);
+  pinMode(17, INPUT);
+  pinMode(16, INPUT);
+  pinMode(4, INPUT);
+  pinMode(2, INPUT);
+                                                                                                                                 
+  Serial.begin(9600);
+  delay(10);
+
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  Serial.println("");
+  Serial.println("WiFi connected");
+  Serial.println("IP address: ");
+  Serial.println(WiFi.localIP());
+  
+  client.setServer(mqtt_server, 1883);
+  client.setCallback(callback);
+}
+
+void loop() {
+  if (!client.connected()) {
+    Serial.print("Attempting MQTT connection...");
+    if (client.connect("ESP8346Client")) {
+      Serial.println("connected");
+      client.subscribe("/ESP/LED");
+    } else {
+      Serial.print("failed, rc=");
+      Serial.print(client.state());
+      Serial.println(" try again in 5 seconds");
+      delay(5000);
+      return;
     }
-    if (buttonState8L != LastState8L || buttonState8R != LastState8R){
-      if (buttonState8L == HIGH && buttonState8R == HIGH) {
-        // turn LED on:
-        Serial.println("8HIGH");
-      } else if ((buttonState8L == LOW || buttonState8R == LOW)){
-        // turn LED off:
-        client.publish(TOPIC1, "8");
-        Serial.println("8LOW");
-        count += 1;
-        Serial.println(count);
-      }
-      LastState8L = buttonState8L;
-      LastState8R = buttonState8R;
-    }
-    if (buttonState9L != LastState9L || buttonState9R != LastState9R){
-      if (buttonState9L == HIGH && buttonState9R == HIGH) {
-        // turn LED on:
-        Serial.println("9HIGH");
-        count += 1;
-        Serial.println(count);
-      } else if ((buttonState9L == LOW || buttonState9R == LOW)){
-        // turn LED off:
-        client.publish(TOPIC1, "9");
-        Serial.println("9LOW");
-      }
-      LastState9L = buttonState9L;
-      LastState9R = buttonState9R;
-    }
+  }
+	controll.run();
+
     delay(200);
   client.loop();
 }

@@ -108,7 +108,7 @@ function getDataFirebase (roomnum) {
           console.log('result = ' + result)
         }).then(() => {
           let d = new Date()
-          firebase.database().ref('/history/' + ('0' + d.getFullyear()).slice(-2) + '/' + ('0' + d.getMonth()).slice(-2) + '/' + ('0' + d.getDate()).slice(-2) + '/' + ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) + ':' + ('0' + d.getSeconds()).slice(-2)() + '/' + uname).set  ({
+          firebase.database().ref('/history/' +  d.getFullYear() + '/' + ('0' + d.getMonth()).slice(-2) + '/' + ('0' + d.getDate()).slice(-2) + '/' + ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) + ':' + ('0' + d.getSeconds  ()).slice(-2) + '/' + uname).set  ({
             step : result[0].step,
             set : result[0].set
           })
