@@ -48,3 +48,32 @@ export function logingmail () {
     payload: 'LOGIN GMAIL'
   }
 }
+
+export function getid (id) {
+  return {
+    type: 'GETID',
+    Ipayload: id,
+    payload: 'GET ID'
+  }
+}
+export function gethistory (arr) {
+  return {
+    type: 'GETHIS',
+    Hpayload: arr,
+    payload: 'GET HISTORY'
+  }
+}
+
+export function setDate (date) {
+  return {
+    type : 'SETDATE',
+    Dpayload: date,
+    payload: 'SET DATE FOR HISTORY'
+  }
+}
+export function clearDate () {
+  return {
+    type: 'CLEARDATE',
+    payload: 'CLEAR DATE IN HISTORY'
+  }
+}

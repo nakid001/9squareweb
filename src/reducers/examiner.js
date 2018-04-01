@@ -7,7 +7,11 @@ const ExReducer = (state = {
   canlog: false,
   text: '',
   payment: false,
-  loading: true
+  loading: true,
+  history: [],
+  num: 0,
+  date: '',
+  id: 0
 }, action) => {
   switch (action.type) {
   case 'LOGIN':
@@ -51,6 +55,35 @@ const ExReducer = (state = {
       username: action.Upayload,
       password: action.Ppayload,
       payload: action.payload
+    }
+    break
+  case 'GETHIS':
+    state = {
+      ...state,
+      history: action.Hpayload,
+      text: action.payload
+    }
+    break
+  case 'GETID':
+    state = {
+      ...state,
+      id: action.Ipayload,
+      text: action.payload
+    }
+    break
+  case 'SETDATE': {
+    state = {
+      ...state,
+      date: action.Dpayload,
+      text: action.payload
+    }
+  }
+    break
+  case 'CLEARDATE':
+    state = {
+      ...state,
+      date: '',
+      text: action.payload
     }
     break
   default :

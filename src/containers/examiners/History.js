@@ -2,7 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { History } from '../../components/examiners/History/History.js'
-import { gethistory, goNext, goPrevious, canlogin, cannotlogin, addhistory } from  '../../actions/user'
+import { goNext, goPrevious, canlogin, cannotlogin, addhistory } from  '../../actions/user'
+import { gethistory, getid, setDate, clearDate } from  '../../actions/examiner'
 
 import * as firebase from 'firebase'
 class HistoryContainer extends React.Component {
@@ -12,32 +13,53 @@ class HistoryContainer extends React.Component {
     firebase.auth().onAuthStateChanged(function (userF) {
       if (userF) {
         let history = []
+        let id = []
         if (firebase.auth().currentUser) {
           let i = 0
-          firebase.database().ref('/history').once('value', (snapshot) => {
-            snapshot.forEach((childSnapshot) => {
-              childSnapshot.forEach((elderSnapshot) => {
-                elderSnapshot.forEach((brotherSnapshot) => {
-                  brotherSnapshot.forEach((timeSnapshot) => {
-                    timeSnapshot.forEach((youngSnapshot) => {
-                      history[i] = (
-                        <tr key={i}>
-                          <td>{ childSnapshot.key + '.' + elderSnapshot.key + '.' + brotherSnapshot.key + '/' + timeSnapshot.key}</td>
-                          <td>{youngSnapshot.val().set}</td>
-                          <td>{youngSnapshot.val().step}</td>
-                        </tr>
-                      )
-                      i++
-                      
+          if (that.props.exam.date === '') {
+            firebase.database().ref('/history').once('value', (snapshot) => {
+              snapshot.forEach((yearSnapshot) => {
+                yearSnapshot.forEach((monthSnapshot) => {
+                  monthSnapshot.forEach((daySnapshot) => {
+                    daySnapshot.forEach((timeSnapshot) => {
+                      timeSnapshot.forEach((dataSnapshot) => {
+                        id[i] = (
+                          <tr key={i}>
+                            <td><button onClick = {() => {
+                              that.props.setDate(yearSnapshot.key + '/' + monthSnapshot.key + '/' + daySnapshot.key + '/' + timeSnapshot.key + '/')
+                            }}> {yearSnapshot.key + '.' + monthSnapshot.key + '.' + daySnapshot.key + '/' + timeSnapshot.key} </button></td>
+                          </tr>
+                        )
+                        i++
+                      })
                     })
                   })
                 })
               })
+            }).then(() => {
+              that.props.getid(id)
+              that.props.canlogin(userF)
             })
-          }).then(() => {
-            that.props.gethistory(history, userF)
-            that.props.canlogin(userF)
-          })
+          } else {
+            i = 0
+            alert(this.props.exam.date)
+            firebase.database().ref('/history/'+that.props.exam.date).once('value', (snapshot) => {
+              snapshot.forEach((dataSnapshot) => {
+                history[i] = (
+                  <tr key={i}>
+                    <td>{that.props.exam.date}</td>
+                    <td>{dataSnapshot.val().set}</td>
+                    <td>{dataSnapshot.val().step}</td>
+                  </tr>
+                )
+                i++
+              }
+              )} 
+            ).then(() => {
+              this.props.gethistory(history)
+              that.props.canlogin(userF)
+            })}
+          
         } else {
           console.log('please wait')
         }
@@ -67,14 +89,16 @@ class HistoryContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    exam: state.exam,
+    test: state.test
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      gethistory, goNext, goPrevious, canlogin, cannotlogin, addhistory
+      gethistory, getid, goNext, goPrevious, canlogin, cannotlogin, addhistory, setDate, clearDate
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(HistoryContainer)
