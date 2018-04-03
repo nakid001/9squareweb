@@ -56,9 +56,10 @@ export function getid (id) {
     payload: 'GET ID'
   }
 }
-export function gethistory (arr) {
+export function gethistory (arr, user) {
   return {
     type: 'GETHIS',
+    upayload: user,
     Hpayload: arr,
     payload: 'GET HISTORY'
   }

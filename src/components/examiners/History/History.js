@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// import bg from './img/history_background.jpg'
+import bg from '../../users/History/img/history_background.jpg'
 import './style.css'
 import { Button } from 'reactstrap'
 
@@ -22,6 +22,7 @@ export class History extends React.Component {
           <table>
             <tr>
               <th>วัน/เวลา</th>
+              <th>ผู้ใช้</th>
               <th>เซต</th>
               <th>ก้าว</th>
             </tr>
@@ -60,7 +61,7 @@ export class History extends React.Component {
       <div id='history_wrapper'>
         <div id="header" className="title_content">ประวัติการทดสอบ</div>
         <div className="history_body">
-          {/* <img src ={bg} alt = '' className="history_body_background"/> */}
+          <img src ={bg} alt = '' className="history_body_background"/>
           {this.historyContent()}
         </div>
       </div>   

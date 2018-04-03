@@ -60,6 +60,7 @@ const ExReducer = (state = {
   case 'GETHIS':
     state = {
       ...state,
+      username: action.Upayload,
       history: action.Hpayload,
       text: action.payload
     }
