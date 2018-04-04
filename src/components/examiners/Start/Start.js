@@ -12,13 +12,44 @@ export class Start extends React.Component {
     this.state = {
       time: 0,
       start: -1,
+      showData: [],
     }
     this.countdown = this.countdown.bind(this)
     this.showclock = this.showclock.bind(this)
   }
   countdown() {
     this.setState({start: 1})
-    this.props.sendresult(this.props.test.num)
+    this.props.sendresult(this.props.test.num).then(() => {
+      let device = []
+      let i = 0
+      let showData = []
+      firebase.database().ref('/rooms/room' + this.props.test.num + '/devices/').once('value', (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+          device[i] = childSnapshot.key
+          i++
+        })
+      }).then(() => {
+        let i = 0
+        showData = []
+        firebase.database().ref('/devices/').once('value', (snapshot) => {
+          snapshot.forEach((childSnapshot) => {
+            if (childSnapshot.key === device[i] && i<device.length) {
+              showData[i] = (
+                <tr key={i}>
+                  <td>{childSnapshot.val().set}</td>
+                  <td>{childSnapshot.val().step}</td>
+                  <td>{childSnapshot.val().last_user}</td>
+                </tr>
+              )
+              i++
+            }
+          })
+        }).then(() => {
+          this.props.showSendingData(showData)
+          console.log(showData)
+        })
+      })
+    })
   }
   showclock() {
     if (this.state.start === 0) {
@@ -26,15 +57,30 @@ export class Start extends React.Component {
         this.setState({start: -1})
         alert ('กรุณากำหนดเวลาก่อน')
       }
-      return (            
-        <ReactCountdownClock seconds={this.props.test.time}
-          color="#000"
-          alpha={0.9}
-          size={150}
-          onComplete = {this.countdown = this.countdown.bind(this)} className="ReactClock"/>
+      return (           
+        <div className ="ReactClock">
+          <div className="empty">
+                
+          </div>
+          <ReactCountdownClock seconds={this.props.test.time}
+            color="#000"
+            alpha={0.9}
+            size={150}
+            onComplete = {this.countdown = this.countdown.bind(this)} className="ReactClock"/>
+        </div>
       )
     } else if (this.state.start === 1) {
-      return (<div className="left">ทดสอบเสร็จสิ้น</div>)
+      return (<div>
+      ทดสอบเสร็จสิ้น
+        <table>
+          <tr>
+            <th>เซต</th>
+            <th>ก้าว</th>
+            <th>ผู้ใช้</th>
+          </tr>
+          {this.props.test.showData}
+        </table> 
+      </div>)
     }
     return ''
   }
@@ -50,7 +96,7 @@ export class Start extends React.Component {
             <div id='start_status'>เตรียมตัวเริ่มการทดสอบ</div>
             <Button  outline color="success" onClick={() => { 
               firebase.database().ref('/rooms/room' + this.props.test.num).update({
-                start: 'START'
+                // start: 'START'
               })
               this.setState({start: 0})
             }}>START!</Button>
@@ -58,12 +104,7 @@ export class Start extends React.Component {
             <div id='TimeCounter'> 
             </div>
             <div >
-              <div className="empty">
-                
-              </div>
-              <div className ="ReactClock">
-                {this.showclock()}
-              </div>
+              {this.showclock()}
             </div>
             <div className="start_config"> เปลี่ยนระยะเวลา  
             <button onClick={() => {this.props.setTime(30)}}> 30 วินาที</button>

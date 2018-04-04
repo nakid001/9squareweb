@@ -231,42 +231,22 @@ export function setTime (num) {
 }
 
 export function sendresult (num) {
+  let showData =[]
   console.log('num = ' + num)
   firebase.database().ref('/rooms/room' + num).update({
-    start: 'END'
+    // start: 'END'
   })
-  /*  firebase.database().ref('/rooms/room' + num + '/devices').once('value', function (snapshot) {
-    snapshot.forEach(function (childSnapshot) {
-      if (childSnapshot.val().uid) {
-        usr[i] = childSnapshot.val().uid
-        result[i] = {
-          step: 152,
-          set : 15
-        }
-        i++
-        console.log('usr = ' + childSnapshot.val().uid)
-      }
-    })
-    console.log('result = ' + result)
-  }).then(() => {
-    for (let j = 0; j < usr.length; j++) {
-      firebase.database().ref('/history/' + mykey + '/' + usr[j]).set  ({
-        step : result[j].step,
-        set : result[j].set
-      })
-    }
-    for (let j = 0; j < usr.length; j++) {
-      firebase.database().ref('/users/' + usr[j] + '/history/'+ mykey).set  ({
-        step : result[j].step,
-        set : result[j].set
-      })
-    }
-  })
-*/
-
   return {
     type:'SENDRESULT',
     payload: 'SENDING RESULT'
+  }
+}
+
+export function showSendingData (arr) {
+  return {
+    type: 'SHOWSENDINGRESULT',
+    Apayload: arr,
+    payload: 'SHOW SENDING RESULT',
   }
 }
   

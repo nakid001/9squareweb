@@ -5,6 +5,7 @@ const initialState = {
   text: '',
   order: [],
   time: 0,
+  showData: []
 }
 const testReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -111,6 +112,15 @@ const testReducer = (state = initialState, action) => {
       ...state,
       text: action.payload
     }
+    break
+  case 'SHOWSENDINGRESULT':{ 
+    state = {
+      ...state,
+      showData: action.Apayload,
+      text: action.payload
+    }
+    console.log(state.showData)
+  }
     break
   default :
     break
