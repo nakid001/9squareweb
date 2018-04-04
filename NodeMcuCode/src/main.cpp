@@ -17,6 +17,7 @@ CircularBuffer<int> myBuffer(64);
 
 
 ThreadController controll = ThreadController();
+ThreadController controll2 = ThreadController();
 
 //My Thread
 Thread Thread1 = Thread();
@@ -25,6 +26,7 @@ Thread Thread2 = Thread();
 
 ThreadController groupOfThreads = ThreadController();
 
+portMUX_TYPE mux = portMUX_INITIALIZER_UNLOCKED;
 
 int LastState1L = 0;
 int LastState1R = 0;
@@ -66,6 +68,33 @@ int buttonState8L = 0;
 int buttonState8R = 0;
 int buttonState9L = 0;
 int buttonState9R = 0;
+////////////////////////////////////
+uint8_t myPin_mask1L = 0;
+volatile uint32_t *myPin_port1L =0;
+uint8_t myPin_mask1R = 0;
+volatile uint32_t *myPin_port1R =0;
+uint8_t myPin_mask2L = 0;
+volatile uint32_t *myPin_port2L =0;
+uint8_t myPin_mask2R = 0;
+volatile uint32_t *myPin_port2R =0;
+uint8_t myPin_mask3L = 0;
+volatile uint32_t *myPin_port3L =0;
+uint8_t myPin_mask3R = 0;
+volatile uint32_t *myPin_port3R =0;
+// uint8_t myPin_mask4 = 0;
+// volatile uint32_t *myPin_port4 =0;
+// uint8_t myPin_mask5 = 0;
+// volatile uint32_t *myPin_port5 =0;
+// uint8_t myPin_mask6 = 0;
+// volatile uint32_t *myPin_port6 =0;
+// uint8_t myPin_mask7 = 0;
+// volatile uint32_t *myPin_port7 =0;
+// uint8_t myPin_mask8 = 0;
+// volatile uint32_t *myPin_port8 =0;
+// uint8_t myPin_mask9 = 0;
+// volatile uint32_t *myPin_port9 =0;
+
+
 // Config MQTT Server
 #define mqtt_server "192.168.8.102"
 #define mqtt_port 1883
@@ -222,84 +251,218 @@ void callback(char* topic, byte* payload, unsigned int length) {
 }
 void subPress1() {
       client.publish(TOPIC1, 1 + "");
+      Serial.printf("1");
     }
 void subPress2() {
       client.publish(TOPIC1, 2 + "");
+      Serial.printf("2");
     }
 void subPress3() {
       client.publish(TOPIC1, 3 + "");
+      Serial.printf("3");
     }
 void pushPressAll() {
+  char Temp[20];
   int readPin  = myBuffer.read();
-  client.publish(TOPIC1, readPin + "");
-}
-void getPress1() {
-  myBuffer.write(1); // 1 = all
-  pushPressAll();
-}
-void getPress2() {
-  myBuffer.write(2); // 1 = all
-  pushPressAll();
-}
-void getPress3() {
-  myBuffer.write(3); // 1 = all
-  pushPressAll();
-}
-void getPressAll() {
-  myBuffer.write(1); // 1 = all
-  pushPressAll();
+  Serial.println(readPin);
+  itoa(readPin, Temp,10);
+  client.publish(TOPIC1, Temp);
 }
 
+// void getPress1() {
+//   Serial.printf("1");
+//   myBuffer.write(1); // 1 = all
+//   Serial.printf("1");
+//   subPress1();
+// }
+// void getPress2() {
+//   myBuffer.write(2); // 1 = all
+//   subPress2();
+// }
+// void getPress3() {
+//   myBuffer.write(3); // 1 = all
+//   subPress3();
+// }
+// void getPressAll() {
+//   myBuffer.write(1); // 1 = all
+//   pushPressAll();
+// }
+void checkPress() {
+  int buttonState1L = digitalRead(36);
+  int buttonState1R = digitalRead(39);
+  int buttonState2L = digitalRead(34);
+  int buttonState2R = digitalRead(35);
+  int buttonState3L = digitalRead(32);
+  int buttonState3R = digitalRead(33);
+    
+  int buttonState4L = digitalRead(25);
+  int buttonState4R = digitalRead(26);
+  int buttonState5L = digitalRead(27);
+  int buttonState5R = digitalRead(14);
+  int buttonState6L = digitalRead(12);
+  int buttonState6R = digitalRead(19);
+    
+  int buttonState7L = digitalRead(18);
+  int buttonState7R = digitalRead(5);
+  int buttonState8L = digitalRead(17);
+  int buttonState8R = digitalRead(16);
+  int buttonState9L = digitalRead(4);
+  int buttonState9R = digitalRead(2);
+
+  uint8_t pinValue1L = (*myPin_port1L & myPin_mask1L) != 0;  uint8_t pinValue1R = (*myPin_port1R & myPin_mask1R) != 0;
+
+  uint8_t pinValue2L = (*myPin_port2L & myPin_mask2L) != 0;  uint8_t pinValue2R = (*myPin_port2R & myPin_mask2R) != 0;
+
+
+  uint8_t pinValue3L = (*myPin_port3L & myPin_mask3L) != 0;  uint8_t pinValue3R = (*myPin_port3R & myPin_mask3R) != 0;
+
+  // uint8_t pinValue4L = (*myPin_port4L & myPin_mask4L) != 0;  uint8_t pinValue4 = (*myPin_port4R & myPin_mask4R) != 0;
+
+  // uint8_t pinValue5L = (*myPin_port5L & myPin_mask5L) != 0;  uint8_t pinValue5 = (*myPin_port5R & myPin_mask5R) != 0;
+
+  // uint8_t pinValue6L = (*myPin_port6L & myPin_mask6L) != 0;  uint8_t pinValue6 = (*myPin_port6R & myPin_mask6R) != 0;
+
+  // uint8_t pinValue7L = (*myPin_port7L & myPin_mask7L) != 0;  uint8_t pinValue7 = (*myPin_port7R & myPin_mask7R) != 0;
+
+  // uint8_t pinValue8L = (*myPin_port8L & myPin_mask8L) != 0;  uint8_t pinValue8 = (*myPin_port8R & myPin_mask8R) != 0;
+
+  // uint8_t pinValue9L = (*myPin_port9L & myPin_mask9L) != 0;  uint8_t pinValue9 = (*myPin_port9R & myPin_mask9R) != 0;
+
+
+  if (pinValue1L != LastState1L || pinValue1R != LastState1R){
+      if (pinValue1L == HIGH && pinValue1R == HIGH) {
+        // turn LED on:
+        Serial.println("1HIGH");
+      } else if ((pinValue1L == LOW || pinValue1R == LOW)){
+        // turn LED off:
+        myBuffer.write(1); // 1 = all
+        count += 1;
+        Serial.println(count);
+        controll2.run();
+
+      }
+      LastState1L = pinValue1L;
+      LastState1R = pinValue1R;
+
+    }
+    if (pinValue2L != LastState2L || pinValue2R != LastState2R) {
+      if (pinValue2L == HIGH && pinValue2R == HIGH) {
+        // turn LED on:
+        Serial.println("2HIGH");
+      } else if ((pinValue2L == LOW || pinValue2R == LOW)){
+        // turn LED off:
+        myBuffer.write(2); // 1 = all
+        count += 1;
+        Serial.println(count);
+        controll2.run();
+      }
+      LastState2L = pinValue2L;
+      LastState2R = pinValue2R;
+    }
+    if (pinValue3L != LastState3L || pinValue3R != LastState3R){
+      if (pinValue3L == HIGH && pinValue3R == HIGH) {
+        // turn LED on:
+        Serial.println("3HIGH");
+      } else if ((pinValue3L == LOW || pinValue3R == LOW)){
+        // turn LED off:
+        myBuffer.write(3); // 1 = all
+        count += 1;
+        Serial.println(count);
+        controll2.run();
+      }
+      LastState3L = pinValue3L;
+      LastState3R = pinValue3R;
+    }
+    // if (buttonState4L != LastState4L || buttonState4R != LastState4R){
+    //   if (buttonState4L == HIGH && buttonState4R == HIGH) {
+    //     // turn LED on:
+    //     Serial.println("4HIGH");
+    //   } else if ((buttonState4L == LOW || buttonState4R == LOW)){
+    //     // turn LED off:
+    //     client.publish(TOPIC1, "4");
+    //     Serial.println("4LOW");
+    //     count += 1;
+    //     Serial.println(count);
+    //   }
+    //   LastState4L = buttonState4L;
+    //   LastState4R = buttonState4R;
+    // }
+    // if (buttonState5L != LastState5L || buttonState5R != LastState5R){
+    //   if (buttonState5L == HIGH && buttonState5R == HIGH) {
+    //     // turn LED on:
+    //     Serial.println("5HIGH");
+    //   } else if ((buttonState5L == LOW || buttonState5R == LOW)){
+    //     // turn LED off:
+    //     client.publish(TOPIC1, "5");
+    //     Serial.println("5LOW");
+    //     count += 1;
+    //     Serial.println(count);
+    //   }
+    //   LastState5L = buttonState5L;
+    //   LastState5R = buttonState5R;
+    // }
+    // if (buttonState6L != LastState6L || buttonState6R != LastState6R){
+    //   if (buttonState6L == HIGH && buttonState6R == HIGH) {
+    //     // turn LED on:
+    //     Serial.println("6HIGH");
+    //   } else if ((buttonState6L == LOW || buttonState6R == LOW)){
+    //     // turn LED off:
+    //     client.publish(TOPIC1, "6");
+    //     Serial.println("6LOW");
+    //     count += 1;
+    //     Serial.println(count);
+    //   }
+    //   LastState6L = buttonState6L;
+    //   LastState6R = buttonState6R;
+    // }
+}
 
 void setup() {
-  attachInterrupt(digitalPinToInterrupt(0), 	getPressAll, FALLING);
+  myPin_mask1L = digitalPinToBitMask(36);
+  myPin_port1L = portInputRegister(digitalPinToPort(36));
+  myPin_mask1R = digitalPinToBitMask(39);
+  myPin_port1R = portInputRegister(digitalPinToPort(39));
+  myPin_mask2L = digitalPinToBitMask(34);
+  myPin_port2L = portInputRegister(digitalPinToPort(34));
+  myPin_mask2R = digitalPinToBitMask(35);
+  myPin_port2R = portInputRegister(digitalPinToPort(35));
+  myPin_mask3L = digitalPinToBitMask(32);
+  myPin_port3L = portInputRegister(digitalPinToPort(32));
+  myPin_mask3R = digitalPinToBitMask(33);
+  myPin_port3R = portInputRegister(digitalPinToPort(33));
+  // myPin_mask4 = digitalPinToBitMask(25);
+  // myPin_port4 = portInputRegister(digitalPinToPort(25));
+  // myPin_mask4 = digitalPinToBitMask(25);
+  // myPin_port4 = portInputRegister(digitalPinToPort(25));
+  // myPin_mask5 = digitalPinToBitMask(25);
+  // myPin_port5 = portInputRegister(digitalPinToPort(25));
+  // myPin_mask5 = digitalPinToBitMask(25);
+  // myPin_port5 = portInputRegister(digitalPinToPort(25));
+  // myPin_mask6 = digitalPinToBitMask(26);
+  // myPin_port6 = portInputRegister(digitalPinToPort(26));
+  // myPin_mask6 = digitalPinToBitMask(26);
+  // myPin_port6 = portInputRegister(digitalPinToPort(26));
+  // myPin_mask7 = digitalPinToBitMask(27);
+  // myPin_port7 = portInputRegister(digitalPinToPort(27));
+  // myPin_mask7 = digitalPinToBitMask(27);
+  // myPin_port7 = portInputRegister(digitalPinToPort(27));
+  // myPin_mask8 = digitalPinToBitMask(14);
+  // myPin_port8 = portInputRegister(digitalPinToPort(14));
+  // myPin_mask8 = digitalPinToBitMask(14);
+  // myPin_port8 = portInputRegister(digitalPinToPort(14));
+  // myPin_mask9 = digitalPinToBitMask(12);
+  // myPin_port9 = portInputRegister(digitalPinToPort(12));
+  // myPin_mask9 = digitalPinToBitMask(12);
+  // myPin_port9 = portInputRegister(digitalPinToPort(12));
 
-  attachInterrupt(digitalPinToInterrupt(36), 	getPress1, FALLING);
-  attachInterrupt(digitalPinToInterrupt(39), 	getPress1, FALLING);
-  attachInterrupt(digitalPinToInterrupt(34), 	getPress2, FALLING);
-  attachInterrupt(digitalPinToInterrupt(35), 	getPress2, FALLING);
-  attachInterrupt(digitalPinToInterrupt(32), 	getPress3, FALLING);
-  attachInterrupt(digitalPinToInterrupt(33), 	getPress3, FALLING);
-  // attachInterrupt(0, 	checkPress(), FALLING);
-  // attachInterrupt(0, 	checkPress(), FALLING);
-  // attachInterrupt(0, 	checkPress(), FALLING);
-  // attachInterrupt(0, 	checkPress(), FALLING);
-  // attachInterrupt(0, 	checkPress(), FALLING);
-  // attachInterrupt(0, 	checkPress(), FALLING);
-  // attachInterrupt(0, 	checkPress(), FALLING);
-  // attachInterrupt(0, 	checkPress(), FALLING);
-  // attachInterrupt(0, 	checkPress(), FALLING);
-  // attachInterrupt(0, 	checkPress(), FALLING);
-  // attachInterrupt(0, 	checkPress(), FALLING);
-  // attachInterrupt(0, 	checkPress(), FALLING);
-  
 
 
-    // buttonState1L = digitalRead(36);
-    // buttonState1R = digitalRead(39);
-    // buttonState2L = digitalRead(34);
-    // buttonState2R = digitalRead(35);
-    // buttonState3L = digitalRead(32);
-    // buttonState3R = digitalRead(33);
-    
-    // buttonState4L = digitalRead(25);
-    // buttonState4R = digitalRead(26);
-    // buttonState5L = digitalRead(27);
-    // buttonState5R = digitalRead(14);
-    // buttonState6L = digitalRead(12);
-    // buttonState6R = digitalRead(19);
-    
-    // buttonState7L = digitalRead(18);
-    // buttonState7R = digitalRead(5);
-    // buttonState8L = digitalRead(17);
-    // buttonState8R = digitalRead(16);
-    // buttonState9L = digitalRead(4);
-    // buttonState9R = digitalRead(2);
+
 	// Configure Thread1
-	// Thread1.onRun(checkPress);
+	Thread1.onRun(checkPress);
 
 	// Configure Thread2
-	Thread2.onRun(sendPress);
+	Thread2.onRun(pushPressAll);
 
 	// Adds Thread1 to the controll
 	// Adds Thread1 to the controll
@@ -308,7 +471,8 @@ void setup() {
 
 	// Add groupOfThreads to controll
 	controll.add(&Thread1);
-  controll.add(&Thread2);
+  controll2.add(&Thread2);
+  // controll.add(&Thread2);
   
   pinMode(LED_PIN, OUTPUT);
   pinMode(36, INPUT);
@@ -369,8 +533,7 @@ void loop() {
       return;
     }
   }
-	controll.run();
-
     delay(200);
+  controll.run();
   client.loop();
 }

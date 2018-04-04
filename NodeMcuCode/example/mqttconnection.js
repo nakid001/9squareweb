@@ -115,6 +115,10 @@ function getDataFirebase (roomnum) {
           firebase.database().ref('/rooms/room' + roomnum).update({
             start: 'READY'
           })
+          firebase.database().ref('/devices/device1').update({
+            set: result[0].set,
+            step: result[0].step,
+          })
 
           i = 0; step = 0; set = 0  
           console.log('Insert Complete')
