@@ -28,7 +28,7 @@
     margin-left: 15%;
     margin-top: 1%;
     background: #0CE61E;
-
+    cursor: pointer;
   }
   .RoomNotAvaBtn {
     border-radius: 25px;    

@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux'
 import  { Room } from '../../components/examiners/Room/Room.js'
 import { inputlog } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
-import { showDevice, addDevice, setActive, delDevice, setDeviceActive, pushOrder, clearOrder, submitOrder, getOrder, matchDevice } from '../../actions/test.js'
+import { showDevice, addDevice, setActive, delDevice, setDeviceActive, pushOrder, clearOrder, submitOrder, getOrder, matchDevice, matchUserDevice } from '../../actions/test.js'
 
 class ExRoomContainer extends React.Component {
   
@@ -89,7 +89,26 @@ class ExRoomContainer extends React.Component {
             <div className='' key={i}>
               <div className=''>
                 <span>
-                  <div className={RoomeBtn}>
+                  <div className={RoomeBtn} onClick ={() => {
+                    let person = prompt('กำหนดผู้ใช้ให้อุปกรณ์เบอร์ ' + childSnapshot.val().num)
+                    let uid = ''
+                    firebase.database().ref('users').once('value', (snapshot) => {
+                      snapshot.forEach((childSnapshot) => {
+                        if (childSnapshot.val().email === person) {
+                          uid = childSnapshot.key
+                        }
+                      })
+                    }).then(() => {
+                      if (!person) {
+                        return null
+                      }
+                      if (uid === '') {
+                        alert('ไม่มีEmailนี้')
+                      } else {
+                        that.props.matchUserDevice(person, uid, that.props.test.num, childSnapshot.val().num)
+                      }
+                    })
+                  }}>
                     อุปกรณ์หมายเลข:{childSnapshot.val().num}: {ava} {userID}
                   </div> 
                   <div className="buttonSet">
@@ -130,7 +149,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      inputlog, regisfire, showDevice, addDevice, setActive, delDevice, setDeviceActive, pushOrder, clearOrder, submitOrder, getOrder, matchDevice
+      inputlog, regisfire, showDevice, addDevice, setActive, delDevice, setDeviceActive, pushOrder, clearOrder, submitOrder, getOrder, matchDevice, matchUserDevice
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(ExRoomContainer)

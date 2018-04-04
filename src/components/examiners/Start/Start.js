@@ -61,12 +61,12 @@ export class Start extends React.Component {
         <div >
           <div className="empty">
           </div>
-         <div className ="ReactClock"> 
-          <ReactCountdownClock seconds={this.props.test.time}
-            color="#000"
-            alpha={0.9}
-            size={150}
-            onComplete = {this.countdown = this.countdown.bind(this)} className="ReactClock"/>
+          <div className ="ReactClock"> 
+            <ReactCountdownClock seconds={this.props.test.time}
+              color="#000"
+              alpha={0.9}
+              size={150}
+              onComplete = {this.countdown = this.countdown.bind(this)} className="ReactClock"/>
           </div>
         </div>
       )
