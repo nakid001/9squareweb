@@ -31,23 +31,28 @@ export class Start extends React.Component {
       }).then(() => {
         let i = 0
         showData = []
-        firebase.database().ref('/devices/').once('value', (snapshot) => {
-          snapshot.forEach((childSnapshot) => {
-            if (childSnapshot.key === device[i] && i<device.length) {
-              showData[i] = (
-                <tr key={i}>
-                  <td>{childSnapshot.val().set}</td>
-                  <td>{childSnapshot.val().step}</td>
-                  <td>{childSnapshot.val().last_user}</td>
-                </tr>
-              )
-              i++
-            }
+        let that = this
+        setTimeout(function() {
+
+          firebase.database().ref('/devices/').once('value', (snapshot) => {
+            snapshot.forEach((childSnapshot) => {
+              if (childSnapshot.key === device[i] && i<device.length) {
+                showData[i] = (
+                  <tr key={i}>
+                    <td>{childSnapshot.val().set}</td>
+                    <td>{childSnapshot.val().step}</td>
+                    <td>{childSnapshot.val().last_user}</td>
+                  </tr>
+                )
+                i++
+              }
+            })
+          }).then(() => {
+            that.props.showSendingData(showData)
+            console.log(showData)
           })
-        }).then(() => {
-          this.props.showSendingData(showData)
-          console.log(showData)
-        })
+        }, 2000)
+
       })
     })
   }
