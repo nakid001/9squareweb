@@ -98,7 +98,7 @@ export class Start extends React.Component {
             <div id='start_status'>เตรียมตัวเริ่มการทดสอบ</div>
             <Button  outline color="success" onClick={() => { 
               firebase.database().ref('/rooms/room' + this.props.test.num).update({
-                // start: 'START'
+                start: 'START'
               })
               this.setState({start: 0})
             }}>START!</Button>

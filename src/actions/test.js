@@ -191,31 +191,47 @@ export function clearOrder () {
 
 export function matchUserDevice (email, uid, room, num) {
   let olddevice 
-  firebase.database().ref('/users/' + uid + '/test').once('value', (snapshot) => {
+  let lastuid
+  let lastdeviceuid
+  firebase.database().ref('/users/' + uid + '/test').once('value', (snapshot) => {  
     olddevice=snapshot.val().last_device.split('/')
   }).then(() => {
-    firebase.database().ref('/rooms/' + olddevice[0] + '/devices/' + olddevice[1] ).update({
-      user : '',
-      uid : '',
-      ava : true
-    })
-    firebase.database().ref('/devices/' + olddevice[1]).update({
-      last_user: ''
-    })
-    firebase.database().ref('/users/' + uid + '/test').update({
-      last_device : 'room' + room +'/device'+num
-    })
-    firebase.database().ref('/rooms/room' + room + '/devices/device' + num).update({
-      user : email,
-      uid : uid,
-      ava : false
-    })
-    firebase.database().ref( '/devices/device' + num).update ({
-      last_user: uid
+    firebase.database().ref('/rooms/' + olddevice[0] + '/devices/' + olddevice[1]).once('value', (snapshot) => {
+      lastuid = snapshot.val().uid
+    }).then(() => {
+      if (lastuid === uid) {
+        firebase.database().ref('/rooms/' + olddevice[0] + '/devices/' + olddevice[1] ).update({
+          user : '',
+          uid : '',
+          ava : true
+        })
+      }
+    }).then(() => {
+      firebase.database().ref('/rooms/room' + room + '/devices/device' + num).update({
+        user : email,
+        uid : uid,
+        ava : false
+      })
+    }).then(() => {
+      firebase.database().ref('/devices/' + olddevice[1]).once('value', (snapshot) => {
+        lastdeviceuid = snapshot.val().last_user
+      }).then(() => {
+        if(lastdeviceuid === uid) {
+          firebase.database().ref('/devices/' + olddevice[1]).update({
+            last_user: ''
+          })
+        }
+      }).then(() => {
+        firebase.database().ref( '/devices/device' + num).update ({
+          last_user: uid
+        })
+      })
+    }).then(() => {
+      firebase.database().ref('/users/' + uid + '/test').update({
+        last_device : 'room' + room +'/device'+num
+      })
     })
   })
-
-
   return {
     type:'MATCHUSERDEVICE',
     payload: 'MATCHING USER AND DEVICE  '
@@ -234,7 +250,7 @@ export function sendresult (num) {
   let showData =[]
   console.log('num = ' + num)
   firebase.database().ref('/rooms/room' + num).update({
-    // start: 'END'
+    start: 'END'
   })
   return {
     type:'SENDRESULT',
