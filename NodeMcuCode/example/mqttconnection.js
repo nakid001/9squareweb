@@ -124,7 +124,7 @@ function getDataFirebase (roomnum) {
           console.log('Insert Complete')
         })
       })
-      console.log('END')
+      console.log('END');
     } else if (!start){
       console.log('ROOM NOT AVA')
     }    
