@@ -373,48 +373,48 @@ void checkPress() {
       LastState3L = pinValue3L;
       LastState3R = pinValue3R;
     }
-    // if (buttonState4L != LastState4L || buttonState4R != LastState4R){
-    //   if (buttonState4L == HIGH && buttonState4R == HIGH) {
-    //     // turn LED on:
-    //     Serial.println("4HIGH");
-    //   } else if ((buttonState4L == LOW || buttonState4R == LOW)){
-    //     // turn LED off:
-    //     client.publish(TOPIC1, "4");
-    //     Serial.println("4LOW");
-    //     count += 1;
-    //     Serial.println(count);
-    //   }
-    //   LastState4L = buttonState4L;
-    //   LastState4R = buttonState4R;
-    // }
-    // if (buttonState5L != LastState5L || buttonState5R != LastState5R){
-    //   if (buttonState5L == HIGH && buttonState5R == HIGH) {
-    //     // turn LED on:
-    //     Serial.println("5HIGH");
-    //   } else if ((buttonState5L == LOW || buttonState5R == LOW)){
-    //     // turn LED off:
-    //     client.publish(TOPIC1, "5");
-    //     Serial.println("5LOW");
-    //     count += 1;
-    //     Serial.println(count);
-    //   }
-    //   LastState5L = buttonState5L;
-    //   LastState5R = buttonState5R;
-    // }
-    // if (buttonState6L != LastState6L || buttonState6R != LastState6R){
-    //   if (buttonState6L == HIGH && buttonState6R == HIGH) {
-    //     // turn LED on:
-    //     Serial.println("6HIGH");
-    //   } else if ((buttonState6L == LOW || buttonState6R == LOW)){
-    //     // turn LED off:
-    //     client.publish(TOPIC1, "6");
-    //     Serial.println("6LOW");
-    //     count += 1;
-    //     Serial.println(count);
-    //   }
-    //   LastState6L = buttonState6L;
-    //   LastState6R = buttonState6R;
-    // }
+    if (buttonState4L != LastState4L || buttonState4R != LastState4R){
+      if (buttonState4L == HIGH && buttonState4R == HIGH) {
+        // turn LED on:
+        Serial.println("4HIGH");
+      } else if ((buttonState4L == LOW || buttonState4R == LOW)){
+        // turn LED off:
+        client.publish(TOPIC1, "4");
+        Serial.println("4LOW");
+        count += 1;
+        Serial.println(count);
+      }
+      LastState4L = buttonState4L;
+      LastState4R = buttonState4R;
+    }
+    if (buttonState5L != LastState5L || buttonState5R != LastState5R){
+      if (buttonState5L == HIGH && buttonState5R == HIGH) {
+        // turn LED on:
+        Serial.println("5HIGH");
+      } else if ((buttonState5L == LOW || buttonState5R == LOW)){
+        // turn LED off:
+        client.publish(TOPIC1, "5");
+        Serial.println("5LOW");
+        count += 1;
+        Serial.println(count);
+      }
+      LastState5L = buttonState5L;
+      LastState5R = buttonState5R;
+    }
+    if (buttonState6L != LastState6L || buttonState6R != LastState6R){
+      if (buttonState6L == HIGH && buttonState6R == HIGH) {
+        // turn LED on:
+        Serial.println("6HIGH");
+      } else if ((buttonState6L == LOW || buttonState6R == LOW)){
+        // turn LED off:
+        client.publish(TOPIC1, "6");
+        Serial.println("6LOW");
+        count += 1;
+        Serial.println(count);
+      }
+      LastState6L = buttonState6L;
+      LastState6R = buttonState6R;
+    }
 }
 
 void setup() {
@@ -481,7 +481,7 @@ void setup() {
   pinMode(35, INPUT);  
   pinMode(32, INPUT);
   pinMode(33, INPUT); 
-
+[
   pinMode(25, INPUT);
   pinMode(26, INPUT);
   pinMode(27, INPUT);
@@ -533,7 +533,7 @@ void loop() {
       return;
     }
   }
-    delay(200);
-  controll.run();
+    delay(50);
+  controll.run();]
   client.loop();
 }
