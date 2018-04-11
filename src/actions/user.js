@@ -5,19 +5,24 @@ function Success (username) {
   document.cookie = 'username=' + username + '; expires=Thu, 18 Dec 2018 12:00:00 UTC'
   window.location = '/'
 }
-export function regisfire(username, password) {
-  firebase.auth().createUserWithEmailAndPassword(username, password).then(() => {
-    firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
-      email: username,
+export function regisfire(username, password, repassword) {
+  if(password === repassword) {
+    firebase.auth().createUserWithEmailAndPassword(username, password).then(() => {
+      firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
+        email: username,
+        test: {last_device: 'room1/device1'}
       // profile_picture : imageUrl
-    }).then(()=> {
-      Success(username, password)      
+      }).then(()=> {
+        Success(username, password)      
+      })
+    }).catch((error) => {
+      let errorCode = error.code
+      let errorMessage = error.message
+      alert(errorMessage + errorCode)
     })
-  }).catch((error) => {
-    let errorCode = error.code
-    let errorMessage = error.message
-    alert(errorMessage + errorCode)
-  })
+  } else {
+    alert('password not match with repassword')
+  }
   return {
     type: 'REGFIRE',
     payload: 'REGISTERING'

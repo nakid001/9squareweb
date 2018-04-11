@@ -37,13 +37,14 @@ class RankingContainer extends React.Component {
                       mystep[i] = dataSnapshot.val().step
                       mykey[i] = yearSnapshot.key + '.' + monthSnapshot.key + '.' + daySnapshot.key + '/' + timeSnapshot.key
                       i++
+
+                      k=0
+                      naset.push(set)
+                      set = []
+                      num++
+                      j++
                     }
                   })
-                  k=0
-                  naset.push(set)
-                  set = []
-                  num++
-                  j++
                 })
                 j=0
               })

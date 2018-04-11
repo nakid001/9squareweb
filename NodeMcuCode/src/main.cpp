@@ -96,7 +96,7 @@ volatile uint32_t *myPin_port3R =0;
 
 
 // Config MQTT Server
-#define mqtt_server "192.168.8.102"
+#define mqtt_server "192.168.8.100"
 #define mqtt_port 1883
 #define mqtt_user "admin"
 #define mqtt_password "password"
@@ -481,7 +481,7 @@ void setup() {
   pinMode(35, INPUT);  
   pinMode(32, INPUT);
   pinMode(33, INPUT); 
-[
+
   pinMode(25, INPUT);
   pinMode(26, INPUT);
   pinMode(27, INPUT);
@@ -534,6 +534,6 @@ void loop() {
     }
   }
     delay(50);
-  controll.run();]
+  controll.run();
   client.loop();
 }
