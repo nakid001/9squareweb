@@ -24,16 +24,22 @@ class HistoryContainer extends React.Component {
                       if (dataSnapshot.key === firebase.auth().currentUser.uid) {
                         if (!dataSnapshot.val().type) {
                           type = 'ไม่มีข้อมูล'
-                        } else if (dataSnapshot.val().type === ['1L ']) {
+                        } else if (dataSnapshot.val().type[0] === '1L ' && dataSnapshot.val().type[1] == '3R ' && dataSnapshot.val().type[2] == '2L ' && dataSnapshot.val().type[3] == '2R ') {
                           type = 'แยกชิด'
-                          alert('yaya')
-                        } else if (dataSnapshot.val().type === ['5L ', '6R ', '8L ', '9R ', '5L ', '6R ', '2L ', '3R ']) {
-                          type[i] = 'ขึ้นลง'    
-                        } else if (dataSnapshot.val().type === ['5L ', '5R ', '7L ', '9R ', '5L ', '5R ', '1L ', '3R ']) {
+                        } else if (dataSnapshot.val().type[0] === '5L ' && dataSnapshot.val().type[1] == '6R ' && dataSnapshot.val().type[2] == '8L ' && dataSnapshot.val().type[3] == '9R ' && dataSnapshot.val().type[4] == '5L ' && dataSnapshot.val().type[5] == '6R ' && dataSnapshot.val().type[6] == '2L ' && dataSnapshot.val().type[7] == '3R ') {
+                          type = 'ขึ้นลง'    
+                        } else if (dataSnapshot.val().type[0] === '5L ' && dataSnapshot.val().type[1] == '5R ' && dataSnapshot.val().type[2] == '7L ' && dataSnapshot.val().type[3] == '9R ' && dataSnapshot.val().type[4] == '5L ' && dataSnapshot.val().type[5] == '5R ' && dataSnapshot.val().type[6] == '1L ' && dataSnapshot.val().type[7] == '3R ') {
                           type = 'กากบาท'
-                        } else {
+                        }
+                        
+                        //  else if (dataSnapshot.val().type === ['1L ']) {
+                        //   type = 'กากบาท'
+                        //   alert('yayayayay')
+                        //   alert('oo')
+                        // }  
+                        else {
                           type = dataSnapshot.val().type
-                          console.log(dataSnapshot.val().type[0])
+                          console.log(dataSnapshot.val().type)
                         }
                         history[i] = (
                           <tr key={i}>
