@@ -71,6 +71,7 @@ class HistoryContainer extends React.Component {
               <td>{dataSnapshot.key}</td>
               <td>{dataSnapshot.val().set}</td>
               <td>{dataSnapshot.val().step}</td>
+              <td>{dataSnapshot.val().type}</td>              
             </tr>
           )
           i++

@@ -82,13 +82,13 @@ function getDataFirebase (roomnum) {
     if (start === 'START') {
       console.log('START')
     } else if (start === 'END') {   
-      collection.insert({  //FOR MONGODB
+      collection.insert({ 
         event: { step: step, set: set, when:new Date() } 
       }).then(() => {
         let num = 1
         console.log('num = ' + num)
         let usr = []
-        let result = [] //ไว้มาเพิ่มresult ทีหลัง
+        let result = [] 
         let i = 0
         firebase.database().ref('/rooms/room' + num).update({
           start: 'END'
@@ -110,7 +110,8 @@ function getDataFirebase (roomnum) {
           let d = new Date()
           firebase.database().ref('/history/' +  d.getFullYear() + '/' + ('0' + d.getMonth()).slice(-2) + '/' + ('0' + d.getDate()).slice(-2) + '/' + ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) + ':' + ('0' + d.getSeconds  ()).slice(-2) + '/' + uname).set  ({
             step : result[0].step,
-            set : result[0].set
+            set : result[0].set,
+            type: order
           })
           firebase.database().ref('/rooms/room' + roomnum).update({
             start: 'READY'

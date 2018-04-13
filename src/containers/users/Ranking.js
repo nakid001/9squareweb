@@ -17,6 +17,7 @@ class RankingContainer extends React.Component {
     let mypos = []
     let data = []
     let num = 0
+    let type = []
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let i = 0
@@ -36,8 +37,18 @@ class RankingContainer extends React.Component {
                       myset[i] = dataSnapshot.val().set
                       mystep[i] = dataSnapshot.val().step
                       mykey[i] = yearSnapshot.key + '.' + monthSnapshot.key + '.' + daySnapshot.key + '/' + timeSnapshot.key
+                      if (!dataSnapshot.val().type) {
+                        type[i] = 'ไม่มีข้อมูล'
+                      } else if (dataSnapshot.val().type === ['1L ', '3R ', '2L ', '2R ']) {
+                        type[i] = 'แยกชิด'
+                      } else if (dataSnapshot.val().type === ['5L ', '6R ', '8L ', '9R ', '5L ', '6R ', '2L ', '3R ']) {
+                        type[i] = 'ขึ้นลง'
+                      } else if (dataSnapshot.val().type === ['5L ', '5R ', '7L ', '9R ', '5L ', '5R ', '1L ', '3R ']) {
+                        type[i] = 'กากบาท'
+                      } else {
+                        type[i] = dataSnapshot.val().type
+                      }
                       i++
-
                       k=0
                       naset.push(set)
                       set = []
@@ -62,8 +73,8 @@ class RankingContainer extends React.Component {
             arr[j] = (
               <div key={j} style={{'width': '100%'}}>
                 <div>{'วัน/เวลา : ' + mykey[j]}</div>
-                <div>{' อันดับ : ' + ranks[mypos[j]]}</div>
-                <div>{ ' เซต: ' + myset[j] + ' ก้าว : ' + mystep[j]}</div>
+                <div>{' อันดับ : ' + ranks[mypos[j]] + ' ชนิด: ' + type[j]}</div>
+                <div>{ ' เซต: ' + myset[j] + ' ก้าว : ' + mystep[j] }</div>
                 <BarChart width={375} height={250} data={data} >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="set" />
