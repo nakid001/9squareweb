@@ -47,7 +47,7 @@ class TestContainer extends React.Component {
                     that.props.getRoomNum(childSnapshot.val().num)
                   }}>
                     <p className='col-12'/>
-                    <div className='roomBtn'> Room:{childSnapshot.val().num}</div> 
+                    <div className='roomBtn'> สถานที่ทดสอบ:{childSnapshot.val().num}</div> 
                   </Link>
                   </span>
                 </div>

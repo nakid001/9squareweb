@@ -77,10 +77,10 @@ class RankingContainer extends React.Component {
                 <div>{ ' เซต: ' + myset[j] + ' ก้าว : ' + mystep[j] }</div>
                 <BarChart width={375} height={250} data={data} >
                   <CartesianGrid strokeDasharray="3 3" />
+                  <Tooltip />
                   <XAxis dataKey="set" />
                   <YAxis  value= "100"/>
                   <Bar dataKey="set" fill="#8884d8" />
-                  <Tooltip />
                 </BarChart>
               </div>
             )

@@ -108,7 +108,7 @@ export class Home extends Component {
           onExited={this.onExited}
           key={item.src}
         > 
-          <img src={item.src} alt={item.altText}  width="100%" height="470px"/>
+          <img src={item.src} alt={item.altText}  width="100%" height="430px"/>
           <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
         </CarouselItem>
       )
@@ -123,6 +123,7 @@ export class Home extends Component {
               activeIndex={activeIndex}
               next={this.next}
               previous={this.previous}
+              interval={4000}
             >
               <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
               {slides}

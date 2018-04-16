@@ -55,9 +55,9 @@ class RoomContainer extends React.Component {
         snapshot.forEach(function (childSnapshot) {
           const DeviceBtn = childSnapshot.val().ava ? 'DeviceAvaBtn' : 'DeviceNotAvaBtn'   
           if (childSnapshot.val().ava) {
-            ava = 'AVALIABLE'
+            ava = 'ว่าง'
           } else {
-            ava = 'NOT AVALIABLE'
+            ava = 'จอง'
           }
           const userID = childSnapshot.val().user       
           device[i] = (
@@ -65,9 +65,9 @@ class RoomContainer extends React.Component {
               <div>
                 <span>
                   <p className='col-12'/>
-                  <button className={DeviceBtn} onClick={ () => {
+                  <div className={DeviceBtn} onClick={ () => {
                     if (DeviceBtn === 'DeviceAvaBtn') {
-                      let answer = window.confirm('Match to device ' + childSnapshot.val().num + ' ?')
+                      let answer = window.confirm('จับคู่กับอุปกรณ์หมายเลข ' + childSnapshot.val().num + ' ?')
                       if (answer) {
                         that.props.matchUserDevice(firebase.auth().currentUser.email, firebase.auth().currentUser.uid, that.props.test.num, childSnapshot.val().num)
                       }
@@ -75,10 +75,10 @@ class RoomContainer extends React.Component {
                         //some code
                       }
                     } else {  
-                      alert('DEVICE IS NOT READY!!')
+                      alert('อุปกรณ์ยังไม่พร้อม !!')
                     }
-                  } 
-                  }> Device:{childSnapshot.val().num}: {ava} {userID}</button> 
+                  }   
+                  }> อุปกรณ์หมายเลข:{childSnapshot.val().num}: {ava} {userID}</div> 
                 </span>
               </div>
             </div>
