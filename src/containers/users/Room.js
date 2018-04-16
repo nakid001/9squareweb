@@ -62,7 +62,7 @@ class RoomContainer extends React.Component {
           const userID = childSnapshot.val().user       
           device[i] = (
             <div className='' key={i}>
-              <div className='payment_itemDiv--mid'>
+              <div>
                 <span>
                   <p className='col-12'/>
                   <button className={DeviceBtn} onClick={ () => {

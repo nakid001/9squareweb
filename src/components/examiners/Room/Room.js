@@ -13,12 +13,14 @@ export class Room extends React.Component {
       num: 0,
       order: [],
       deviceNumber: 0,
-      manual: false
+      manual: false,
+      temporder: [],
     }
    
     this.openModal = this.openModal.bind(this)
     this.afterOpenModal = this.afterOpenModal.bind(this)
     this.closeModal = this.closeModal.bind(this)
+    this.cancelModal = this.cancelModal.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.modalContent = this.modalContent.bind(this)
   }
@@ -29,7 +31,8 @@ export class Room extends React.Component {
     } 
   }
   openModal() {
-    this.setState({modalIsOpen: true})    
+    this.setState({modalIsOpen: true})
+    this.setState({temporder: this.props.test.order})
   }
    
   afterOpenModal() {
@@ -39,14 +42,22 @@ export class Room extends React.Component {
   closeModal() {
     this.setState({modalIsOpen: false})
   }
-  
+  cancelModal() {
+    this.setState({modalIsOpen: false})
+    this.props.clearOrder() 
+    this.props.pushOrder(this.state.temporder)
+  }
+
   modalContent() {
     if (this.state.manual) {
       return (
         <div className='Modal_content'>
           <div className='Modal_header'>
-            <div className='Modal_close' onClick={this.closeModal}>&times;</div>
-        สร้างรูปแบบ
+            <div className='Modal_close' onClick={this.cancelModal}>&times;</div>
+            สร้างรูปแบบ
+            <div className='Modal_header_detail'>
+              คลิ้กที่ช่องซ้ายขวาในแต่ละตัวเลขเพื่อกำหนดรูปแบบใหม่
+            </div>
           </div>
           <div className='Modal_body'>
             <p> รูปแบบ : {this.props.test.order} </p>
@@ -179,13 +190,11 @@ export class Room extends React.Component {
             </table> 
           </div>
           <div className='Modal_footer'>
+            <button className='Modal_btn' onClick={() => {this.props.submitOrder(this.props.test.num, this.props.test.order).then(this.closeModal())}}> ยืนยัน </button>
+            <button className='Modal_btn'  onClick={ () => { this.props.clearOrder() } }> ล้างรูปแบบ</button>
             <div>
-              <button className='Modal_btn' onClick={() => {this.props.submitOrder(this.props.test.num, this.props.test.order).then(this.closeModal())}}> ยืนยัน </button>
-              <button className='Modal_btn'  onClick={ () => { this.props.clearOrder() } }> ล้างรูปแบบ</button>
               <button className='Modal_btn'  onClick={ () => { this.setState({manual:false}) } }>ท่ามาตราฐาน</button>
-            </div>
-            <div>
-              <button className='Modal_btn' onClick={this.closeModal}>ยกเลิก</button>
+              <button className='Modal_btn' onClick={this.cancelModal}>ยกเลิก</button>
             </div>
           </div>
         </div>
@@ -194,8 +203,8 @@ export class Room extends React.Component {
       return (
         <div className='Modal_content'>
           <div className='Modal_header'>
-            <div className='Modal_close' onClick={this.closeModal}>&times;</div>
-        เลือกรูปแบบการเล่น
+            <div className='Modal_close' onClick={this.cancelModal}>&times;</div>
+            เลือกรูปแบบการเล่น
           </div>
           <div className='Modal_body'>
             <p> รูปแบบ : {this.props.test.order} </p>
@@ -218,10 +227,10 @@ export class Room extends React.Component {
             <div>
               <button className='Modal_btn' onClick={() => {this.props.submitOrder(this.props.test.num, this.props.test.order[0]).then(this.closeModal())}}> ยืนยัน </button>
               <button className='Modal_btn'  onClick={ () => { this.props.clearOrder() } }> ล้างรูปแบบ</button>
-              <button className='Modal_btn'  onClick={ () => { this.setState({manual: true}) } }> กำหนดใหม่</button>
             </div>
             <div>
-              <button className='Modal_btn' onClick={this.closeModal}>ยกเลิก</button>
+              <button className='Modal_btn'  onClick={ () => { this.setState({manual: true}) } }> กำหนดใหม่</button>
+              <button className='Modal_btn' onClick={this.cancelModal}>ยกเลิก</button>
             </div>
           </div>
         </div>
@@ -245,7 +254,7 @@ export class Room extends React.Component {
           <img src ={bg} alt='' className="room_body_background"/>
           <div className="room_content">
             {this.props.test.device}
-            <div className = 'Room_content'>
+            <div className = 'room_bottom_content'>
               <div> 
                 รูปแบบ : {this.props.test.order}
                 <button onClick={this.openModal}>เลือกรูปแบบ</button>   
@@ -257,7 +266,7 @@ export class Room extends React.Component {
               </div>
               <button className="Exfooter"> <Link to ='/examiner/test'>กลับ</Link> </button>
               <button className="Exfooter"> <Link to ='/examiner/start'>เตรียมพร้อมทดสอบ</Link> </button> 
-              <button className="Exfooter"  onClick={()=> {this.props.addDevice(this.props.test.num)}}>เพิ่มอุปกรณ์ (ADMIN ) </button>
+              {/* <button className="Exfooter"  onClick={()=> {this.props.addDevice(this.props.test.num)}}>เพิ่มอุปกรณ์ (ADMIN ) </button> */}
             </div>
           </div>
           <div>  

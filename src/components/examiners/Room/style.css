@@ -48,9 +48,17 @@
     background-color: #EAE6C7;
     padding: 0;
     width: 100%;
+    height: 100%;
   }
   .Modal_header {      /* Header Modal Box */
     padding: 20px;
+    text-align: center;
+    font-size: 20px;
+    background-color: #EFEFEF;
+  }
+  .Modal_header_detail {      /* Header Modal Box */
+    font-size: 15px;
+    color: red;
     background-color: #EFEFEF;
   }
   .Modal_close {
@@ -81,7 +89,6 @@
   }
   .Modal_footer {
     text-align: center;
-    padding: 16px;
     background-color: #EFEFEF;
     height: 20%;
     
@@ -144,7 +151,7 @@
       width: 40%;
       font-family: SanamDeklen_chaya;      
   }  
-  .Room_content {
+  .room_bottom_content {
     background-color: #E0E0E0;
     opacity: 0.9;
     margin: 10%;
@@ -167,17 +174,19 @@
   }
   @media only screen and (max-width: 400px) {
     .Modal_content {
-      width: 400px;
+      width: 100%;
       height: 100%;
     }
     .Modal_list {
-      width: 120px;
+      width: 90%;
       margin-left: 15px;
+      text-align: center;
     }
     .Modal_footer {
       padding: 0;
     }
     #home_wrapper {
       width: 400px;
+      
     }
   }
