@@ -6,6 +6,7 @@ import  { Room } from '../../components/users/Room/Room.js'
 import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
 import { showDevice, addDevice, setActive, delDevice, setDeviceActive, getOrder, matchUserDevice } from '../../actions/test.js'
+import ReactTooltip from 'react-tooltip'
 
 class RoomContainer extends React.Component {
   constructor (props) {
@@ -78,7 +79,12 @@ class RoomContainer extends React.Component {
                       alert('อุปกรณ์ยังไม่พร้อม !!')
                     }
                   }   
-                  }> อุปกรณ์หมายเลข:{childSnapshot.val().num}: {ava} {userID}</div> 
+                  } data-tip data-for={userID} > อุปกรณ์หมายเลข:{childSnapshot.val().num}: {ava} 
+
+                    <ReactTooltip id={userID} aria-haspopup='true' role='example'>
+                      {userID}
+                    </ReactTooltip>
+                  </div> 
                 </span>
               </div>
             </div>
