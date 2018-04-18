@@ -58,7 +58,7 @@ class RoomContainer extends React.Component {
           if (childSnapshot.val().ava) {
             ava = 'ว่าง'
           } else {
-            ava = 'จอง'
+            ava = 'จอง '
           }
           const userID = childSnapshot.val().user       
           device[i] = (
@@ -81,9 +81,9 @@ class RoomContainer extends React.Component {
                   }   
                   } data-tip data-for={userID} > อุปกรณ์หมายเลข:{childSnapshot.val().num}: {ava} 
 
-                    <ReactTooltip id={userID} aria-haspopup='true' role='example'>
-                      {userID}
-                    </ReactTooltip>
+                    {/* <ReactTooltip id={userID} aria-haspopup='true' role='example'> */}
+                    {userID}
+                    {/* </ReactTooltip> */}
                   </div> 
                 </span>
               </div>

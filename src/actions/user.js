@@ -42,8 +42,13 @@ export function loginfire (username, password) {
 
 export function logingmail () {
   firebase.auth().signInWithPopup(provider).then(function(result) {
-    Success(result.user.displayName)
-    // ...
+    firebase.database().ref('users/' + firebase.auth().currentUser.uid).set({
+      email: result.user.displayName,
+      test: {last_device: 'room1/device1'}
+    // profile_picture : imageUrl
+    }).then(()=> {
+      Success(result.user.displayName)
+    })
   }).catch(function(error) {
     alert(error)
   })

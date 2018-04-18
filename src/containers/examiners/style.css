@@ -1,5 +1,6 @@
 .buttonSet {
   text-align: center;
+  margin-top: 3px;
 }
 .col-12 {width: 100%;}
 
@@ -43,9 +44,9 @@
     margin-top: 1%;
     background: #E60C0C;
   }
-  @media only screen and (max-width: 400px) {
-    .roomBtn, .DeviceAvaBtn, .DeviceNotAvaBtn {
-      font-size: 20px;
+  @media only screen and (max-width: 700px) {
+    .roomBtn, .RoomAvaBtn, .RoomNotAvaBtn {
+      font-size: 16px;
       margin-left: 15%;
     }
   }

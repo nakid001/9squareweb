@@ -6,6 +6,7 @@ import  { Room } from '../../components/examiners/Room/Room.js'
 import { inputlog } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
 import { showDevice, addDevice, setActive, delDevice, setDeviceActive, pushOrder, clearOrder, submitOrder, getOrder, matchDevice, matchUserDevice } from '../../actions/test.js'
+import ReactTooltip from 'react-tooltip'
 
 class ExRoomContainer extends React.Component {
   
@@ -83,7 +84,7 @@ class ExRoomContainer extends React.Component {
           if (childSnapshot.val().ava) {
             ava = 'พร้อม'
           } else {
-            ava = 'จอง'
+            ava = 'จอง '
           }
           device[i] = (
             <div className='' key={i}>
@@ -108,8 +109,11 @@ class ExRoomContainer extends React.Component {
                         that.props.matchUserDevice(person, uid, that.props.test.num, childSnapshot.val().num)
                       }
                     })
-                  }}>
-                    อุปกรณ์หมายเลข:{childSnapshot.val().num}: {ava} {userID}
+                  }}data-tip data-for={userID} > อุปกรณ์หมายเลข:{childSnapshot.val().num}: {ava} 
+
+                    {/* <ReactTooltip id={userID} aria-haspopup='true' role='example'> */}
+                    {userID}
+                    {/* </ReactTooltip> */}
                   </div> 
                   <div className="buttonSet">
                     <button onClick={()=> {
