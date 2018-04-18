@@ -101,6 +101,12 @@ export function goPrevious (num, len, minus) {
     payload: 'GO PREVIOUS'
   }
 }
+export function clearNum () {
+  return {
+    type: 'CLEARNUM',
+    payload: 'CLEAR PAGE NUMBER'
+  }
+}
 export function getranking (arr, key, username) {
 
   return {

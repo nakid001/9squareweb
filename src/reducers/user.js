@@ -84,6 +84,13 @@ const userReducer = (state = {
       text: action.payload
     }
     break
+  case 'CLEARNUM' :
+    state = {
+      ...state,
+      num: 0,
+      text: action.payload
+    }
+    break
   case 'GETRANK' :
     state = {
       ...state,
