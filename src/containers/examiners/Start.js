@@ -21,7 +21,7 @@ class ExStartContainer extends React.Component {
   render () {
     let content = ''
     if (!this.props.test.num) {
-      // window.location = '/examiner/test'
+      window.location = '/examiner/test'
     }
     if (firebase.auth().currentUser)
     {

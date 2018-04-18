@@ -18,7 +18,7 @@ export class History extends React.Component {
   historyContent() {
     if (this.props.exam.date !== '') {
       return (
-        <div className="history_content">
+        <div className="exhistory_content">
           <table>
             <tr>
               <th>วัน/เวลา</th>
@@ -42,7 +42,7 @@ export class History extends React.Component {
       )
     } else {
       return (
-        <div className="history_content">
+        <div className="exhistory_content">
           { this.props.exam.id.slice(this.props.user.num,this.props.user.num+10) }
           <div>
             <Button  color="danger" onClick={() => {this.props.goPrevious(this.props.user.num - 10, this.props.exam.id.length, 10)}}>Previous!</Button>
@@ -59,7 +59,7 @@ export class History extends React.Component {
   }
   render () {
     return (
-      <div id='home_wrapper'>
+      <div id='history_wrapper'>
         <div id="header" className="title_content">ประวัติการทดสอบ</div>
         <div className="history_body">
           <img src ={bg} alt = '' className="history_body_background"/>

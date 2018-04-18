@@ -39,21 +39,33 @@ class TestContainer extends React.Component {
       )
       firebase.database().ref('/rooms/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
-          if (childSnapshot.val().ava) {
-            room[i] = (
+          const TestBtn = childSnapshot.val().ava ? 'roomBtn' : 'RoomNotAvaBtn'
+          if (!childSnapshot.val().ava) {
+            content = (
               <div key={i}>
                 <div>
-                  <span><Link to ={'/test/room'} onClick={()=> {
+                  <p className='col-12'/>
+                  <div className={TestBtn}> สถานที่ทดสอบ:{childSnapshot.val().num} {'ปรับปรุง'}</div> 
+                  
+                </div>
+              </div>
+            )
+          } else {
+            content = (
+              <div key={i}>
+                <div>
+                  <Link to ={'/test/room'} onClick={()=> {
                     that.props.getRoomNum(childSnapshot.val().num)
                   }}>
                     <p className='col-12'/>
-                    <div className='roomBtn'> สถานที่ทดสอบ:{childSnapshot.val().num}</div> 
+                    <div className={TestBtn}> สถานที่ทดสอบ:{childSnapshot.val().num} </div> 
                   </Link>
-                  </span>
+                  
                 </div>
-                {/* <div className='payment_itemDiv--after' onClick={() => { that.props.deletepay(id, room, i) } }><img src={delBtn} alt=''/></div> */}
               </div>
-            )}
+            )
+          }
+          room[i] = content
           i++
         })
       }).then(() => {

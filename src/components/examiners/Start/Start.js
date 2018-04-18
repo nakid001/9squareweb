@@ -58,23 +58,24 @@ export class Start extends React.Component {
   }
   showclock() {
     if (this.state.start === 0) {
-      if (this.props.test.time === 0) {
+      if (!this.props.test.time) {
         this.setState({start: -1})
         alert ('กรุณากำหนดเวลาก่อน')
+      } else {
+        return (           
+          <div >
+            <div className="empty">
+            </div>
+            <div className ="ReactClock"> 
+              <ReactCountdownClock seconds={this.props.test.time}
+                color="#000"
+                alpha={0.9}
+                size={150}
+                onComplete = {this.countdown = this.countdown.bind(this)} className="ReactClock"/>
+            </div>
+          </div>
+        )        
       }
-      return (           
-        <div >
-          <div className="empty">
-          </div>
-          <div className ="ReactClock"> 
-            <ReactCountdownClock seconds={this.props.test.time}
-              color="#000"
-              alpha={0.9}
-              size={150}
-              onComplete = {this.countdown = this.countdown.bind(this)} className="ReactClock"/>
-          </div>
-        </div>
-      )
     } else if (this.state.start === 1) {
       return (
         <div>
