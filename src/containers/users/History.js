@@ -24,22 +24,21 @@ class HistoryContainer extends React.Component {
                       if (dataSnapshot.key === firebase.auth().currentUser.uid) {
                         if (!dataSnapshot.val().type) {
                           type = 'ไม่มีข้อมูล'
-                        } else if (dataSnapshot.val().type[0] === '1L ' && dataSnapshot.val().type[1] == '3R ' && dataSnapshot.val().type[2] == '2L ' && dataSnapshot.val().type[3] == '2R ') {
+                        } else if (dataSnapshot.val().type[0] === '1' && dataSnapshot.val().type[1] == '3' && dataSnapshot.val().type[2] == '2' && dataSnapshot.val().type[3] == '2') {
                           type = 'แยกชิด'
-                        } else if (dataSnapshot.val().type[0] === '5L ' && dataSnapshot.val().type[1] == '6R ' && dataSnapshot.val().type[2] == '8L ' && dataSnapshot.val().type[3] == '9R ' && dataSnapshot.val().type[4] == '5L ' && dataSnapshot.val().type[5] == '6R ' && dataSnapshot.val().type[6] == '2L ' && dataSnapshot.val().type[7] == '3R ') {
+                        } else if (dataSnapshot.val().type[0] === '5' && dataSnapshot.val().type[1] == '6' && dataSnapshot.val().type[2] == '8' && dataSnapshot.val().type[3] == '9' && dataSnapshot.val().type[4] == '5' && dataSnapshot.val().type[5] == '6' && dataSnapshot.val().type[6] == '2' && dataSnapshot.val().type[7] == '3') {
                           type = 'ขึ้นลง'    
-                        } else if (dataSnapshot.val().type[0] === '5L ' && dataSnapshot.val().type[1] == '5R ' && dataSnapshot.val().type[2] == '7L ' && dataSnapshot.val().type[3] == '9R ' && dataSnapshot.val().type[4] == '5L ' && dataSnapshot.val().type[5] == '5R ' && dataSnapshot.val().type[6] == '1L ' && dataSnapshot.val().type[7] == '3R ') {
+                        } else if (dataSnapshot.val().type[0] === '5' && dataSnapshot.val().type[1] == '5' && dataSnapshot.val().type[2] == '7' && dataSnapshot.val().type[3] == '9' && dataSnapshot.val().type[4] == '5' && dataSnapshot.val().type[5] == '5' && dataSnapshot.val().type[6] == '1' && dataSnapshot.val().type[7] == '3') {
                           type = 'กากบาท'
                         }
                         
-                        //  else if (dataSnapshot.val().type === ['1L ']) {
+                        //  else if (dataSnapshot.val().type === ['1']) {
                         //   type = 'กากบาท'
                         //   alert('yayayayay')
                         //   alert('oo')
                         // }  
                         else {
                           type = dataSnapshot.val().type
-                          console.log(dataSnapshot.val().type)
                         }
                         history[i] = (
                           <tr key={i}>

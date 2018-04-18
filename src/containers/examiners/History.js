@@ -61,17 +61,36 @@ class HistoryContainer extends React.Component {
     let i = 0 
     let history = []
     let that = this
+    let type = ''
     if (firebase.auth().currentUser)  {
       i = 0
       firebase.database().ref('/history/'+that.props.exam.date).once('value', (snapshot) => {
         snapshot.forEach((dataSnapshot) => {
+          if (!dataSnapshot.val().type) {
+            type = 'ไม่มีข้อมูล'
+          } else if (dataSnapshot.val().type[0] === '1' && dataSnapshot.val().type[1] == '3' && dataSnapshot.val().type[2] == '2' && dataSnapshot.val().type[3] == '2') {
+            type = 'แยกชิด'
+          } else if (dataSnapshot.val().type[0] === '5' && dataSnapshot.val().type[1] == '6' && dataSnapshot.val().type[2] == '8' && dataSnapshot.val().type[3] == '9' && dataSnapshot.val().type[4] == '5' && dataSnapshot.val().type[5] == '6' && dataSnapshot.val().type[6] == '2' && dataSnapshot.val().type[7] == '3') {
+            type = 'ขึ้นลง'    
+          } else if (dataSnapshot.val().type[0] === '5' && dataSnapshot.val().type[1] == '5' && dataSnapshot.val().type[2] == '7' && dataSnapshot.val().type[3] == '9' && dataSnapshot.val().type[4] == '5' && dataSnapshot.val().type[5] == '5' && dataSnapshot.val().type[6] == '1' && dataSnapshot.val().type[7] == '3') {
+            type = 'กากบาท'
+          }
+          
+          //  else if (dataSnapshot.val().type === ['1']) {
+          //   type = 'กากบาท'
+          //   alert('yayayayay')
+          //   alert('oo')
+          // }  
+          else {
+            type = dataSnapshot.val().type
+          }
           history[i] = (
             <tr key={i}>
               <td>{that.props.exam.date}</td>
               <td>{dataSnapshot.key}</td>
               <td>{dataSnapshot.val().set}</td>
               <td>{dataSnapshot.val().step}</td>
-              <td>{dataSnapshot.val().type}</td>              
+              <td>{type}</td>              
             </tr>
           )
           i++
