@@ -24,11 +24,11 @@ class HistoryContainer extends React.Component {
                       if (dataSnapshot.key === firebase.auth().currentUser.uid) {
                         if (!dataSnapshot.val().type) {
                           type = 'ไม่มีข้อมูล'
-                        } else if (dataSnapshot.val().type[0] === '1' && dataSnapshot.val().type[1] == '3' && dataSnapshot.val().type[2] == '2' && dataSnapshot.val().type[3] == '2') {
+                        } else if (dataSnapshot.val().type[0] === '1' && dataSnapshot.val().type[1] === '3' && dataSnapshot.val().type[2] === '2' && dataSnapshot.val().type[3] === '2') {
                           type = 'แยกชิด'
-                        } else if (dataSnapshot.val().type[0] === '5' && dataSnapshot.val().type[1] == '6' && dataSnapshot.val().type[2] == '8' && dataSnapshot.val().type[3] == '9' && dataSnapshot.val().type[4] == '5' && dataSnapshot.val().type[5] == '6' && dataSnapshot.val().type[6] == '2' && dataSnapshot.val().type[7] == '3') {
+                        } else if (dataSnapshot.val().type[0] === '5' && dataSnapshot.val().type[1] === '6' && dataSnapshot.val().type[2] === '8' && dataSnapshot.val().type[3] === '9' && dataSnapshot.val().type[4] === '5' && dataSnapshot.val().type[5] === '6' && dataSnapshot.val().type[6] === '2' && dataSnapshot.val().type[7] === '3') {
                           type = 'ขึ้นลง'    
-                        } else if (dataSnapshot.val().type[0] === '5' && dataSnapshot.val().type[1] == '5' && dataSnapshot.val().type[2] == '7' && dataSnapshot.val().type[3] == '9' && dataSnapshot.val().type[4] == '5' && dataSnapshot.val().type[5] == '5' && dataSnapshot.val().type[6] == '1' && dataSnapshot.val().type[7] == '3') {
+                        } else if (dataSnapshot.val().type[0] === '5' && dataSnapshot.val().type[1] === '5' && dataSnapshot.val().type[2] === '7' && dataSnapshot.val().type[3] === '9' && dataSnapshot.val().type[4] === '5' && dataSnapshot.val().type[5] === '5' && dataSnapshot.val().type[6] === '1' && dataSnapshot.val().type[7] === '3') {
                           type = 'กากบาท'
                         }
                         

@@ -238,10 +238,13 @@ export function matchUserDevice (email, uid, room, num) {
   }
 }
 
-export function setTime (num) {
+export function setTime (time, roomnum) {
+  firebase.database().ref('rooms/room' + roomnum).update({
+    time:time
+  })
   return {
     type: 'SETTIME',
-    time: num,
+    time: time,
     payload: 'SET TIME FOR THE TEST'
   }
 }

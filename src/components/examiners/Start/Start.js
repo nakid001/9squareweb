@@ -115,8 +115,8 @@ export class Start extends React.Component {
               {this.showclock()}
             </div>
             <div className="start_config"> เปลี่ยนระยะเวลา  
-            <button onClick={() => {this.props.setTime(30)}}> 30 วินาที</button>
-            <button onClick={() => {this.props.setTime(10)}}> 10 วินาที</button>
+            <button onClick={() => {this.props.setTime(30, this.props.test.num)}}> 30 วินาที</button>
+            <button onClick={() => {this.props.setTime(10, this.props.test.num)}}> 10 วินาที</button>
             </div>
             <button className="Exfooter"> <Link to ='/examiner/test'>GO BACK</Link> </button>
 
