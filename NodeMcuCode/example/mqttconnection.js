@@ -5,7 +5,7 @@ let mongodbClient = mongodb.MongoClient //initialises the mongoDB client
 let mongodbURI = 'mongodb://127.0.0.1:27017/db' //activating the MongoDB port 27017, here TempMontor is the name of the database
 let deviceRoot = '/dev/' //deviceroot is topic name given in arduino code 
 let collection,client //initialise collection and client
-let order = []
+let order = [], time =''
 let start = false
 let i = 0, step = 0, set = 0, count = 0
 
@@ -67,12 +67,17 @@ function getDataFirebase (roomnum) {
     order = []
     snapshot.forEach((childSnapshot) => {
       order.push(childSnapshot.val().substring(0,1))
-    })        
+    })
     console.log('READING DATA')
     console.log(order)
   },  (errorObject) => {
     console.log('The read failed: ' + errorObject.code)
   })
+  firebase.database().ref('rooms/room' + roomnum).on('value', (snapshot) => {
+    time = snapshot.val().time  
+  })
+
+  //////////////////////////////////////////////////////////////////////////////////////////////
   let uname = '' 
   firebase.database().ref('/devices/device1').once('value', (snapshot) => {
     uname=snapshot.val().last_user
@@ -81,7 +86,7 @@ function getDataFirebase (roomnum) {
     start = snapshot.val()
     if (start === 'START') {
       console.log('START')
-    } else if (start === 'END') {   
+    } else if (start === 'END') {
       collection.insert({ 
         event: { step: step, set: set, when:new Date() } 
       }).then(() => {
@@ -111,7 +116,8 @@ function getDataFirebase (roomnum) {
           firebase.database().ref('/history/' +  d.getFullYear() + '/' + ('0' + d.getMonth()).slice(-2) + '/' + ('0' + d.getDate()).slice(-2) + '/' + ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) + ':' + ('0' + d.getSeconds  ()).slice(-2) + '/' + uname).set  ({
             step : result[0].step,
             set : result[0].set,
-            type: order
+            type: order,
+            time: time
           })
           firebase.database().ref('/rooms/room' + roomnum).update({
             start: 'READY'
