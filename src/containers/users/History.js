@@ -12,7 +12,7 @@ class HistoryContainer extends React.Component {
     firebase.auth().onAuthStateChanged(function (userF) {
       if (userF) {
         let history = []
-        let type = ''
+        let type = '', time = ''
         if (firebase.auth().currentUser) {
           let i = 0
           firebase.database().ref('/history').once('value', (snapshot) => {
@@ -40,12 +40,18 @@ class HistoryContainer extends React.Component {
                         else {
                           type = dataSnapshot.val().type
                         }
+                        if (!dataSnapshot.val().time) {
+                          time = 'ไม่มีข้อมูล'
+                        } else {
+                          time = dataSnapshot.val().time
+                        }
                         history[i] = (
                           <tr key={i}>
                             <td>{ childSnapshot.key + '.' + elderSnapshot.key + '.' + brotherSnapshot.key + '/' + timeSnapshot.key}</td>
                             <td>{dataSnapshot.val().set}</td>
                             <td>{dataSnapshot.val().step}</td>
                             <td>{type}</td>
+                            <td>{time}</td>
                           </tr>
                         )
                         i++

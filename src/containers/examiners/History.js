@@ -62,7 +62,7 @@ class HistoryContainer extends React.Component {
     let i = 0 
     let history = []
     let that = this
-    let type = ''
+    let type = '', time = '', email =''
     if (firebase.auth().currentUser)  {
       i = 0
       firebase.database().ref('/history/'+that.props.exam.date).once('value', (snapshot) => {
@@ -85,13 +85,19 @@ class HistoryContainer extends React.Component {
           else {
             type = dataSnapshot.val().type
           }
+          if (!dataSnapshot.val().time) {
+            time = 'ไม่มีข้อมูล'
+          } else {
+            time = dataSnapshot.val().time
+          }
           history[i] = (
             <tr key={i}>
               <td>{that.props.exam.date}</td>
               <td>{dataSnapshot.key}</td>
               <td>{dataSnapshot.val().set}</td>
               <td>{dataSnapshot.val().step}</td>
-              <td>{type}</td>              
+              <td>{type}</td>
+              <td>{time}</td>         
             </tr>
           )
           i++
