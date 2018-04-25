@@ -56,7 +56,7 @@ class App extends React.Component {
     const logOutBtn = <NavLink key='6' to='/login'
       onClick={ () => {
         firebase.auth().signOut().then(function () {
-          alert('You have signed out.')
+          console.log('You have signed out.')
         }).catch(function () {
           alert('Sign out failed.')
         })
@@ -69,7 +69,7 @@ class App extends React.Component {
     const examlogOutBtn = <NavLink key='6' to='/examiner/login'
       onClick={ () => {
         firebase.auth().signOut().then(function () {
-          alert('You have signed out.')
+          console.log('You have signed out.')
         }).catch(function () {
           alert('Sign out failed.')
         })
