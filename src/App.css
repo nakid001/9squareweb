@@ -8,7 +8,9 @@
 .row-8 { height: 80%; }
 .row-9 { height: 90%; }
 .row-10 { height: 100%; }
-
+@font-face { font-family: SanamDeklen_chaya; src: url('./font/SanamDeklen_chaya/SanamDeklen_chaya.otf'); } 
+@font-face { font-family: SanamDeklen_chaya; font-weight: bold; src: url('./font/SanamDeklen_chaya/SanamDeklen_chaya.ttf');}
+@font-face { font-family: EkkamaiStandard-Light; src: url('./font/EkkamaiFont/EkkamaiStandard-Light.ttf');}
 @media only screen and (max-width: 320px) {
   .header_wrapper {
     width: 320px; 

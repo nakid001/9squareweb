@@ -27,7 +27,9 @@ class HistoryContainer extends React.Component {
                           id[i] = (
                             <tr key={i}>
                               <td><button onClick = {() => {
-                                that.props.setDate(yearSnapshot.key + '/' + monthSnapshot.key + '/' + daySnapshot.key + '/' + timeSnapshot.key + '/')
+                                that.props.setDate(yearSnapshot.key + '/' + monthSnapshot.key + '/' + daySnapshot.key + '/' + timeSnapshot.key + '/').then(() => {
+                                  that.historySubContent()
+                                })
                                 that.props.clearNum()
                               }}> {yearSnapshot.key + '.' + monthSnapshot.key + '.' + daySnapshot.key + '/' + timeSnapshot.key} </button></td>
                             </tr>
@@ -57,45 +59,38 @@ class HistoryContainer extends React.Component {
   redirect () {
     window.location = '/login'
   }
-
-  render () {
+  historySubContent () {
     let i = 0 
     let history = []
     let that = this
     let type = '', time = '', email =''
     if (firebase.auth().currentUser)  {
       i = 0
-      firebase.database().ref('/history/'+that.props.exam.date).once('value', (snapshot) => {
-        snapshot.forEach((dataSnapshot) => {
-          if (!dataSnapshot.val().type) {
+      firebase.database().ref('/history/'+that.props.exam.date).once('value', (Multishot) => {
+        Multishot.forEach((dataMultishot) => {
+          if (!dataMultishot.val().type) {
             type = 'ไม่มีข้อมูล'
-          } else if (dataSnapshot.val().type[0] === '1' && dataSnapshot.val().type[1] == '3' && dataSnapshot.val().type[2] == '2' && dataSnapshot.val().type[3] == '2') {
+          } else if (dataMultishot.val().type[0] === '1' && dataMultishot.val().type[1] == '3' && dataMultishot.val().type[2] == '2' && dataMultishot.val().type[3] == '2') {
             type = 'แยกชิด'
-          } else if (dataSnapshot.val().type[0] === '5' && dataSnapshot.val().type[1] == '6' && dataSnapshot.val().type[2] == '8' && dataSnapshot.val().type[3] == '9' && dataSnapshot.val().type[4] == '5' && dataSnapshot.val().type[5] == '6' && dataSnapshot.val().type[6] == '2' && dataSnapshot.val().type[7] == '3') {
+          } else if (dataMultishot.val().type[0] === '5' && dataMultishot.val().type[1] == '6' && dataMultishot.val().type[2] == '8' && dataMultishot.val().type[3] == '9' && dataMultishot.val().type[4] == '5' && dataMultishot.val().type[5] == '6' && dataMultishot.val().type[6] == '2' && dataMultishot.val().type[7] == '3') {
             type = 'ขึ้นลง'    
-          } else if (dataSnapshot.val().type[0] === '5' && dataSnapshot.val().type[1] == '5' && dataSnapshot.val().type[2] == '7' && dataSnapshot.val().type[3] == '9' && dataSnapshot.val().type[4] == '5' && dataSnapshot.val().type[5] == '5' && dataSnapshot.val().type[6] == '1' && dataSnapshot.val().type[7] == '3') {
+          } else if (dataMultishot.val().type[0] === '5' && dataMultishot.val().type[1] == '5' && dataMultishot.val().type[2] == '7' && dataMultishot.val().type[3] == '9' && dataMultishot.val().type[4] == '5' && dataMultishot.val().type[5] == '5' && dataMultishot.val().type[6] == '1' && dataMultishot.val().type[7] == '3') {
             type = 'กากบาท'
           }
-          
-          //  else if (dataSnapshot.val().type === ['1']) {
-          //   type = 'กากบาท'
-          //   alert('yayayayay')
-          //   alert('oo')
-          // }  
           else {
-            type = dataSnapshot.val().type
+            type = dataMultishot.val().type
           }
-          if (!dataSnapshot.val().time) {
+          if (!dataMultishot.val().time) {
             time = 'ไม่มีข้อมูล'
           } else {
-            time = dataSnapshot.val().time
+            time = dataMultishot.val().time
           }
           history[i] = (
             <tr key={i}>
               <td>{that.props.exam.date}</td>
-              <td>{dataSnapshot.key}</td>
-              <td>{dataSnapshot.val().set}</td>
-              <td>{dataSnapshot.val().step}</td>
+              <td>{dataMultishot.key}</td>
+              <td>{dataMultishot.val().set}</td>
+              <td>{dataMultishot.val().step}</td>
               <td>{type}</td>
               <td>{time}</td>         
             </tr>
@@ -107,6 +102,8 @@ class HistoryContainer extends React.Component {
         this.props.gethistory(history, this.props.user.username)
       })
     }
+  }
+  render () {
     if (this.props.user.loading) {
       return <div className="loader"></div>
 
