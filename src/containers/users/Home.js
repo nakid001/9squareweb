@@ -1,12 +1,11 @@
 import React from 'react'
 import  { Home } from '../../components/users/Home/Home.js'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 // import {
 //   LoginForm
 // } from '../components'
-export class HomeContainer extends React.Component {
-  componentDidMount() {
-
-  }
+class HomeContainer extends React.Component {
   render () {
     return (
       <div>
@@ -15,14 +14,15 @@ export class HomeContainer extends React.Component {
     )
   }
 }
-// const mapStateToProps = (state) => {
-//   return {
-//     user: state.user
-//   }
-// }
+const mapStateToProps = (state) => {
+  return {
+    user: state.user
+  }
+}
 
-// const mapDispatchToProps = (dispatch) => {
-//   return bindActionCreators(
-//     {
-//     }, dispatch)
-// }
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(
+    {
+    }, dispatch)
+}
+export default connect(mapStateToProps, mapDispatchToProps)(HomeContainer)
