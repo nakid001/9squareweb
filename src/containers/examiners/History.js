@@ -30,7 +30,6 @@ class HistoryContainer extends React.Component {
                                 that.props.setDate(yearSnapshot.key + '/' + monthSnapshot.key + '/' + daySnapshot.key + '/' + timeSnapshot.key + '/').then(() => {
                                   that.historySubContent()
                                 })
-                                that.props.clearNum()
                               }}> {yearSnapshot.key + '.' + monthSnapshot.key + '.' + daySnapshot.key + '/' + timeSnapshot.key} </button></td>
                             </tr>
                           )
@@ -63,7 +62,7 @@ class HistoryContainer extends React.Component {
     let i = 0 
     let history = []
     let that = this
-    let type = '', time = '', email =''
+    let type = '', time = '', email ='ไม่มีข้อมูล '
     if (firebase.auth().currentUser)  {
       i = 0
       firebase.database().ref('/history/'+that.props.exam.date).once('value', (Multishot) => {
@@ -85,22 +84,29 @@ class HistoryContainer extends React.Component {
           } else {
             time = dataMultishot.val().time
           }
-          history[i] = (
-            <tr key={i}>
-              <td>{that.props.exam.date}</td>
-              <td>{dataMultishot.key}</td>
-              <td>{dataMultishot.val().set}</td>
-              <td>{dataMultishot.val().step}</td>
-              <td>{type}</td>
-              <td>{time}</td>         
-            </tr>
-          )
-          i++
+          firebase.database().ref('/users/' + dataMultishot.key).once('value', (userSnapshot) => {
+            if(userSnapshot.val()) {
+              email = userSnapshot.val().email
+            }
+          }).then(() => {
+            history[i] = (
+              <tr key={i}>
+                <td>{that.props.exam.date}</td>
+                <td>{email}</td>
+                <td>{dataMultishot.val().set}</td>
+                <td>{dataMultishot.val().step}</td>
+                <td>{type}</td>
+                <td>{time}</td>         
+              </tr>
+            )
+            i++
+          }).then(() => {
+            that.props.clearNum()
+            this.props.gethistory(history, this.props.user.username)
+          })
         }
         )} 
-      ).then(() => {
-        this.props.gethistory(history, this.props.user.username)
-      })
+      )
     }
   }
   render () {
