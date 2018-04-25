@@ -69,11 +69,11 @@ class HistoryContainer extends React.Component {
         Multishot.forEach((dataMultishot) => {
           if (!dataMultishot.val().type) {
             type = 'ไม่มีข้อมูล'
-          } else if (dataMultishot.val().type[0] === '1' && dataMultishot.val().type[1] == '3' && dataMultishot.val().type[2] == '2' && dataMultishot.val().type[3] == '2') {
+          } else if (dataMultishot.val().type[0] === '1' && dataMultishot.val().type[1] === '3' && dataMultishot.val().type[2] === '2' && dataMultishot.val().type[3] === '2') {
             type = 'แยกชิด'
-          } else if (dataMultishot.val().type[0] === '5' && dataMultishot.val().type[1] == '6' && dataMultishot.val().type[2] == '8' && dataMultishot.val().type[3] == '9' && dataMultishot.val().type[4] == '5' && dataMultishot.val().type[5] == '6' && dataMultishot.val().type[6] == '2' && dataMultishot.val().type[7] == '3') {
+          } else if (dataMultishot.val().type[0] === '5' && dataMultishot.val().type[1] === '6' && dataMultishot.val().type[2] === '8' && dataMultishot.val().type[3] === '9' && dataMultishot.val().type[4] === '5' && dataMultishot.val().type[5] === '6' && dataMultishot.val().type[6] === '2' && dataMultishot.val().type[7] === '3') {
             type = 'ขึ้นลง'    
-          } else if (dataMultishot.val().type[0] === '5' && dataMultishot.val().type[1] == '5' && dataMultishot.val().type[2] == '7' && dataMultishot.val().type[3] == '9' && dataMultishot.val().type[4] == '5' && dataMultishot.val().type[5] == '5' && dataMultishot.val().type[6] == '1' && dataMultishot.val().type[7] == '3') {
+          } else if (dataMultishot.val().type[0] === '5' && dataMultishot.val().type[1] === '5' && dataMultishot.val().type[2] === '7' && dataMultishot.val().type[3] === '9' && dataMultishot.val().type[4] === '5' && dataMultishot.val().type[5] === '5' && dataMultishot.val().type[6] === '1' && dataMultishot.val().type[7] === '3') {
             type = 'กากบาท'
           }
           else {

@@ -22,7 +22,7 @@ class RankingContainer extends React.Component {
       if (user) {
         let i = 0
         let userkey = []
-        let j = 0, k = 0
+        let k = 0
         firebase.database().ref('/history').once('value', (snapshot) => {
           snapshot.forEach((yearSnapshot) => {
             yearSnapshot.forEach((monthSnapshot) => {
@@ -53,11 +53,9 @@ class RankingContainer extends React.Component {
                       naset.push(set)
                       set = []
                       num++
-                      j++
                     }
                   })
                 })
-                j=0
               })
             })
           })
