@@ -104,7 +104,7 @@ class RoomContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    exam: state.exam,
+    user: state.user,
     test: state.test
   }
 }

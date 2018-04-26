@@ -18,6 +18,7 @@ class RankingContainer extends React.Component {
     let data = []
     let num = 0
     let type = []
+    let time = []
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         let i = 0
@@ -48,6 +49,11 @@ class RankingContainer extends React.Component {
                       } else {
                         type[i] = dataSnapshot.val().type
                       }
+                      if (!dataSnapshot.val().time) {
+                        time[i] = 'ไม่มีข้อมูล'
+                      } else {
+                        time[i] = dataSnapshot.val().time
+                      }
                       i++
                       k=0
                       naset.push(set)
@@ -71,7 +77,7 @@ class RankingContainer extends React.Component {
             arr[j] = (
               <div key={j} style={{'width': '100%'}}>
                 <div>{'วัน/เวลา : ' + mykey[j]}</div>
-                <div>{' อันดับ : ' + ranks[mypos[j]] + ' ชนิด: ' + type[j]}</div>
+                <div>{' อันดับ : ' + ranks[mypos[j]] + ' ชนิด: ' + type[j] + ' เวลา ' + time[j]}</div>
                 <div>{ ' เซต: ' + myset[j] + ' ก้าว : ' + mystep[j] }</div>
                 <BarChart width={375} height={250} data={data} >
                   <CartesianGrid strokeDasharray="3 3" />
