@@ -18,7 +18,7 @@ export class History extends React.Component {
   historyContent() {
     if (this.props.exam.date !== '') {
       return (
-        <div className="exhistory_content">
+        <div className="exhistory_sub_content">
           <table>
             <tr>
               <th>วัน/เวลา</th>

@@ -17,7 +17,7 @@
     margin-left: auto;
 
   }
-  exhistory_content {
+  exhistory_sub_content {
     margin-left: 0%;
   }
 }
@@ -29,9 +29,12 @@
 } */
 @media only screen and (min-width: 800px) {
   .exhistory_content {
-    margin-left: 20%;
-
+    margin-left: 40%;
   }
+  .exhistory_sub_content {
+    margin-left: 23%;
+  }
+
 }
 @media only screen and (max-width: 320px) {
   #wrapper {
@@ -66,7 +69,8 @@ tr:nth-child(odd) {
   text-align: center;
   height: 100vh;  
 }
-.exhistory_content {
+
+.exhistory_sub_content, .exhistory_content {
   position: absolute; 
   margin-top: 15px;
   top: 0%;
