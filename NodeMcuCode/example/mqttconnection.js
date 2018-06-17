@@ -114,17 +114,17 @@ function getDataFirebase (roomnum) {
         }).then(() => {
           let d = new Date()
           firebase.database().ref('/history/' +  d.getFullYear() + '/' + ('0' + d.getMonth()).slice(-2) + '/' + ('0' + d.getDate()).slice(-2) + '/' + ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2) + ':' + ('0' + d.getSeconds  ()).slice(-2) + '/' + uname).set  ({
-            step : result[0].step,
-            set : result[0].set,
+            step : result[i].step,
+            set : result[i].set,
             type: order,
             time: time
           })
           firebase.database().ref('/rooms/room' + roomnum).update({
             start: 'READY'
           })
-          firebase.database().ref('/devices/device1').update({
-            set: result[0].set,
-            step: result[0].step,
+          firebase.database().ref('/devices/device' + i).update({
+            set: result[i].set,
+            step: result[i].step,
           })
 
           i = 0; step = 0; set = 0  
