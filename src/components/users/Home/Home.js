@@ -17,126 +17,36 @@ import {
   CarouselCaption
 } from 'reactstrap'
 
-const items = [
-  {
-    src: bg1,
-    altText: 'Slide 1',
-    caption: ''
-  },
-  {
-    src: bg2,
-    altText: 'Slide 2',
-    caption: ''
-  },
-  {
-    src: bg3,
-    altText: 'Slide 3',
-    caption: ''
-  }
-]
 // import { Link } from 'react-router'
 export class Home extends Component {
-  constructor() {
-    super()
-  
-    this.state = {
-      modalIsOpen: this.getCookie('username'),
-      activeIndex: 0 
-    }
-    this.handlePress = this.handlePress.bind(this)    
-    this.next = this.next.bind(this)
-    this.previous = this.previous.bind(this)
-    this.goToIndex = this.goToIndex.bind(this)
-    this.onExiting = this.onExiting.bind(this)
-    this.onExited = this.onExited.bind(this)
-  }
-
-  onExiting() {
-    this.animating = true
-  }
-
-  onExited() {
-    this.animating = false
-  }
-
-  next() {
-    if (this.animating) return
-    const nextIndex = this.state.activeIndex === items.length - 1 ? 0 : this.state.activeIndex + 1
-    this.setState({ activeIndex: nextIndex })
-  }
-
-  previous() {
-    if (this.animating) return
-    const nextIndex = this.state.activeIndex === 0 ? items.length - 1 : this.state.activeIndex - 1
-    this.setState({ activeIndex: nextIndex })
-  }
-
-  goToIndex(newIndex) {
-    if (this.animating) return
-    this.setState({ activeIndex: newIndex })
-  }
-  handlePress (event) {
-    event.which = event.which || event.keyCode
-    if (event.which === 27) {
-      this.closeModal()
-    }
-  }
-  openModal() {
-    this.setState({modalIsOpen: true})    
-  }
- 
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-  }
- 
-  closeModal() {
-    this.setState({modalIsOpen: false})
-  }
-  getCookie (name) {
-    let value = '; ' + document.cookie
-    let parts = value.split('; ' + name + '=')
-    if (parts.length === 2) {
-      return parts.pop().split(';').shift()
-    } else return ''
+  constructor(props) {
+    super(props)
+    console.log(props)
   }
   render() {
-    const { activeIndex } = this.state
-    const slides = items.map((item) => {
-      return (
-        <CarouselItem
-          onExiting={this.onExiting}
-          onExited={this.onExited}
-          key={item.src}
-        > 
-          <img src={item.src} alt={item.altText}  width="100%" height="430px"/>
-          <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
-        </CarouselItem>
-      )
-    })
-
     return (
       <div id='wrapper'>
         <div id="header" className="title_content">ระบบจัดการทักษะกลไกการเคลื่อนไหว</div>
         <div >
           <div >
-            <Carousel
-              activeIndex={activeIndex}
-              next={this.next}
-              previous={this.previous}
+            {/* <Carousel
+              activeIndex={this.props.activeIndex}
+              next={this.props.next}
+              previous={this.props.previous}
               interval={4000}
             >
-              <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
-              {slides}
-              <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-              <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
-            </Carousel>
+              <CarouselIndicators items={this.items} activeIndex={this.props.activeIndex} onClickHandler={this.props.goToIndex} />
+              {this.props.slides}
+              <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.props.previous} />
+              <CarouselControl direction="next" directionText="Next" onClickHandler={this.props.next} />
+            </Carousel> */}
           </div>
           <div>
             <MyModal 
-              closeModal = {this.closeModal.bind(this)}
-              openModal = {this.openModal.bind(this)}
-              handlePress = {this.handlePress.bind(this)}
-              modalIsOpen = {this.state.modalIsOpen}
+              closeModal = {this.props.closeModal}
+              openModal = {this.props.openModal}
+              handlePress = {this.props.handlePress}
+              modalIsOpen = {this.props.modalIsOpen}
             />
           </div>
         </div>
