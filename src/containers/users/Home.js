@@ -17,9 +17,9 @@ import {
   CarouselCaption
 } from 'reactstrap'
 class HomeContainer extends React.Component {
-  constructor() {
-    super()
-    this.props = {
+  constructor(props) {
+    super(props)
+    this.arg = {
         next : this.next.bind(this),
         previous : this.previous.bind(this),
         goToIndex : this.goToIndex.bind(this),
@@ -44,10 +44,10 @@ class HomeContainer extends React.Component {
       altText: 'Slide 3',
       caption: ''
     }]
-    this.props.slides = this.items.map((item) => {
+    this.arg.slides = this.items.map((item) => {
        <CarouselItem
-        onExiting={this.props.onExiting}
-        onExited={this.props.onExited}
+        onExiting={this.arg.onExiting}
+        onExited={this.arg.onExited}
         key={item.src}
       > 
         <img src={item.src} alt={item.altText}  width="100%" height="430px"/>
@@ -67,13 +67,13 @@ class HomeContainer extends React.Component {
 
   next() {
     if (this.animating) return
-    const nextIndex = this.props.activeIndex === this.items.length - 1 ? 0 : this.props.activeIndex + 1
+    const nextIndex = this.arg.activeIndex === this.items.length - 1 ? 0 : this.arg.activeIndex + 1
     this.setState({ activeIndex: nextIndex })
   }
 
   previous() {
     if (this.animating) return
-    const nextIndex = this.props.activeIndex === 0 ? this.items.length - 1 : this.props.activeIndex - 1
+    const nextIndex = this.arg.activeIndex === 0 ? this.items.length - 1 : this.arg.activeIndex - 1
     this.setState({ activeIndex: nextIndex })
   }
 
@@ -110,8 +110,7 @@ class HomeContainer extends React.Component {
     return (
       <div>
         <Home 
-        items = {this.items}
-        {...this.props} 
+        arg = {this.arg} 
         />
       </div>
     )
