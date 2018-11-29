@@ -27,24 +27,25 @@ class HomeContainer extends React.Component {
         onExited : this.onExited.bind(this),
         handlePress : this.handlePress.bind(this),
         modalIsOpen: this.getCookie('username') != "",
-        activeIndex: 0 
+        activeIndex: 0 ,
+        items: [{
+          src: bg1,
+          altText: 'Slide 1',
+          caption: ''
+        },
+        {
+          src: bg2,
+          altText: 'Slide 2',
+          caption: ''
+        },
+        {
+          src: bg3,
+          altText: 'Slide 3',
+          caption: ''
+        }]
     }
-    this.items = [{
-      src: bg1,
-      altText: 'Slide 1',
-      caption: ''
-    },
-    {
-      src: bg2,
-      altText: 'Slide 2',
-      caption: ''
-    },
-    {
-      src: bg3,
-      altText: 'Slide 3',
-      caption: ''
-    }]
-    this.arg.slides = this.items.map((item) => {
+   
+    this.arg.slides = this.arg.items.map((item) => {
        <CarouselItem
         onExiting={this.arg.onExiting}
         onExited={this.arg.onExited}

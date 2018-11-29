@@ -21,6 +21,7 @@ import {
 export class Home extends Component {
   constructor(props) {
     super(props)
+    this.state = this.props.arg
     console.log(this.props)
   }
   render() {
@@ -42,11 +43,11 @@ export class Home extends Component {
             </Carousel> */}
           </div>
           <div>
-            <MyModal 
-              closeModal = {this.props.closeModal}
-              openModal = {this.props.openModal}
-              handlePress = {this.props.handlePress}
-              modalIsOpen = {this.props.modalIsOpen}
+            <MyModal
+              closeModal = {this.props.arg.closeModal}
+              openModal = {this.props.arg.openModal}
+              handlePress = {this.props.arg.handlePress}
+              modalIsOpen = {this.props.arg.modalIsOpen}
             />
           </div>
         </div>
