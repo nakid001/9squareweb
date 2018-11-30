@@ -3,4 +3,5 @@
 /functions/node_modules
 /src/myfirebase.js
 /src/stores/myfirebase.js
+/package-lock.json
 
