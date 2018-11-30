@@ -1,14 +1,12 @@
 import React, { Component } from 'react'
 import './style.css'
-import bg1 from './img/bg1.jpg'
-import bg2 from './img/bg2.jpg'
-import bg3 from './img/bg3.jpg'
 import boximg1 from './img/images.png'
 import boximg2 from './img/ic_history_48px-512.png'
 import boximg3 from './img/graph_icon.png'
 import { MyModal } from './MyModal'
-import TestIcon from './img/start.png'
-import { Link } from 'react-router-dom'
+import {
+  NavLink
+} from 'react-router-dom'
 import {
   Carousel,
   CarouselItem,
@@ -54,18 +52,18 @@ export class Home extends Component {
         <div id="main-wrap" className="">
           <div className='box_content'>
             <div className = 'box_content_head'>
-              ระบบตรวจวัดการทดสอบ
+              <NavLink key='m14' activeClassName='sbLinkActive' to='/test' className='sidebarLink'>ระบบตรวจวัดการทดสอบ</NavLink>
             </div>
             <div className = 'box_content_head'>
-              ระบบเก็บประวัติ
+              <NavLink key='m2' activeClassName='sbLinkActive' to='/history' className='sidebarLink'>ระบบเก็บประวัติ</NavLink>
             </div>
             <div className = 'box_content_head'>
-              ระบบแสดงผลกราฟ
+              <NavLink key='m3' activeClassName='sbLinkActive' to='/ranking' className='sidebarLink'>ระบบแสดงผลกราฟ</NavLink>
             </div>
             <div className = 'box_content_image'>
-              <img src={boximg1} alt={'BOX'} className="box_image"/>
-              <img src={boximg2} alt={'BOX'} className="box_image"/>
-              <img src={boximg3} alt={'BOX'} className="box_image"/>
+              <img src={boximg1} alt={'BOX'} className="box_image" onClick={() => {this.props.history.push('/test')} }/>
+              <img src={boximg2} alt={'BOX'} className="box_image" onClick={() => {this.props.history.push('/history')} }/>
+              <img src={boximg3} alt={'BOX'} className="box_image" onClick={() => {this.props.history.push('/ranking')} }/>
             </div>
             <div className = 'box_content_head'>
               <div className = 'box_content_text'>
