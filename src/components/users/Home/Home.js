@@ -21,15 +21,6 @@ import {
 export class Home extends Component {
   constructor(props) {
     super(props)
-    console.log(this.props)
-  }
-
-
-  handlePress (event) {
-    event.which = event.which || event.keyCode
-    if (event.which === 27) {
-      this.closeModal()
-    }
   }
 
   render() {
@@ -51,7 +42,7 @@ export class Home extends Component {
               <CarouselControl direction="next" directionText="Next" onClickHandler={this.props.next} />
             </Carousel>
           </div>
-          <div>
+          <div onKeyPress = {this.props.handlePress}>
             <MyModal 
               closeModal = {this.props.closeModal}
               openModal = {this.props.openModal}

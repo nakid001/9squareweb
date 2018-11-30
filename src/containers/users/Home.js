@@ -83,12 +83,7 @@ class HomeContainer extends React.Component {
     if (this.state.animating) return
     this.setState({ activeIndex: newIndex })
   }
-  handlePress (event) {
-    event.which = event.which || event.keyCode
-    if (event.which === 27) {
-      this.closeModal()
-    }
-  }
+
   openModal() {
     this.setState({modalIsOpen: true})    
   }
@@ -108,12 +103,22 @@ class HomeContainer extends React.Component {
     } else return ''
   }
 
+  handlePress (event) {
+    event.which = event.which || event.keyCode
+    if (event.which === 13) {
+      this.props.history.push('/test')
+    } else if (event.which === 27) {
+      this.closeModal()
+    }
+  }
+
   render () {
     return (
       <div>
         <Home 
         closeModal = {this.closeModal}
         openModal = {this.openModal}
+        handlePress = {this.handlePress}
         {...this.state}
         {...this.props} 
         />
