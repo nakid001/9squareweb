@@ -27,6 +27,8 @@ class HomeContainer extends React.Component {
       onExited : this.onExited.bind(this),
       handlePress : this.handlePress.bind(this),
       modalIsOpen : this.getCookie('username') != "",
+      closeModal : this.closeModal.bind(this),
+      openModal : this.openModal.bind(this),
       activeIndex : 0 ,
       items : [{
         src: bg1,
@@ -110,6 +112,8 @@ class HomeContainer extends React.Component {
     return (
       <div>
         <Home 
+        closeModal = {this.closeModal}
+        openModal = {this.openModal}
         {...this.state}
         {...this.props} 
         />

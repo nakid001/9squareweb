@@ -31,17 +31,6 @@ export class Home extends Component {
       this.closeModal()
     }
   }
-  openModal() {
-    this.setState({modalIsOpen: true})    
-  }
- 
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-  }
- 
-  closeModal() {
-    this.setState({modalIsOpen: false})
-  }
 
   render() {
 
@@ -63,12 +52,12 @@ export class Home extends Component {
             </Carousel>
           </div>
           <div>
-            {/* <MyModal 
+            <MyModal 
               closeModal = {this.props.closeModal}
               openModal = {this.props.openModal}
               handlePress = {this.props.handlePress}
               modalIsOpen = {this.props.modalIsOpen}
-            /> */}
+            />
           </div>
         </div>
         <div id="main-wrap" className="">
