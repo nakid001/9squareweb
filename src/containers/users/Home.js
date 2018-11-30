@@ -17,69 +17,68 @@ import {
   CarouselCaption
 } from 'reactstrap'
 class HomeContainer extends React.Component {
-  constructor(props) {
-    super(props)
-    this.arg = {
-        next : this.next.bind(this),
-        previous : this.previous.bind(this),
-        goToIndex : this.goToIndex.bind(this),
-        onExiting : this.onExiting.bind(this),
-        onExited : this.onExited.bind(this),
-        handlePress : this.handlePress.bind(this),
-        modalIsOpen: this.getCookie('username') != "",
-        activeIndex: 0 ,
-        items: [{
-          src: bg1,
-          altText: 'Slide 1',
-          caption: ''
-        },
-        {
-          src: bg2,
-          altText: 'Slide 2',
-          caption: ''
-        },
-        {
-          src: bg3,
-          altText: 'Slide 3',
-          caption: ''
-        }]
+  constructor() {
+    super()
+    this.state = {
+      next : this.next.bind(this),
+      previous : this.previous.bind(this),
+      goToIndex : this.goToIndex.bind(this),
+      onExiting : this.onExiting.bind(this),
+      onExited : this.onExited.bind(this),
+      handlePress : this.handlePress.bind(this),
+      modalIsOpen : this.getCookie('username') != "",
+      activeIndex : 0 ,
+      items : [{
+        src: bg1,
+        altText: 'Slide 1',
+        caption: ''
+      },
+      {
+        src: bg2,
+        altText: 'Slide 2',
+        caption: ''
+      },
+      {
+        src: bg3,
+        altText: 'Slide 3',
+        caption: ''
+      }]
     }
-   
-    this.arg.slides = this.arg.items.map((item) => {
-       <CarouselItem
-        onExiting={this.arg.onExiting}
-        onExited={this.arg.onExited}
+     this.state.slides = this.state.items.map((item) => {
+      return <CarouselItem
+        onExiting={this.onExiting(this.state)}
+        onExited={this.onExited(this.state)}
         key={item.src}
       > 
         <img src={item.src} alt={item.altText}  width="100%" height="430px"/>
         <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
       </CarouselItem>
-    })
+     })
   }
 
   
-  onExiting() {
-    this.animating = true
+  onExiting(state) {
+    state.animating = true
   }
 
-  onExited() {
-    this.animating = false
+  onExited(state) {
+    state.animating = false
   }
 
   next() {
-    if (this.animating) return
-    const nextIndex = this.arg.activeIndex === this.items.length - 1 ? 0 : this.arg.activeIndex + 1
+    if (this.state.animating) return
+    const nextIndex = this.state.activeIndex === this.state.items.length - 1 ? 0 : this.state.activeIndex + 1
     this.setState({ activeIndex: nextIndex })
   }
 
   previous() {
-    if (this.animating) return
-    const nextIndex = this.arg.activeIndex === 0 ? this.items.length - 1 : this.arg.activeIndex - 1
+    if (this.state.animating) return
+    const nextIndex = this.state.activeIndex === 0 ? this.state.items.length - 1 : this.state.activeIndex - 1
     this.setState({ activeIndex: nextIndex })
   }
 
   goToIndex(newIndex) {
-    if (this.animating) return
+    if (this.state.animating) return
     this.setState({ activeIndex: newIndex })
   }
   handlePress (event) {
@@ -111,7 +110,8 @@ class HomeContainer extends React.Component {
     return (
       <div>
         <Home 
-        arg = {this.arg} 
+        {...this.state}
+        {...this.props} 
         />
       </div>
     )

@@ -21,34 +21,54 @@ import {
 export class Home extends Component {
   constructor(props) {
     super(props)
-    this.state = this.props.arg
     console.log(this.props)
   }
+
+
+  handlePress (event) {
+    event.which = event.which || event.keyCode
+    if (event.which === 27) {
+      this.closeModal()
+    }
+  }
+  openModal() {
+    this.setState({modalIsOpen: true})    
+  }
+ 
+  afterOpenModal() {
+    // references are now sync'd and can be accessed.
+  }
+ 
+  closeModal() {
+    this.setState({modalIsOpen: false})
+  }
+
   render() {
+
     return (
       <div id='wrapper'>
         <div id="header" className="title_content">ระบบจัดการทักษะกลไกการเคลื่อนไหว</div>
         <div >
           <div >
-            {/* <Carousel
+            <Carousel
               activeIndex={this.props.activeIndex}
               next={this.props.next}
               previous={this.props.previous}
               interval={4000}
             >
-              <CarouselIndicators items={this.items} activeIndex={this.props.activeIndex} onClickHandler={this.props.goToIndex} />
+              <CarouselIndicators items={this.props.items} activeIndex={this.props.activeIndex} onClickHandler={this.props.goToIndex} />
               {this.props.slides}
               <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.props.previous} />
               <CarouselControl direction="next" directionText="Next" onClickHandler={this.props.next} />
-            </Carousel> */}
+            </Carousel>
           </div>
           <div>
-            <MyModal
-              closeModal = {this.props.arg.closeModal}
-              openModal = {this.props.arg.openModal}
-              handlePress = {this.props.arg.handlePress}
-              modalIsOpen = {this.props.arg.modalIsOpen}
-            />
+            {/* <MyModal 
+              closeModal = {this.props.closeModal}
+              openModal = {this.props.openModal}
+              handlePress = {this.props.handlePress}
+              modalIsOpen = {this.props.modalIsOpen}
+            /> */}
           </div>
         </div>
         <div id="main-wrap" className="">
