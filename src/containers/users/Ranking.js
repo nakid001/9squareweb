@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux'
 import  { Ranking } from '../../components/users/Ranking/Ranking.js'
 import { getranking, goNext, goPrevious } from '../../actions/user.js'
 import { BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Bar } from 'recharts'
+import * as commonConstant from '../../commonConstant'
 class RankingContainer extends React.Component {
   componentWillMount() {
     let that = this
@@ -40,11 +41,11 @@ class RankingContainer extends React.Component {
                       mykey[i] = yearSnapshot.key + '.' + monthSnapshot.key + '.' + daySnapshot.key + '/' + timeSnapshot.key
                       if (!dataSnapshot.val().type) {
                         type[i] = 'ไม่มีข้อมูล'
-                      } else if (dataSnapshot.val().type === ['1L ', '3R ', '2L ', '2R ']) {
+                      } else if (dataSnapshot.val().type.map((i, index) => i == commonConstant.split[index])) {
                         type[i] = 'แยกชิด'
-                      } else if (dataSnapshot.val().type === ['5L ', '6R ', '8L ', '9R ', '5L ', '6R ', '2L ', '3R ']) {
+                      } else if (dataSnapshot.val().type.map((i, index) => i == commonConstant.upDown[index])) {
                         type[i] = 'ขึ้นลง'
-                      } else if (dataSnapshot.val().type === ['5L ', '5R ', '7L ', '9R ', '5L ', '5R ', '1L ', '3R ']) {
+                      } else if (dataSnapshot.val().type.map((i, index) => i == commonConstant.xCross[index])) {
                         type[i] = 'กากบาท'
                       } else {
                         type[i] = dataSnapshot.val().type

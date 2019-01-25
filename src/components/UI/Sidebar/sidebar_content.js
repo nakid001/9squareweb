@@ -18,6 +18,7 @@ const SidebarContent = (props) => {
   let picture = ''
   let examiner = getCookie('examiner')
   let navLinks = ''
+  
   if (!examiner) {
     navLinks = [
       <span key='sb1' className='userSidebar'>
@@ -39,7 +40,6 @@ const SidebarContent = (props) => {
       <div key='sb7' className='sidebarDivider' />,
       <NavLink key='sb3' exact activeClassName='sbLinkActive' to='/examiner/test' className='sidebarLink'>การควบคุมทดสอบ</NavLink>,
       <NavLink key='sb4' activeClassName='sbLinkActive' to='/examiner/history' className='sidebarLink'>ตรวจสอบประวัติการทดสอบ</NavLink>,
-      // <NavLink key='sb5' activeClassName='sbLinkActive' to='/examiner/ranking' className='sidebarLink'>Ranking</NavLink>,
       <NavLink key='sb6' activeClassName='sbLinkActive' to='/aboutus' className='sidebarLink'>เกี่ยวกับเรา</NavLink>  
     ] 
   }
