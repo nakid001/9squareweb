@@ -52,36 +52,29 @@ class App extends React.Component {
       return parts.pop().split(';').shift()
     } else return ''
   }
+
+  signOut() {
+    firebase.auth().signOut().then(function () {
+      console.log('You have signed out.')
+    }).catch(function () {
+      alert('Sign out failed.')
+    })
+    document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+    document.cookie = 'picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+    document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+    document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
+  }
+
   checklogin () {
     const logOutBtn = <NavLink key='6' to='/login'
-      onClick={ () => {
-        firebase.auth().signOut().then(function () {
-          console.log('You have signed out.')
-        }).catch(function () {
-          alert('Sign out failed.')
-        })
-        document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-        document.cookie = 'picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-        document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC;'
-      }}
+      onClick={ () => this.signOut()}
     >ลงชื่อออก</NavLink>
     const examlogOutBtn = <NavLink key='6' to='/examiner/login'
-      onClick={ () => {
-        firebase.auth().signOut().then(function () {
-          console.log('You have signed out.')
-        }).catch(function () {
-          alert('Sign out failed.')
-        })
-        document.cookie = 'username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
-        document.cookie = 'picture=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
-        document.cookie = 'examiner=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
-        document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/examiner;'
-      }}
+      onClick={ () => { this.signOut()}}
     >ลงชื่อออก</NavLink>
+    user = this.getCookie('username')
     examiner = this.getCookie('examiner')
     
-    user = this.getCookie('username')
     let headerContent
     if (user === '') {    //  no user logged in
       console.log('no user logged in')
