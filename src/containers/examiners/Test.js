@@ -9,28 +9,21 @@ import { showroom, addroom, setActive, delRoom, getRoomNum } from '../../actions
 import { Link } from 'react-router-dom'
 import './style.css'
 class ExTestContainer extends React.Component {
-  componentWillMount() {
-    let that = this
-    let arr = []
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        that.props.showroom(arr)          
-      }
-    })
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      currentUser: null
+    }
   }
-  render () {
+
+  componentWillUpdate() {
     let i = 0
     let that = this
-    let room = []
-    let content = ''
+    let content = []
     let ava = ''
     if (firebase.auth().currentUser)
     {
-      content = (
-        <div>
-          <Test {...this.props} />
-        </div>
-      )
       firebase.database().ref('/rooms/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           const TestBtn = childSnapshot.val().ava ? 'RoomAvaBtn' : 'RoomNotAvaBtn'
@@ -39,7 +32,7 @@ class ExTestContainer extends React.Component {
           } else {
             ava = 'ปรับปรุง'
           }
-          room[i] = (
+          content.push(
             <div key={i}>
               <div>
                 <span><Link to ={'/examiner/test/room'} onClick={()=> {
@@ -66,14 +59,39 @@ class ExTestContainer extends React.Component {
           i++
         })
       }).then(() => {
-        this.props.showroom(room)
+        this.props.showroom(content)
       })
     } else {
       content = (
         <div className="loader"></div>
       )
     }
-    return content    
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          currentUser: user
+        })
+      }
+    })
+  }
+
+  render () {
+    let content = ''
+    if ( this.state.currentUser) {
+      content = (
+        <div>
+          <Test {...this.props} />
+        </div>
+      )
+    } else {
+      content = (
+        <div className="loader"></div>
+      )
+    }
+    return content
   }
 }
 const mapStateToProps = (state) => {

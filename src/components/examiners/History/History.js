@@ -34,7 +34,6 @@ export class History extends React.Component {
             <Button  color="danger" onClick={() => {this.props.goPrevious(this.props.user.num - 10, this.props.user.history.length, 10)}}>Previous!</Button>
             {Math.ceil(this.props.user.num/10) + 1} / {Math.ceil(this.props.user.history.length/10)}
             <Button  color="success" onClick={() => {this.props.goNext(this.props.user.num + 10,  this.props.user.history.length, 10)}}>Next!</Button>
-            {/* <Button  color="success" onClick={() => {this.props.addhistory()}}>add temp his</Button> */}
           </div>
           <div className="history_footer">
             <button onClick={() => {this.props.clearDate()}}>>GO BACK </button>
@@ -49,7 +48,6 @@ export class History extends React.Component {
             <Button  color="danger" onClick={() => {this.props.goPrevious(this.props.user.num - 10, this.props.exam.id.length, 10)}}>Previous!</Button>
             {Math.ceil(this.props.user.num/10) + 1} / {Math.ceil(this.props.exam.id.length/10)}
             <Button  color="success" onClick={() => {this.props.goNext(this.props.user.num + 10,  this.props.exam.id.length, 10)}}>Next!</Button>
-            {/* <Button  color="success" onClick={() => {this.props.addhistory()}}>add temp his</Button> */}
           </div>
           <div className="history_footer">
             <button> <Link to ='../'>GO BACK</Link> </button>

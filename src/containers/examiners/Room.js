@@ -17,10 +17,8 @@ class ExRoomContainer extends React.Component {
       device: [],
       num: 0,
       order: [],
-      deviceNumber: 0
-    }
-    this.state = {
-        
+      deviceNumber: 0,
+      currentUser: null
     }
   }
 
@@ -40,24 +38,8 @@ class ExRoomContainer extends React.Component {
   closeModal() {
     this.setState({modalIsOpen: false})
   }
-  componentWillMount() {
-    let that = this
-    let arr = []
-    let order = []
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        that.props.showDevice(arr)
-        firebase.database().ref('/rooms/room'+that.props.test.num).once('value', function (snapshot) {
-          if (snapshot.val().order) {
-            order = snapshot.val().order
-          }
-        }).then(() => {
-          that.props.getOrder(order)                
-        })
-      }
-    })
-  }
-  render () {
+
+  componentWillUpdate() {
     let i = 0
     let that = this
     let device = []
@@ -65,18 +47,7 @@ class ExRoomContainer extends React.Component {
     let ava = ''
     if (firebase.auth().currentUser)
     {
-      content = (
-        <div>
-          <Room {...this.props}   
-            openModal = {this.openModal.bind(this)}
-            afterOpenModal = {this.afterOpenModal.bind(this)}
-            closeModal = {this.closeModal.bind(this)}
-            handleChange = {this.handleChange.bind(this)} />
-        </div>
-      )
-      if (!this.props.test.num) {
-        window.location = '/examiner/test'
-      }
+
       firebase.database().ref('/rooms/room'+this.props.test.num+'/devices/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           const RoomeBtn = childSnapshot.val().ava ? 'RoomAvaBtn' : 'RoomNotAvaBtn'   
@@ -142,6 +113,48 @@ class ExRoomContainer extends React.Component {
     }
     return content    
   }
+
+  componentDidMount() {
+    let that = this
+    let order = []
+    firebase.database().ref('/rooms/room'+that.props.test.num).once('value', function (snapshot) {
+      if (snapshot.val().order) {
+        order = snapshot.val().order
+      }
+    }).then(() => {
+      that.props.getOrder(order)                
+    })  
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          currentUser: user
+        })
+      }
+    })
+  }
+
+  render () {
+  let content = ''
+  if ( this.state.currentUser) {
+    content = (
+      <div>
+        <Room {...this.props}   
+          openModal = {this.openModal.bind(this)}
+          afterOpenModal = {this.afterOpenModal.bind(this)}
+          closeModal = {this.closeModal.bind(this)}
+          handleChange = {this.handleChange.bind(this)} />
+      </div>
+    )
+    if (!this.props.test.num) {
+      window.location = '/test'
+    } 
+  } else {
+    content = (
+      <div className="loader"></div>
+    )
+  }
+  return content
+}
 }
 const mapStateToProps = (state) => {
   return {

@@ -166,6 +166,7 @@
     height: 100px;
     margin-left: 11%;
     margin-right: 12%;
+    cursor: pointer;
   }
   .box_content_text {
     margin-top: 10px;

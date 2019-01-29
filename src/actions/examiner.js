@@ -1,8 +1,8 @@
 import * as firebase from 'firebase'
 let provider = new firebase.auth.GoogleAuthProvider()
 function Success (username) {
-  document.cookie = 'username=' + username + '; expires=Thu, 18 Dec 2018 12:00:00 UTC; path=/examiner'
-  document.cookie = 'examiner=' + username + '; expires=Thu, 18 Dec 2018 12:00:00 UTC; path=/examiner'
+  document.cookie = 'username=' + username + '; expires=Thu, 18 Dec 2038 12:00:00 UTC; path=/examiner'
+  document.cookie = 'examiner=' + username + '; expires=Thu, 18 Dec 2038 12:00:00 UTC; path=/examiner'
   window.location = '/examiner'
 }
 export function regisfire(username, password) {

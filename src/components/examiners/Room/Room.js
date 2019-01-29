@@ -3,7 +3,7 @@ import { Modal } from 'reactstrap'
 import { Link } from 'react-router-dom'
 import './style.css'
 import bg from './img/room_background.jpg'
-
+import * as commonConstant from '../../../commonConstant'
 export class Room extends React.Component {
   constructor (props) {
     super(props)
@@ -62,7 +62,7 @@ export class Room extends React.Component {
           <div className='Modal_body'>
             <p> รูปแบบ : {this.props.test.order} </p>
             <table className='Modal_table'>
-              <tr>
+            <tr>
                 <td > 
               7
                   <div>
@@ -211,15 +211,15 @@ export class Room extends React.Component {
             <div className='Modal_list'>
               <button className="Modal_list_btn" onClick={() => {
                 this.props.clearOrder() 
-                this.props.pushOrder(['1L ', '3R ', '2L ', '2R '])
+                this.props.pushOrder(commonConstant.splitWithDirection)
               }}> แยก-ชิด </button> 
               <button className="Modal_list_btn" onClick={() => {
                 this.props.clearOrder() 
-                this.props.pushOrder(['5L ', '6R ', '8L ', '9R ', '5L ', '6R ', '2L ', '3R '])
+                this.props.pushOrder(commonConstant.upDownWithDirection)
               }}> ขึ้น-ลง </button> 
               <button className="Modal_list_btn" onClick={() => {
                 this.props.clearOrder() 
-                this.props.pushOrder(['5L ', '5R ', '7L ', '9R ', '5L ', '5R ', '1L ', '3R '])
+                this.props.pushOrder(commonConstant.xCrossWithDirection)
               }}> กากบาท </button> 
             </div>
           </div>
@@ -237,14 +237,6 @@ export class Room extends React.Component {
       )
     }
   }
-
-  // handleChange (event) {
-  //   if (event.target.name === 'User') {
-  //     this.props.inputlog(event.target.value, this.props.user.password)
-  //   } else if (event.target.name === 'Pass') {
-  //     this.props.inputlog(this.props.user.username, event.target.value)
-  //   }
-  // }
 
   render () {
     return (
@@ -266,7 +258,6 @@ export class Room extends React.Component {
               </div>
               <button className="Exfooter"> <Link to ='/examiner/test'>กลับ</Link> </button>
               <button className="Exfooter"> <Link to ='/examiner/start'>เตรียมพร้อมทดสอบ</Link> </button> 
-              {/* <button className="Exfooter"  onClick={()=> {this.props.addDevice(this.props.test.num)}}>เพิ่มอุปกรณ์ (ADMIN ) </button> */}
             </div>
           </div>
           <div>  
