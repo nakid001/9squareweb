@@ -14,7 +14,7 @@ export class Test extends React.Component {
           <div  className="test_content">
             {this.props.test.room}
             <div className="Exfooter">
-              <button> <Link to ='/'>GO BACK</Link> </button>
+              <button className="back_button"> <Link to ='../'>GO BACK</Link> </button>
             </div>
           </div>
         </div>

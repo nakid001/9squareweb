@@ -15,7 +15,7 @@ export class Room extends React.Component {
             {this.props.device}
             รูปแบบ : {this.props.order}
             <div className="Exfooter">
-              <button> <Link to ='/test'>กลับ</Link> </button>
+              <button className="back_button"> <Link to ='../'>GO BACK</Link> </button>
             </div>
           </div>
         </div>

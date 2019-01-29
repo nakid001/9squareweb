@@ -50,7 +50,7 @@ export class History extends React.Component {
             <Button  color="success" onClick={() => {this.props.goNext(this.props.user.num + 10,  this.props.exam.id.length, 10)}}>Next!</Button>
           </div>
           <div className="history_footer">
-            <button> <Link to ='../'>GO BACK</Link> </button>
+            <button className="back_button"> <Link to ='../'>GO BACK</Link> </button>
           </div>   
         </div>
       )
