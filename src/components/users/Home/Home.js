@@ -4,9 +4,7 @@ import boximg1 from './img/images.png'
 import boximg2 from './img/ic_history_48px-512.png'
 import boximg3 from './img/graph_icon.png'
 import { MyModal } from './MyModal'
-import {
-  NavLink
-} from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import {
   Carousel,
   CarouselItem,
@@ -15,14 +13,12 @@ import {
   CarouselCaption
 } from 'reactstrap'
 
-// import { Link } from 'react-router'
 export class Home extends Component {
   constructor(props) {
     super(props)
   }
 
   render() {
-
     return (
       <div id='wrapper'>
         <div id="header" className="title_content">ระบบจัดการทักษะกลไกการเคลื่อนไหว</div>
@@ -67,17 +63,17 @@ export class Home extends Component {
             </div>
             <div className = 'box_content_head'>
               <div className = 'box_content_text'>
-              เรามีระบบที่จะช่วยให้นักกีฬา และผู้คุมการทดสอบได้ใช้ในการประเมิณศักยภาพของนักกีฬาอย่างถูกต้องและเหมาะสม
+                เรามีระบบที่จะช่วยให้นักกีฬา และผู้คุมการทดสอบได้ใช้ในการประเมิณศักยภาพของนักกีฬาอย่างถูกต้องและเหมาะสม
               </div>
             </div>
             <div className = 'box_content_head'>
               <div className = 'box_content_text'>
-              นอกจากระบบตรวจสอบการประเมิณศักยภาพแล้ว เรายังมีระบบที่ช่วยในการจัดเก็บข้อมูลผลลัพธ์การทดสอบ เพื่อที่จะนำมาใช้ดูพัฒนาการของผู้ทดสอบได้อีกด้วย
+                นอกจากระบบตรวจสอบการประเมิณศักยภาพแล้ว เรายังมีระบบที่ช่วยในการจัดเก็บข้อมูลผลลัพธ์การทดสอบ เพื่อที่จะนำมาใช้ดูพัฒนาการของผู้ทดสอบได้อีกด้วย
               </div>
             </div>
             <div className = 'box_content_head'>
               <div className = 'box_content_text'>
-              เรายังมีระบบที่จะช่วยในการเปรียบเทียบและคาดคะเน ความสามารถของนักกีฬากับผู้ร่วมทดสอบท่านอื่นๆซึ่งทำให้นักกีฬาคนนั้นๆสามารถรับรู้ได้ถึงความสามารถของตนเองทียบกับผู้อื่น
+                เรายังมีระบบที่จะช่วยในการเปรียบเทียบและคาดคะเน ความสามารถของนักกีฬากับผู้ร่วมทดสอบท่านอื่นๆซึ่งทำให้นักกีฬาคนนั้นๆสามารถรับรู้ได้ถึงความสามารถของตนเองทียบกับผู้อื่น
               </div>
             </div>
           </div>
