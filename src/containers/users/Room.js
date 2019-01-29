@@ -13,45 +13,18 @@ class RoomContainer extends React.Component {
     super(props)
     this.state = {
       device: [],
+      currentUser: null
     }
   }
-  componentWillMount() {
-    let that = this
-    let arr = []
-    let order = []
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        that.props.showDevice(arr)
-        firebase.database().ref('/rooms/room'+that.props.test.num).once('value', function (snapshot) {
-          if (snapshot.val().order) {
-            order = snapshot.val().order
-          }
-        }).then(() => {
-          that.props.getOrder(order)                
-        })
-      }
-    })
-  }
-  render () {
+  componentWillUpdate() {
     let i = 0
     let that = this
     let device = []
     let content = ''
     let ava = ''
+    let order = []
     if (firebase.auth().currentUser)
     {
-      content = (
-        <div>
-          <Room 
-            num = {this.props.test.num}
-            device = {this.props.test.device}
-            order = {this.props.test.order}
-          />
-        </div>
-      )
-      if (!this.props.test.num) {
-        window.location = '/test'
-      } 
       firebase.database().ref('/rooms/room'+this.props.test.num+'/devices/').once('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           const DeviceBtn = childSnapshot.val().ava ? 'DeviceAvaBtn' : 'DeviceNotAvaBtn'   
@@ -80,10 +53,7 @@ class RoomContainer extends React.Component {
                     }
                   }   
                   } data-tip data-for={userID} > อุปกรณ์หมายเลข:{childSnapshot.val().num}: {ava} 
-
-                    {/* <ReactTooltip id={userID} aria-haspopup='true' role='example'> */}
                     {userID}
-                    {/* </ReactTooltip> */}
                   </div> 
                 </span>
               </div>
@@ -92,7 +62,7 @@ class RoomContainer extends React.Component {
           i++
         })
       }).then(() => {
-        this.props.showDevice(device)
+        that.props.showDevice(device) 
       })
     } else {
       content = (
@@ -100,6 +70,48 @@ class RoomContainer extends React.Component {
       )
     }
     return content    
+  }
+
+  componentDidMount() {
+    let that = this
+    let order = []
+    firebase.database().ref('/rooms/room'+that.props.test.num).once('value', function (snapshot) {
+      if (snapshot.val().order) {
+        order = snapshot.val().order
+      }
+    }).then(() => {
+      that.props.getOrder(order)                
+    })  
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          currentUser: user
+        })
+      }
+    })
+  }
+
+  render () {
+    let content = ''
+    if ( this.state.currentUser) {
+      content = (
+        <div>
+          <Room 
+            num = {this.props.test.num}
+            device = {this.props.test.device}
+            order = {this.props.test.order}
+          />
+        </div>
+      )
+      if (!this.props.test.num) {
+        window.location = '/test'
+      } 
+    } else {
+      content = (
+        <div className="loader"></div>
+      )
+    }
+    return content
   }
 }
 const mapStateToProps = (state) => {

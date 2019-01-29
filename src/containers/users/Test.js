@@ -9,7 +9,6 @@ import { showroom, getRoomNum } from '../../actions/test.js'
 import { Link } from 'react-router-dom'
 import './style.css'
 
-let content = []
 class TestContainer extends React.Component {
   constructor (props) {
     super(props)
@@ -74,7 +73,6 @@ class TestContainer extends React.Component {
   }
 
   render () {
-    let i = 0
     let content = ''
     if ( this.state.currentUser) {
       content = (
