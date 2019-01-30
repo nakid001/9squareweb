@@ -66,19 +66,17 @@ class RankingContainer extends React.Component {
                     userDetail.step = dataSnapshot.val().step
                     userDetail.userId = dataSnapshot.key
 
-                    console.log(dataSnapshot.val())
-
                     // SET TYPE
                     if (!dataSnapshot.val().type) {
-                      user.type = ('ไม่มีข้อมูล')
+                      userDetail.type = ('ไม่มีข้อมูล')
                     } else if (dataSnapshot.val().type.map((i, index) => i == commonConstant.split[index])) {
-                      user.type = ('แยกชิด')
+                      userDetail.type = ('แยกชิด')
                     } else if (dataSnapshot.val().type.map((i, index) => i == commonConstant.upDown[index])) {
-                      user.type = ('ขึ้นลง')
+                      userDetail.type = ('ขึ้นลง')
                     } else if (dataSnapshot.val().type.map((i, index) => i == commonConstant.xCross[index])) {
-                      user.type = ('กากบาท')
+                      userDetail.type = ('กากบาท')
                     } else {
-                      user.type = (dataSnapshot.val().type)
+                      userDetail.type = (dataSnapshot.val().type)
                     }
 
                     // SET TIME
@@ -125,18 +123,19 @@ class RankingContainer extends React.Component {
         //     i++
         //   }
         .then(() => {
-          roundDetail.forEach((dataSorted) => {
+          roundDetail.forEach((dataSorted, indexRound) => {
+            let data = []
             dataSorted = dataSorted.sort((a, b) => {
               return a.set - b.set
             })
             // need to sort step
             dataSorted.forEach((dataDetail, index) => {
-              console.log(dataDetail, firebase.auth().currentUser.uid)
+              data.push({set: dataDetail.set})
               if (dataDetail.userId === firebase.auth().currentUser.uid) {
                 let rank = index + 1
                 arr.push(
-                  <div key={index} style={{'width': '100%'}}>
-                    <div>{'วัน/เวลา : ' + dateTime[index]}</div>
+                  <div key={indexRound+index} style={{'width': '100%'}}>
+                    <div>{'วัน/เวลา : ' + dateTime[index+indexRound]}</div>
                     <div>{' อันดับ : ' + rank + ' ชนิด: ' + dataDetail.type + ' เวลา ' + dataDetail.time}</div>
                     <div>{ ' เซต: ' + dataDetail.set + ' ก้าว : ' + dataDetail.step }</div>
                     <BarChart width={375} height={250} data={data} >
@@ -149,10 +148,9 @@ class RankingContainer extends React.Component {
                   </div>
                 )
               }
-            }) 
+            })
           })
         }).then(() => {
-          console.log(arr)
           that.props.getranking(arr, mykey, user)
         })
       }
