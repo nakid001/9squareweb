@@ -6,7 +6,6 @@ import  { Room } from '../../components/users/Room/Room.js'
 import { inputreg } from '../../actions/input.js'
 import { regisfire } from '../../actions/user.js'
 import { showDevice, addDevice, setActive, delDevice, setDeviceActive, getOrder, matchUserDevice } from '../../actions/test.js'
-import ReactTooltip from 'react-tooltip'
 
 class RoomContainer extends React.Component {
   constructor (props) {
@@ -22,7 +21,6 @@ class RoomContainer extends React.Component {
     let device = []
     let content = ''
     let ava = ''
-    let order = []
     if (firebase.auth().currentUser)
     {
       firebase.database().ref('/rooms/room'+this.props.test.num+'/devices/').once('value', function (snapshot) {

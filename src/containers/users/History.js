@@ -69,7 +69,7 @@ class HistoryContainer extends React.Component {
           console.log('please wait')
         }
       } else {
-        that.props.cannotlogin
+        that.props.cannotlogin()
       }
     })
   }

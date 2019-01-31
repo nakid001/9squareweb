@@ -250,8 +250,6 @@ export function setTime (time, roomnum) {
 }
 
 export function sendresult (num) {
-  let showData =[]
-  console.log('num = ' + num)
   firebase.database().ref('/rooms/room' + num).update({
     start: 'END'
   })

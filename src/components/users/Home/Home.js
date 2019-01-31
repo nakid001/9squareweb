@@ -7,10 +7,8 @@ import { MyModal } from './MyModal'
 import { NavLink } from 'react-router-dom'
 import {
   Carousel,
-  CarouselItem,
   CarouselControl,
   CarouselIndicators,
-  CarouselCaption
 } from 'reactstrap'
 
 export class Home extends Component {

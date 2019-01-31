@@ -10,7 +10,6 @@ class RankingContainer extends React.Component {
   componentWillMount() {
     let that = this
     let arr = []
-    let mykey = []
     let dateTime = []
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -31,11 +30,11 @@ class RankingContainer extends React.Component {
                     // SET TYPE
                     if (!dataSnapshot.val().type) {
                       userDetail.type = ('ไม่มีข้อมูล')
-                    } else if (dataSnapshot.val().type.map((i, index) => i == commonConstant.split[index])) {
+                    } else if (dataSnapshot.val().type.map((i, index) => i === commonConstant.split[index])) {
                       userDetail.type = ('แยกชิด')
-                    } else if (dataSnapshot.val().type.map((i, index) => i == commonConstant.upDown[index])) {
+                    } else if (dataSnapshot.val().type.map((i, index) => i === commonConstant.upDown[index])) {
                       userDetail.type = ('ขึ้นลง')
-                    } else if (dataSnapshot.val().type.map((i, index) => i == commonConstant.xCross[index])) {
+                    } else if (dataSnapshot.val().type.map((i, index) => i === commonConstant.xCross[index])) {
                       userDetail.type = ('กากบาท')
                     } else {
                       userDetail.type = (dataSnapshot.val().type)
@@ -96,7 +95,7 @@ class RankingContainer extends React.Component {
             })
           })
         }).then(() => {
-          that.props.getranking(arr, mykey, user)
+          that.props.getranking(arr, user)
         })
       }
     })

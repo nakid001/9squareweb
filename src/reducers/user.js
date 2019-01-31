@@ -7,7 +7,6 @@ const userReducer = (state = {
   canlog: false,
   text: '',
   history: [],
-  key: [],
   ranking: [1],
   num:0,
   loading: true
@@ -93,9 +92,7 @@ const userReducer = (state = {
     break
   case 'GETRANK' :
     state = {
-      ...state,
-      key: action.Kpayload,
-      ranking: action.Rpayload,
+      ...state,      ranking: action.Rpayload,
       username: action.Upayload,
       payload: action.payload
     }

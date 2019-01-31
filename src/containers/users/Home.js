@@ -10,10 +10,7 @@ import bg3 from './img/bg3.jpg'
 // } from '../components'
 
 import {
-  Carousel,
   CarouselItem,
-  CarouselControl,
-  CarouselIndicators,
   CarouselCaption
 } from 'reactstrap'
 class HomeContainer extends React.Component {
@@ -26,7 +23,7 @@ class HomeContainer extends React.Component {
       onExiting : this.onExiting.bind(this),
       onExited : this.onExited.bind(this),
       handlePress : this.handlePress.bind(this),
-      modalIsOpen : this.getCookie('username') != "",
+      modalIsOpen : this.getCookie('username') !== "",
       closeModal : this.closeModal.bind(this),
       openModal : this.openModal.bind(this),
       activeIndex : 0 ,
