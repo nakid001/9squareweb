@@ -40,6 +40,9 @@
   }
 }
 
+.back_button {
+  border-radius: 24px;
+}
 
 .contentHeaderMenuLink {
   text-decoration: 'none';

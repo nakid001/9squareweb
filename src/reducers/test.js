@@ -119,7 +119,6 @@ const testReducer = (state = initialState, action) => {
       showData: action.Apayload,
       text: action.payload
     }
-    console.log(state.showData)
   }
     break
   default :

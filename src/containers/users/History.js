@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { History } from '../../components/users/History/History.js'
-import { gethistory, goNext, goPrevious, canlogin, cannotlogin, addhistory } from  '../../actions/user'
+import { gethistory, goNext, goPrevious, canlogin, cannotlogin } from  '../../actions/user'
 
 import * as firebase from 'firebase'
 class HistoryContainer extends React.Component {
@@ -69,7 +69,7 @@ class HistoryContainer extends React.Component {
           console.log('please wait')
         }
       } else {
-        that.props.cannotlogin, addhistory()
+        that.props.cannotlogin()
       }
     })
   }
@@ -101,7 +101,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return bindActionCreators(
     {
-      gethistory, goNext, goPrevious, canlogin, cannotlogin, addhistory
+      gethistory, goNext, goPrevious, canlogin, cannotlogin
     }, dispatch)
 }
 export default connect(mapStateToProps, mapDispatchToProps)(HistoryContainer)

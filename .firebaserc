@@ -1,5 +1,11 @@
 {
   "projects": {
+<<<<<<< HEAD
     "default": "nafire-18969"
   }
 }
+=======
+    "release2": "nafire-18969"
+  }
+}
+>>>>>>> e2b2b79898372edc3d019ab449737cd776cd845f

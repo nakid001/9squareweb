@@ -9,9 +9,6 @@ export class MyModal extends Component {
       <Modal
         isOpen={this.props.modalIsOpen}
         className='Modal--matching'
-        overlayClassName='Modal--matching--overlay'
-        contentLabel='Example Modal'
-        shouldCloseOnOverlayClick={true}
         role='dialog'
       >
         <div className='Modal--matching--content' >

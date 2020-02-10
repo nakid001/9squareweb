@@ -2,6 +2,7 @@ import React from 'react'
 import {NavLink, HashRouter} from 'react-router-dom'
 import Modal from 'react-modal'
 import { Link } from 'react-router-dom'
+import * as commonConstant from '../../../commonConstant'
 
 export class TestModal extends React.Component {
   constructor (props) {
@@ -51,40 +52,28 @@ export class TestModal extends React.Component {
                 <td > 
               7
                   <div>
-                    <div id="left" onClick={()=> {
-                      this.props.pushOrder('7L ').then(() => {
-                      })              
-                    }}>ซ้าย</div>
-                    <div id="right" onClick={()=> {
-                      this.props.pushOrder('7R ').then(() => {
-                      })              
-                    }}>ขวา</div>
+                    <div id="left" onClick={() => this.props.pushOrder('7L ')              
+                    }>ซ้าย</div>
+                    <div id="right" onClick={() => this.props.pushOrder('7R ')              
+                    }>ขวา</div>
                   </div>
                 </td>
                 <td > 
               8
                   <div>
-                    <div id="left" onClick={()=> {
-                      this.props.pushOrder('8L ').then(() => {
-                      })              
-                    }}>ซ้าย</div>
-                    <div id="right" onClick={()=> {
-                      this.props.pushOrder('8R ').then(() => {
-                      })              
-                    }}>ขวา</div>
+                    <div id="left" onClick={() => this.props.pushOrder('8L ')              
+                    }>ซ้าย</div>
+                    <div id="right" onClick={() => this.props.pushOrder('8R ')              
+                    }>ขวา</div>
                   </div>
                 </td>
                 <td > 
               9
                   <div>
-                    <div id="left" onClick={()=> {
-                      this.props.pushOrder('9L ').then(() => {
-                      })              
-                    }}>ซ้าย</div>
-                    <div id="right" onClick={()=> {
-                      this.props.pushOrder('9R ').then(() => {
-                      })              
-                    }}>ขวา</div>
+                    <div id="left" onClick={() => this.props.pushOrder('9L ')              
+                    }>ซ้าย</div>
+                    <div id="right" onClick={() => this.props.pushOrder('9R ')              
+                    }>ขวา</div>
                   </div>
                 </td>
               </tr> 
@@ -93,40 +82,28 @@ export class TestModal extends React.Component {
                 <td > 
               4
                   <div>
-                    <div id="left" onClick={()=> {
-                      this.props.pushOrder('4L ').then(() => {
-                      })              
-                    }}>ซ้าย</div>
-                    <div id="right" onClick={()=> {
-                      this.props.pushOrder('4R ').then(() => {
-                      })              
-                    }}>ขวา</div>
+                    <div id="left" onClick={() => this.props.pushOrder('4L ')              
+                    }>ซ้าย</div>
+                    <div id="right" onClick={() => this.props.pushOrder('4R ')              
+                    }>ขวา</div>
                   </div>
                 </td>
                 <td > 
               5
                   <div>
-                    <div id="left" onClick={()=> {
-                      this.props.pushOrder('5L ').then(() => {
-                      })              
-                    }}>ซ้าย</div>
-                    <div id="right" onClick={()=> {
-                      this.props.pushOrder('5R ').then(() => {
-                      })              
-                    }}>ขวา</div>
+                    <div id="left" onClick={() => this.props.pushOrder('5L ')              
+                    }>ซ้าย</div>
+                    <div id="right" onClick={() => this.props.pushOrder('5R ')              
+                    }>ขวา</div>
                   </div>
                 </td>
                 <td > 
               6
                   <div>
-                    <div id="left" onClick={()=> {
-                      this.props.pushOrder('6L ').then(() => {
-                      })              
-                    }}>ซ้าย</div>
-                    <div id="right" onClick={()=> {
-                      this.props.pushOrder('6R ').then(() => {
-                      })              
-                    }}>ขวา</div>
+                    <div id="left" onClick={() => this.props.pushOrder('6L ')              
+                    }>ซ้าย</div>
+                    <div id="right" onClick={() => this.props.pushOrder('6R ')              
+                    }>ขวา</div>
                   </div>
                 </td>
               </tr>
@@ -135,40 +112,28 @@ export class TestModal extends React.Component {
                 <td > 
               1
                   <div>
-                    <div id="left" onClick={()=> {
-                      this.props.pushOrder('1L ').then(() => {
-                      })              
-                    }}>ซ้าย</div>
-                    <div id="right" onClick={()=> {
-                      this.props.pushOrder('1R ').then(() => {
-                      })              
-                    }}>ขวา</div>
+                    <div id="left" onClick={() => this.props.pushOrder('1L ')              
+                    }>ซ้าย</div>
+                    <div id="right" onClick={() => this.props.pushOrder('1R ')              
+                    }>ขวา</div>
                   </div>
                 </td>
                 <td > 
               2
                   <div>
-                    <div id="left" onClick={()=> {
-                      this.props.pushOrder('2L ').then(() => {
-                      })              
-                    }}>ซ้าย</div>
-                    <div id="right" onClick={()=> {
-                      this.props.pushOrder('2R ').then(() => {
-                      })              
-                    }}>ขวา</div>
+                    <div id="left" onClick={() => this.props.pushOrder('2L ')              
+                    }>ซ้าย</div>
+                    <div id="right" onClick={() => this.props.pushOrder('2R ')              
+                    }>ขวา</div>
                   </div>
                 </td>
                 <td > 
               3
                   <div>
-                    <div id="left" onClick={()=> {
-                      this.props.pushOrder('3L ').then(() => {
-                      })              
-                    }}>ซ้าย</div>
-                    <div id="right" onClick={()=> {
-                      this.props.pushOrder('3R ').then(() => {
-                      })              
-                    }}>ขวา</div>
+                    <div id="left" onClick={() => this.props.pushOrder('3L ')              
+                    }>ซ้าย</div>
+                    <div id="right" onClick={() => this.props.pushOrder('3R ')              
+                    }>ขวา</div>
                   </div>
                 </td>
               </tr>
@@ -196,15 +161,15 @@ export class TestModal extends React.Component {
             <div className='Modal_list'>
               <button className="Modal_list_btn" onClick={() => {
                 this.props.clearOrder() 
-                this.props.pushOrder(['1L ', '3R ', '2L ', '2R '])
+                this.props.pushOrder(commonConstant.splitWithDirection)
               }}> แยก-ชิด </button> 
               <button className="Modal_list_btn" onClick={() => {
                 this.props.clearOrder() 
-                this.props.pushOrder(['5L ', '6R ', '8L ', '9R ', '5L ', '6R ', '2L ', '3R '])
+                this.props.pushOrder(commonConstant.upDownWithDirection)
               }}> ขึ้น-ลง </button> 
               <button className="Modal_list_btn" onClick={() => {
                 this.props.clearOrder() 
-                this.props.pushOrder(['5L ', '5R ', '7L ', '9R ', '5L ', '5R ', '1L ', '3R '])
+                this.props.pushOrder(commonConstant.xCrossWithDirection)
               }}> กากบาท </button> 
             </div>
           </div>

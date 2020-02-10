@@ -8,40 +8,26 @@ import { regisfire } from '../../actions/user.js'
 import { showroom, getRoomNum } from '../../actions/test.js'
 import { Link } from 'react-router-dom'
 import './style.css'
+
 class TestContainer extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      room: 'empty'
+      room: 'empty',
+      currentUser: null
     }
   }
 
-  componentWillMount() {
-    let that = this
-    let arr = []
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        that.props.showroom(arr)          
-      }
-    })
-  }
-  render () {
+  componentWillUpdate() {
     let i = 0
     let that = this
-    let room = []
-    let content = ''
-    if (firebase.auth().currentUser)
-    {
-      content = (
-        <div>
-          <Test {...this.props} />
-        </div>
-      )
-      firebase.database().ref('/rooms/').once('value', function (snapshot) {
+    let content = []
+    if (firebase.auth().currentUser) {
+      firebase.database().ref('/rooms/').once('value', (snapshot) => {
         snapshot.forEach(function (childSnapshot) {
           const TestBtn = childSnapshot.val().ava ? 'roomBtn' : 'RoomNotAvaBtn'
           if (!childSnapshot.val().ava) {
-            content = (
+            content.push(
               <div key={i}>
                 <div>
                   <p className='col-12'/>
@@ -51,7 +37,7 @@ class TestContainer extends React.Component {
               </div>
             )
           } else {
-            content = (
+            content.push(
               <div key={i}>
                 <div>
                   <Link to ={'/test/room'} onClick={()=> {
@@ -60,19 +46,41 @@ class TestContainer extends React.Component {
                     <p className='col-12'/>
                     <div className={TestBtn}> สถานที่ทดสอบ:{childSnapshot.val().num} </div> 
                   </Link>
-                  
                 </div>
               </div>
             )
           }
-          room[i] = content
           i++
         })
       }).then(() => {
-        this.props.showroom(room)
+        this.props.showroom(content)
       })
-    } else
-    {
+    } else {
+      content = (
+        <div className="loader"></div>
+      )
+    }
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          currentUser: user
+        })
+      }
+    })
+  }
+
+  render () {
+    let content = ''
+    if ( this.state.currentUser) {
+      content = (
+        <div>
+          <Test {...this.props} />
+        </div>
+      )
+    } else {
       content = (
         <div className="loader"></div>
       )
